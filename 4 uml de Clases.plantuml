@@ -1,0 +1,140 @@
+@startuml class diagram
+
+package "Registro de Usuario" {
+    class Entrenador {
+        - id: String
+        - nombre: String
+        - genero: String
+        - contraseña: String
+        - pokemons: List<Pookémon>
+        - pokemonActual: Pookémon
+        - historialBatallas: List<Batalla>
+
+        + crearEntrenador(nombre: String, genero: String, contraseña: String)
+        + iniciarSesion(contraseña: String)
+        + obtenerPookemons()
+        + obtenerPookemonActual()
+        + realizarMovimiento(movimento: Movimiento)
+        + obtenerHistorialBatallas()
+    }
+}
+
+package "pookémon" {
+    class Pookémon {
+        - id: String
+        - nombre: String
+        - tipo: String
+        - estadísticas: Estadísticas
+        - movimientos: List<Movimiento>
+        - pp: int
+
+        + obtenerInfopookémon()
+        + obtenerEstadísticas()
+        + obtenerMovimientos()
+        + obtenerPP()
+    }
+
+    class Estadísticas {
+        - hp: int
+        - ataque: int
+        - defensa: int
+        - ataqueEspecial: int
+        - defensaEspecial: int
+        - velocidad: int
+
+        + obtenerHP()
+        + obtenerAtaque()
+        + obtenerDefensa()
+        + obtenerAtaqueEspecial()
+        + obtenerDefensaEspecial()
+        + obtenerVelocidad()
+    }
+
+    class Movimiento {
+        - id: String
+        - nombre: String
+        - tipo: String
+        - poder: int
+        - pp: int
+
+        + obtenerInfoMovimiento()
+        + obtenerPoder()
+        + obtenerPP()
+    }
+}
+
+package "Batalla" {
+    class Batalla {
+        - id: String
+        - entrenador1: Entrenador
+        - entrenador2: Entrenador
+        - ganador: Entrenador
+        - perdedor: Entrenador
+        - registroBatalla: List<RegistroBatalla>
+
+        + iniciarBatalla(entrenador1: Entrenador, entrenador2: Entrenador)
+        + realizarMovimiento(movimiento: Movimiento)
+        + finalizarBatalla()
+        + obtenerRegistroBatalla()
+    }
+
+    class RegistroBatalla {
+        - id: String
+        - batalla: Batalla
+        - movimiento: Movimiento
+        - dañoHecho: int
+        - dañoRecibido: int
+
+        + obtenerInfoRegistroBatalla()
+        + obtenerDañoHecho()
+        + obtenerDañoRecibido()
+    }
+}
+
+package "Torneo" {
+    class NodoTorneo {
+        - padre: NodoTorneo
+        - entrenador: Entrenador
+        - hijoIzquierdo: NodoTorneo
+        - hijoDerecho: NodoTorneo
+        
+
+        + NodoTorneo(entrenador: Entrenador)
+        + obtenerEntrenador()
+        + obtenerHijoIzquierdo()
+        + obtenerHijoDerecho()
+        + obtenerPadre()
+    }
+
+    class Torneo {
+        - id: String
+        - raiz: NodoTorneo
+
+        + crearTorneo()
+        + agregarEntrenador(entrenador: Entrenador)
+        + iniciarBatalla()
+        + finalizarTorneo()
+    }
+}
+
+package "Sistema" {
+    class CPU {
+        - id: String
+        - entrenador: Entrenador
+
+        + crearCPU(entrenador: Entrenador)
+        + realizarMovimiento()
+    }
+
+    class Recompensa {
+        - id: String
+        - torneo: Torneo
+        - ganador: Entrenador
+        - recompensa: String
+
+        + crearRecompensa(torneo: Torneo, ganador: Entrenador, recompensa: String)
+        + obtenerRecompensa()
+    }
+}
+
+@enduml

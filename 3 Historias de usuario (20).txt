@@ -1,0 +1,125 @@
+1. Título: Creación de entrenador
+Descripción general: Como jugador, quiero poder crear un entrenador con un nombre y un género para personalizar mi identidad en el torneo.
+Criterios de aceptación:
+    El jugador puede elegir un nombre y un género al crear un entrenador.
+    El nombre del usuario no debe tener espacios.
+    La información del entrenador se muestra en la pantalla principal.
+    El jugador debe confirmar la creación del entrenador antes de finalizar el proceso.
+---------------------------------------------------------------------------------------------------------- 
+2. Título: Generación aleatoria de Pookémones
+Descripción general: Como árbitro, quiero que cada jugador reciba 6 Pookémones al azar al comienzo de cada torneo para garantizar la equidad en las batallas.
+Criterios de aceptación:
+    Los jugadores reciben 6 Pookémones aleatorios al inicio del torneo.
+    Los Pookémones asignados tienen estadísticas, tipos y movimientos predefinidos.
+    Los Pookémones se asignan de una pool(Seleccion de tipo de pookémon) balanceada para evitar que un jugador tenga una ventaja injusta.
+---------------------------------------------------------------------------------------------------------- 
+3. Título: Asignación de premios
+Descripción general: Como responsable de la planificación de premios, quiero que al ganador de la batalla se le asigne un código que le permita reclamar una recompensa en un punto físico.
+Criterios de aceptación:
+    El jugador que resulte victorioso obtendrá un código que podrá canjear por un premio.
+    El código de premio tiene una fecha de expiración que se muestra al ganador.
+----------------------------------------------------------------------------------------------------------  
+4. Título: Estadísticas de Pookémones
+Descripción general: Como comentarista de la PML, quiero que cada Pookémon tenga estadísticas específicas para que las batallas se basen en estrategia.
+Criterios de aceptación:
+    Cada Pookémon tiene estadísticas de Vida, Ataque Físico, Defensa Física, Ataque Especial, Defensa Especial y Velocidad.
+    Las estadísticas afectan el resultado de las batallas.
+    Las estadísticas de cada Pookémon se muestran al jugador antes de iniciar la batalla.
+---------------------------------------------------------------------------------------------------------- 
+5. Título: Sistema de tipos de Pookémon
+Descripción general: Como organizador, quiero que cada Pookémon tenga un tipo que influya en la efectividad de sus ataques durante las batallas.
+Criterios de aceptación:
+    Cada Pookémon tiene un tipo asignado (e.g., fuego, agua).
+    Los tipos afectan el daño infligido y recibido en las batallas según una tabla de tipos.
+    El sistema debe calcular y mostrar la efectividad de los ataques basados en los tipos involucrados.
+---------------------------------------------------------------------------------------------------------- 
+6. Título: Selección de movimientos
+Descripción general: Como jugador, quiero que cada Pookémon tenga 4 movimientos específicos para poder planificar mis estrategias de batalla.
+Criterios de aceptación:
+    Cada Pookémon tiene 4 movimientos disponibles.
+    Los movimientos están relacionados con el tipo del Pookémon.
+    El jugador puede consultar una descripción detallada de cada movimiento antes de seleccionarlo en combate.
+---------------------------------------------------------------------------------------------------------- 
+7. Título: Implementación de PP en movimientos
+Descripción general: Como organizador, quiero que cada movimiento tenga un valor de PP para limitar la cantidad de veces que se puede usar en combate.
+Criterios de aceptación:
+    Cada movimiento tiene un valor de PP asignado.
+    Cuando un movimiento se queda sin PP, ya no puede ser usado.
+    El jugador recibe una notificación cuando un movimiento se queda sin PP.
+    Cada Pookémon deber tener un ataque que no cuesto PP que aparecera cuando el entrenador no tenga otra opción.
+---------------------------------------------------------------------------------------------------------- 
+8. Título: Sistema de combate por turnos
+Descripción general: Como árbitro, quiero que las batallas se realicen por turnos para asegurar un flujo ordenado y estratégico durante el torneo.
+Criterios de aceptación:
+    Las batallas se realizan por turnos, con el jugador y el enemigo alternando movimientos.
+    La velocidad del Pookémon determina quién ataca primero.
+    El sistema debe mostrar claramente el orden de los turnos en cada ronda de combate.
+---------------------------------------------------------------------------------------------------------- 
+9. Título: Modo de defensa en combate
+Descripción general: Como jugador, quiero poder elegir entre atacar, defenderme o hacer uso de posiciones durante el combate para ajustar mi estrategia según la situación.
+Criterios de aceptación:
+    El jugador puede optar por defenderse, reduciendo el daño recibido en el turno.
+    La defensa afecta la cantidad de daño que recibe el Pookémon.
+    El jugador puede hacer uso de una posicion para restablecer hp y otra restablecer pp
+---------------------------------------------------------------------------------------------------------- 
+10. Título: Cambio de Pookémon en combate
+Descripción general: Como jugador, quiero poder cambiar mi Pookémon durante el combate para aprovechar mejor las ventajas de tipo y estadísticas.
+Criterios de aceptación:
+    El jugador puede cambiar su Pookémon durante el combate.
+    Cambiar un Pookémon consume el turno del jugador.
+    El Pookémon entrante recibe daño si es atacado en el mismo turno en que es cambiado.
+---------------------------------------------------------------------------------------------------------- 
+11. Título: Sistema de críticos en combate
+Descripción general: Como organizador, quiero implementar un sistema de golpes críticos que añada un elemento de riesgo y recompensa a las batallas.
+Criterios de aceptación:
+    Existe una probabilidad del 6% de que un ataque sea crítico.
+    Un golpe crítico inflige daño adicional basado en un multiplicador.
+    El sistema muestra una animación especial cuando se realiza un golpe crítico.
+---------------------------------------------------------------------------------------------------------- 
+12. Título: Generación de reporte de resultados
+Descripción general: Como árbitro, quiero que el sistema genere un reporte detallado de cada batalla para revisar el desempeño de los jugadores y asegurar la transparencia.
+Criterios de aceptación:
+    Al finalizar la batalla, se genera un reporte con los movimientos, daños y resultados.
+    El reporte está disponible para revisión por el árbitro.
+    Los jugadores pueden solicitar una copia del reporte de su propia batalla.
+---------------------------------------------------------------------------------------------------------- 
+13. Título: Planificación de premios
+Descripción general: Como responsable de la planificación de premios, quiero definir las recompensas para los ganadores del torneo para motivar la participación y el rendimiento.
+Criterios de aceptación:
+    El sistema permite definir y asociar premios con las posiciones finales del torneo.
+    El sistema envía notificaciones a los ganadores sobre cómo reclamar sus premios.
+---------------------------------------------------------------------------------------------------------- 
+14. Título: Seguimiento del progreso del torneo
+Descripción general: Como organizador, quiero un sistema que gestione múltiples rondas de combate para determinar el ganador del torneo.
+Criterios de aceptación:
+    El torneo sigue un formato eliminatorio.
+    Los jugadores avanzan a la siguiente ronda tras ganar un combate.
+    El sistema debe permitir la visualización de posiciones en el torneo.
+---------------------------------------------------------------------------------------------------------- 
+15. Título: Implementación de una CPU
+Descripción general: Como tester, quiero una o varias cpu que pueda simular el comportamiento de un jugador para poder realizar simulaciones, pruebas y balanceos del juego.
+Criterios de aceptación:
+    La cpu deber ser capaz de realizar las mismas acciones que el jugador.
+    La cpu debe respetar las normas del juego.
+    El jugador no debe ver las acciones de la cpu.
+---------------------------------------------------------------------------------------------------------- 
+16. 
+---------------------------------------------------------------------------------------------------------- 
+17. 
+---------------------------------------------------------------------------------------------------------- 
+18. Título: Registro de jugadores
+Descripción general: Como organizador, quiero un sistema de registro que permita a los jugadores inscribirse en el torneo para garantizar la participación organizada.
+Criterios de aceptación:
+    Los jugadores pueden registrarse al inicio del torneo.
+    Los jugadores deben definir la contraseña que usarán durante todo el torneo.
+    genera una lista de participantes que es accesible para los organizadores.
+    El sistema notifica a los jugadores una vez que su registro ha sido confirmado.
+---------------------------------------------------------------------------------------------------------- 
+19.
+---------------------------------------------------------------------------------------------------------- 
+20. Título: Guardado automático
+Descripción general: Como jugador, quiero que el juego se guarde automáticamente después de cada batalla para no perder mi progreso si la aplicación se cierra inesperadamente.
+Criterios de aceptación:
+    El sistema guarda automáticamente el progreso del jugador al finalizar cada batalla.
+    El jugador es notificado cuando el juego se ha guardado exitosamente.
+    El jugador puede cargar su progreso desde el último punto guardado al reiniciar la aplicación.
