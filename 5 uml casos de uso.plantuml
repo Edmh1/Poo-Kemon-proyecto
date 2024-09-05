@@ -8,8 +8,10 @@ package "Registro de usuario" {
     usecase "Elegir género" as eleGen
     usecase "Elegir nombre" as eleNom
 
+    usecase "Iniciar torneo" as iniTor
     usecase "Registrarse en el torneo" as resTor
-    Jugador -- resTor
+    Jugador -- iniTor
+    iniTor ..> resTor: <<include>> 
 
     creEnt ..> eleGen: <<include>>
     creEnt ..> eleNom: <<include>>
@@ -20,7 +22,6 @@ package "Batallas Pookémon" {
     
     usecase "Iniciar batalla" as iniBat
     usecase "Recibir Pookémones" as recPoo
-    
 
     usecase "Ver estadisticas de Pookémones" as verEst
     usecase "Atacar oponente" as ataOpo
@@ -29,7 +30,7 @@ package "Batallas Pookémon" {
     usecase "Cambiar Pookémon" as camPoo
     usecase "Rendirse" as ren
 
-    iniBat .> resTor: <<extend>>
+    iniBat <.. iniTor: <<include>>
     resTor ..> creEnt: <<include>>
     
     verEst .> iniBat: <<extend>>
