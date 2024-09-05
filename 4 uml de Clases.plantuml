@@ -148,7 +148,7 @@ package "Sistema" {
         - torneo: Torneo
         - recompensa: String
 
-        + Recompensa(torneo: Torneo, ganador: Entrenador, recompensa: String)
+        + Recompensa(torneo: Torneo)
         + obtenerRecompensa()
     }
 }
@@ -158,16 +158,16 @@ Pookemon "1" *-- "1" Estadística
 Pookemon -- TablaDeTipos
 
 Entrenador "*" o-- "6" Pookemon 
-Entrenador "2" <--o "*" Batalla
+Entrenador "2" --o "*" Batalla
 Entrenador "1" --o "1" NodoTorneo
-Entrenador "1" o-- "*" Objeto
+Entrenador "*" o-- "6" Objeto
 
-Batalla "1" *-- RegistroBatalla
+Batalla "1" *--"1" RegistroBatalla
 
-Torneo "1" *-- "1" NodoTorneo
+Torneo "1" o-- "1" NodoTorneo
 
 CPU "1" *-- "1" Entrenador
 
-Recompensa "1" o-- "1" Torneo
+Recompensa "1" *-- "1" Torneo
 
 @enduml
