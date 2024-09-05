@@ -1,6 +1,6 @@
-@startuml class diagram
+@startuml diagrama de clases
 
-package "Registro de Usuario" {
+package "Registro" {
     class Entrenador {
         - id: String
         - nombre: String
