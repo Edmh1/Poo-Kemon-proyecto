@@ -6,35 +6,33 @@ package "Registro" {
         - nombre: String
         - genero: String
         - contraseña: String
-        - pokemons: List<Pookémon>
-        - pokemonActual: Pookémon
-        - historialBatallas: List<Batalla>
+        - pookemonActual: Pookemon
 
-        + crearEntrenador(nombre: String, genero: String, contraseña: String)
+        + Entrenador(nombre: String, genero: String, contraseña: String)
         + iniciarSesion(contraseña: String)
         + obtenerPookemons()
         + obtenerPookemonActual()
-        + realizarMovimiento(movimento: Movimiento)
+        + realizarMovimiento()
         + obtenerHistorialBatallas()
     }
+
 }
 
-package "pookémon" {
-    class Pookémon {
+package "pookemon" {
+    class Pookemon {
         - id: String
         - nombre: String
-        - tipo: String
-        - estadísticas: Estadísticas
-        - movimientos: List<Movimiento>
-        - pp: int
+        - tipo: int
+        - estadísticas: Estadística
 
-        + obtenerInfopookémon()
+        + obtenerInfopookemon()
         + obtenerEstadísticas()
         + obtenerMovimientos()
-        + obtenerPP()
+        + calcularDaño(nombreAtaque: String, pokemonEnemigo: pookemon)
+        + recibirDaño(dañoRecibido: float)
     }
 
-    class Estadísticas {
+    class Estadística {
         - hp: int
         - ataque: int
         - defensa: int
@@ -53,7 +51,7 @@ package "pookémon" {
     class Movimiento {
         - id: String
         - nombre: String
-        - tipo: String
+        - tipo: int
         - poder: int
         - pp: int
 
@@ -61,9 +59,21 @@ package "pookémon" {
         + obtenerPoder()
         + obtenerPP()
     }
+
+    class TablaDeTipos{
+        - tabla: float[][] 
+
+        + obtenerEfectividad(tipoAtaque: int, tipoPookemon: int)
+    }
+
+    class Objeto{
+        - nombre: String
+        - tipo: String
+    }
+
 }
 
-package "Batalla" {
+package "batalla" {
     class Batalla {
         - id: String
         - entrenador1: Entrenador
@@ -72,8 +82,8 @@ package "Batalla" {
         - perdedor: Entrenador
         - registroBatalla: List<RegistroBatalla>
 
-        + iniciarBatalla(entrenador1: Entrenador, entrenador2: Entrenador)
-        + realizarMovimiento(movimiento: Movimiento)
+        + Batalla(entrenador1: Entrenador, entrenador2: Entrenador)
+        + realizarTurno()
         + finalizarBatalla()
         + obtenerRegistroBatalla()
     }
@@ -89,9 +99,11 @@ package "Batalla" {
         + obtenerDañoHecho()
         + obtenerDañoRecibido()
     }
+
+   
 }
 
-package "Torneo" {
+package "torneo" {
     class NodoTorneo {
         - padre: NodoTorneo
         - entrenador: Entrenador
@@ -110,11 +122,12 @@ package "Torneo" {
         - id: String
         - raiz: NodoTorneo
 
-        + crearTorneo()
+        + Torneo()
         + agregarEntrenador(entrenador: Entrenador)
         + iniciarBatalla()
         + finalizarTorneo()
     }
+
 }
 
 package "Sistema" {
@@ -122,19 +135,36 @@ package "Sistema" {
         - id: String
         - entrenador: Entrenador
 
-        + crearCPU(entrenador: Entrenador)
+        + CPU(entrenador: Entrenador)
         + realizarMovimiento()
     }
 
     class Recompensa {
         - id: String
         - torneo: Torneo
-        - ganador: Entrenador
         - recompensa: String
 
-        + crearRecompensa(torneo: Torneo, ganador: Entrenador, recompensa: String)
+        + Recompensa(torneo: Torneo, ganador: Entrenador, recompensa: String)
         + obtenerRecompensa()
     }
 }
+
+Pookemon "*" o-- "5" Movimiento
+Pookemon "1" *-- "1" Estadística
+Pookemon -- TablaDeTipos
+
+Entrenador "*" o-- "6" Pookemon 
+Entrenador "2" <--o "*" Batalla
+Entrenador "1" --o "1" NodoTorneo
+Entrenador "1" o-- "*" Objeto
+
+Batalla "1" *-- RegistroBatalla
+
+Torneo "1" *-- "1" NodoTorneo
+
+CPU "1" --o "1" NodoTorneo
+CPU "1" *-- "1" Entrenador
+
+Recompensa "1" o-- "1" Torneo
 
 @enduml
