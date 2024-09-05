@@ -166,7 +166,6 @@ Batalla "1" *-- RegistroBatalla
 
 Torneo "1" *-- "1" NodoTorneo
 
-CPU "1" --o "1" NodoTorneo
 CPU "1" *-- "1" Entrenador
 
 Recompensa "1" o-- "1" Torneo
