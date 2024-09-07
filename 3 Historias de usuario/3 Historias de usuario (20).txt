@@ -10,19 +10,19 @@ Criterios de aceptación:
     La información del entrenador se debe mostrar en la pantalla principal.
     El jugador debe confirmar la creación del entrenador antes de finalizar el proceso.
 ---------------------------------------------------------------------------------------------------------- 
-2. Título: Como árbitro, quiero que cada jugador reciba 6 Pookémones al azar al comienzo de cada torneo para 
-garantizar la equidad en las batallas.
+2. Título: Como organizador, quiero que cada jugador reciba 6 Pookémones al azar al comienzo de cada batalla para 
+garantizar la equidad durante el torneo.
 Descripción:
-El sistema debe generar y asignar 6 Pookémones aleatorios a cada jugador al inicio del torneo. 
+El sistema debe generar y asignar 6 Pookémones aleatorios a cada jugador al inicio de cada batalla. 
 Los Pookémones deben tener estadísticas, tipos y movimientos predefinidos y ser seleccionados de una pool balanceada 
 para asegurar la equidad en las batallas, evitando que algún jugador tenga una ventaja injusta.
 
 Criterios de aceptación:
-    Los jugadores reciben 6 Pookémones aleatorios al inicio del torneo.
+    Los jugadores reciben 6 Pookémones aleatorios al inicio de una batalla.
     Los Pookémones asignados tienen estadísticas, tipos y movimientos predefinidos.
     Los Pookémones se asignan desde una pool balanceada para evitar ventajas injustas entre los jugadores.
 ---------------------------------------------------------------------------------------------------------- 
-3. Título: Como responsable de la planificación de premios, quiero que al ganador de la batalla se le 
+*******3. Título: Como organizador, quiero que al ganador de la batalla se le 
 asigne un código que le permita reclamar una recompensa en un punto físico.
 Descripción:
 El sistema debe asignar un código al jugador ganador de cada batalla, el cual podrá ser utilizado 
@@ -34,7 +34,7 @@ Criterios de aceptación:
     El código de premio tiene una fecha de expiración que se muestra al ganador.
 
 ----------------------------------------------------------------------------------------------------------  
-4. Título: Como comentarista de la PML, quiero que cada Pookémon tenga estadísticas específicas 
+4. Título: Como organizador, quiero que cada Pookémon tenga estadísticas específicas 
 para que las batallas se basen en estrategia.
 Descripción:
 El sistema debe asignar a cada Pookémon estadísticas detalladas de Vida, Ataque Físico, Defensa Física, 
@@ -85,7 +85,7 @@ Criterios de aceptación:
     El jugador recibe una notificación cuando un movimiento se queda sin PP.
     Cada Pookémon debe tener un ataque que no cueste PP, disponible cuando el entrenador no tenga otra opción.
 ---------------------------------------------------------------------------------------------------------- 
-8. Título: Como árbitro, quiero que las batallas se realicen por turnos para asegurar un flujo ordenado 
+8. Título: Como organizador, quiero que las batallas se realicen por turnos para asegurar un flujo ordenado 
 y estratégico durante el torneo.
 Descripción:
 El sistema debe implementar un sistema de combate por turnos, donde los jugadores y sus oponentes 
@@ -130,7 +130,7 @@ Criterios de aceptación:
     Un golpe crítico inflige daño adicional basado en un multiplicador.
     El sistema muestra una animación especial cuando se realiza un golpe crítico.
 ---------------------------------------------------------------------------------------------------------- 
-12 Título: Como árbitro, quiero que el sistema genere un reporte detallado de cada batalla para revisar el 
+12 Título: Como organizador, quiero que el sistema genere un reporte detallado de cada batalla para revisar el 
 desempeño de los jugadores y asegurar la transparencia.
 Descripción:
 El sistema debe generar un reporte detallado al finalizar cada batalla, incluyendo los movimientos, daños y 
@@ -142,8 +142,7 @@ Criterios de aceptación:
     El reporte está disponible para revisión por el árbitro.
     Los jugadores pueden solicitar una copia del reporte de su propia batalla.
 -----------------------------------------------------------------------------------------------------------
-13. Título: Como responsable de la planificación de premios, quiero definir las recompensas para los ganadores 
-del torneo para motivar la participación y el rendimiento.
+13. Título: Como organizador, quiero definir las recompensas para los ganadores del torneo para motivar la participación y el rendimiento.
 Descripción:
 El sistema debe permitir definir y asociar premios con las posiciones finales del torneo. También debe enviar 
 notificaciones a los ganadores sobre cómo reclamar sus premios.
@@ -162,7 +161,7 @@ Criterios de aceptación:
     Los jugadores avanzan a la siguiente ronda tras ganar un combate.
     El sistema debe permitir la visualización de posiciones en el torneo.
 ---------------------------------------------------------------------------------------------------------- 
-15. Título: Como tester, quiero una o varias CPU que pueda simular el comportamiento de un jugador para 
+*******15. Título: Como tester, quiero una o varias CPU que pueda simular el comportamiento de un jugador para 
 poder realizar simulaciones, pruebas y balanceos del juego.
 Descripción:
 El sistema debe incluir CPU que puedan realizar las mismas acciones que un jugador humano, respetando las 
@@ -200,19 +199,17 @@ Criterios de aceptación:
     El jugador es notificado cuando el juego se ha guardado exitosamente.
     El jugador puede cargar su progreso desde el último punto guardado al reiniciar la aplicación.
 ---------------------------------------------------------------------------------------------------------- 
-18. Título: Como organizador, quiero que los Pokémon tengan habilidades para que puedan ser utilizadas en 
-la estrategia del jugador.
+*******18. Título: Como organizador, quiero que los movimientos sean divididos en categorías (físico, especial y estado)
+para agregar diversidad en los movimientos.  
 Descripción:
-El sistema debe permitir que cada Pokémon tenga una o varias habilidades disponibles, pero solo se puede 
-asignar una habilidad al Pokémon al ser generado. Las habilidades pueden repetirse entre diferentes Pokémon y 
-cada habilidad debe tener un efecto distinto durante los combates. Los jugadores deben poder consultar la 
-información de las habilidades de sus Pokémon antes de iniciar el combate.
-
+El sistema debe permitir que cada movimiento tenga una categoría específica. Dependiendo de la categoría 
+del movimiento este definira si el Pokémon ataca con daño físico o daño especial y si ataca a la defensa 
+física o defensa especial del enemigo, o si el movimiento no ataca y solo tienen un efecto de apoyo en 
+el combate.
 Criterios de aceptación:
-    Un Pokémon puede tener una o varias habilidades, pero solo se le puede asignar una al ser generado.
-    Varios Pokémon pueden tener una misma habilidad.
-    Cada habilidad tiene un efecto distinto durante los combates.
-    El jugador puede consultar información de las habilidades de sus Pokémon antes del combate.
+    Cada movimiento debe tener una categoría. 
+    El jugador debe poder ver el tipo de categoría en la información de los movimientos.
+    Las categorías deben servir para el calculo del daño de los movimientos.
 ---------------------------------------------------------------------------------------------------------- 
 19. Título: Como organizador, quiero que durante los combates los Pokémon puedan sufrir problemas de estado 
 para que su efecto influya durante la batalla.
