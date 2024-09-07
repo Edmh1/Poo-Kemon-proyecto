@@ -187,7 +187,7 @@ Criterios de aceptación:
     Se genera una lista de participantes que es accesible para los organizadores.
     El sistema notifica a los jugadores una vez que su registro ha sido confirmado.
 ---------------------------------------------------------------------------------------------------------- 
-17. Título: Como jugador, quiero poder guardar el juego después de cada batalla para no perder mi progreso 
+*******17. Título: Como jugador, quiero poder guardar el juego después de cada batalla para no perder mi progreso 
 si la aplicación se cierra inesperadamente.
 Descripción:
 El sistema debe permitir guarda el progreso del jugador al finalizar cada batalla. El jugador debe ser 
