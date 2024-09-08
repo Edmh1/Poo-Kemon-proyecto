@@ -1,0 +1,32 @@
+@startuml Jugador
+
+actor Jugador
+
+package Torneo{
+    usecase "Participar en el torneo" as parTor
+    usecase "Elegir numero de participantes" as eleNumPar
+    usecase "Asignar nombre de cada participante" as asiNomPar
+    usecase "Asignar genero de cada participante" as asiGenPar
+
+    usecase "Empezar torneo" as empTor
+
+    parTor ..> eleNumPar: <<include>>
+    eleNumPar ..> asiNomPar: <<inlcude>>
+    asiNomPar ..> asiGenPar: <<include>>
+    parTor ..> empTor: <<include>>
+
+}
+
+package Batalla{
+    usecase "Asignar participantes a la batalla" as asiParBat
+    usecase "Empezar batalla" as empBat
+    usecase "Ver historial de batallas" as verHisBat
+
+    asiParBat ..> empBat:<<include>>
+}
+
+empTor ..> asiParBat: <<include>>
+Jugador -- parTor
+Jugador -- verHisBat
+
+@enduml

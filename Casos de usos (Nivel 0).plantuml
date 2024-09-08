@@ -1,0 +1,22 @@
+@startuml casos_de_uso
+
+left to right direction
+
+actor Jugador 
+actor Admin 
+
+package "pookemon.software" {
+    usecase "Participar del torneo" as parTor
+    usecase "Ver historial de partidas" as verHisPar
+    usecase "Gestionar pookemones" as gesPoo
+    usecase "Gestionar premios" as gesPre
+}
+
+Jugador -- parTor
+Jugador -- verHisPar
+
+Admin -- gesPoo
+Admin -- gesPre
+Admin -- verHisPar
+
+@enduml
