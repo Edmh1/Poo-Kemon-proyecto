@@ -221,7 +221,7 @@ El sistema debe incluir una probabilidad de 5% de realizar un golpe crítico, qu
 Como organizador, quiero que los movimientos sean divididos en categorías (físico, especial y estado) para agregar diversidad en los movimientos.
 
 ### Descripción:
-El sistema debe permitir que cada movimiento tenga una categoría específica. Dependiendo de la categoría del movimiento, este definirá si el Pokémon ataca con daño físico o daño especial y si ataca a la defensa física o defensa especial del enemigo, o si el movimiento no ataca y solo tiene un efecto de apoyo en el combate.
+El sistema debe permitir que cada movimiento tenga una categoría específica. Dependiendo de la categoría del movimiento, este definirá si el Pookémon ataca con daño físico o daño especial y si ataca a la defensa física o defensa especial del enemigo, o si el movimiento no ataca y solo tiene un efecto de apoyo en el combate.
 
 ### Criterios de aceptación
 - Cada movimiento debe tener una categoría.
@@ -243,10 +243,10 @@ El sistema debe permitir que los Pookémon puedan sufrir problemas de estado dur
 
 ---
 ### 20. Título
-Como organizador, quiero ver los creditos del juego para saber quienes fueron sus creadores y demas informacion sobre el mismo 
+Como organizador, quiero ver los creditos del juego para saber quienes fueron sus creadores y demas informacion sobre el mismo. 
 
 ### Descripción:
-El usuario tendra una opcion de ver los creditos del juego más la informacion de quienes estuvieron encargados de la creacion del mismo, la fecha de creacion y contenido adicional sobre la creacion del juego
+El usuario tendra una opcion de ver los creditos del juego más la informacion de quienes estuvieron encargados de la creacion del mismo, la fecha de creacion y contenido adicional sobre la creacion del juego.
 
 ### Criterios de aceptación
 - Los creditos deben mostrar de manera ordenada los nombres de los creadores del videojuego.

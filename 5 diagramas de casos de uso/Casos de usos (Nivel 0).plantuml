@@ -1,22 +1,38 @@
-@startuml casos_de_uso
+@startuml casos_de_uso_nivel_0
 
 left to right direction
 
 actor Jugador 
-actor Admin 
+actor Organizador 
 
 package "pookemon.software" {
-    usecase "Participar del torneo" as parTor
-    usecase "Ver historial de partidas" as verHisPar
-    usecase "Gestionar pookemones" as gesPoo
-    usecase "Gestionar premios" as gesPre
+    
+    usecase "Participar del Torneo" as parTor
+    usecase "Crear Entrenador" as creEnt
+    usecase "Participar en una Batalla" as parBat
+
+    usecase "Ver creditos" as verCre
+
+    usecase "Crear Torneo" as creTor
+    usecase "Definir Recompensa del ganador" as defRec
+    usecase "Gestionar Pookemones" as gesPoo
+    usecase "Gestionar Movimientos" as gesMov
+    usecase "Gestionar Entrenadores" as gesEnt
+    usecase "Gestionar Objetos" as gesObj
 }
 
-Jugador -- parTor
-Jugador -- verHisPar
+Jugador -- verCre
 
-Admin -- gesPoo
-Admin -- gesPre
-Admin -- verHisPar
+Jugador -- parTor
+parTor ..> creEnt:<<include>>
+
+parTor <.. parBat:<<extend>>
+
+Organizador -- creTor
+Organizador -- gesPoo
+Organizador -- gesObj
+Organizador -- gesMov
+creTor ..> defRec:<<include>>
+creTor <.. gesEnt:<<extend>>
 
 @enduml
