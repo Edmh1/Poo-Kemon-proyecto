@@ -1,5 +1,5 @@
+#
 # JUGADOR
-------------------------------------------------------
 ### 1.Título
 Como jugador, quiero crear un entrenador con un nombre y un género para personalizar mi identidad en el torneo.
 
@@ -49,8 +49,8 @@ El sistema debe presentar la información de los movimientos de los Pookémon de
 - La información de cada movimiento se muestra de manera compacta con símbolos para tipo, potencia, precisión, PP, y efectos especiales.
 - Palabras clave como "Estado" o "Curación" se utilizan para describir los efectos principales del movimiento.
 - Los símbolos y palabras clave deben ser intuitivos y fáciles de comprender sin necesidad de explicaciones adicionales.
----
 
+---
 ### 5. Título
 Como jugador, quiero poder elegir entre atacar, defenderme o hacer uso de posiciones durante el combate para ajustar mi estrategia según la situación.
 
@@ -61,8 +61,8 @@ El sistema debe permitir al jugador optar por defenderse durante el combate, red
 - El jugador puede optar por defenderse, reduciendo el daño recibido en el turno.
 - La defensa afecta la cantidad de daño que recibe el Pookémon.
 - El jugador puede hacer uso de una posición para restablecer HP al Pookémon y otra para restablecer PP a un movimiento del      Pookémon selecionado.
----
 
+---
 ### 6. Título
 Como jugador, quiero poder cambiar mi Pookémon durante el combate para aprovechar mejor las ventajas de tipo y estadísticas.
 
@@ -73,26 +73,21 @@ El sistema debe permitir a los jugadores cambiar su Pookémon durante el combate
 - El jugador puede cambiar su Pookémon durante el combate.
 - Cambiar un Pookémon consume el turno del jugador.
 - El Pookémon entrante recibe daño si es atacado en el mismo turno en que es cambiado.
-
----
-
+###
+#
 # ORGANIZADOR
----
 ### 7. Título
-Como organizador, quiero que cada jugador reciba 5 Pookémones al azar al comienzo de cada batalla para 
-garantizar la equidad durante el torneo.
+Como organizador, quiero poder crear el torneo y definir la recompensa para el ganador del torneo.
 
 ### Descripción:
-El sistema debe generar y asignar 5 Pookémones aleatorios a cada jugador al inicio de cada batalla. 
-Los Pookémones deben tener estadísticas, tipos y movimientos predefinidos y ser seleccionados de una pool balanceada 
-para asegurar la equidad en las batallas, evitando que algún jugador tenga una ventaja injusta.
+El sistema debe permitir crear el torneo al organizador y definir la recompensa del ganador.
 
 ### Criterios de aceptación
-- Los jugadores reciben 5 Pookémones aleatorios al inicio de una batalla.
-- Los Pookémones asignados tienen estadísticas, tipos y movimientos predefinidos que pueden ser comunes o especiales.
-- Los Pookémones se asignan desde una pool balanceada para evitar ventajas injustas entre los jugadores.
----------------------------------------------------------------------------------------------------------- 
+- El sistema permite crear el torneo al organizador
+- El sistema debe permitir definir la recompensa del ganador
+- El sistema envía mensaje al ganador sobre cómo reclamar su premio.
 
+---
 ### 8. Título
 Como organizador, quiero que al ganador del torneo se le asigne un código que le permita reclamar una recompensa en un punto físico.
 
@@ -106,8 +101,59 @@ visible para el ganador, asegurando que se utilice dentro del periodo establecid
 - El código de premio tiene una fecha de expiración que se muestra al ganador.
 
 ---
-
 ### 9. Título
+Como organizador, quiero un sistema de registro que permita a los jugadores inscribirse en el torneo para garantizar la participación organizada.
+
+### Descripción:
+El sistema debe permitir a los jugadores registrarse al inicio del torneo, incluyendo la definición de una contraseña que usarán durante todo el evento (al inicio de cada batalla). El sistema debe generar una lista de participantes accesible para los organizadores y notificar a los jugadores una vez que su registro haya sido confirmado.
+
+### Criterios de aceptación
+- Los jugadores pueden registrarse al inicio del torneo.
+- Los jugadores deben definir la contraseña que usarán durante todo el torneo.
+- Se genera una lista de participantes que es accesible para el organizador.
+- El sistema notifica a los jugadores una vez que su registro ha sido confirmado.
+
+---
+### 10. Título
+Como organizador, quiero un sistema que gestione múltiples rondas de combate para determinar el ganador del torneo.
+
+### Descripción:
+El sistema debe gestionar el progreso del torneo en un formato eliminatorio, permitiendo a los jugadores avanzar a la siguiente fase tras ganar un combate. Debe incluir una visualización clara de las posiciones en el torneo.
+
+### Criterios de aceptación
+- El torneo sigue un formato eliminatorio.
+- Los jugadores avanzan a la siguiente ronda tras ganar un combate.
+- El sistema debe permitir la visualización de posiciones en el torneo.
+
+---
+### 11. Título
+Como organizador, quiero que el sistema genere un reporte detallado de cada batalla para revisar el desempeño de los jugadores y asegurar la transparencia.
+
+### Descripción:
+El sistema debe generar un reporte detallado al finalizar cada batalla, incluyendo los movimientos, daños y resultados. Este reporte estará disponible para revisión del organizador y los jugadores involucrados en la batalla.
+
+### Criterios de aceptación
+- Al finalizar la batalla, se genera un reporte con los movimientos, daños y resultados.
+- El reporte está disponible para revisión del organizador.
+- Los jugadores pueden solicitar el reporte de su propia batalla.
+
+---
+### 12. Título
+Como organizador, quiero que cada jugador reciba 5 Pookémones al azar al comienzo de cada batalla para 
+garantizar la equidad durante el torneo.
+
+### Descripción:
+El sistema debe asignar 5 Pookémones aleatorios a cada jugador al inicio de cada batalla. 
+Los Pookémones deben tener estadísticas, tipos y movimientos predefinidos y ser seleccionados de una pool balanceada 
+para asegurar la equidad en las batallas, evitando que algún jugador tenga una ventaja injusta.
+
+### Criterios de aceptación
+- Los jugadores reciben 5 Pookémones aleatorios al inicio de una batalla.
+- Los Pookémones asignados tienen estadísticas, tipos y movimientos predefinidos que pueden ser comunes o especiales.
+- Los Pookémones se asignan desde una pool balanceada para evitar ventajas injustas entre los jugadores.
+
+---
+### 13. Título
 Como organizador, quiero que cada Pookémon tenga estadísticas específicas para que las batallas se basen en estrategia.
 
 ### Descripción:
@@ -120,8 +166,7 @@ de las batallas, proporcionando una base para que los jugadores desarrollen estr
 - Las estadísticas afectan el resultado de las batallas.
 
 ---
-
-### 10. Título
+### 14. Título
 Como organizador, quiero que cada Pookémon tenga un tipo que influya en la efectividad de sus ataques durante las batallas.
 
 ### Descripción:
@@ -134,10 +179,8 @@ según una tabla de tipos, y el sistema debe mostrar esta información a los jug
 - Los tipos afectan el daño infligido y recibido en las batallas según una tabla de tipos.
 - El sistema debe calcular y mostrar la efectividad de los ataques basados en los tipos involucrados.
 
----------------------------------------------------------------------------------------------------------- 
-
-
-### 11. Título
+---
+### 15. Título
 Como organizador, quiero que cada movimiento tenga un valor de PP para limitar la cantidad de veces que se puede usar en combate.
 
 ### Descripción:
@@ -150,8 +193,7 @@ El sistema debe asignar un valor de Puntos de Poder (PP) a cada movimiento, limi
 - Cada Pookémon debe tener un ataque que no cueste PP, disponible cuando el entrenador no tenga otra opción.
 
 ---
-
-### 12. Título
+### 16. Título
 Como organizador, quiero que las batallas se realicen por turnos para asegurar un flujo ordenado y estratégico durante el torneo.
 
 ### Descripción:
@@ -162,76 +204,19 @@ El sistema debe implementar un sistema de combate por turnos, donde los jugadore
 - La velocidad del Pookémon determina quién ataca primero.
 - El sistema debe mostrar claramente el orden de los turnos en cada ronda de combate.
 
-
-
-
 ---
-
-### 13. Título
+### 17. Título
 Como organizador, quiero implementar un sistema de golpes críticos que añada un elemento de riesgo y recompensa a las batallas.
 
 ### Descripción:
-El sistema debe incluir una probabilidad de 6% de realizar un golpe crítico, que infligirá daño adicional basado en un multiplicador. Se debe mostrar una animación especial cuando se realiza un golpe crítico para destacar este evento.
+El sistema debe incluir una probabilidad de 5% de realizar un golpe crítico, que infligirá daño adicional basado en un multiplicador. Se debe mostrar una animación especial cuando se realiza un golpe crítico para destacar este evento.
 
 ### Criterios de aceptación
-- Existe una probabilidad del 6% de que un ataque sea crítico.
+- Existe una probabilidad del 5% de que un ataque sea crítico.
 - Un golpe crítico inflige daño adicional basado en un multiplicador.
 - El sistema muestra una animación especial cuando se realiza un golpe crítico.
 
 ---
-
-### 14. Título
-Como organizador, quiero que el sistema genere un reporte detallado de cada batalla para revisar el desempeño de los jugadores y asegurar la transparencia.
-
-### Descripción:
-El sistema debe generar un reporte detallado al finalizar cada batalla, incluyendo los movimientos, daños y resultados. Este reporte estará disponible para revisión por el árbitro y los jugadores podrán solicitar una copia de su propia batalla.
-
-### Criterios de aceptación
-- Al finalizar la batalla, se genera un reporte con los movimientos, daños y resultados.
-- El reporte está disponible para revisión por el árbitro.
-- Los jugadores pueden solicitar una copia del reporte de su propia batalla.
-
----
-
-### 15. Título
-Como organizador, quiero definir las recompensas para los ganadores del torneo para motivar la participación y el rendimiento.
-
-### Descripción:
-El sistema debe permitir definir y asociar premios con las posiciones finales del torneo. También debe enviar notificaciones a los ganadores sobre cómo reclamar sus premios.
-
-### Criterios de aceptación
-- El sistema permite definir y asociar premios con las posiciones finales del torneo.
-- El sistema envía notificaciones a los ganadores sobre cómo reclamar sus premios.
-
----
-
-### 16. Título
-Como organizador, quiero un sistema que gestione múltiples rondas de combate para determinar el ganador del torneo.
-
-### Descripción:
-El sistema debe gestionar el progreso del torneo en un formato eliminatorio, permitiendo a los jugadores avanzar a la siguiente ronda tras ganar un combate. Debe incluir una visualización clara de las posiciones en el torneo.
-
-### Criterios de aceptación
-- El torneo sigue un formato eliminatorio.
-- Los jugadores avanzan a la siguiente ronda tras ganar un combate.
-- El sistema debe permitir la visualización de posiciones en el torneo.
-
----
-
-### 17. Título
-Como organizador, quiero un sistema de registro que permita a los jugadores inscribirse en el torneo para garantizar la participación organizada.
-
-### Descripción:
-El sistema debe permitir a los jugadores registrarse al inicio del torneo, incluyendo la definición de una contraseña que usarán durante todo el evento. El sistema debe generar una lista de participantes accesible para los organizadores y notificar a los jugadores una vez que su registro haya sido confirmado.
-
-### Criterios de aceptación
-- Los jugadores pueden registrarse al inicio del torneo.
-- Los jugadores deben definir la contraseña que usarán durante todo el torneo.
-- Se genera una lista de participantes que es accesible para los organizadores.
-- El sistema notifica a los jugadores una vez que su registro ha sido confirmado.
-
----
-
 ### 18. Título
 Como organizador, quiero que los movimientos sean divididos en categorías (físico, especial y estado) para agregar diversidad en los movimientos.
 
@@ -244,27 +229,24 @@ El sistema debe permitir que cada movimiento tenga una categoría específica. D
 - Las categorías deben servir para el cálculo del daño de los movimientos.
 
 ---
-
 ### 19. Título
-Como organizador, quiero que durante los combates los Pokémon puedan sufrir problemas de estado para que su efecto influya durante la batalla.
+Como organizador, quiero que durante los combates los Pookémon puedan sufrir problemas de estado para que su efecto influya durante la batalla.
 
 ### Descripción:
-El sistema debe permitir que los Pokémon puedan sufrir problemas de estado durante los combates, como envenenamiento, quemaduras, parálisis, sueño, entre otros. Sin embargo, un Pokémon solo puede tener un problema de estado a la vez y siempre entra al combate sin ningún estado afectándolo. El estado actual de un Pokémon debe ser visible para el jugador durante el combate para ayudar en la toma de decisiones estratégicas.
+El sistema debe permitir que los Pookémon puedan sufrir problemas de estado durante los combates, como envenenamiento, quemaduras, parálisis, sueño, entre otros. Sin embargo, un Pookémon solo puede tener un problema de estado a la vez y siempre entra al combate sin ningún estado afectándolo. El estado actual de un Pookémon debe ser visible para el jugador durante el combate para ayudar en la toma de decisiones estratégicas.
 
 ### Criterios de aceptación
-- Durante un combate, un Pokémon puede llegar a sufrir varios estados (envenenamiento, quemado, parálisis, dormido, etc.).
-- Un Pokémon solo puede sufrir un problema de estado a la vez.
-- Un Pokémon entra al combate sin ningún estado.
-- El jugador debe poder ver el estado de su Pokémon durante el combate.
+- Durante un combate, un Pookémon puede llegar a sufrir varios estados (envenenamiento, quemado, parálisis, dormido, etc.).
+- Un Pookémon solo puede sufrir un problema de estado a la vez.
+- Un Pookémon entra al combate sin ningún estado.
+- El jugador debe poder ver el estado de su Pookémon durante el combate.
 
 ---
 ### 20. Título
-Como usuario, quiero ver los creditos del juego para saber quienes fueron sus creadores y demas informacion sobre el mismo 
-
+Como organizador, quiero ver los creditos del juego para saber quienes fueron sus creadores y demas informacion sobre el mismo 
 
 ### Descripción:
-El usuario tendra una opcion de ver los creditos del juego mas la informacion de quienes estuvieron encargados de la creacion del mismo, la fecha de creacion y mas contenido adicional sobre la creacion del juego
-
+El usuario tendra una opcion de ver los creditos del juego más la informacion de quienes estuvieron encargados de la creacion del mismo, la fecha de creacion y contenido adicional sobre la creacion del juego
 
 ### Criterios de aceptación
 - Los creditos deben mostrar de manera ordenada los nombres de los creadores del videojuego.
@@ -272,4 +254,3 @@ El usuario tendra una opcion de ver los creditos del juego mas la informacion de
 - Se debe mostrar la informacion de manera secuencial.
 
 ---
-- Las estadísticas de cada Pookémon se muestran al jugador antes de iniciar la batalla.
