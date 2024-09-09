@@ -1,6 +1,6 @@
-@startuml Administrador
+@startuml Organizador
 
-actor Administrador
+actor Organizador
 
 package gestionar_pookemones{
     usecase "Agregar pookemon" as agrPoo
@@ -10,11 +10,11 @@ package gestionar_pookemones{
     usecase "Eliminar pookemon" as eliPoo
 }
 
-Administrador -- agrPoo
+Organizador -- agrPoo
 agrPoo ..> agrEst: <<include>>
 agrPoo ..> asiMov: <<include>>
 agrPoo ..> creMov: <<extends>>
-Administrador -- eliPoo
+Organizador -- eliPoo
 
 package gestionar_premios{
     usecase "Crear premios" as crePre
@@ -24,9 +24,9 @@ package gestionar_premios{
 
 usecase "Ver historial de batallas del torneo" as verHisBat
 
-Administrador -- crePre
+Organizador -- crePre
 crePre ..> asiPreTor: <<include>>
-Administrador -- eliPre
-Administrador -- verHisBat
+Organizador -- eliPre
+Organizador -- verHisBat
 
 @enduml

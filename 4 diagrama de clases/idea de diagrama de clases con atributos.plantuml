@@ -111,6 +111,7 @@ package "torneo" {
     class NodoTorneo {
         - padre: NodoTorneo
         - entrenador: Entrenador
+        - batalla: Batalla
         - hijoIzquierdo: NodoTorneo
         - hijoDerecho: NodoTorneo
         
@@ -158,13 +159,14 @@ Pookemon "1" *-- "1" Estadística
 Pookemon -- TablaDeTipos
 
 Entrenador "*" o-- "6" Pookemon 
-Entrenador "2" --o "*" Batalla
 Entrenador "1" --o "1" NodoTorneo
 Entrenador "*" o-- "6" Objeto
 
 Batalla "1" *--"1" RegistroBatalla
 
 Torneo "1" o-- "1" NodoTorneo
+
+NodoTorneo "1" *-- "1" Batalla
 
 CPU "1" *-- "1" Entrenador
 
