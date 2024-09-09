@@ -8,7 +8,7 @@ cartas que recibe y superar a su oponente utilizando tácticas superiores. Sin e
 liga creció, varios problemas graves comenzaron a socavar la imparcialidad e integridad de la competencia.
 
 ## Problema
-La PML se enfrentó a desafíos críticos que amenazaron el principio central de la competencia: el dominio estratégico:
+La PML se enfrentó a desafíos críticos que amenazaron el principio central de la competencia(el dominio estratégico): 
 
 1. Manipulación de mazos:
 Aunque las reglas dictan que los mazos deben ser aleatorios, algunos jugadores encontraron formas de manipular el 
@@ -47,4 +47,4 @@ automáticamente todas las reglas durante la partida.
 
 ## Resultado esperado
 El proyecto tiene como objetivo restaurar la integridad y la esencia estratégica 
-de la Pookémon Masters League. Al eliminar la posibilidad de manipulación de los mazos y garantizar que el éxito en la liga se base únicamente en la habilidad estratégica, la PML espera recuperar la confianza de sus jugadores y fanáticos. La plataforma digital también hará que la competencia sea más accesible para los nuevos jugadores, lo que garantizará que la liga continúe creciendo y prosperando en un entorno justo y competitivo.Pookémon
+de la Pookémon Masters League. Al eliminar la posibilidad de manipulación de los mazos y garantizar que el éxito en la liga se base únicamente en la habilidad estratégica, la PML espera recuperar la confianza de sus jugadores y fanáticos. La plataforma digital también hará que la competencia sea más accesible para los nuevos jugadores, lo que garantizará que la liga continúe creciendo y prosperando en un entorno justo y competitivo.

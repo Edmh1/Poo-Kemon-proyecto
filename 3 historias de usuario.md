@@ -16,19 +16,42 @@ su identidad dentro del torneo y diferenciar su experiencia de juego.
 
 ---
 ### 2. Título
-Como jugador, quiero que cada Pookémon tenga 4 movimientos específicos para poder planificar mis estrategias de batalla.
+Como jugador, quiero que cada Pookémon tenga 4 movimientos específicos relacionados con su tipo para poder planificar mis estrategias.
 
 ### Descripción:
-Cada Pookémon debe contar con 4 movimientos específicos que estén relacionados con su tipo, permitiendo a los jugadores planificar sus estrategias de batalla. Los jugadores deben poder consultar una descripción detallada de cada movimiento antes de seleccionarlo durante el combate.
+Cada Pookémon debe contar con 4 movimientos donde algunos estaran directamente relacionados con su tipo elemental, lo que permitirá a los jugadores desarrollar estrategias específicas basadas en las fortalezas y debilidades de su equipo.
 
 ### Criterios de aceptación
-- Cada Pookémon tiene 4 movimientos disponibles.
-- Los movimientos están relacionados con el tipo del Pookémon.
-- El jugador puede consultar una descripción detallada de cada movimiento antes de seleccionarlo en combate.
+- Cada Pookémon tiene exactamente 4 movimientos asignados.
+- Algunos movimientos están relacionados con el tipo elemental del Pookémon (por ejemplo, movimientos de agua para un Pookémon tipo agua).
+- Los movimientos son asignados automáticamente al momento de recibir el Pookémon en el juego.
 
 ---
-
 ### 3. Título
+Como jugador, quiero poder consultar la descripción de los movimientos de mi Pookémon durante la batalla para tomar decisiones informadas.
+
+### Descripción:
+Durante la batalla, los jugadores deben tener la opción de consultar una descripción detallada de cada uno de los movimientos de su Pookémon, incluyendo su tipo, efectos, y poder, para que puedan tomar decisiones estratégicas basadas en esa información.
+
+### Criterios de aceptación
+- El jugador puede consultar una descripción de cada movimiento disponible durante la batalla.
+- La descripción incluye el tipo del movimiento, el daño (si aplica), los efectos especiales (si tiene), y cualquier otra información relevante.
+- El jugador puede acceder a esta información de forma intuitiva y rápida para no afectar el flujo de la batalla.
+
+---
+### 4. Título
+Como jugador, quiero poder ver de forma compacta la información de los movimientos de mis Pookémon usando símbolos y palabras clave para entender rápidamente sus efectos.
+
+### Descripción:
+El sistema debe presentar la información de los movimientos de los Pookémon de manera compacta y visualmente accesible, utilizando símbolos y palabras clave para representar detalles como tipo, potencia, precisión, puntos de poder (PP) y efectos especiales. Esto permitirá a los jugadores comprender rápidamente la funcionalidad de cada movimiento sin necesidad de leer descripciones largas, facilitando la planificación estratégica.
+
+### Criterios de aceptación
+- La información de cada movimiento se muestra de manera compacta con símbolos para tipo, potencia, precisión, PP, y efectos especiales.
+- Palabras clave como "Estado" o "Curación" se utilizan para describir los efectos principales del movimiento.
+- Los símbolos y palabras clave deben ser intuitivos y fáciles de comprender sin necesidad de explicaciones adicionales.
+---
+
+### 5. Título
 Como jugador, quiero poder elegir entre atacar, defenderme o hacer uso de posiciones durante el combate para ajustar mi estrategia según la situación.
 
 ### Descripción:
@@ -37,10 +60,10 @@ El sistema debe permitir al jugador optar por defenderse durante el combate, red
 ### Criterios de aceptación
 - El jugador puede optar por defenderse, reduciendo el daño recibido en el turno.
 - La defensa afecta la cantidad de daño que recibe el Pookémon.
-- El jugador puede hacer uso de una posición para restablecer HP y otra para restablecer PP.
+- El jugador puede hacer uso de una posición para restablecer HP al Pookémon y otra para restablecer PP a un movimiento del      Pookémon selecionado.
 ---
 
-### 4. Título
+### 6. Título
 Como jugador, quiero poder cambiar mi Pookémon durante el combate para aprovechar mejor las ventajas de tipo y estadísticas.
 
 ### Descripción:
@@ -50,46 +73,28 @@ El sistema debe permitir a los jugadores cambiar su Pookémon durante el combate
 - El jugador puede cambiar su Pookémon durante el combate.
 - Cambiar un Pookémon consume el turno del jugador.
 - El Pookémon entrante recibe daño si es atacado en el mismo turno en que es cambiado.
----
-### 5. Título
-Como jugador, quiero poder guardar el juego después de cada batalla para no perder mi progreso si la aplicación se cierra inesperadamente.
-
-### Descripción:
-El sistema debe permitir guardar el progreso del jugador al finalizar cada batalla. El jugador debe ser notificado cuando el juego se ha guardado exitosamente y poder cargar su progreso desde el último punto guardado al reiniciar la aplicación.
-
-### Criterios de aceptación
-- El sistema permite guardar el progreso del jugador al finalizar cada batalla.
-- El jugador es notificado cuando el juego se ha guardado exitosamente.
-- El jugador puede cargar su progreso desde el último punto guardado al reiniciar la aplicación.
 
 ---
-### 6. Título
-Como jugador, quiero poder ver la información de los movimientos de mis Pokémon para crear mi estrategia en función de ello.
 
-### Descripción:
-El sistema debe permitir que los jugadores consulten la información detallada de los movimientos de sus Pokémon. Cada movimiento debe incluir un nombre, potencia, precisión, puntos de poder (PP) y una descripción del efecto o acción que realiza durante el combate. Esta información debe ser accesible para los jugadores en todo momento para ayudarles a planificar sus estrategias.
-
-### Criterios de aceptación
-- Los movimientos deben tener un nombre, potencia, precisión, puntos de poder (PP) y una descripción del movimiento realizado.
-- El jugador debe poder consultar la información acerca de los movimientos de sus Pokémon.
----
 # ORGANIZADOR
 ---
 ### 7. Título
-Como organizador, quiero que cada jugador reciba 6 Pookémones al azar al comienzo de cada batalla para 
+Como organizador, quiero que cada jugador reciba 5 Pookémones al azar al comienzo de cada batalla para 
 garantizar la equidad durante el torneo.
+
 ### Descripción:
-El sistema debe generar y asignar 6 Pookémones aleatorios a cada jugador al inicio de cada batalla. 
+El sistema debe generar y asignar 5 Pookémones aleatorios a cada jugador al inicio de cada batalla. 
 Los Pookémones deben tener estadísticas, tipos y movimientos predefinidos y ser seleccionados de una pool balanceada 
 para asegurar la equidad en las batallas, evitando que algún jugador tenga una ventaja injusta.
 
 ### Criterios de aceptación
-- Los jugadores reciben 6 Pookémones aleatorios al inicio de una batalla.
-- Los Pookémones asignados tienen estadísticas, tipos y movimientos predefinidos.
+- Los jugadores reciben 5 Pookémones aleatorios al inicio de una batalla.
+- Los Pookémones asignados tienen estadísticas, tipos y movimientos predefinidos que pueden ser comunes o especiales.
 - Los Pookémones se asignan desde una pool balanceada para evitar ventajas injustas entre los jugadores.
 ---------------------------------------------------------------------------------------------------------- 
+
 ### 8. Título
-Como organizador, quiero que al ganador de la batalla se le asigne un código que le permita reclamar una recompensa en un punto físico.
+Como organizador, quiero que al ganador del torneo se le asigne un código que le permita reclamar una recompensa en un punto físico.
 
 ### Descripción:
 El sistema debe asignar un código al jugador ganador de cada batalla, el cual podrá ser utilizado 
@@ -97,7 +102,7 @@ para reclamar una recompensa en un punto físico designado. El código debe tene
 visible para el ganador, asegurando que se utilice dentro del periodo establecido.
 
 ### Criterios de aceptación
-- El jugador que resulte victorioso obtendrá un código que podrá canjear por un premio.
+- El jugador que resulte victorioso en el torneo obtendrá un código.
 - El código de premio tiene una fecha de expiración que se muestra al ganador.
 
 ---
@@ -108,13 +113,11 @@ Como organizador, quiero que cada Pookémon tenga estadísticas específicas par
 ### Descripción:
 El sistema debe asignar a cada Pookémon estadísticas detalladas de Vida, Ataque Físico, Defensa Física, 
 Ataque Especial, Defensa Especial y Velocidad. Estas estadísticas influirán en el desarrollo y el resultado 
-de las batallas, proporcionando una base para que los jugadores desarrollen estrategias. Además, las estadísticas 
-de cada Pookémon deben mostrarse al jugador antes de iniciar la batalla.
+de las batallas, proporcionando una base para que los jugadores desarrollen estrategias.
 
 ### Criterios de aceptación
 - Cada Pookémon tiene estadísticas de Vida, Ataque Físico, Defensa Física, Ataque Especial, Defensa Especial y Velocidad.
 - Las estadísticas afectan el resultado de las batallas.
-- Las estadísticas de cada Pookémon se muestran al jugador antes de iniciar la batalla.
 
 ---
 
@@ -267,4 +270,4 @@ El sistema debe incluir CPU que puedan realizar las mismas acciones que un jugad
 - El jugador no debe ver las acciones de la CPU.
 
 ---
-
+- Las estadísticas de cada Pookémon se muestran al jugador antes de iniciar la batalla.
