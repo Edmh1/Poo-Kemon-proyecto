@@ -267,7 +267,7 @@ El sistema debe incluir CPU que puedan realizar las mismas acciones que un jugad
 ### Criterios de aceptación
 - La CPU debe ser capaz de realizar las mismas acciones que el jugador.
 - La CPU debe respetar las normas del juego.
-- El jugador no debe ver las acciones de la CPU.
+- El jugador no debe ver las acciones de la CPU
 
 ---
 - Las estadísticas de cada Pookémon se muestran al jugador antes de iniciar la batalla.
