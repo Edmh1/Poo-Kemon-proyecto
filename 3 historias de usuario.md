@@ -259,15 +259,17 @@ El sistema debe permitir que los Pokémon puedan sufrir problemas de estado dura
 
 ---
 ### 20. Título
-Como tester, quiero una o varias CPU que pueda simular el comportamiento de un jugador para poder realizar simulaciones, pruebas y balanceos del juego.
+Como usuario, quiero ver los creditos del juego para saber quienes fueron sus creadores y demas informacion sobre el mismo 
+
 
 ### Descripción:
-El sistema debe incluir CPU que puedan realizar las mismas acciones que un jugador humano, respetando las normas del juego. Las acciones de la CPU no deben ser visibles para el jugador, asegurando una simulación realista y balanceada.
+El usuario tendra una opcion de ver los creditos del juego mas la informacion de quienes estuvieron encargados de la creacion del mismo, la fecha de creacion y mas contenido adicional sobre la creacion del juego
+
 
 ### Criterios de aceptación
-- La CPU debe ser capaz de realizar las mismas acciones que el jugador.
-- La CPU debe respetar las normas del juego.
-- El jugador no debe ver las acciones de la CPU
+- Los creditos deben mostrar de manera ordenada los nombres de los creadores del videojuego.
+- Los creditos deben mostrar la fecha de creacion del videojuego.
+- Se debe mostrar la informacion de manera secuencial.
 
 ---
 - Las estadísticas de cada Pookémon se muestran al jugador antes de iniciar la batalla.
