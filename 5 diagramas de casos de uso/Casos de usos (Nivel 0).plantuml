@@ -14,6 +14,7 @@ package "pookemon.software" {
     usecase "Ver creditos" as verCre
 
     usecase "Crear Torneo" as creTor
+    usecase "Hacer Seguimiento al Torneo" as hacSeg
     usecase "Definir Recompensa del ganador" as defRec
     usecase "Gestionar Pookemones" as gesPoo
     usecase "Gestionar Movimientos" as gesMov
@@ -25,14 +26,18 @@ Jugador -- verCre
 
 Jugador -- parTor
 parTor ..> creEnt:<<include>>
-
 parTor <.. parBat:<<extend>>
 
+Organizador --- verCre
+
 Organizador -- creTor
+creTor .> defRec:<<include>>
+creTor <.. gesEnt:<<extend>>
+creTor <.. hacSeg:<<extend>>
+
+
 Organizador -- gesPoo
 Organizador -- gesObj
 Organizador -- gesMov
-creTor ..> defRec:<<include>>
-creTor <.. gesEnt:<<extend>>
 
 @enduml
