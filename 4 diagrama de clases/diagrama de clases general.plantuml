@@ -1,0 +1,73 @@
+@startuml diagrama de clases
+
+left to right direction
+
+package "registro" {
+    class Entrenador {
+
+    }
+
+    class Organizador {
+
+    }
+
+}
+
+package "pookemon" {
+    class Pookemon {
+
+    }
+
+    class Estadística {
+
+    }
+
+    class Movimiento {
+
+    }
+
+    class TablaDeTipos{
+
+    }
+
+    class Objeto{
+
+    }
+
+}
+
+package "torneo" {
+    class Batalla {
+
+    }
+
+    class NodoTorneo {
+      
+    }
+
+    class Torneo {
+    
+    }
+
+    class Recompensa {
+      
+    }
+}
+
+Entrenador "*" o-- "5" Pookemon 
+Entrenador "*" o-- "5" Objeto
+
+Pookemon "*" o-- "5" Movimiento
+Pookemon "1" *-- "1" Estadística
+Pookemon -- TablaDeTipos
+
+Torneo "1" *-- "1" Recompensa
+Torneo "1" *-- "1" NodoTorneo
+
+NodoTorneo "1" *-- "2" NodoTorneo
+NodoTorneo "1" *-- "1" Batalla
+
+Batalla "1" o-- "2" Entrenador
+
+
+@enduml
