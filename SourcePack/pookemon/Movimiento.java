@@ -1,4 +1,4 @@
-package pookemon;
+package SourcePack.pookemon;
 
 public class Movimiento {
 

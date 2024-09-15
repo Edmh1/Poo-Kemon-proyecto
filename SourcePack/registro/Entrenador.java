@@ -1,4 +1,4 @@
-package registro;
+package SourcePack.registro;
 
 public class Entrenador {
 
