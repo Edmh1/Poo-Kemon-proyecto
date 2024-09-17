@@ -1,0 +1,147 @@
+@startuml diagrama de clases
+
+left to right direction
+
+    class Entrenador {
+        - idEntrenador : int
+        - nombre : str
+        - genero : str
+        - clave : str
+        - {field} listaPokemones : ArrayList<Pokemon>
+        - {field} objetos : ArrayList<Objeto>
+
+        + atacar()
+        + defenderse()
+        + usarObjeto()
+        + cambiarPokemon()
+        + guardarProgreso()
+        + mostrarMovimientosPokemon(idPokemon:int)
+
+    }
+
+    newpage
+
+    class Organizador {
+        - idOrganizador : int
+
+        + inscribirJugadorTorneo(jugador:Entrenador, idTorneo: int)
+        + crearTorneo(recompensa : Recompensa)
+        + asignarCodigoRecompensa(idTorneo:int)
+        + mostrarReporteBatalla(idTorneo:int, idBatalla:int)
+        + mostrarCreditos()
+    }
+
+    newpage
+
+    class Pokemon {
+        - idPokemon : int
+        - nombre : str
+        - estadisticas : Estadística
+        - elementoPokemon : Elemento
+        - {field} movimientos : ArrayList<Movimiento>
+        
+
+        + mostrarListaMovimientos()
+    }
+
+    newpage
+
+    class Estadistica {
+        - vida : int 
+        - ataqueFisico : int
+        - defensaFisica : int
+        - ataqueEspecial : int 
+        - defensaEspecial : int
+        - velocidad : int 
+
+        + mostrarEstadisticas()
+  }
+
+    newpage
+
+    class Movimiento {
+        - idMovimiento : int
+        - descripcion : str
+        - categoriaMovimiento: str
+        - elemento : Elemento
+        - cantidadPP : int
+
+        + calcularCostoMovimiento()
+        + mostrarMovimiento()
+    }
+
+    newpage
+
+    class Elemento{
+       - idElemento : int
+       - nombreElemento : str
+    }
+
+    newpage
+
+    class Objeto{
+        - idObjeto : int
+        - nombreObjeto  : str
+        - tipoObjeto : str
+
+    }
+
+    newpage
+
+    class Batalla {
+        - idBatalla : int
+        - entrenador1 : Entrenador
+        - entrenador2 : Entrenador
+
+        + generarReporteBatalla()
+        + registrarMovimiento(jugadorTurno:Entrenador, jugadorOponente :Entrenador)
+        - calcularGolpeCrítico()
+        - calcularCambioEstadoPokemon()
+        + determinarGanador()
+        + generarMazoPokemones()
+
+
+        
+    }
+
+    newpage
+
+    class NodoTorneo {
+      - idNodoTorneo : int
+      - nodoTorneo: NodoTorneo
+      - batalla : Batalla
+    }
+
+    newpage
+
+    class Torneo {
+        - recompensa :  Recompensa
+        - nodoTorneo : NodoTorneo
+
+        + gestionarRondasTorneo()
+        + iniciarTorneo()
+        + devolverGanadorTorneo()
+        
+    }
+
+    note right of Torneo::gestionarRondasTorneo
+        método que vaya posicionando el ganador 
+        de cada nodo en el nodo anterior 
+        (siguiendo secuencia de árbol)
+    end note
+
+    newpage
+
+    class Recompensa {
+        - idRecompensa : int
+        - tipoRecompensa : str
+
+    }
+
+
+@enduml   
+    
+
+    
+
+    
