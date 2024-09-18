@@ -1,0 +1,43 @@
+@startuml Jugador
+
+actor Jugador
+
+package participar_en_batalla{
+    usecase "Luchar" as luc
+    usecase "Defender" as def
+    usecase "Cambiar" as cam 
+    usecase "Objeto" as obj
+    usecase "Elegir movimiento" as eleMov
+    usecase "Ver informacion de movimiento" as verInfMov
+    usecase "Elegir pookemon" as elePoo
+    usecase "Ver informacion de Pookemon" as verInfPoo
+    usecase "Elegir objeto" as eleObj
+    usecase "Ver informacion de objeto" as verInfObj
+}
+
+Jugador -- obj
+obj ..> eleObj
+obj ..> verInfObj 
+Jugador -- cam
+cam ..> elePoo
+cam ..> verInfPoo
+Jugador -- luc
+luc ..> eleMov
+luc ..> verInfMov
+Jugador -- def
+
+package crear_entrenador{
+    usecase "Elegir nombre" as eleNom
+    usecase "Elegir genero" as eleGen
+    usecase "Definir contraseña" as defCon
+}
+
+Jugador -- eleNom
+Jugador -- eleGen
+Jugador -- defCon
+
+usecase "Pedir reporte de batalla" as pedRepBat
+
+Jugador -- pedRepBat
+
+@enduml
