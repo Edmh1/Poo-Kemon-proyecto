@@ -7,9 +7,9 @@ actor Organizador
 
 package "pookemon.software" {
     
-    usecase "Participar del Torneo" as parTor
+    usecase "Registrarse en el Torneo" as regTor
     usecase "Crear Entrenador" as creEnt
-    usecase "Participar en una Batalla" as parBat
+    usecase "Participar en Batalla" as parBat
 
     usecase "Ver creditos" as verCre
 
@@ -24,9 +24,10 @@ package "pookemon.software" {
 
 Jugador -- verCre
 
-Jugador -- parTor
-parTor ..> creEnt:<<include>>
-parTor <.. parBat:<<extend>>
+
+Jugador -- regTor
+regTor ..> creEnt:<<include>>
+regTor <.. parBat:<<extend>>
 
 Organizador --- verCre
 
