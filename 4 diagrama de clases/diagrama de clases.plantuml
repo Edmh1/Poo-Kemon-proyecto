@@ -108,7 +108,8 @@ left to right direction
 
     class NodoTorneo {
       - idNodoTorneo : int
-      - nodoTorneo: NodoTorneo
+      - nodoTorneoIzq: NodoTorneo
+      - nodoTorneoDer: NodoTorneo
       - batalla : Batalla
     }
 
