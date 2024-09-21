@@ -6,15 +6,16 @@ left to right direction
         - idEntrenador : int
         - nombre : str
         - genero : str
-        - clave : str
-        - {field} listaPokemones : ArrayList<Pokemon>
-        - {field} objetos : ArrayList<Objeto>
+        - listaPookemones : ArrayList<Pookemon>
+        - objetos : ArrayList<Objeto>
+        - pokemonActual : int 
 
-        + atacar()
+        + atacar(idMovimiento : int)
         + defenderse()
-        + usarObjeto()
-        + cambiarPokemon()
-        + mostrarMovimientosPokemon(idPokemon: int)
+        + usarObjeto(idObjeto : int)
+        + cambiarPookemon(idPookemon : int)
+        + mostrarMovimientosPoookemon(idPookemon : int)
+        + obtenerPookemonPorID(idPookemon : int)
 
     }
 
@@ -22,25 +23,33 @@ left to right direction
 
     class Organizador {
         - idOrganizador : int
+        - torneos : ArrayList<Torneo>
+        - torneoActual : int
 
-        + inscribirJugadorTorneo(jugador:Entrenador, idTorneo: int)
-        + crearTorneo(recompensa : Recompensa)
-        + asignarCodigoRecompensa(idTorneo:int)
-        + mostrarReporteBatalla(idTorneo:int, idBatalla:int)
+        + inscribirJugadorTorneo(jugador : Entrenador, idTorneo : int)
+        + crearTorneo()
+        + definirRecompensa(idTorneo : int, recompensa : str)
+        + mostrarReporteBatalla(idTorneo : int, idBatalla : int)
+        + obtenerTorneoPorID(idTorneo : int)
         + mostrarCreditos()
+
     }
 
     newpage
 
-    class Pokemon {
-        - idPokemon : int
+    class Pookemon {
+        - idPookemon : int
         - nombre : str
-        - estadisticas : Estadística
-        - elementoPokemon : Elemento
-        - {field} movimientos : ArrayList<Movimiento>
+        - estadistica : Estadistica
+        - elemento : str
+        - movimientos : ArrayList<Movimiento>
+        - efecto : Efecto
         
-
         + mostrarListaMovimientos()
+        + recibirDaño()
+        + obtenerMovimientoPorID(idMovimiento : int)
+
+
     }
 
     newpage
@@ -61,19 +70,18 @@ left to right direction
     class Movimiento {
         - idMovimiento : int
         - descripcion : str
-        - categoriaMovimiento: str
-        - elemento : Elemento
+        - potencia : int
+        - precision: int
         - cantidadPP : int
+        - elemento : str
+        - efecto : Efecto 
 
         + calcularCostoMovimiento()
+        - calcularDañoBase()
+        - calcularGolpeCritico()
+        + calcularDañoTotal
         + mostrarMovimiento()
-    }
-
-    newpage
-
-    class Elemento{
-       - idElemento : int
-       - nombreElemento : str
+        + realizar()
     }
 
     newpage
@@ -82,6 +90,7 @@ left to right direction
         - idObjeto : int
         - nombreObjeto  : str
         - tipoObjeto : str
+        - puntosR : int
 
     }
 
@@ -91,25 +100,28 @@ left to right direction
         - idBatalla : int
         - entrenador1 : Entrenador
         - entrenador2 : Entrenador
+        - turnos[] : str
+        - numeroTurno: int
 
+        + iniciarBatalla()
+        + generarMazoPookemones()
+        + aplicarEfectosPersistentes()
+        + determinarTurno()
+        + ejecutarTurno(Primero : Entrenador, Segundo : Entrenador)
         + generarReporteBatalla()
-        + registrarMovimiento(jugadorTurno:Entrenador, jugadorOponente :Entrenador)
-        - calcularGolpeCrítico()
-        - calcularCambioEstadoPokemon()
-        + determinarGanador()
-        + generarMazoPokemones()
-
-
         
     }
 
     newpage
 
     class NodoTorneo {
-      - idNodoTorneo : int
       - nodoTorneoIzq: NodoTorneo
       - nodoTorneoDer: NodoTorneo
       - batalla : Batalla
+      - ganador : Entrenador 
+
+      + determinarGanador()
+
     }
 
     newpage
@@ -117,10 +129,14 @@ left to right direction
     class Torneo {
         - recompensa :  Recompensa
         - nodoTorneo : NodoTorneo
+        - jugadores : ArrayList<Entrenador>
+        - pookemones : ArrayList<Pookemon>
 
         + gestionarRondasTorneo()
         + iniciarTorneo()
         + devolverGanadorTorneo()
+        + listarJugadores()
+        + listarPookemones()
         
     }
 
@@ -135,6 +151,29 @@ left to right direction
     class Recompensa {
         - idRecompensa : int
         - tipoRecompensa : str
+        - fechaVencimiento : date 
+
+        + generarCodigo()
+
+    }
+
+    newpage
+
+    class Efecto {
+
+        + aplicar(nombreObjetivo : Pookemon)
+        + haTerminado()
+    }
+
+    newpage 
+    
+    class MovimientoFisico{
+
+    }
+
+    newpage 
+
+    class MovimientoEspecial{
 
     }
 

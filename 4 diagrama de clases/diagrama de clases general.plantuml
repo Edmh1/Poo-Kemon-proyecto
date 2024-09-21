@@ -26,11 +26,11 @@ package "pookemon" {
 
     }
 
-    class TipoElemento{
+    class Objeto{
 
     }
 
-    class Objeto{
+    class Efecto{
 
     }
 
@@ -54,29 +54,20 @@ package "torneo" {
     }
 }
 
-Entrenador "*" o-- "5" Pookemon 
-Entrenador "*" o-- "5" Objeto
+Entrenador "*" o-- "3" Pookemon 
+Entrenador "*" o-- "2" Objeto
 
 Pookemon "*" o-- "5" Movimiento
 Pookemon "1" *-- "1" Estadística
-Pookemon -- Elemento
+Pookemon "*" o-- "1" Efecto
+Movimiento "*" o-- "1" Efecto
 
-/"clase abstract"/
-Movimiento -- Elemento
-MovimientoFisico
-MovimientoEspecial
-/"Interfaz"/
-Efecto
-EfectoQuemadura
-EfectoParalizis
-EfectoDormir
-EfectoEnvenenamiento
+
 
 Organizador "1" *-- "*" Torneo
 
 Torneo "1" o--- "*" Entrenador
 Torneo "1" o-- "*" Pookemon
-Torneo "1" o---- "*" Objeto
 Torneo "1" *---- "1" Recompensa
 Torneo "1" *-- "1" NodoTorneo
 
