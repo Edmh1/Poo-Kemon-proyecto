@@ -16,13 +16,13 @@ su identidad dentro del torneo y diferenciar su experiencia de juego.
 
 ---
 ### 2. Título
-Como jugador, quiero que cada Pookémon tenga 4 movimientos específicos relacionados con su tipo para poder planificar mis estrategias.
+Como jugador, quiero que cada Pookémon tenga 5 movimientos donde minimo 1 este relacionado con su tipo elemental para poder planificar mis estrategias.
 
 ### Descripción:
-Cada Pookémon debe contar con 4 movimientos donde algunos estaran directamente relacionados con su tipo elemental, lo que permitirá a los jugadores desarrollar estrategias específicas basadas en las fortalezas y debilidades de su equipo.
+Cada Pookémon debe contar con 5 movimientos donde por lo menos 1 estara directamente relacionado con su tipo elemental, lo que permitirá a los jugadores desarrollar estrategias específicas basadas en las fortalezas y debilidades de su equipo.
 
 ### Criterios de aceptación
-- Cada Pookémon tiene exactamente 4 movimientos asignados.
+- Cada Pookémon tiene exactamente 5 movimientos asignados.
 - Algunos movimientos están relacionados con el tipo elemental del Pookémon (por ejemplo, movimientos de agua para un Pookémon tipo agua).
 - Los movimientos son asignados automáticamente al momento de recibir el Pookémon en el juego.
 
@@ -46,8 +46,8 @@ Como jugador, quiero poder ver de forma compacta la información de los movimien
 El sistema debe presentar la información de los movimientos de los Pookémon de manera compacta y visualmente accesible, utilizando símbolos y palabras clave para representar detalles como tipo, potencia, precisión, puntos de poder (PP) y efectos especiales. Esto permitirá a los jugadores comprender rápidamente la funcionalidad de cada movimiento sin necesidad de leer descripciones largas, facilitando la planificación estratégica.
 
 ### Criterios de aceptación
-- La información de cada movimiento se muestra de manera compacta con símbolos para tipo, potencia, precisión, PP, y efectos especiales.
-- Palabras clave como "Estado" o "Curación" se utilizan para describir los efectos principales del movimiento.
+- La información de cada movimiento se muestra de manera compacta con símbolos para tipo, potencia, precisión, PP, y efectos.
+- Informacion sobre el tipo de efecto que genera.
 - Los símbolos y palabras clave deben ser intuitivos y fáciles de comprender sin necesidad de explicaciones adicionales.
 
 ---
@@ -55,12 +55,12 @@ El sistema debe presentar la información de los movimientos de los Pookémon de
 Como jugador, quiero poder elegir entre atacar, defenderme o hacer uso de posiciones durante el combate para ajustar mi estrategia según la situación.
 
 ### Descripción:
-El sistema debe permitir al jugador optar por defenderse durante el combate, reduciendo el daño recibido en ese turno. Además, el jugador podrá usar ciertas posiciones para restablecer HP o PP, ofreciendo opciones estratégicas adicionales durante la batalla.
+El sistema debe permitir al jugador optar por defenderse durante el combate, reduciendo el daño recibido en ese turno. Además, el jugador podrá usar ciertas pociones para restablecer HP o PP, ofreciendo opciones estratégicas adicionales durante la batalla.
 
 ### Criterios de aceptación
 - El jugador puede optar por defenderse, reduciendo el daño recibido en el turno.
 - La defensa afecta la cantidad de daño que recibe el Pookémon.
-- El jugador puede hacer uso de una posición para restablecer HP al Pookémon y otra para restablecer PP a un movimiento del      Pookémon selecionado.
+- El jugador puede hacer uso de una poción para restablecer HP al Pookémon y otra para restablecer PP a un movimiento del Pookémon selecionado.
 
 ---
 ### 6. Título
@@ -109,10 +109,7 @@ El sistema debe permitir a los jugadores registrarse al inicio del torneo, inclu
 
 ### Criterios de aceptación
 - Los jugadores pueden registrarse al inicio del torneo.
-- Los jugadores deben definir la contraseña que usarán durante todo el torneo.
 - Se genera una lista de participantes que es accesible para el organizador.
-- El sistema notifica a los jugadores una vez que su registro ha sido confirmado.
-
 ---
 ### 10. Título
 Como organizador, quiero un sistema que gestione múltiples rondas de combate para determinar el ganador del torneo.
@@ -123,34 +120,32 @@ El sistema debe gestionar el progreso del torneo en un formato eliminatorio, per
 ### Criterios de aceptación
 - El torneo sigue un formato eliminatorio.
 - Los jugadores avanzan a la siguiente ronda tras ganar un combate.
-- El sistema debe permitir la visualización de posiciones en el torneo.
+- El sistema debe permitir la visualizar los jugadores restantes
 
 ---
 ### 11. Título
 Como organizador, quiero que el sistema genere un reporte detallado de cada batalla para revisar el desempeño de los jugadores y asegurar la transparencia.
 
 ### Descripción:
-El sistema debe generar un reporte detallado al finalizar cada batalla, incluyendo los movimientos, daños y resultados. Este reporte estará disponible para revisión del organizador y los jugadores involucrados en la batalla.
+El sistema debe generar un reporte detallado al finalizar cada batalla, incluyendo los movimientos, daños y resultados. Este reporte estará disponible para revisión del organizador.
 
 ### Criterios de aceptación
 - Al finalizar la batalla, se genera un reporte con los movimientos, daños y resultados.
 - El reporte está disponible para revisión del organizador.
-- Los jugadores pueden solicitar el reporte de su propia batalla.
+- Los jugadores pueden visualizar el reporte de su propia batalla.
 
 ---
 ### 12. Título
-Como organizador, quiero que cada jugador reciba 5 Pookémones al azar al comienzo de cada batalla para 
+Como organizador, quiero que cada jugador reciba 3 Pookémones al azar al comienzo de cada batalla para 
 garantizar la equidad durante el torneo.
 
 ### Descripción:
-El sistema debe asignar 5 Pookémones aleatorios a cada jugador al inicio de cada batalla. 
-Los Pookémones deben tener estadísticas, tipos y movimientos predefinidos y ser seleccionados de una pool balanceada 
-para asegurar la equidad en las batallas, evitando que algún jugador tenga una ventaja injusta.
+El sistema debe asignar 3 Pookémones aleatorios a cada jugador al inicio de cada batalla. 
+Los Pookémones deben tener estadísticas, tipos y movimientos predefinidos para asegurar la equidad en las batallas, evitando que algún jugador tenga una ventaja injusta.
 
 ### Criterios de aceptación
-- Los jugadores reciben 5 Pookémones aleatorios al inicio de una batalla.
-- Los Pookémones asignados tienen estadísticas, tipos y movimientos predefinidos que pueden ser comunes o especiales.
-- Los Pookémones se asignan desde una pool balanceada para evitar ventajas injustas entre los jugadores.
+- Los jugadores reciben 3 Pookémones aleatorios al inicio de una batalla.
+- Los Pookémones asignados tienen estadísticas, tipos y movimientos predefinidos que pueden ser fisicos o especiales.
 
 ---
 ### 13. Título
@@ -170,9 +165,9 @@ de las batallas, proporcionando una base para que los jugadores desarrollen estr
 Como organizador, quiero que cada Pookémon tenga un tipo que influya en la efectividad de sus ataques durante las batallas.
 
 ### Descripción:
-El sistema debe asignar un tipo a cada Pookémon (por ejemplo, fuego, agua), y estos tipos deben 
+El sistema debe asignar un tipo a cada Pookémon (por ejemplo, fuego, agua, etc), y estos tipos deben 
 influir en el daño infligido y recibido durante las batallas. La efectividad de los ataques se calculará 
-según una tabla de tipos, y el sistema debe mostrar esta información a los jugadores para facilitar la estrategia de combate.
+según una tabla de tipos.
 
 ### Criterios de aceptación
 - Cada Pookémon tiene un tipo asignado (e.g., fuego, agua).
@@ -184,13 +179,12 @@ según una tabla de tipos, y el sistema debe mostrar esta información a los jug
 Como organizador, quiero que cada movimiento tenga un valor de PP para limitar la cantidad de veces que se puede usar en combate.
 
 ### Descripción:
-El sistema debe asignar un valor de Puntos de Poder (PP) a cada movimiento, limitando la cantidad de veces que puede ser utilizado en combate. Si un movimiento se queda sin PP, ya no podrá ser usado, y el jugador será notificado cuando esto ocurra. Además, cada Pookémon debe contar con un ataque sin costo de PP para utilizar cuando no haya más opciones.
+El sistema debe asignar un valor de Puntos de Poder (PP) a cada movimiento, limitando la cantidad de veces que puede ser utilizado en combate. Si un movimiento se queda sin PP, podra ser usado pero acosta de un 25% de la vida del pookemon, y el jugador será notificado cuando esto ocurra.
 
 ### Criterios de aceptación
 - Cada movimiento tiene un valor de PP asignado.
-- Cuando un movimiento se queda sin PP, ya no puede ser usado.
-- El jugador recibe una notificación cuando un movimiento se queda sin PP.
-- Cada Pookémon debe tener un ataque que no cueste PP, disponible cuando el entrenador no tenga otra opción.
+- Cuando un movimiento se queda sin PP, podra ser usado pero acosta de un 25% de la vida del pookemon.
+- El jugador recibe una notificación cuando usa un movimiento que ya no tiene PP.
 
 ---
 ### 16. Título
@@ -206,7 +200,7 @@ El sistema debe implementar un sistema de combate por turnos, donde los jugadore
 
 ---
 ### 17. Título
-Como organizador, quiero implementar un sistema de golpes críticos que añada un elemento de riesgo y recompensa a las batallas.
+Como organizador, quiero implementar un sistema de golpes críticos que añada un elemento de riesgo a las batallas.
 
 ### Descripción:
 El sistema debe incluir una probabilidad de 5% de realizar un golpe crítico, que infligirá daño adicional basado en un multiplicador. Se debe mostrar una animación especial cuando se realiza un golpe crítico para destacar este evento.
@@ -218,10 +212,10 @@ El sistema debe incluir una probabilidad de 5% de realizar un golpe crítico, qu
 
 ---
 ### 18. Título
-Como organizador, quiero que los movimientos sean divididos en categorías (físico, especial y estado) para agregar diversidad en los movimientos.
+Como organizador, quiero que los movimientos sean divididos en categorías (físico y especial) para agregar diversidad en los movimientos.
 
 ### Descripción:
-El sistema debe permitir que cada movimiento tenga una categoría específica. Dependiendo de la categoría del movimiento, este definirá si el Pookémon ataca con daño físico o daño especial y si ataca a la defensa física o defensa especial del enemigo, o si el movimiento no ataca y solo tiene un efecto de apoyo en el combate.
+El sistema debe permitir que cada movimiento tenga una categoría específica. Dependiendo de la categoría del movimiento, este definirá si el Pookémon ataca con daño físico o daño especial y si ataca a la defensa física o defensa especial del enemigo, o si el movimiento no ataca.
 
 ### Criterios de aceptación
 - Cada movimiento debe tener una categoría.
