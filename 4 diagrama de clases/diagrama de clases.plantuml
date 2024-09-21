@@ -14,8 +14,7 @@ left to right direction
         + defenderse()
         + usarObjeto()
         + cambiarPokemon()
-        + guardarProgreso()
-        + mostrarMovimientosPokemon(idPokemon:int)
+        + mostrarMovimientosPokemon(idPokemon: int)
 
     }
 
