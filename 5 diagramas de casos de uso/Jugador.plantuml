@@ -7,34 +7,32 @@ package participar_en_batalla{
     usecase "Defender" as def
     usecase "Cambiar" as cam 
     usecase "Objeto" as obj
-    usecase "Elegir movimiento" as eleMov
+    usecase "Elegir movimiento a usar" as eleMov
     usecase "Ver informacion de movimiento" as verInfMov
-    usecase "Elegir pookemon" as elePoo
+    usecase "Elegir pookemon a cambiar" as elePoo
     usecase "Ver informacion de Pookemon" as verInfPoo
-    usecase "Elegir objeto" as eleObj
+    usecase "Elegir objeto a usar" as eleObj
     usecase "Ver informacion de objeto" as verInfObj
 }
 
 Jugador -- obj
-obj ..> eleObj
-obj ..> verInfObj 
+obj <.. eleObj: <<extends>>
+obj <.. verInfObj : <<extends>>
 Jugador -- cam
-cam ..> elePoo
-cam ..> verInfPoo
+cam <.. elePoo : <<extends>>
+cam <.. verInfPoo : <<extends>>
 Jugador -- luc
-luc ..> eleMov
-luc ..> verInfMov
+luc <.. eleMov : <<extends>>
+luc <.. verInfMov : <<extends>>
 Jugador -- def
 
 package crear_entrenador{
     usecase "Elegir nombre" as eleNom
     usecase "Elegir genero" as eleGen
-    usecase "Definir contraseña" as defCon
 }
 
 Jugador -- eleNom
 Jugador -- eleGen
-Jugador -- defCon
 
 usecase "Pedir reporte de batalla" as pedRepBat
 

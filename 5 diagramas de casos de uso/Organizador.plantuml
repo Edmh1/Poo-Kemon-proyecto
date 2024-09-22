@@ -6,15 +6,36 @@ package gestionar_pookemones{
     usecase "Agregar pookemon" as agrPoo
     usecase "Asignar estadisticas" as asiEst
     usecase "Asignar movimientos" as asiMov
-    usecase "Crear movimientos" as creMov
     usecase "Eliminar pookemon" as eliPoo
+    usecase "Editar pookemon" as ediPoo
 }
 
 Organizador -- agrPoo
 agrPoo ..> asiEst: <<include>>
 agrPoo ..> asiMov: <<include>>
-agrPoo ..> creMov: <<extends>>
+Organizador -- ediPoo
 Organizador -- eliPoo
+
+package gestionar_movimientos{
+    usecase "Agregar movimiento" as agrMov
+    usecase "Crear movimiento" as creMov
+    usecase "Editar movimiento" as ediMov
+}
+
+Organizador -- agrMov
+Organizador -- creMov
+Organizador -- ediMov
+
+package gestionar_objetos{
+    usecase "Agregar objeto" as agrObj
+    usecase "Crear objeto" as creObj
+    usecase "Editar objeto" as edtObj
+
+}
+
+Organizador -- agrObj
+Organizador -- creObj
+Organizador -- edtObj
 
 package gestionar_premios{
     usecase "Crear premios" as crePre
@@ -22,11 +43,20 @@ package gestionar_premios{
     usecase "Eliminar premios" as eliPre
 }
 
-usecase "Consultar reportes de batalla" as verHisBat
-
 Organizador -- crePre
 crePre ..> asiPreTor: <<include>>
 Organizador -- eliPre
+
+package gestionar_torneo{
+    usecase "Inscribir jugadores" as insJug
+    usecase "Listar jugadores" as lisJug
+    usecase "Listar Pookemones" as lisPoo
+    usecase "Consultar reportes de batalla" as verHisBat
+}
+
+Organizador -- insJug
+Organizador -- lisJug
+Organizador -- lisPoo
 Organizador -- verHisBat
 
 @enduml
