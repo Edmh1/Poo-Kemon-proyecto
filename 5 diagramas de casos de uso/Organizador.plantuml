@@ -40,11 +40,9 @@ Organizador -- edtObj
 package gestionar_premios{
     usecase "Crear premios" as crePre
     usecase "Asignar premio al torneo" as asiPreTor
-    usecase "Eliminar premios" as eliPre
 }
 
 Organizador -- crePre
-crePre ..> asiPreTor: <<include>>
 Organizador -- eliPre
 
 package gestionar_torneo{

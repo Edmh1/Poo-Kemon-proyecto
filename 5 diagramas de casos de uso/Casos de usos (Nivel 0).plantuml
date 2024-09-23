@@ -18,7 +18,6 @@ package "pookemon.software" {
     usecase "Definir Recompensa del ganador" as defRec
     usecase "Gestionar Pookemones" as gesPoo
     usecase "Gestionar Movimientos" as gesMov
-    usecase "Gestionar Entrenadores" as gesEnt
     usecase "Gestionar Objetos" as gesObj
 }
 
@@ -33,7 +32,6 @@ Organizador --- verCre
 
 Organizador -- creTor
 creTor .> defRec:<<include>>
-creTor <.. gesEnt:<<extend>>
 creTor <.. hacSeg:<<extend>>
 
 

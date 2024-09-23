@@ -105,7 +105,7 @@ visible para el ganador, asegurando que se utilice dentro del periodo establecid
 Como organizador, quiero un sistema de registro que permita a los jugadores inscribirse en el torneo para garantizar la participación organizada.
 
 ### Descripción:
-El sistema debe permitir a los jugadores registrarse al inicio del torneo, incluyendo la definición de una contraseña que usarán durante todo el evento (al inicio de cada batalla). El sistema debe generar una lista de participantes accesible para los organizadores y notificar a los jugadores una vez que su registro haya sido confirmado.
+El sistema debe permitir a los jugadores registrarse al inicio del torneo, incluyendo la definición de el nombre que usarán durante el torneo.
 
 ### Criterios de aceptación
 - Los jugadores pueden registrarse al inicio del torneo.
