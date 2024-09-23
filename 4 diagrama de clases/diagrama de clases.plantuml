@@ -79,7 +79,7 @@ left to right direction
         + calcularCostoMovimiento()
         - calcularDañoBase()
         - calcularGolpeCritico()
-        + calcularDañoTotal
+        + calcularDañoTotal()
         + mostrarMovimiento()
         + realizar()
     }
