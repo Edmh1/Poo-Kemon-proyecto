@@ -1,5 +1,26 @@
 package SourcePackPookemon.torneo;
 
+import java.util.ArrayList;
+
+import SourcePackPookemon.registro.Entrenador;
+
 public class Torneo {
+
+    private ArrayList<Entrenador> jugadores = new ArrayList<>();
+
+    public void addJugador(Entrenador e){
+        jugadores.add(e);
+    }
+
+    @Override
+    public String toString() {
+        String lis = "Lista de jugadores:\n";
+        
+        for (Entrenador entrenador : jugadores) {
+            lis +="- " + entrenador.getNombre() + "\n";
+        }
+
+        return lis;
+    }
 
 }
