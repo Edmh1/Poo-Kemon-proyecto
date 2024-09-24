@@ -23,10 +23,9 @@ left to right direction
 
     class Organizador {
         - idOrganizador : int
-        - torneos : ArrayList<Torneo>
-        - torneoActual : int
+        - torneoActual : Torneo
 
-        + inscribirJugadorTorneo(jugador : Entrenador, idTorneo : int)
+        + inscribirJugadorTorneo(jugador : Entrenador)
         + crearTorneo()
         + definirRecompensa(idTorneo : int, recompensa : str)
         + mostrarReporteBatalla(idTorneo : int, idBatalla : int)
