@@ -30,6 +30,12 @@ left to right direction
         + definirRecompensa(idTorneo : int, recompensa : str)
         + mostrarReporteBatalla(idTorneo : int, idBatalla : int)
         + obtenerTorneoPorID(idTorneo : int)
+        + agregarPookemon()
+        + editarPookemon()
+        + eliminarPookemon()
+        + agregarMovimiento()
+        + editarMovimiento()
+        + eliminarMovimiento()
         + mostrarCreditos()
 
     }
@@ -43,7 +49,6 @@ left to right direction
         - elemento : str
         - movimientos : ArrayList<Movimiento>
         - efecto : Efecto
-        
         + mostrarListaMovimientos()
         + recibirDaño()
         + obtenerMovimientoPorID(idMovimiento : int)
