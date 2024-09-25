@@ -30,6 +30,12 @@ left to right direction
         + definirRecompensa(idTorneo : int, recompensa : str)
         + mostrarReporteBatalla(idTorneo : int, idBatalla : int)
         + obtenerTorneoPorID(idTorneo : int)
+        + agregarPookemon(x : Pookemon)
+        + editarPookemon(idPookemon : int)
+        + eliminarPookemon(idPookemon : int)
+        + agregarMovimiento(x : Movimiento)
+        + editarMovimiento(idMovimiento : int)
+        + eliminarMovimiento(idMovimiento : int)
         + mostrarCreditos()
 
     }
