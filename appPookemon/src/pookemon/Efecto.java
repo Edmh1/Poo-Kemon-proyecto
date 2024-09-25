@@ -1,4 +1,4 @@
-package appPookemon.src.pookemon;
+package pookemon;
 
 public class Efecto {
     

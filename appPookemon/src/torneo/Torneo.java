@@ -1,8 +1,8 @@
-package appPookemon.src.torneo;
+package torneo;
 
 import java.util.ArrayList;
 
-import appPookemon.src.registro.Entrenador;
+import registro.Entrenador;
 
 public class Torneo {
 

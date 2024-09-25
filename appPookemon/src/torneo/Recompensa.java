@@ -1,4 +1,4 @@
-package appPookemon.src.torneo;
+package torneo;
 
 public class Recompensa {
 

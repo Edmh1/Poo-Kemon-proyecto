@@ -1,11 +1,11 @@
-package appPookemon.src.testing;
+package testing;
 
 
 import java.util.Scanner;
 
-import appPookemon.src.registro.Entrenador;
-import appPookemon.src.registro.Organizador;
-import appPookemon.src.torneo.Torneo;
+import registro.Entrenador;
+import registro.Organizador;
+import torneo.Torneo;
 
 public class prueba {
     public static void main(String[] args) {
