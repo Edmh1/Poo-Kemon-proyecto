@@ -44,8 +44,8 @@ left to right direction
         - movimientos : ArrayList<Movimiento>
         - efecto : Efecto
         
-        + mostrarListaMovimientos()
-        + recibirDaño()
+        + getMovimientos()
+        + afectarHp()
         + obtenerMovimientoPorID(idMovimiento : int)
 
 
@@ -156,14 +156,6 @@ left to right direction
 
     }
 
-    newpage
-
-    class Efecto {
-
-        + aplicar(nombreObjetivo : Pookemon)
-        + haTerminado()
-    }
-
     newpage 
     
     class MovimientoFisico{
@@ -175,6 +167,8 @@ left to right direction
     class MovimientoEspecial{
 
     }
+
+    newpage
 
 
 @enduml   

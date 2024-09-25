@@ -13,29 +13,6 @@ package "registro" {
 
 }
 
-package "pookemon" {
-    class Pookemon {
-
-    }
-
-    class Estadística {
-
-    }
-
-    class Movimiento {
-
-    }
-
-    class Objeto{
-
-    }
-
-    class Efecto{
-
-    }
-
-}
-
 package "torneo" {
     class Batalla {
 
@@ -54,14 +31,39 @@ package "torneo" {
     }
 }
 
+package "pookemon" {
+    class Pookemon {
+
+    }
+
+    class Objeto{
+
+    }
+
+    class Estadística {
+
+    }
+
+    class Movimiento {
+
+    }
+
+    class MovimientoFisico{
+
+    }
+
+    class MovimientoEspecial
+
+}
+
 Entrenador "*" o-- "3" Pookemon 
 Entrenador "*" o-- "2" Objeto
 
 Pookemon "*" o-- "5" Movimiento
 Pookemon "1" *-- "1" Estadística
-Pookemon "*" o-- "1" Efecto
-Movimiento "*" o-- "1" Efecto
 
+MovimientoFisico --|> Movimiento
+MovimientoEspecial --|> Movimiento
 
 
 Organizador "1" *-- "*" Torneo

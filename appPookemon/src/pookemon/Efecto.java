@@ -1,5 +1,5 @@
 package pookemon;
 
-public class Efecto {
+public interface Efecto {
     
 }
