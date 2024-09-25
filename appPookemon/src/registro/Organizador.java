@@ -1,6 +1,6 @@
-package SourcePackPookemon.registro;
+package appPookemon.src.registro;
 
-import SourcePackPookemon.torneo.Torneo;
+import appPookemon.src.torneo.Torneo;
 
 public class Organizador {
 

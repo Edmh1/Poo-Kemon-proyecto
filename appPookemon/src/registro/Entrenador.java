@@ -1,4 +1,4 @@
-package SourcePackPookemon.registro;
+package appPookemon.src.registro;
 
 public class Entrenador {
 
