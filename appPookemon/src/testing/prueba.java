@@ -2,6 +2,8 @@ package testing;
 
 
 import java.util.Scanner;
+import pookemon.Efecto;
+import pookemon.Pookemon;
 
 import registro.Entrenador;
 import registro.Organizador;
@@ -18,7 +20,7 @@ public class prueba {
         if(organizador.verficiarCont(cont)){
             torneo = organizador.crearTorneo();
             if(organizador.hayTorneo()){
-                System.out.println("Ingresa el número de jugadores");
+                /*System.out.println("Ingresa el número de jugadores");
                 int cantidadJugadores = scanner.nextInt();
                 System.out.println(cantidadJugadores);
         
@@ -29,7 +31,24 @@ public class prueba {
                     String genero = scanner.next();
                     organizador.inscribirJugadorTorneo(new Entrenador(nombre, genero));
                 }
+                
+      
+*/
+                torneo.addPookemon(new Pookemon(1111, "Pikachu", "Electricidad", null));
+                torneo.addPookemon(new Pookemon(2222, "Charmander", "Fuego", null));
+                torneo.addPookemon(new Pookemon(3333, "Squirrel", "Agua", null));
+                
+                System.out.println("" + torneo.toStringPookemones());
+                
+                torneo.editarElementoPookemon(1111, "Fuego");
+                torneo.editarNombrePookemon(2222, "Escannor");
+                System.out.println("" + torneo.toStringPookemones() + "\n");
+                
+                torneo.eliminarPookemon(3333);
+                
+                System.out.println("" + torneo.toStringPookemones() + "\n");
             }
+                
         }else{
             System.out.println("Contraseña incorrecta");
         }

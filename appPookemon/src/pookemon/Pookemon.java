@@ -18,6 +18,13 @@ public class Pookemon {
         this.movimientos = new ArrayList<>();
         this.efecto = efecto;
     }
+
+    @Override
+    public String toString() {
+        return "Pookemon{" + "idPookemon=" + idPookemon + ", nombre=" + nombre + ", elemento=" + elemento + ", estadistica=" + estadistica + ", movimientos=" + movimientos + ", efecto=" + efecto + '}';
+    }
+    
+    
     
     public void inicializarEstadistica(int salud, int ataque, int defensa, int velocidad, int ataqueEspecial, int defensaEspecial) {
         this.estadistica = new Estadistica(salud, ataque, defensa, velocidad, ataqueEspecial, defensaEspecial);

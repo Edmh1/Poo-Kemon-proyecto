@@ -45,15 +45,26 @@ public class Torneo {
     }
     
     public void eliminarPookemon(int id_pookemon_p){
-        for (Pookemon p : pookemones) {
-            if(p.getIdPookemon() == id_pookemon_p){
-                pookemones.remove(p);
+        for (int i = 0; i < pookemones.size(); i++) {
+            if(pookemones.get(i).getIdPookemon() == id_pookemon_p){
+                pookemones.remove(i);
             }
+            
         }
     }
+    
+    public String toStringPookemones() {
+        String lis = "Lista de pookemones:\n";
+        
+        for (Pookemon p : pookemones) {
+            lis +="- " + p.toString()+ "\n";
+        }
 
-    @Override
-    public String toString() {
+        return lis;
+    }
+
+    
+    public String toStringJugadores() {
         String lis = "Lista de jugadores:\n";
         
         for (Entrenador entrenador : jugadores) {
