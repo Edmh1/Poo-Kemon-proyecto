@@ -3,7 +3,7 @@ package registro;
 import java.util.ArrayList;
 import java.util.List;
 import pookemon.Movimiento;
-import pookemon.Objecto;
+import pookemon.Objeto;
 import pookemon.Pookemon;
 
 public class Entrenador {
@@ -12,7 +12,7 @@ public class Entrenador {
     private String nombreEntrenador;
     private String generoEntrenador;
     private List<Pookemon> pookemones;
-    private List<Objecto> objectos;
+    private List<Objeto> objetos;
     private int pookemonActual;
 
     public Entrenador(int idEntrenador, String nombreEntrenador, String generoEntrenador) {
@@ -20,21 +20,21 @@ public class Entrenador {
         this.nombreEntrenador = nombreEntrenador;
         this.generoEntrenador = generoEntrenador;
         this.pookemones = new ArrayList<>();
-        this.objectos = new ArrayList<>();
+        this.objetos = new ArrayList<>();
         this.pookemonActual = 0;
     }
     
     public void defenderse() {
         Pookemon pookemon = pookemones.get(pookemonActual);
         pookemon.activarDefensa();
-        System.out.println(pookemon.getNombre() + " se está defendiendo. El daño será reducido en este turno.");
+        System.out.println(pookemon.getNombrePookemon() + " se está defendiendo. El daño será reducido en este turno.");
     }
 
     public void atacar(int idMovimiento, Pookemon objetivo) {
         Pookemon pookemon = pookemones.get(pookemonActual);
         Movimiento movimiento = pookemon.obtenerMovimientoPorID(idMovimiento);
         if (movimiento != null) {
-            System.out.println(nombreEntrenador + " ordena a " + pookemon.getNombre() + " usar " + movimiento.getNombre());
+            System.out.println(nombreEntrenador + " ordena a " + pookemon.getNombrePookemon() + " usar " + movimiento.getNombreMovimiento());
             movimiento.realizar(pookemon, objetivo);
         } else {
             System.out.println("Movimiento no encontrado.");
@@ -42,10 +42,10 @@ public class Entrenador {
     }
 
     public void usarObjeto(int idObjeto) {
-        for (Objecto objeto : objectos) {
+        for (Objeto objeto : objetos) {
             if (objeto.getIdObjeto() == idObjeto) {
                 objeto.usarObjeto(pookemones.get(pookemonActual));
-                System.out.println(nombreEntrenador + " usa " + objeto.getNombreObjeto() + " en " + pookemones.get(pookemonActual).getNombre());
+                System.out.println(nombreEntrenador + " usa " + objeto.getNombreObjeto() + " en " + pookemones.get(pookemonActual).getNombrePookemon());
                 return;
             }
         }
@@ -53,10 +53,10 @@ public class Entrenador {
     }
     
     public void usarObjeto(int idObjeto, int idMovimiento) {
-        for (Objecto objeto : objectos) {
+        for (Objeto objeto : objetos) {
             if (objeto.getIdObjeto() == idObjeto) {
                 objeto.usarObjeto(pookemones.get(pookemonActual), idMovimiento);
-                System.out.println(nombreEntrenador + " usa " + objeto.getNombreObjeto() + " en " + pookemones.get(pookemonActual).getMovimientos().get(idMovimiento).getNombre());
+                System.out.println(nombreEntrenador + " usa " + objeto.getNombreObjeto() + " en " + pookemones.get(pookemonActual).getMovimientos().get(idMovimiento).getNombreMovimiento());
                 return;
             }
         }
@@ -68,7 +68,7 @@ public class Entrenador {
         for (int i = 0; i < pookemones.size(); i++) {
             if (pookemones.get(i).getIdPookemon() == idPookemon) {
                 pookemonActual = i;
-                System.out.println(nombreEntrenador + " cambia a " + pookemones.get(i).getNombre());
+                System.out.println(nombreEntrenador + " cambia a " + pookemones.get(i).getNombrePookemon());
                 return;
             }
         }
@@ -82,6 +82,25 @@ public class Entrenador {
             }
         }
         return null;
+    }
+    
+    /**
+     * @param objetos the objetos to set
+     */
+    public void setObjetos(List<Objeto> objetos) {
+        this.objetos = objetos;
+    }
+    
+    /**
+     * @param pookemones the pookemones to set
+     */
+    public void setPookemones(List<Pookemon> pookemones) {
+        this.pookemones = pookemones;
+    }
+
+    @Override
+    public String toString() {
+        return "Entrenador{" + "idEntrenador=" + idEntrenador + ", nombreEntrenador=" + nombreEntrenador + ", generoEntrenador=" + generoEntrenador + ", pookemones=" + pookemones + ", objetos=" + objetos + ", pookemonActual=" + pookemonActual + '}';
     }
 
     /**
@@ -134,24 +153,10 @@ public class Entrenador {
     }
 
     /**
-     * @param pookemones the pookemones to set
-     */
-    public void setPookemones(List<Pookemon> pookemones) {
-        this.pookemones = pookemones;
-    }
-
-    /**
      * @return the objetos
      */
-    public List<Objecto> getObjectos() {
-        return objectos;
-    }
-
-    /**
-     * @param objetos the objetos to set
-     */
-    public void setObjectos(List<Objecto> objetos) {
-        this.objectos = objetos;
+    public List<Objeto> getObjetos() {
+        return objetos;
     }
 
     /**

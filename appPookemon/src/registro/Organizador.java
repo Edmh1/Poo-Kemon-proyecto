@@ -3,7 +3,6 @@ package registro;
 import torneo.Torneo;
 
 public class Organizador {
-
     private int idOrganizador;
     private Torneo torneoActual;
     private String password;

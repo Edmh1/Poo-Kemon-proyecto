@@ -25,19 +25,18 @@ left to right direction
 
     class Entrenador {
         - idEntrenador : int
-        - nombre : str
-        - genero : str
-        - listaPookemones : ArrayList<Pookemon>
+        - nombreEntrenador : str
+        - generoEntrenador : str
+        - pookemones : ArrayList<Pookemon>
         - objetos : ArrayList<Objeto>
         - pokemonActual : int 
 
         + defenderse()
-        + atacar(idMovimiento : int)
+        + atacar(idMovimiento : int, objetivo : Pookemon)
         + usarObjeto(idObjeto : int)
+        + usarObjeto(idObjeto : int, idMovimiento : int)
         + cambiarPookemon(idPookemon : int)
-        + mostrarMovimientosPoookemon(idPookemon : int)
         + obtenerPookemonPorID(idPookemon : int)
-
     }
 
     newpage
@@ -48,26 +47,24 @@ left to right direction
         - tipoObjeto : str
         - puntosR : int
 
-        + usarObjeto()
-        + usarObjeto()
+        + usarObjeto(pookemon : Pookemon)
+        + usarObjeto(pookemon : Pookemon, idMovimiento : int)
     }
 
     newpage
 
     class Pookemon {
         - idPookemon : int
-        - nombre : str
-        - elemento : str
-        - estadistica : Estadistica
+        - nombrePookemon : str
+        - elementoPookemon : str
+        - estadisticaPookemon : Estadistica
         - movimientos : ArrayList<Movimiento>
         - efecto : Efecto
         - defendiendo : boolean
         
-        + getMovimientos()
-        + obtenerMovimientoPorID(idMovimiento : int)
         + activarDefensa()
         + afectarHp()
-        
+        + obtenerMovimientoPorID(idMovimiento : int)
     }
 
     newpage
@@ -87,8 +84,8 @@ left to right direction
 
     class Movimiento {
         - idMovimiento : int
-        - nombre: str
-        - descripcion : str
+        - nombreMovimiento: str
+        - descripcionMovimiento : str
         - potencia : int
         - precision: int
         - cantidadPP : int
@@ -98,7 +95,6 @@ left to right direction
         - calcularDañoBase()
         - calcularGolpeCritico()
         + calcularDañoTotal()
-        + toString()
         + realizar()
     }
 

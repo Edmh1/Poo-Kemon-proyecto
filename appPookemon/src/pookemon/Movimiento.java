@@ -2,8 +2,8 @@ package pookemon;
 
 public class Movimiento {
     private int idMovimiento;
-    private String nombre;
-    private String descripcion;
+    private String nombreMovimiento;
+    private String descripcionMovimiento;
     private int potencia;
     private int precision;
     private int cantidadPP;
@@ -12,8 +12,8 @@ public class Movimiento {
 
     public Movimiento(int idMovimiento, String nombre, String descripcion, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto) {
         this.idMovimiento = idMovimiento;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+        this.nombreMovimiento = nombre;
+        this.descripcionMovimiento = descripcion;
         this.potencia = potencia;
         this.precision = precision;
         this.cantidadPP = cantidadPP;
@@ -39,27 +39,27 @@ public class Movimiento {
         return dañoBase;
     }
 
-    @Override
-    public String toString() {
-        return "Movimiento{" + "idMovimiento=" + idMovimiento + ", nombre=" + nombre + ", descripcion=" + descripcion + ", potencia=" + potencia + ", precision=" + precision +"% " +", cantidadPP=" + cantidadPP + ", elemento=" + elemento + ", efecto=" + efecto + '}';
-    }
-
     public void realizar(Pookemon atacante, Pookemon defensor) {
         if (cantidadPP > 0) {
             cantidadPP--;
         } else {
-            System.out.println(atacante.getNombre() + " no tiene PP suficientes. Se usará HP en su lugar.");
+            System.out.println(atacante.getNombrePookemon() + " no tiene PP suficientes. Se usará HP en su lugar.");
             atacante.afectarHp(10);
         }
 
         if (precision > Math.random() * 100) {
             int daño = calcularDañoTotal(atacante, defensor);
             defensor.afectarHp(daño);
-            System.out.println(atacante.getNombre() + " ha realizado " + nombre + " y ha causado " + daño + " puntos de daño a " + defensor.getNombre());
+            System.out.println(atacante.getNombrePookemon() + " ha realizado " + nombreMovimiento + " y ha causado " + daño + " puntos de daño a " + defensor.getNombrePookemon());
             
         } else {
-            System.out.println(atacante.getNombre() + " ha fallado el ataque.");
+            System.out.println(atacante.getNombrePookemon() + " ha fallado el ataque.");
         }
+    }
+    
+     @Override
+    public String toString() {
+        return "Movimiento{" + "idMovimiento=" + idMovimiento + ", nombre=" + nombreMovimiento + ", descripcion=" + descripcionMovimiento + ", potencia=" + potencia + ", precision=" + precision +"% " +", cantidadPP=" + cantidadPP + ", elemento=" + elemento + ", efecto=" + efecto + '}';
     }
 
     /**
@@ -77,17 +77,17 @@ public class Movimiento {
     }
 
     /**
-     * @return the descripcion
+     * @return the descripcionMovimiento
      */
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescripcionMovimiento() {
+        return descripcionMovimiento;
     }
 
     /**
-     * @param descripcion the descripcion to set
+     * @param descripcionMovimiento the descripcionMovimiento to set
      */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcionMovimiento(String descripcionMovimiento) {
+        this.descripcionMovimiento = descripcionMovimiento;
     }
 
     /**
@@ -161,17 +161,17 @@ public class Movimiento {
     }
 
     /**
-     * @return the nombre
+     * @return the nombreMovimiento
      */
-    public String getNombre() {
-        return nombre;
+    public String getNombreMovimiento() {
+        return nombreMovimiento;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param nombreMovimiento the nombreMovimiento to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreMovimiento(String nombreMovimiento) {
+        this.nombreMovimiento = nombreMovimiento;
     }
     
     

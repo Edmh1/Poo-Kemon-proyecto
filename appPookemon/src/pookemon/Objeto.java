@@ -1,13 +1,13 @@
 package pookemon;
 
-public class Objecto {
+public class Objeto {
 
     private int idObjeto;
     private String nombreObjeto;
     private String tipoObjeto;
     private int puntosR;
 
-    public Objecto(int idObjeto, String nombreObjeto, String tipoObjeto, int puntosR) {
+    public Objeto(int idObjeto, String nombreObjeto, String tipoObjeto, int puntosR) {
         this.idObjeto = idObjeto;
         this.nombreObjeto = nombreObjeto;
         this.tipoObjeto = tipoObjeto;
@@ -15,8 +15,8 @@ public class Objecto {
     }
     
     public void usarObjeto(Pookemon pookemon) {
-        pookemon.getEstadistica().setVida(pookemon.getEstadistica().getVida()+puntosR);
-        System.out.println(pookemon.getNombre() + " ha recuperado " + puntosR + " puntos de vida.");
+        pookemon.getEstadisticaPookemon().setVida(pookemon.getEstadisticaPookemon().getVida()+puntosR);
+        System.out.println(pookemon.getNombrePookemon() + " ha recuperado " + puntosR + " puntos de vida.");
     }
     
     public void usarObjeto(Pookemon pookemon, int idMovimiento) {
@@ -24,10 +24,14 @@ public class Objecto {
             if(idMovimiento == mov.getIdMovimiento())
                 mov.setCantidadPP(mov.getCantidadPP()+puntosR);
         }
-        System.out.println(pookemon.getNombre() + " ha recuperado " + puntosR + " puntos de PP.");
+        System.out.println(pookemon.getNombrePookemon() + " ha recuperado " + puntosR + " puntos de PP.");
     }      
-   
 
+    @Override
+    public String toString() {
+        return "Objeto{" + "idObjeto=" + idObjeto + ", nombreObjeto=" + nombreObjeto + ", tipoObjeto=" + tipoObjeto + ", puntosR=" + puntosR + '}';
+    }
+   
     /**
      * @return the idObjeto
      */
