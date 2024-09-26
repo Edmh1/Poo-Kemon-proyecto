@@ -68,7 +68,7 @@ public class Torneo {
         String lis = "Lista de jugadores:\n";
         
         for (Entrenador entrenador : jugadores) {
-            lis +="- " + entrenador.getNombre() + "\n";
+            lis +="- " + entrenador.getNombreEntrenador() + "\n";
         }
 
         return lis;

@@ -10,6 +10,7 @@ public class Pookemon {
     private Estadistica estadistica;
     private List<Movimiento> movimientos;
     private Efecto efecto;
+    private boolean defendiendo;
 
     public Pookemon(int idPookemon, String nombre, String elemento, Efecto efecto) {
         this.idPookemon = idPookemon;
@@ -32,12 +33,20 @@ public class Pookemon {
         movimientos.add(x);
     }
     
+    public void activarDefensa(){
+        this.defendiendo = true;
+    }
+    
     public void afectarHp(int x){
+        if(isDefendiendo()){
+            x /= 1.5;
+        }
         int vida = estadistica.getVida();
         vida -= x;
         if (vida < 0) 
             vida = 0;
         estadistica.setVida(vida);
+        defendiendo = false;
     }
     
     public Movimiento obtenerMovimientoPorID(int id){
@@ -49,6 +58,13 @@ public class Pookemon {
     }
     
 
+    /**
+     * @return the defendiendo
+     */
+    public boolean isDefendiendo() {
+        return defendiendo;
+    }
+    
     /**
      * @return the idPookemon
      */
@@ -132,7 +148,7 @@ public class Pookemon {
     public void setEfecto(Efecto efecto) {
         this.efecto = efecto;
     }
-    
+
     
     
 }

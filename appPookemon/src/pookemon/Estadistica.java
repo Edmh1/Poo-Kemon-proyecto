@@ -105,6 +105,6 @@ public class Estadistica {
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
-    
-    
+
+ 
 }
