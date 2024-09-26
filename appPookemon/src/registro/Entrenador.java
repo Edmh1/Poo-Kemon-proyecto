@@ -12,7 +12,7 @@ public class Entrenador {
     private String nombreEntrenador;
     private String generoEntrenador;
     private List<Pookemon> pookemones;
-    private List<Objecto> objetos;
+    private List<Objecto> objectos;
     private int pookemonActual;
 
     public Entrenador(int idEntrenador, String nombreEntrenador, String generoEntrenador) {
@@ -20,7 +20,7 @@ public class Entrenador {
         this.nombreEntrenador = nombreEntrenador;
         this.generoEntrenador = generoEntrenador;
         this.pookemones = new ArrayList<>();
-        this.objetos = new ArrayList<>();
+        this.objectos = new ArrayList<>();
         this.pookemonActual = 0;
     }
     
@@ -42,7 +42,7 @@ public class Entrenador {
     }
 
     public void usarObjeto(int idObjeto) {
-        for (Objecto objeto : objetos) {
+        for (Objecto objeto : objectos) {
             if (objeto.getIdObjeto() == idObjeto) {
                 objeto.usarObjeto(pookemones.get(pookemonActual));
                 System.out.println(nombreEntrenador + " usa " + objeto.getNombreObjeto() + " en " + pookemones.get(pookemonActual).getNombre());
@@ -53,7 +53,7 @@ public class Entrenador {
     }
     
     public void usarObjeto(int idObjeto, int idMovimiento) {
-        for (Objecto objeto : objetos) {
+        for (Objecto objeto : objectos) {
             if (objeto.getIdObjeto() == idObjeto) {
                 objeto.usarObjeto(pookemones.get(pookemonActual), idMovimiento);
                 System.out.println(nombreEntrenador + " usa " + objeto.getNombreObjeto() + " en " + pookemones.get(pookemonActual).getMovimientos().get(idMovimiento).getNombre());
@@ -143,15 +143,15 @@ public class Entrenador {
     /**
      * @return the objetos
      */
-    public List<Objecto> getObjetos() {
-        return objetos;
+    public List<Objecto> getObjectos() {
+        return objectos;
     }
 
     /**
      * @param objetos the objetos to set
      */
-    public void setObjetos(List<Objecto> objetos) {
-        this.objetos = objetos;
+    public void setObjectos(List<Objecto> objetos) {
+        this.objectos = objetos;
     }
 
     /**
