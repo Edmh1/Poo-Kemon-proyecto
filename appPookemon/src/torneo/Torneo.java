@@ -1,6 +1,7 @@
 package torneo;
 
 import java.util.ArrayList;
+import java.util.List;
 import pookemon.Efecto;
 import pookemon.Movimiento;
 
@@ -50,6 +51,27 @@ public class Torneo {
                 pookemones.remove(i);
             }
             
+        }
+    }
+    
+    public void addMovimientoAPookemon(Movimiento x, int idPookemon_p){
+        for (Pookemon p : pookemones) {
+            if(p.getIdPookemon() == idPookemon_p){
+                p.addMovimiento(x);
+            }
+        }
+    }
+    
+    public void eliminarMovimientoAPookemon(int idMovimiento_p, int idPookemon_p){
+        for (Pookemon p : pookemones) {
+            if(p.getIdPookemon() == idPookemon_p){
+                List<Movimiento> movimientosP = p.getMovimientos();
+                for (int i = 0; i < movimientosP.size(); i++) {
+                    if(movimientosP.get(i).getIdMovimiento() == idMovimiento_p){
+                        movimientosP.remove(i);
+                    }       
+                }
+            }
         }
     }
     
