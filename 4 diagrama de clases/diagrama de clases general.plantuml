@@ -52,7 +52,9 @@ package "pookemon" {
 
     }
 
-    class MovimientoEspecial
+    class MovimientoEspecial{
+
+    }
 
 }
 

@@ -2,6 +2,7 @@ package pookemon;
 
 public class Movimiento {
     private int idMovimiento;
+    private String nombre;
     private String descripcion;
     private int potencia;
     private int precision;
@@ -9,14 +10,56 @@ public class Movimiento {
     private String elemento;
     private Efecto efecto;
 
-    public Movimiento(int idMovimiento, String descripcion, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto) {
+    public Movimiento(int idMovimiento, String nombre, String descripcion, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto) {
         this.idMovimiento = idMovimiento;
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.potencia = potencia;
         this.precision = precision;
         this.cantidadPP = cantidadPP;
         this.elemento = elemento;
         this.efecto = efecto;
+    }
+
+    protected int calcularDañoBase(Pookemon atacante, Pookemon defensor) {
+        return 0;
+    }
+
+    private boolean calcularGolpeCritico() {
+        return Math.random() < 0.05;
+    }
+
+    public int calcularDañoTotal(Pookemon atacante, Pookemon defensor) {
+        int dañoBase = calcularDañoBase(atacante, defensor);
+
+        if (calcularGolpeCritico()) {
+            System.out.println("¡Golpe crítico!");
+            dañoBase *= 1.5;
+        }
+        return dañoBase;
+    }
+
+    @Override
+    public String toString() {
+        return "Movimiento{" + "idMovimiento=" + idMovimiento + ", nombre=" + nombre + ", descripcion=" + descripcion + ", potencia=" + potencia + ", precision=" + precision +"% " +", cantidadPP=" + cantidadPP + ", elemento=" + elemento + ", efecto=" + efecto + '}';
+    }
+
+    public void realizar(Pookemon atacante, Pookemon defensor) {
+        if (cantidadPP > 0) {
+            cantidadPP--;
+        } else {
+            System.out.println(atacante.getNombre() + " no tiene PP suficientes. Se usará HP en su lugar.");
+            atacante.afectarHp(10);
+        }
+
+        if (precision > Math.random() * 100) {
+            int daño = calcularDañoTotal(atacante, defensor);
+            defensor.afectarHp(daño);
+            System.out.println(atacante.getNombre() + " ha realizado " + nombre + " y ha causado " + daño + " puntos de daño a " + defensor.getNombre());
+            
+        } else {
+            System.out.println(atacante.getNombre() + " ha fallado el ataque.");
+        }
     }
 
     /**
@@ -115,6 +158,20 @@ public class Movimiento {
      */
     public void setEfecto(Efecto efecto) {
         this.efecto = efecto;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     

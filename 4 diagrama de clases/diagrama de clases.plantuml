@@ -74,6 +74,7 @@ left to right direction
 
     class Movimiento {
         - idMovimiento : int
+        - nombre: str
         - descripcion : str
         - potencia : int
         - precision: int
@@ -81,12 +82,23 @@ left to right direction
         - elemento : str
         - efecto : Efecto 
 
-        + calcularCostoMovimiento()
         - calcularDañoBase()
         - calcularGolpeCritico()
         + calcularDañoTotal()
-        + mostrarMovimiento()
+        + toString()
         + realizar()
+    }
+
+    newpage
+
+    class MovimientoFisico{
+        - calcularDañoBase()
+    }
+
+    newpage 
+
+    class MovimientoEspecial{
+        - calcularDañoBase()
     }
 
     newpage
@@ -164,17 +176,7 @@ left to right direction
 
     newpage 
     
-    class MovimientoFisico{
-
-    }
-
-    newpage 
-
-    class MovimientoEspecial{
-
-    }
-
-    newpage
+    
 
 
 @enduml   
