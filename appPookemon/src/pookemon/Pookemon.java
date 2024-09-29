@@ -5,39 +5,48 @@ import java.util.List;
 
 public class Pookemon {
     private int idPookemon;
-    private String nombre;
-    private String elemento;
-    private Estadistica estadistica;
+    private String nombrePookemon;
+    private String elementoPookemon;
+    private Estadistica estadisticaPookemon;
     private List<Movimiento> movimientos;
     private Efecto efecto;
+    private boolean defendiendo;
 
     public Pookemon(int idPookemon, String nombre, String elemento, Efecto efecto) {
         this.idPookemon = idPookemon;
-        this.nombre = nombre;
-        this.elemento = elemento;
+        this.nombrePookemon = nombre;
+        this.elementoPookemon = elemento;
         this.movimientos = new ArrayList<>();
         this.efecto = efecto;
     }
 
     @Override
     public String toString() {
-        return "Pookemon{" + "idPookemon=" + idPookemon + ", nombre=" + nombre + ", elemento=" + elemento + ", estadistica=" + estadistica + ", movimientos=" + movimientos + ", efecto=" + efecto + '}';
+        return "Pookemon{" + "idPookemon=" + idPookemon + ", nombre=" + nombrePookemon + ", elemento=" + elementoPookemon + ", estadistica=" + estadisticaPookemon + ", movimientos=" + movimientos + ", efecto=" + efecto + '}';
     }
     
     public void inicializarEstadistica(int salud, int ataque, int defensa, int velocidad, int ataqueEspecial, int defensaEspecial) {
-        this.estadistica = new Estadistica(salud, ataque, defensa, velocidad, ataqueEspecial, defensaEspecial);
+        this.estadisticaPookemon = new Estadistica(salud, ataque, defensa, velocidad, ataqueEspecial, defensaEspecial);
     }
     
     public void addMovimiento(Movimiento x){
         movimientos.add(x);
     }
     
+    public void activarDefensa(){
+        this.defendiendo = true;
+    }
+    
     public void afectarHp(int x){
-        int vida = estadistica.getVida();
+        if(isDefendiendo()){
+            x /= 1.5;
+        }
+        int vida = estadisticaPookemon.getVida();
         vida -= x;
         if (vida < 0) 
             vida = 0;
-        estadistica.setVida(vida);
+        estadisticaPookemon.setVida(vida);
+        defendiendo = false;
     }
     
     public Movimiento obtenerMovimientoPorID(int id){
@@ -49,6 +58,13 @@ public class Pookemon {
     }
     
 
+    /**
+     * @return the defendiendo
+     */
+    public boolean isDefendiendo() {
+        return defendiendo;
+    }
+    
     /**
      * @return the idPookemon
      */
@@ -64,45 +80,45 @@ public class Pookemon {
     }
 
     /**
-     * @return the nombre
+     * @return the nombrePookemon
      */
-    public String getNombre() {
-        return nombre;
+    public String getNombrePookemon() {
+        return nombrePookemon;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param nombrePookemon the nombrePookemon to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombrePookemon(String nombrePookemon) {
+        this.nombrePookemon = nombrePookemon;
     }
 
     /**
-     * @return the elemento
+     * @return the elementoPookemon
      */
-    public String getElemento() {
-        return elemento;
+    public String getElementoPookemon() {
+        return elementoPookemon;
     }
 
     /**
-     * @param elemento the elemento to set
+     * @param elementoPookemon the elementoPookemon to set
      */
-    public void setElemento(String elemento) {
-        this.elemento = elemento;
+    public void setElementoPookemon(String elementoPookemon) {
+        this.elementoPookemon = elementoPookemon;
     }
 
     /**
-     * @return the estadistica
+     * @return the estadisticaPookemon
      */
-    public Estadistica getEstadistica() {
-        return estadistica;
+    public Estadistica getEstadisticaPookemon() {
+        return estadisticaPookemon;
     }
 
     /**
-     * @param estadistica the estadistica to set
+     * @param estadisticaPookemon the estadisticaPookemon to set
      */
-    public void setEstadistica(Estadistica estadistica) {
-        this.estadistica = estadistica;
+    public void setEstadisticaPookemon(Estadistica estadisticaPookemon) {
+        this.estadisticaPookemon = estadisticaPookemon;
     }
 
     /**
@@ -132,7 +148,7 @@ public class Pookemon {
     public void setEfecto(Efecto efecto) {
         this.efecto = efecto;
     }
-    
+
     
     
 }

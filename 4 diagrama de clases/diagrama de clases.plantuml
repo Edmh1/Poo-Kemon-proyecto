@@ -2,25 +2,6 @@
 
 left to right direction
 
-    class Entrenador {
-        - idEntrenador : int
-        - nombre : str
-        - genero : str
-        - listaPookemones : ArrayList<Pookemon>
-        - objetos : ArrayList<Objeto>
-        - pokemonActual : int 
-
-        + atacar(idMovimiento : int)
-        + defenderse()
-        + usarObjeto(idObjeto : int)
-        + cambiarPookemon(idPookemon : int)
-        + mostrarMovimientosPoookemon(idPookemon : int)
-        + obtenerPookemonPorID(idPookemon : int)
-
-    }
-
-    newpage
-
     class Organizador {
         - idOrganizador : int
         - torneoActual : Torneo
@@ -42,19 +23,48 @@ left to right direction
 
     newpage
 
+    class Entrenador {
+        - idEntrenador : int
+        - nombreEntrenador : str
+        - generoEntrenador : str
+        - pookemones : ArrayList<Pookemon>
+        - objetos : ArrayList<Objeto>
+        - pokemonActual : int 
+
+        + defenderse()
+        + atacar(idMovimiento : int, objetivo : Pookemon)
+        + usarObjeto(idObjeto : int)
+        + usarObjeto(idObjeto : int, idMovimiento : int)
+        + cambiarPookemon(idPookemon : int)
+        + obtenerPookemonPorID(idPookemon : int)
+    }
+
+    newpage
+
+    class Objeto{
+        - idObjeto : int
+        - nombreObjeto  : str
+        - tipoObjeto : str
+        - puntosR : int
+
+        + usarObjeto(pookemon : Pookemon)
+        + usarObjeto(pookemon : Pookemon, idMovimiento : int)
+    }
+
+    newpage
+
     class Pookemon {
         - idPookemon : int
-        - nombre : str
-        - estadistica : Estadistica
-        - elemento : str
+        - nombrePookemon : str
+        - elementoPookemon : str
+        - estadisticaPookemon : Estadistica
         - movimientos : ArrayList<Movimiento>
         - efecto : Efecto
+        - defendiendo : boolean
         
-        + getMovimientos()
+        + activarDefensa()
         + afectarHp()
         + obtenerMovimientoPorID(idMovimiento : int)
-
-
     }
 
     newpage
@@ -67,15 +77,15 @@ left to right direction
         - defensaEspecial : int
         - velocidad : int 
 
-        + mostrarEstadisticas()
+        + toString()
   }
 
     newpage
 
     class Movimiento {
         - idMovimiento : int
-        - nombre: str
-        - descripcion : str
+        - nombreMovimiento: str
+        - descripcionMovimiento : str
         - potencia : int
         - precision: int
         - cantidadPP : int
@@ -85,7 +95,6 @@ left to right direction
         - calcularDañoBase()
         - calcularGolpeCritico()
         + calcularDañoTotal()
-        + toString()
         + realizar()
     }
 
@@ -99,16 +108,6 @@ left to right direction
 
     class MovimientoEspecial{
         - calcularDañoBase()
-    }
-
-    newpage
-
-    class Objeto{
-        - idObjeto : int
-        - nombreObjeto  : str
-        - tipoObjeto : str
-        - puntosR : int
-
     }
 
     newpage

@@ -16,8 +16,8 @@ public class MovimientoFisico extends Movimiento{
 
     @Override
     protected int calcularDañoBase(Pookemon atacante, Pookemon defensor) {
-        int ataque = atacante.getEstadistica().getAtaqueFisico();
-        int defensa = defensor.getEstadistica().getDefensaFisica();
+        int ataque = atacante.getEstadisticaPookemon().getAtaqueFisico();
+        int defensa = defensor.getEstadisticaPookemon().getDefensaFisica();
         return (getPotencia() * ataque / defensa) / 2;
     }
     

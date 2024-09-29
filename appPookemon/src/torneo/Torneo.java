@@ -24,7 +24,7 @@ public class Torneo {
     public void editarNombrePookemon(int idPookemon_p, String nuevoNombre){
         for (Pookemon p : pookemones) {
             if(p.getIdPookemon() == idPookemon_p){
-                p.setNombre(nuevoNombre);
+                p.setNombrePookemon(nuevoNombre);
             }
         }
     }
@@ -32,7 +32,7 @@ public class Torneo {
     public void editarElementoPookemon(int idPookemon_p, String nuevoElemento){
         for (Pookemon p : pookemones) {
             if(p.getIdPookemon() == idPookemon_p){
-                p.setElemento(nuevoElemento);
+                p.setElementoPookemon(nuevoElemento);
             }
         }
     }
@@ -90,7 +90,7 @@ public class Torneo {
         String lis = "Lista de jugadores:\n";
         
         for (Entrenador entrenador : jugadores) {
-            lis +="- " + entrenador.getNombre() + "\n";
+            lis +="- " + entrenador.getNombreEntrenador() + "\n";
         }
 
         return lis;
