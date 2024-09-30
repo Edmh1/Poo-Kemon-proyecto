@@ -32,6 +32,7 @@ public class prueba {
                 
       
 */
+                /*
                 torneo.addPookemon(new Pookemon(1111, "Pikachu", "Electricidad", null));
                 torneo.addPookemon(new Pookemon(2222, "Charmander", "Fuego", null));
                 torneo.addPookemon(new Pookemon(3333, "Squirrel", "Agua", null));
@@ -45,7 +46,19 @@ public class prueba {
                 torneo.eliminarPookemon(3333);
                 
                 System.out.println("" + torneo.toStringPookemones() + "\n");
-            }
+                */
+                
+                torneo.addMovimiento(new Movimiento(1111, "First", "N", 20, 15, 10, "Agua", null));
+                
+                torneo.addMovimiento(new Movimiento(2222, "Second", "M", 10, 5, 10, "Aire", null));
+                torneo.addMovimiento(new Movimiento(3333, "Third", "O", 40, 2, 15, "Fuego", null));
+                System.out.println("" + torneo.toStringMovimientos());
+                
+                torneo.eliminarMovimiento(2222);
+                System.out.println("" + torneo.toStringMovimientos());
+                
+                torneo.editarMovimiento(3333, null, null, 35, 0, 0, null, null);
+            }   System.out.println("\n" + torneo.toStringMovimientos() );
                 
         }else{
             System.out.println("Contraseña incorrecta");

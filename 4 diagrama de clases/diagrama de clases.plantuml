@@ -147,6 +147,7 @@ left to right direction
         - nodoTorneo : NodoTorneo
         - jugadores : ArrayList<Entrenador>
         - pookemones : ArrayList<Pookemon>
+        - movimientos : ArrayList<Movimiento>
 
         + gestionarRondasTorneo()
         + iniciarTorneo()
