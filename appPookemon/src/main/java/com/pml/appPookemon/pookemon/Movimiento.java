@@ -26,18 +26,17 @@ public class Movimiento {
         return 0;
     }
 
-    private boolean calcularGolpeCritico() {
-        return Math.random() < 0.05;
+    private double calcularGolpeCritico() {
+        if(Math.random() < 0.05){
+            System.out.println("¡Golpe crítico!");
+            return 1.5;
+        }
+        return 1;
     }
 
     public int calcularDañoTotal(Pookemon atacante, Pookemon defensor) {
         int dañoBase = calcularDañoBase(atacante, defensor);
-
-        if (calcularGolpeCritico()) {
-            System.out.println("¡Golpe crítico!");
-            dañoBase *= 1.5;
-        }
-        return dañoBase;
+        return (int) (dañoBase*calcularGolpeCritico());
     }
 
     public void realizar(Pookemon atacante, Pookemon defensor) {
