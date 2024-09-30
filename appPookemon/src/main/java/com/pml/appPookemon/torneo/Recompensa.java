@@ -8,7 +8,7 @@ public class Recompensa {
 
 
 
-   
+
     @Override
     public String toString() {
         return "Recompensa [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fechadevencimiento="
@@ -20,6 +20,10 @@ public class Recompensa {
         this.descripcion = descripcion;
         this.fechadevencimiento = fechadevencimiento;
     } 
+
+    
+
+
 
 
    
