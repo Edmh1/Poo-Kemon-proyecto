@@ -1,4 +1,5 @@
-package pookemon;
+package main.java.com.pml.appPookemon.pookemon;
+
 
 public class Movimiento {
     private int idMovimiento;

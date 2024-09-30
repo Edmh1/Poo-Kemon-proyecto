@@ -1,11 +1,9 @@
-package torneo;
+package main.java.com.pml.appPookemon.torneo;
 
 import java.util.ArrayList;
-import pookemon.Efecto;
-import pookemon.Movimiento;
-
-import registro.Entrenador;
-import pookemon.Pookemon;
+import main.java.com.pml.appPookemon.pookemon.Efecto;
+import main.java.com.pml.appPookemon.pookemon.Pookemon;
+import main.java.com.pml.appPookemon.registro.Entrenador;
 
 public class Torneo {
 

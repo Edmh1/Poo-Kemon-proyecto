@@ -1,4 +1,4 @@
-package torneo;
+package main.java.com.pml.appPookemon.torneo;
 
 public class Recompensa {
 

@@ -1,6 +1,7 @@
-package registro;
+package main.java.com.pml.appPookemon.registro;
 
-import torneo.Torneo;
+import main.java.com.pml.appPookemon.torneo.Torneo;
+
 
 public class Organizador {
     private int idOrganizador;

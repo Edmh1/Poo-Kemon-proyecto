@@ -1,4 +1,4 @@
-package pookemon;
+package main.java.com.pml.appPookemon.pookemon;
 
 import java.util.ArrayList;
 import java.util.List;

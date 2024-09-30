@@ -1,10 +1,11 @@
-package registro;
+package main.java.com.pml.appPookemon.registro;
 
 import java.util.ArrayList;
 import java.util.List;
-import pookemon.Movimiento;
-import pookemon.Objeto;
-import pookemon.Pookemon;
+import main.java.com.pml.appPookemon.pookemon.Movimiento;
+import main.java.com.pml.appPookemon.pookemon.Objeto;
+import main.java.com.pml.appPookemon.pookemon.Pookemon;
+
 
 public class Entrenador {
     
