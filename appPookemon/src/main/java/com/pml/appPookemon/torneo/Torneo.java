@@ -2,6 +2,7 @@ package main.java.com.pml.appPookemon.torneo;
 
 import java.util.ArrayList;
 import main.java.com.pml.appPookemon.pookemon.Efecto;
+import main.java.com.pml.appPookemon.pookemon.Movimiento;
 import main.java.com.pml.appPookemon.pookemon.Pookemon;
 import main.java.com.pml.appPookemon.registro.Entrenador;
 
