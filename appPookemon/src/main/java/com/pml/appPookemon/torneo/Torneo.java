@@ -6,7 +6,7 @@ import main.java.com.pml.appPookemon.pookemon.Movimiento;
 import main.java.com.pml.appPookemon.pookemon.Pookemon;
 import main.java.com.pml.appPookemon.registro.Entrenador;
 
-public class Torneo {
+public class Torneo{
 
     private ArrayList<Entrenador> jugadores = new ArrayList<>();
     private ArrayList<Pookemon> pookemones = new ArrayList<>();
@@ -139,6 +139,13 @@ public class Torneo {
      */
     public void setMovimientos(ArrayList<Movimiento> movimientos) {
         this.movimientos = movimientos;
+    }
+
+
+    public void darPremio(Recompensa a){
+        for (Entrenador entrenador : jugadores) {
+            entrenador.añadirPremios(a);
+         }                  
     }
 
 }

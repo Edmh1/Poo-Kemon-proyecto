@@ -5,6 +5,7 @@ import java.util.List;
 import main.java.com.pml.appPookemon.pookemon.Movimiento;
 import main.java.com.pml.appPookemon.pookemon.Objeto;
 import main.java.com.pml.appPookemon.pookemon.Pookemon;
+import main.java.com.pml.appPookemon.torneo.Recompensa;
 
 
 public class Entrenador {
@@ -15,6 +16,7 @@ public class Entrenador {
     private List<Pookemon> pookemones;
     private List<Objeto> objetos;
     private int pookemonActual;
+    private ArrayList<Recompensa> premios;
 
     public Entrenador(int idEntrenador, String nombreEntrenador, String generoEntrenador) {
         this.idEntrenador = idEntrenador;
@@ -22,6 +24,7 @@ public class Entrenador {
         this.generoEntrenador = generoEntrenador;
         this.pookemones = new ArrayList<>();
         this.objetos = new ArrayList<>();
+        this.premios = new ArrayList<>();
         this.pookemonActual = 0;
     }
     
@@ -174,6 +177,20 @@ public class Entrenador {
         this.pookemonActual = pookemonActual;
     }
 
-    
+    public void setPremios(ArrayList<Recompensa> premios) {
+        this.premios = premios;
+    }
+
+    public void añadirPremios(Recompensa a){
+        premios.add(a);
+    }
+
+    public String mostrarPremios(){
+        String lis = "Premios: \n";
+        for (int i = 0; i < premios.size(); i++) {
+           lis+=  premios.get(i).getNombre()+"\n";                
+        }
+        return lis;
+    }
 
 }

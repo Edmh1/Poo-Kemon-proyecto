@@ -3,7 +3,6 @@ package test.java.com.pml.appPookemon;
 
 import java.util.Scanner;
 import main.java.com.pml.appPookemon.pookemon.Movimiento;
-import main.java.com.pml.appPookemon.pookemon.Pookemon;
 import main.java.com.pml.appPookemon.registro.Organizador;
 import main.java.com.pml.appPookemon.torneo.Torneo;
 
