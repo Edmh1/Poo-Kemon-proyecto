@@ -16,13 +16,13 @@ su identidad dentro del torneo y diferenciar su experiencia de juego.
 
 ---
 ### 2. Título
-Como jugador, quiero que cada Pookémon tenga 5 movimientos donde minimo 1 este relacionado con su tipo elemental para poder planificar mis estrategias.
+Como jugador, quiero que cada Pookémon tenga 4 movimientos donde minimo 1 este relacionado con su tipo elemental para poder planificar mis estrategias.
 
 ### Descripción:
-Cada Pookémon debe contar con 5 movimientos donde por lo menos 1 estara directamente relacionado con su tipo elemental, lo que permitirá a los jugadores desarrollar estrategias específicas basadas en las fortalezas y debilidades de su equipo.
+Cada Pookémon debe contar con 4 movimientos donde por lo menos 1 estara directamente relacionado con su tipo elemental, lo que permitirá a los jugadores desarrollar estrategias específicas basadas en las fortalezas y debilidades de su equipo.
 
 ### Criterios de aceptación
-- Cada Pookémon tiene exactamente 5 movimientos asignados.
+- Cada Pookémon tiene exactamente 4 movimientos asignados.
 - Algunos movimientos están relacionados con el tipo elemental del Pookémon (por ejemplo, movimientos de agua para un Pookémon tipo agua).
 - Los movimientos son asignados automáticamente al momento de recibir el Pookémon en el juego.
 
