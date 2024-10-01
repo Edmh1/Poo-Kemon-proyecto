@@ -29,8 +29,11 @@ public class Pookemon {
         this.estadisticaPookemon = new Estadistica(salud, ataque, defensa, velocidad, ataqueEspecial, defensaEspecial);
     }
     
-    public void addMovimiento(Movimiento x){
-        movimientos.add(x);
+    /**
+     * @param movimientos the movimientos to set
+     */
+    public void setMovimientos(List<Movimiento> movimientos) {
+        this.movimientos = movimientos;
     }
     
     public void activarDefensa(){
@@ -128,12 +131,6 @@ public class Pookemon {
         return movimientos;
     }
 
-    /**
-     * @param movimientos the movimientos to set
-     */
-    public void setMovimientos(List<Movimiento> movimientos) {
-        this.movimientos = movimientos;
-    }
 
     /**
      * @return the efecto
