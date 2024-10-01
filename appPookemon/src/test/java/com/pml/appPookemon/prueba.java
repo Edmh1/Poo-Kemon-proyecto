@@ -9,7 +9,7 @@ import main.java.com.pml.appPookemon.torneo.Torneo;
 
 public class prueba {
     public static void main(String[] args) {
-        Organizador organizador = new Organizador(1, "12345");
+        Organizador organizador = new Organizador(1, "12345",1);
         Torneo torneo = null;
         Scanner scanner = new Scanner(System.in);
 

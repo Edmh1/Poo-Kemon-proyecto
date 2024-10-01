@@ -1,5 +1,7 @@
 @startuml Jugador
 
+left to right direction
+
 actor Jugador
 
 package participar_en_batalla{
@@ -13,6 +15,7 @@ package participar_en_batalla{
     usecase "Ver informacion de Pookemon" as verInfPoo
     usecase "Elegir objeto a usar" as eleObj
     usecase "Ver informacion de objeto" as verInfObj
+    usecase "Pedir reporte de batalla" as pedRepBat
 }
 
 Jugador -- obj
@@ -25,6 +28,7 @@ Jugador -- luc
 luc <.. eleMov : <<extends>>
 luc <.. verInfMov : <<extends>>
 Jugador -- def
+Jugador -- pedRepBat
 
 package crear_entrenador{
     usecase "Elegir nombre" as eleNom
@@ -33,9 +37,5 @@ package crear_entrenador{
 
 Jugador -- eleNom
 Jugador -- eleGen
-
-usecase "Pedir reporte de batalla" as pedRepBat
-
-Jugador -- pedRepBat
 
 @enduml

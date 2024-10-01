@@ -1,5 +1,7 @@
 @startuml Organizador
 
+left to right direction
+
 actor Organizador
 
 package gestionar_pookemones{
@@ -43,7 +45,7 @@ package gestionar_premios{
 }
 
 Organizador -- crePre
-Organizador -- eliPre
+Organizador -- asiPreTor
 
 package gestionar_torneo{
     usecase "Inscribir jugadores" as insJug
