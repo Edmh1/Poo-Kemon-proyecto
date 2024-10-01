@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Organizador {
     private int idOrganizador;
-    private Torneo torneoActual;
+    private int torneoActual;
     private ArrayList<Torneo> torneos = new ArrayList<>();  
     private String password;
 
@@ -27,20 +27,22 @@ public class Organizador {
     }
 
     public void inscribirJugadorTorneo(Entrenador jugador ){
-        torneoActual.addJugador(jugador);
+        for (Torneo torneo : torneos) {
+            torneo.addJugador(jugador);        
+        }
     }
 
-    public void añadirTorneos(){
-        torneos.add(torneoActual);
+    public void añadirTorneos(Torneo tor){
+        torneos.add(tor);
     }
 
     public Torneo crearTorneo(){
-        torneoActual = new Torneo();
-        return torneoActual;
+        Torneo tor = new Torneo();
+        return tor;
     }
 
     public boolean hayTorneo(){
-        return torneoActual != null;
+        return torneos != null;
     }
 
     public boolean verficiarCont(String pass){

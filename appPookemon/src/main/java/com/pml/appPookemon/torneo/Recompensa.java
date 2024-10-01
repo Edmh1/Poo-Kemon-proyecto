@@ -19,6 +19,18 @@ public class Recompensa {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechadevencimiento = fechadevencimiento;
+    }
+    public int getId() {
+        return id;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public String getDescripcion() {
+        return descripcion;
+    }
+    public String getFechadevencimiento() {
+        return fechadevencimiento;
     } 
 
     
