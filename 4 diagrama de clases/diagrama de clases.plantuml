@@ -121,7 +121,7 @@ left to right direction
         - idBatalla : int
         - entrenador1 : Entrenador
         - entrenador2 : Entrenador
-        - turnos[] : str
+        - turnos: ArrayList<String>
         - numeroTurno: int
 
         + iniciarBatalla()

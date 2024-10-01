@@ -34,9 +34,9 @@ public class Organizador {
         torneos.add(torneoActual);
     }
 
-    public Torneo crearTorneo(){
-        torneoActual = new Torneo();
-        return torneoActual;
+    public void crearTorneo(){
+        torneos.add(new Torneo());
+        torneoActual = torneos.get(torneos.size()-1);
     }
 
     public boolean hayTorneo(){
@@ -47,6 +47,8 @@ public class Organizador {
         return this.password.equals(pass);
     }
 
-
+    public Torneo getTorneoActual(){
+        return torneoActual;
+    }
 
 }

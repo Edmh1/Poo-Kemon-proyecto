@@ -16,7 +16,7 @@ public class prueba {
         System.out.println("Ingrese la contraseña del organizador: ");
         String cont = scanner.nextLine();
         if(organizador.verficiarCont(cont)){
-            torneo = (Torneo) organizador.crearTorneo();
+            torneo = organizador.getTorneoActual();
             if(organizador.hayTorneo()){
                 /*System.out.println("Ingresa el número de jugadores");
                 int cantidadJugadores = scanner.nextInt();

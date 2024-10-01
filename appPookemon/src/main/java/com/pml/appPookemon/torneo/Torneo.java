@@ -11,6 +11,7 @@ public class Torneo{
     private ArrayList<Entrenador> jugadores = new ArrayList<>();
     private ArrayList<Pookemon> pookemones = new ArrayList<>();
     private ArrayList<Movimiento> movimientos = new ArrayList<>();
+    private NodoTorneo ganador = new NodoTorneo(null);
 
     public void addJugador(Entrenador e){
         jugadores.add(e);
@@ -146,6 +147,32 @@ public class Torneo{
         for (Entrenador entrenador : jugadores) {
             entrenador.añadirPremios(a);
          }                  
+    }
+
+    public void crearTorneo(){
+        if(jugadores.size() % 2 != 0){
+            System.out.println("El numero de jugadores debe ser par");
+        }else{
+            ganador = construirTorneo(0, jugadores.size()-1);
+        }
+    }
+
+    private NodoTorneo construirTorneo(int inicio, int fin) {
+        if(inicio == fin){
+            NodoTorneo nodo = new NodoTorneo(jugadores.get(inicio));
+            return nodo;
+        }
+
+        int medio = (inicio+fin)/2;
+
+        NodoTorneo izquierdo = construirTorneo(inicio, medio);
+        NodoTorneo derecho = construirTorneo(medio + 1 , fin);
+
+        NodoTorneo padre = new NodoTorneo(null);
+        padre.setIzquierda(izquierdo);
+        padre.setDerecha(derecho);
+
+        return padre;
     }
 
 }
