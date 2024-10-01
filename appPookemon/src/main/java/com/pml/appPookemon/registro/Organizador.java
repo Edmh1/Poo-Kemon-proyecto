@@ -5,15 +5,14 @@ import java.util.ArrayList;
 
 public class Organizador {
     private int idOrganizador;
-    private int idtorneo;
+    private Torneo torneoActual;
     private ArrayList<Torneo> torneos = new ArrayList<>();  
     private String password;
 
-    public Organizador(int idOrganizador, String password,int  idtorneo) {
+    public Organizador(int idOrganizador, String password) {
 
         this.idOrganizador = idOrganizador;
         this.password = password;
-        this.idtorneo =  idtorneo;
 
     }
 
@@ -40,9 +39,10 @@ public class Organizador {
         
     }
 
-    public void crearTorneo(){
+    public Torneo crearTorneo(){
         torneos.add(new Torneo());
         torneoActual = torneos.get(torneos.size()-1);
+        return torneoActual;
     }
 
     public boolean hayTorneo(){
