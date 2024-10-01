@@ -61,7 +61,7 @@ package "pookemon" {
 Entrenador "*" o-- "3" Pookemon 
 Entrenador "*" o-- "2" Objeto
 
-Pookemon "*" o-- "5" Movimiento
+Pookemon "1" o-- "4" Movimiento
 Pookemon "1" *-- "1" Estadística
 
 MovimientoFisico --|> Movimiento
@@ -71,8 +71,8 @@ MovimientoEspecial --|> Movimiento
 Organizador "1" *-- "*" Torneo
 
 Torneo "1" o--- "*" Entrenador
-Torneo "1" o-- "*" Pookemon
-Torneo "1" o-- "*" Movimiento
+Torneo "1" *-- "*" Movimiento
+Torneo "1" *-- "*" Pookemon
 Torneo "1" *---- "1" Recompensa
 Torneo "1" *-- "1" NodoTorneo
 
@@ -81,6 +81,7 @@ NodoTorneo "1" *-- "2" NodoTorneo
 NodoTorneo "1" *-- "1" Batalla
 
 Batalla "1" o-- "2" Entrenador
+
 
 
 @enduml

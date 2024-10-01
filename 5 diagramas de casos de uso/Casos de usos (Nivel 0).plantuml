@@ -7,13 +7,13 @@ actor Organizador
 
 package "pookemon.software" {
     
-    usecase "Registrarse en el Torneo" as regTor
+    usecase "Registrar en el Torneo" as regTor
     usecase "Crear Entrenador" as creEnt
     usecase "Participar en Batalla" as parBat
 
     usecase "Ver creditos" as verCre
 
-    usecase "Crear Torneo" as creTor
+    usecase "Gestionar torneo" as creTor
     usecase "Hacer Seguimiento al Torneo" as hacSeg
     usecase "Definir Recompensa del ganador" as defRec
     usecase "Gestionar Pookemones" as gesPoo
