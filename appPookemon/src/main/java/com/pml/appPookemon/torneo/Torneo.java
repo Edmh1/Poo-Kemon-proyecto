@@ -13,6 +13,14 @@ public class Torneo{
     private ArrayList<Movimiento> movimientos = new ArrayList<>();
     private NodoTorneo ganador = new NodoTorneo(null);
     private NodoTorneo actual;
+    private int idtorneo;
+    private Recompensa premio;
+
+    
+
+    public int getIdtorneo() {
+        return idtorneo;
+    }
 
     public void addJugador(Entrenador e){
         jugadores.add(e);
