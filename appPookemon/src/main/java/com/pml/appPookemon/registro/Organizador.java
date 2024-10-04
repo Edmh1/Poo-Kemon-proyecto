@@ -72,6 +72,31 @@ public class Organizador {
         torneoActual.editarMovimiento(idmov, nombreMovimiento, nombreMovimiento, daño, precision, velocidad, nombreMovimiento, null);
     }
 
+    public void eliminarMovimiento(  int idmov ){
+        torneoActual.eliminarMovimiento(idmov);
+    }
+
+    public void  mostrarCreditos(){
+        System.out.println("***************************");
+        System.out.println("*     🌟🔴🔵 Pookemon 🌟🔴🔵     *");
+        System.out.println("***************************");
+        System.out.println("* 🎉 Créditos Especiales 🎉 *");
+        System.out.println("*      Los Maestros       *");
+        System.out.println("***************************");
+        System.out.println();
+        System.out.println("💻 Desarrollo y Construccion por:");
+        System.out.println("🛠️ Eddie Manotas - El Líder Visionario");
+        System.out.println("🛠️ Arturo Velasquez - El Arquitecto del Código");
+        System.out.println("🛠️ Sebastian Castro - El Guerrero del Backend");
+        System.out.println("🛠️ Andres Escobar - El Maestro del Frontend");
+        System.out.println("🛠️ Vladimir Navarro - El Guardián del Sistema");
+        System.out.println();
+        System.out.println("✨ ¡Gracias por usar nuestro proyecto épico! ✨");
+        System.out.println("***************************");
+    }
+
+
+
     
 
 
