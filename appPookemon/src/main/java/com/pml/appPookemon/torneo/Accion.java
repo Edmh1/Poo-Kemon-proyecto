@@ -1,18 +1,21 @@
 package main.java.com.pml.appPookemon.torneo;
 
-import main.java.com.pml.appPookemon.registro.Entrenador;
-
 public abstract class Accion {
     private TipoAccion tipo;
-    private Entrenador e;
+    protected int id;
 
-    public Accion(TipoAccion tipo){
+    public Accion(TipoAccion tipo, int id){
         this.tipo = tipo;
+        this.id = id;
     }
 
     public TipoAccion getTipo() {
         return tipo;
     }
 
-    public abstract void ejecutar();
+    public int getId() {
+        return id;
+    }
+
+    public abstract Object getInfo();
 }

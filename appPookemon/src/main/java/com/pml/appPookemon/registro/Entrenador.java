@@ -166,8 +166,8 @@ public class Entrenador {
     /**
      * @return the pookemonActual
      */
-    public int getPookemonActual() {
-        return pookemonActual;
+    public Pookemon getPookemonActual() {
+        return pookemones.get(pookemonActual);
     }
 
     /**

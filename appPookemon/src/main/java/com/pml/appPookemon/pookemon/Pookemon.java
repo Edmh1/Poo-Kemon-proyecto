@@ -39,6 +39,10 @@ public class Pookemon {
     public void activarDefensa(){
         this.defendiendo = true;
     }
+
+    public void desactivarDefensa(){
+        this.defendiendo = false;
+    }
     
     public void afectarHp(int x){
         if(isDefendiendo()){

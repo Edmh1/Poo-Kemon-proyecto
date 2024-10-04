@@ -38,4 +38,8 @@ public class NodoTorneo {
         this.entrenador = entrenador;
     }
 
+    public boolean esHoja(){
+        return (izquierda == null && derecha == null);
+    }
+
 }

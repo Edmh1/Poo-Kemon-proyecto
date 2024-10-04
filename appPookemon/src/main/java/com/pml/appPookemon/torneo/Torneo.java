@@ -12,6 +12,7 @@ public class Torneo{
     private ArrayList<Pookemon> pookemones = new ArrayList<>();
     private ArrayList<Movimiento> movimientos = new ArrayList<>();
     private NodoTorneo ganador = new NodoTorneo(null);
+    private NodoTorneo actual;
 
     public void addJugador(Entrenador e){
         jugadores.add(e);
@@ -150,6 +151,7 @@ public class Torneo{
     }
 
     public void crearTorneo(){
+        actual = ganador;
         if(jugadores.size() % 2 != 0){
             System.out.println("El numero de jugadores debe ser par");
         }else{
@@ -173,6 +175,42 @@ public class Torneo{
         padre.setDerecha(derecho);
 
         return padre;
+    }
+
+    public Entrenador[] siguienteBatalla(){
+        actual = buscarBatalla(ganador);
+        if(actual != null){
+            return new Entrenador[]{actual.getIzquierda().getEntrenador(), actual.getDerecha().getEntrenador()};
+        }
+        return null;
+    }
+
+    private NodoTorneo buscarBatalla(NodoTorneo n){
+        if(n.esHoja() || n.getEntrenador() != null){
+            return null;
+        }
+
+        NodoTorneo izq = n.getIzquierda();
+        NodoTorneo der = n.getDerecha();
+
+        if(izq.getEntrenador() != null && der.getEntrenador() != null && n.getEntrenador() == null){
+            return n;
+        }
+
+        NodoTorneo batallaIzquierda = buscarBatalla(izq);
+        if(batallaIzquierda != null){
+            return batallaIzquierda;
+        }
+        return buscarBatalla(der);
+    }
+
+    public void setGanador(Entrenador e){
+        if(actual != null){
+            actual.setEntrenador(e);
+            actual = null;
+        } else {
+            System.out.println("Error: no hay batalla activa");
+        }
     }
 
 }
