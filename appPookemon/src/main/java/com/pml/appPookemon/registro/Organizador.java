@@ -1,5 +1,8 @@
 package main.java.com.pml.appPookemon.registro;
 
+import main.java.com.pml.appPookemon.pookemon.Efecto;
+import main.java.com.pml.appPookemon.pookemon.Movimiento;
+import main.java.com.pml.appPookemon.pookemon.Pookemon;
 import main.java.com.pml.appPookemon.torneo.Torneo;
 import java.util.ArrayList;
 
@@ -28,17 +31,51 @@ public class Organizador {
         return lis;
     }
 
-    public void inscribirJugadorTorneo(Entrenador jugador ){
+    public void inscribirJugadorTorneo(Entrenador jugador, int idtorneo ){
         for (Torneo torneo : torneos) {
-            torneo.addJugador(jugador);           
+            if (torneo.getIdtorneo()==idtorneo) {
+                torneo.addJugador(jugador);
+                break;
+            }         
         }
     }
-
-    public void añadirTorneos(Torneo tor){
-        torneos.add(crearTorneo());
+    public Torneo torneoPorid(int id){
+       
+        for (Torneo torneo : torneos) {
+            if (torneo.getIdtorneo()==id) {
+                return torneo;
+            }        
+        }
+        return null; 
         
     }
+    public void agregarpookemon(Pookemon  pookemon ){
+        torneoActual.addPookemon(pookemon);
 
+    }
+    public void editarPookemon( int idPookemon, String nombrePookemon, String nombreElemento,Efecto efect ){
+        torneoActual.editarNombrePookemon(idPookemon, nombrePookemon);
+        torneoActual.editarEfectoPookemon(idPookemon, efect);
+        torneoActual.editarElementoPookemon(idPookemon, nombreElemento);
+    
+        
+    }
+    public void eliminarPookemon(  int idPookemon ){
+        torneoActual.eliminarPookemon(idPookemon);
+    }
+
+    public void agregarMovimiento(Movimiento mov){
+        torneoActual.addMovimiento(mov);
+    }
+    
+    public void editarMovimiento(  int idmov, String nombreMovimiento, int daño, int precision, int velocidad ){
+        torneoActual.editarMovimiento(idmov, nombreMovimiento, nombreMovimiento, daño, precision, velocidad, nombreMovimiento, null);
+    }
+
+    
+
+
+    
     public Torneo crearTorneo(){
         torneos.add(new Torneo());
         torneoActual = torneos.get(torneos.size()-1);
