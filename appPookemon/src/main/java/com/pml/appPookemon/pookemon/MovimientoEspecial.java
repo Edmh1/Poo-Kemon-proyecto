@@ -221,19 +221,33 @@ public class MovimientoEspecial extends Movimiento {
 
     }
     
+    private double calcularAumentoPorAfinidadDeElemento(Pookemon atacante){
+        String elementoAtacante = atacante.getElementoPookemon();
+        String elementoMovimiento = getElemento();
+        if(elementoMovimiento.equals(elementoAtacante)){
+            return 1.5;
+        } else {
+            return 1.0;
+        }
+    }
+    
+    private int calcularPotenciaTotalMovimiento(Pookemon atacante){
+        return (int) (getPotencia()*calcularAumentoPorAfinidadDeElemento(atacante));
+    }
+    
     @Override
     protected int calcularDañoBase(Pookemon atacante, Pookemon defensor) {
         int ataque = atacante.getEstadisticaPookemon().getAtaqueEspecial();
         int defensa = defensor.getEstadisticaPookemon().getDefensaEspecial();
-        return (getPotencia() * ataque / defensa) / 2;
+        return (int) (calcularPotenciaTotalMovimiento(atacante) * ataque / defensa) / 2;
     }
 
-    private double calcularEfectividad(Pookemon atacante, Pookemon defensor) {
-        String elementoAtacante = atacante.getElementoPookemon();
+    private double calcularEfectividad(Pookemon defensor) {
         String elementoDefensor = defensor.getElementoPookemon();
+        String elementoMovimiento = getElemento();
         
-        if (tablaEfectividad.containsKey(elementoAtacante)) {
-            Map<String, Double> efectividadContraOtros = tablaEfectividad.get(elementoAtacante);
+        if (tablaEfectividad.containsKey(elementoMovimiento)) {
+            Map<String, Double> efectividadContraOtros = tablaEfectividad.get(elementoMovimiento);
             if (efectividadContraOtros.containsKey(elementoDefensor)) {
                 return efectividadContraOtros.get(elementoDefensor);
             }
@@ -243,7 +257,7 @@ public class MovimientoEspecial extends Movimiento {
 
     @Override
     public int calcularDañoTotal(Pookemon atacante, Pookemon defensor) {
-        double efectividad = calcularEfectividad(atacante, defensor);
+        double efectividad = calcularEfectividad(defensor);
         return (int) (super.calcularDañoTotal(atacante, defensor) * efectividad);
     }
     
