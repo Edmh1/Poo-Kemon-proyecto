@@ -111,7 +111,9 @@ left to right direction
 
         - inicializarTablaEfectividad()
         # calcularDañoBase(atacante: Pookemon, defensor: Pookemon)
-        - calcularEfectividad(atacante: Pookemon, defensor: Pookemon)
+        - calcularEfectividad(defensor: Pookemon)
+        - calcularAumentoPorAfinidadDeElemento(atacante: Pookemon)
+        - calcularPotenciaTotalMovimiento(atacante: Pookemon)
         + calcularDañoTotal(atacante: Pookemon, defensor: Pookemon)
     } 
 
