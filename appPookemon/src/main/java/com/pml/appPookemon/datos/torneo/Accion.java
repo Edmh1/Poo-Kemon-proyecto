@@ -1,20 +1,20 @@
 package main.java.com.pml.appPookemon.datos.torneo;
 
 public abstract class Accion {
-    private TipoAccion tipo;
-    protected int id;
+    private TipoAccion tipoAccion;
+    protected int idAccion;
 
     public Accion(TipoAccion tipo, int id){
-        this.tipo = tipo;
-        this.id = id;
+        this.tipoAccion = tipo;
+        this.idAccion = id;
     }
 
-    public TipoAccion getTipo() {
-        return tipo;
+    public TipoAccion getTipoAccion() {
+        return tipoAccion;
     }
 
-    public int getId() {
-        return id;
+    public int getIdAccion() {
+        return idAccion;
     }
 
     public abstract Object getInfo();

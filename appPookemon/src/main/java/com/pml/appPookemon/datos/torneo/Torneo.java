@@ -157,6 +157,7 @@ public class Torneo{
          }                  
     }
 
+    //ajustar logica aunque los jugadores sean par no cumple con arbol binario
     public void crearTorneo(){
         actual = ganador;
         if(jugadores.size() % 2 != 0){

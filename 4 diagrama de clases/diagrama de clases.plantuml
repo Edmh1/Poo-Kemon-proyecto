@@ -150,17 +150,14 @@ left to right direction
 
     class Torneo {
         - recompensa :  Recompensa
-        - nodoTorneo : NodoTorneo
-        - jugadores : ArrayList<Entrenador>
-        - pookemones : ArrayList<Pookemon>
-        - movimientos : ArrayList<Movimiento>
+        - ganador : NodoTorneo
+
+        + toStringJugadores()
+        + toStringPookemones()
 
         + gestionarRondasTorneo()
         + iniciarTorneo()
-        + devolverGanadorTorneo()
-        + listarJugadores()
-        + listarPookemones()
-        
+        + getGanador()  
     }
 
     note right of Torneo::gestionarRondasTorneo
@@ -173,8 +170,9 @@ left to right direction
 
     class Recompensa {
         - idRecompensa : int
-        - tipoRecompensa : str
-        - fechaVencimiento : date 
+        - nombre : str
+        - description : str
+        - fechaVencimiento : str 
 
         + generarCodigo()
 
