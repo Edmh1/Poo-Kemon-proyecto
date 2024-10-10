@@ -1,6 +1,6 @@
-package main.java.com.pml.appPookemon.torneo;
+package main.java.com.pml.appPookemon.datos.torneo;
 
-import main.java.com.pml.appPookemon.registro.Entrenador;
+import main.java.com.pml.appPookemon.datos.registro.Entrenador;
 import java.util.ArrayList;
 
 public class Batalla {

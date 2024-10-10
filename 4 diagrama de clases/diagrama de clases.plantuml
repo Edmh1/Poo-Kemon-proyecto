@@ -5,20 +5,21 @@ left to right direction
     class Organizador {
         - idOrganizador : int
         - torneoActual : Torneo
+        - password : String
 
-        + inscribirJugadorTorneo(jugador : Entrenador)
-        + crearTorneo()
-        + definirRecompensa(idTorneo : int, recompensa : str)
-        + mostrarReporteBatalla(idTorneo : int, idBatalla : int)
-        + obtenerTorneoPorID(idTorneo : int)
-        + agregarPookemon(x : Pookemon)
-        + editarPookemon(idPookemon : int)
+        + inscribirJugadorTorneo(jugador : Entrenador, idTorneo: int)
+        + torneoPorID(idTorneo : int)
+        + agregarPookemon(pookemon : Pookemon)
+        + editarPookemon(idPookemon : int, nombrePookemon : String, nombreElemento : String, efect: Efecto)
         + eliminarPookemon(idPookemon : int)
-        + agregarMovimiento(x : Movimiento)
-        + editarMovimiento(idMovimiento : int)
+        + agregarMovimiento(mov : Movimiento)
+        + editarMovimiento(idMov : int, nombreMovimiento : String, daño : int, precision : int, velocidad : int)
         + eliminarMovimiento(idMovimiento : int)
-        + mostrarCreditos()
+        + crearTorneo()
 
+        + definirRecompensa(idTorneo : int, recompensa : str)
+        + mostrarReporteBatalla(idTorneo : int, idBatalla : int)   
+        + mostrarCreditos()
     }
 
     newpage
@@ -27,8 +28,6 @@ left to right direction
         - idEntrenador : int
         - nombreEntrenador : str
         - generoEntrenador : str
-        - pookemones : ArrayList<Pookemon>
-        - objetos : ArrayList<Objeto>
         - pokemonActual : int 
 
         + defenderse()

@@ -1,4 +1,4 @@
-package main.java.com.pml.appPookemon.torneo;
+package main.java.com.pml.appPookemon.datos.torneo;
 
 public class Recompensa {
     private int id;
