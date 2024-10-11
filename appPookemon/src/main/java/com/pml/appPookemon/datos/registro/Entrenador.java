@@ -1,11 +1,11 @@
-package main.java.com.pml.appPookemon.registro;
+package main.java.com.pml.appPookemon.datos.registro;
 
 import java.util.ArrayList;
 import java.util.List;
-import main.java.com.pml.appPookemon.pookemon.Movimiento;
-import main.java.com.pml.appPookemon.pookemon.Objeto;
-import main.java.com.pml.appPookemon.pookemon.Pookemon;
-import main.java.com.pml.appPookemon.torneo.Recompensa;
+import main.java.com.pml.appPookemon.datos.pookemon.Movimiento;
+import main.java.com.pml.appPookemon.datos.pookemon.Objeto;
+import main.java.com.pml.appPookemon.datos.pookemon.Pookemon;
+import main.java.com.pml.appPookemon.datos.torneo.Recompensa;
 
 
 public class Entrenador {

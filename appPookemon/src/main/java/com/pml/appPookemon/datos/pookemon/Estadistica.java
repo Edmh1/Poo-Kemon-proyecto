@@ -1,4 +1,4 @@
-package main.java.com.pml.appPookemon.pookemon;
+package main.java.com.pml.appPookemon.datos.pookemon;
 
 public class Estadistica {
     private int vida;

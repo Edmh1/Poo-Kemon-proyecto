@@ -1,10 +1,10 @@
-package main.java.com.pml.appPookemon.torneo;
+package main.java.com.pml.appPookemon.datos.torneo;
 
 import java.util.ArrayList;
-import main.java.com.pml.appPookemon.pookemon.Efecto;
-import main.java.com.pml.appPookemon.pookemon.Movimiento;
-import main.java.com.pml.appPookemon.pookemon.Pookemon;
-import main.java.com.pml.appPookemon.registro.Entrenador;
+import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
+import main.java.com.pml.appPookemon.datos.pookemon.Movimiento;
+import main.java.com.pml.appPookemon.datos.pookemon.Pookemon;
+import main.java.com.pml.appPookemon.datos.registro.Entrenador;
 
 public class Torneo{
 
@@ -16,8 +16,7 @@ public class Torneo{
     private int idtorneo;
     private Recompensa premio;
 
-    
-
+   
     public int getIdtorneo() {
         return idtorneo;
     }
@@ -158,6 +157,7 @@ public class Torneo{
          }                  
     }
 
+    //ajustar logica aunque los jugadores sean par no cumple con arbol binario
     public void crearTorneo(){
         actual = ganador;
         if(jugadores.size() % 2 != 0){
