@@ -21,47 +21,51 @@ public class Batalla {
 
     public String realizarTurno(){
         String resultado = "";
+        int idAccionEntrenador1 = accionEntrenador1.id;
+        int idAccionEntrenador2 = accionEntrenador2.id;
         //El entrenador 1 cambió de pookemon
         if(accionEntrenador1.getTipo() == TipoAccion.CAMBIAR_POKEMON){
             resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha decidido cambiar de pookemon";
-            entrenador1.cambiarPookemon((int)accionEntrenador1.getInfo());
+            entrenador1.cambiarPookemon(idAccionEntrenador1);
             if(accionEntrenador2.getTipo() == TipoAccion.CAMBIAR_POKEMON){
                 resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha decidido cambiar de pookemon";
-                entrenador2.cambiarPookemon((int)accionEntrenador2.getInfo());
+                entrenador2.cambiarPookemon((idAccionEntrenador2));
             }
             if(accionEntrenador2.getTipo() == TipoAccion.ATACAR){
-                resultado += entrenador2.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador2.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento();
-                entrenador2.atacar(accionEntrenador2.id, entrenador1.getPookemonActual());
+                atacar(entrenador2, entrenador1, idAccionEntrenador2);
+                resultado += logAtacar(entrenador2, idAccionEntrenador2);
             }
             return resultado;
         }
         //El entreandor 2 cambió de pookemon
         if(accionEntrenador2.getTipo() == TipoAccion.CAMBIAR_POKEMON){
             resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha decidido cambiar de pookemon";
-            entrenador2.cambiarPookemon((int)accionEntrenador2.getInfo());
+            entrenador2.cambiarPookemon(idAccionEntrenador2);
             if(accionEntrenador1.getTipo() == TipoAccion.CAMBIAR_POKEMON){
                 resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha decidido cambiar de pookemon";
-                entrenador1.cambiarPookemon((int)accionEntrenador1.getInfo());
+                entrenador1.cambiarPookemon(idAccionEntrenador1);
             }
             if(accionEntrenador1.getTipo() == TipoAccion.ATACAR){
-                resultado += entrenador1.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador1.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento();
-                entrenador1.atacar(accionEntrenador1.id, entrenador2.getPookemonActual());
+                atacar(entrenador1, entrenador2, idAccionEntrenador1);
+                resultado += logAtacar(entrenador1, idAccionEntrenador1);
             }
             return resultado;
         }
 
         //El entrenador 1 ataca pero el entrenador 2 se defiende
-        if(accionEntrenador1.getTipo() == TipoAccion.ATACAR && accionEntrenador2.getTipo() == TipoAccion.DEFENDER){
-            resultado += entrenador1.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador1.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento() + " ,pero el pookemon contrario se ha defendido";
+        if(accionEntrenador1.getTipo() == TipoAccion.ATACAR && accionEntrenador2.getTipo() == TipoAccion.DEFENDER){ 
+            int idAtaque = idAccionEntrenador1;
             entrenador2.getPookemonActual().activarDefensa();
-            entrenador1.atacar(accionEntrenador1.id, entrenador2.getPookemonActual());
+            atacar(entrenador1, entrenador2, idAtaque);
+            resultado += logAtacar(entrenador1, idAtaque);
             return resultado;
         }
         //El entrenador 2 ataca pero el entrenador 1 se defiende
         if(accionEntrenador2.getTipo() == TipoAccion.ATACAR && accionEntrenador1.getTipo() == TipoAccion.DEFENDER){
-            resultado += entrenador2.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador2.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento() + " ,pero el pookemon contrario se ha defendido";
+            int idAtaque = idAccionEntrenador2;
             entrenador1.getPookemonActual().activarDefensa();
-            entrenador2.atacar(accionEntrenador2.id, entrenador1.getPookemonActual());
+            atacar(entrenador2, entrenador1, idAtaque);
+            resultado += logAtacar(entrenador2,idAtaque);
             return resultado;
         }
 
@@ -70,31 +74,55 @@ public class Batalla {
         int velocidadPookemon2 = entrenador2.getPookemonActual().getEstadisticaPookemon().getVelocidad();
 
         if(velocidadPookemon1 > velocidadPookemon2){
-            resultado += entrenador1.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador1.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento();
-            entrenador1.atacar(accionEntrenador1.id, entrenador2.getPookemonActual());
-            resultado += entrenador2.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador2.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento();
-            entrenador2.atacar(accionEntrenador2.id, entrenador1.getPookemonActual());
+            resultado += logAtacar(entrenador1,idAccionEntrenador1);
+            atacar(entrenador1, entrenador2, idAccionEntrenador1);
+            resultado += logAtacar(entrenador2, idAccionEntrenador2);
+            atacar(entrenador2, entrenador1, idAccionEntrenador2);
         }else if(velocidadPookemon1 == velocidadPookemon2){
             int randomNumber = (int) (Math.random()*2);
             if(randomNumber == 0){
-                resultado += entrenador1.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador1.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento();
-                entrenador1.atacar(accionEntrenador1.id, entrenador2.getPookemonActual());
-                resultado += entrenador2.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador2.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento();
-                entrenador2.atacar(accionEntrenador2.id, entrenador1.getPookemonActual());
+                resultado += logAtacar(entrenador1,idAccionEntrenador1);
+                atacar(entrenador1, entrenador2, idAccionEntrenador1);
+                resultado += logAtacar(entrenador2, idAccionEntrenador2);
+                atacar(entrenador2, entrenador1, idAccionEntrenador2);
             }else{
-                resultado += entrenador2.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador2.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento();
-                entrenador2.atacar(accionEntrenador2.id, entrenador1.getPookemonActual());
-                resultado += entrenador1.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador1.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento();
-                entrenador1.atacar(accionEntrenador1.id, entrenador2.getPookemonActual());
-                
+                resultado += logAtacar(entrenador2, idAccionEntrenador2);
+                atacar(entrenador2, entrenador1, idAccionEntrenador2);
+                resultado += logAtacar(entrenador1,idAccionEntrenador1);
+                atacar(entrenador1, entrenador2, idAccionEntrenador1);
             }
         }else{
-            resultado += entrenador2.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador2.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento();
-            entrenador2.atacar(accionEntrenador2.id, entrenador1.getPookemonActual());
-            resultado += entrenador1.getPookemonActual().getNombrePookemon() + " ha realizado el ataque " + entrenador1.getPookemonActual().obtenerMovimientoPorID(accionEntrenador2.id).getNombreMovimiento();
-            entrenador1.atacar(accionEntrenador1.id, entrenador2.getPookemonActual());
+            resultado += logAtacar(entrenador2, idAccionEntrenador2);
+            atacar(entrenador2, entrenador1, idAccionEntrenador2);
+            resultado += logAtacar(entrenador1,idAccionEntrenador1);
+            atacar(entrenador1, entrenador2, idAccionEntrenador1);
         }
         return resultado;
+    }
+
+    public void ActualizarLog(){
+        String resultado = realizarTurno();
+        if(resultado.equals("")){
+            resultado = "No se pudo realizar el turno";
+        }else{
+            turnos.add((numeroTurno+1) + resultado);
+            numeroTurno++;
+        }
+        //Aqui se actualiza el log del jpanel
+    }
+
+    private void atacar(Entrenador atacante, Entrenador defensor, int id){
+        atacante.atacar(id, defensor.getPookemonActual());
+    }
+
+    private String logAtacar(Entrenador atacante, int id){
+        String nombrePookemon =  atacante.getPookemonActual().getNombrePookemon();
+        String nombreAtaque = atacante.getPookemonActual().obtenerMovimientoPorID(id).getNombreMovimiento();
+        return logAtaque(nombrePookemon, nombreAtaque);
+    }
+
+    private String logAtaque(String nombrePookemon, String nombreAtaque){
+        return nombrePookemon + " ha realizado el ataque " + nombreAtaque;
     }
 
 }
