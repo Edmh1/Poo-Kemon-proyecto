@@ -12,8 +12,8 @@ public class Recompensa {
                 + fechaVencimiento + "]";
     }
 
-    public Recompensa(int id, String nombre, String descripcion, String fechadevencimiento) {
-        this.idRecompensa = id;
+    public Recompensa(String nombre, String descripcion, String fechadevencimiento) {
+        
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaVencimiento = fechadevencimiento;
@@ -34,7 +34,19 @@ public class Recompensa {
     public String getNombre(){
         return nombre;
     }
-    
-    //falta implementacion de generar el codigo que se mostrara por pantalla
+
+    private int generarCodigoAleatorio(){
+        int aleatorio = (int) (Math.random() * 1000000);
+        return aleatorio;
+        
+    }
+    public int getCodigo(){
+        return generarCodigoAleatorio();
+    }
+
+
+         
+        
+
 
 }

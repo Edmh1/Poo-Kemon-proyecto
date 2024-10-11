@@ -3,6 +3,7 @@ package main.java.com.pml.appPookemon.datos.registro;
 import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
 import main.java.com.pml.appPookemon.datos.pookemon.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.Pookemon;
+import main.java.com.pml.appPookemon.datos.torneo.Recompensa;
 import main.java.com.pml.appPookemon.datos.torneo.Torneo;
 import java.util.ArrayList;
 
@@ -71,7 +72,6 @@ public class Organizador {
         torneoActual.addMovimiento(mov);
     }
     
-<<<<<<< HEAD:appPookemon/src/main/java/com/pml/appPookemon/registro/Organizador.java
     public void editarMovimiento(  int idmov, String nombreMovimiento, int daño, int precision, int velocidad ){
         torneoActual.editarMovimiento(idmov, nombreMovimiento, nombreMovimiento, daño, precision, velocidad, nombreMovimiento, null);
     }
@@ -101,15 +101,14 @@ public class Organizador {
 
 
 
-=======
->>>>>>> b132a4e16eb39599390d4796985b2b8a6665457b:appPookemon/src/main/java/com/pml/appPookemon/datos/registro/Organizador.java
     
-    //no se estan pasando los datos que deberian pasarse
-    public void editarMovimiento(int idMov, String nombreMovimiento, int daño, int precision, int velocidad ){
-        torneoActual.editarMovimiento(idMov, nombreMovimiento, null, daño, precision, velocidad, nombreMovimiento, null);
+    
+    public void editarMovimiento(int idMov, String nombreMovimiento, String descripcion,int daño, int precision, int velocidad, String nombreEfecto,Efecto efect ){
+        torneoActual.editarMovimiento(idMov, nombreMovimiento, descripcion, daño, precision, velocidad,  nombreEfecto, efect);
+
     }
     
-    //falta el eliminar
+    
     
     public Torneo crearTorneo(){
         torneos.add(new Torneo());
@@ -128,11 +127,14 @@ public class Organizador {
     public Torneo getTorneoActual(){
         return torneoActual;
     }
+    //sujeto a cambios (quiza)
+    public void asignarRecompesa(int idtorneo, Recompensa re){
+        torneoActual.crearRecompensa(re);
+    }
     
-    /** Faltan estos metodos segun el diagrama de clases (definir)
-     * + definirRecompensa(idTorneo : int, recompensa : str)
+    /** Faltan estos metodos segun el diagrama de clases (definir)         
         + mostrarReporteBatalla(idTorneo : int, idBatalla : int)   
-        + mostrarCreditos()
-     */
+    **/
+     
 
 }

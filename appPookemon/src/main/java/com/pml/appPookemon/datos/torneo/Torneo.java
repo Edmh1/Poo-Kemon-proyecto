@@ -220,5 +220,14 @@ public class Torneo{
             System.out.println("Error: no hay batalla activa");
         }
     }
+    public void crearRecompensa(Recompensa pre){
+        premio =   pre;      
+    }
+    
+    public Recompensa  getPremio(){
+        return premio; 
+    }    
+
+     
 
 }
