@@ -5,20 +5,21 @@ left to right direction
     class Organizador {
         - idOrganizador : int
         - torneoActual : Torneo
+        - password : String
 
-        + inscribirJugadorTorneo(jugador : Entrenador)
-        + crearTorneo()
-        + definirRecompensa(idTorneo : int, recompensa : str)
-        + mostrarReporteBatalla(idTorneo : int, idBatalla : int)
-        + obtenerTorneoPorID(idTorneo : int)
-        + agregarPookemon(x : Pookemon)
-        + editarPookemon(idPookemon : int)
+        + inscribirJugadorTorneo(jugador : Entrenador, idTorneo: int)
+        + torneoPorID(idTorneo : int)
+        + agregarPookemon(pookemon : Pookemon)
+        + editarPookemon(idPookemon : int, nombrePookemon : String, nombreElemento : String, efect: Efecto)
         + eliminarPookemon(idPookemon : int)
-        + agregarMovimiento(x : Movimiento)
-        + editarMovimiento(idMovimiento : int)
+        + agregarMovimiento(mov : Movimiento)
+        + editarMovimiento(idMov : int, nombreMovimiento : String, daño : int, precision : int, velocidad : int)
         + eliminarMovimiento(idMovimiento : int)
-        + mostrarCreditos()
+        + crearTorneo()
 
+        + definirRecompensa(idTorneo : int, recompensa : str)
+        + mostrarReporteBatalla(idTorneo : int, idBatalla : int)   
+        + mostrarCreditos()
     }
 
     newpage
@@ -27,8 +28,6 @@ left to right direction
         - idEntrenador : int
         - nombreEntrenador : str
         - generoEntrenador : str
-        - pookemones : ArrayList<Pookemon>
-        - objetos : ArrayList<Objeto>
         - pokemonActual : int 
 
         + defenderse()
@@ -111,7 +110,9 @@ left to right direction
 
         - inicializarTablaEfectividad()
         # calcularDañoBase(atacante: Pookemon, defensor: Pookemon)
-        - calcularEfectividad(atacante: Pookemon, defensor: Pookemon)
+        - calcularEfectividad(defensor: Pookemon)
+        - calcularAumentoPorAfinidadDeElemento(atacante: Pookemon)
+        - calcularPotenciaTotalMovimiento(atacante: Pookemon)
         + calcularDañoTotal(atacante: Pookemon, defensor: Pookemon)
     } 
 
@@ -149,17 +150,14 @@ left to right direction
 
     class Torneo {
         - recompensa :  Recompensa
-        - nodoTorneo : NodoTorneo
-        - jugadores : ArrayList<Entrenador>
-        - pookemones : ArrayList<Pookemon>
-        - movimientos : ArrayList<Movimiento>
+        - ganador : NodoTorneo
+
+        + toStringJugadores()
+        + toStringPookemones()
 
         + gestionarRondasTorneo()
         + iniciarTorneo()
-        + devolverGanadorTorneo()
-        + listarJugadores()
-        + listarPookemones()
-        
+        + getGanador()  
     }
 
     note right of Torneo::gestionarRondasTorneo
@@ -172,8 +170,9 @@ left to right direction
 
     class Recompensa {
         - idRecompensa : int
-        - tipoRecompensa : str
-        - fechaVencimiento : date 
+        - nombre : str
+        - description : str
+        - fechaVencimiento : str 
 
         + generarCodigo()
 
