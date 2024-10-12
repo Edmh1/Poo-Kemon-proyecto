@@ -11,6 +11,7 @@ public class Torneo{
     private ArrayList<Entrenador> jugadores = new ArrayList<>();
     private ArrayList<Pookemon> pookemones = new ArrayList<>();
     private ArrayList<Movimiento> movimientos = new ArrayList<>();
+    private ArrayList<Batalla> batallas = new ArrayList<>();
     private NodoTorneo ganador = new NodoTorneo(null);
     private NodoTorneo actual;
     private int idtorneo;
@@ -221,6 +222,16 @@ public class Torneo{
             System.out.println("Error: no hay batalla activa");
         }
     }
+    
+    public Batalla buscarBatalla(int idBatalla_p){
+        for (Batalla b : batallas) {
+            if(b.getId() == idBatalla_p){
+                return b;
+            }
+        }
+        return null;
+    }
+            
     public void crearRecompensa(Recompensa pre){
         premio =   pre;      
     }

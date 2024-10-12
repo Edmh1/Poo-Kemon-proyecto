@@ -135,6 +135,16 @@ public class Organizador {
     /** Faltan estos metodos segun el diagrama de clases (definir)         
         + mostrarReporteBatalla(idTorneo : int, idBatalla : int)   
     **/
+    
+    public String mostrarReporteBatalla(int idTorneo_p, int idBatalla_p){
+        for (Torneo t : torneos) {
+            if(t.getIdtorneo() == idTorneo_p){
+                return t.buscarBatalla(idBatalla_p).GenerarReporteBatalla();
+            }
+        }
+        
+        return "";
+    }
      
 
 }
