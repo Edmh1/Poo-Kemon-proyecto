@@ -4,7 +4,6 @@
  */
 package main.java.com.pml.appPookemon.datos.pookemon;
 
-
 /**
  *
  * @author eddie
@@ -19,7 +18,7 @@ public class MovimientoFisico extends Movimiento{
     protected int calcularDañoBase(Pookemon atacante, Pookemon defensor) {
         int ataque = atacante.getEstadisticaPookemon().getAtaqueFisico();
         int defensa = defensor.getEstadisticaPookemon().getDefensaFisica();
-        return (getPotencia() * ataque / defensa) / 2;
+        return (int) (((2.5f*getPotencia() * ataque) / (defensa*25))+2) ;
     }
     
 }

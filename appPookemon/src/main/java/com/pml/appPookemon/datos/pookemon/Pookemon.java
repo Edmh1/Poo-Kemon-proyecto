@@ -25,8 +25,8 @@ public class Pookemon {
         return "Pookemon{" + "idPookemon=" + idPookemon + ", nombre=" + nombrePookemon + ", elemento=" + elementoPookemon + ", estadistica=" + estadisticaPookemon + ", movimientos=" + movimientos + ", efecto=" + efecto + '}';
     }
     
-    public void inicializarEstadistica(int salud, int ataque, int defensa, int velocidad, int ataqueEspecial, int defensaEspecial) {
-        this.estadisticaPookemon = new Estadistica(salud, ataque, defensa, velocidad, ataqueEspecial, defensaEspecial);
+    public void inicializarEstadistica(int salud, int ataque, int defensa, int ataqueEspecial, int defensaEspecial, int velocidad) {
+        this.estadisticaPookemon = new Estadistica(salud, ataque, defensa, ataqueEspecial, defensaEspecial, velocidad);
     }
     
     /**
