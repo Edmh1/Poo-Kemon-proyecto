@@ -2,8 +2,8 @@ package main.java.com.pml.appPookemon.datos.torneo;
 
 import java.util.ArrayList;
 import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
-import main.java.com.pml.appPookemon.datos.pookemon.Movimiento;
-import main.java.com.pml.appPookemon.datos.pookemon.Pookemon;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.Entrenador;
 
 public class Torneo{

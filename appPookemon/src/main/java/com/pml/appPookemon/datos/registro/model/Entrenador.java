@@ -2,9 +2,9 @@ package main.java.com.pml.appPookemon.datos.registro;
 
 import java.util.ArrayList;
 import java.util.List;
-import main.java.com.pml.appPookemon.datos.pookemon.Movimiento;
-import main.java.com.pml.appPookemon.datos.pookemon.Objeto;
-import main.java.com.pml.appPookemon.datos.pookemon.Pookemon;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Objeto;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.torneo.Recompensa;
 
 
