@@ -71,13 +71,43 @@ public class Organizador {
         torneoActual.addMovimiento(mov);
     }
     
+    public void editarMovimiento(  int idmov, String nombreMovimiento, int daño, int precision, int velocidad ){
+        torneoActual.editarMovimiento(idmov, nombreMovimiento, nombreMovimiento, daño, precision, velocidad, nombreMovimiento, null);
+    }
+
+    public void eliminarMovimiento(  int idmov ){
+        torneoActual.eliminarMovimiento(idmov);
+    }
+
+    public void  mostrarCreditos(){
+        System.out.println("***************************");
+        System.out.println("*     🌟🔴🔵 Pookemon 🌟🔴🔵     *");
+        System.out.println("***************************");
+        System.out.println("* 🎉 Créditos Especiales 🎉 *");
+        System.out.println("*      Los Maestros       *");
+        System.out.println("***************************");
+        System.out.println();
+        System.out.println("💻 Desarrollo y Construccion por:");
+        System.out.println("🛠️ Eddie Manotas - El Líder Visionario");
+        System.out.println("🛠️ Arturo Velasquez - El Arquitecto del Código");
+        System.out.println("🛠️ Sebastian Castro - El Guerrero del Backend");
+        System.out.println("🛠️ Andres Escobar - El Maestro del Frontend");
+        System.out.println("🛠️ Vladimir Navarro - El Guardián del Sistema");
+        System.out.println();
+        System.out.println("✨ ¡Gracias por usar nuestro proyecto épico! ✨");
+        System.out.println("***************************");
+    }
+
+
+
     
-    //no se estan pasando los datos que deberian pasarse
-    public void editarMovimiento(int idMov, String nombreMovimiento, int daño, int precision, int velocidad ){
-        torneoActual.editarMovimiento(idMov, nombreMovimiento, null, daño, precision, velocidad, nombreMovimiento, null);
+    
+    public void editarMovimiento(int idMov, String nombreMovimiento, String descripcion,int daño, int precision, int velocidad, String nombreEfecto,Efecto efect ){
+        torneoActual.editarMovimiento(idMov, nombreMovimiento, descripcion, daño, precision, velocidad,  nombreEfecto, efect);
+
     }
     
-    //falta el eliminar
+    
     
     public Torneo crearTorneo(){
         torneos.add(new Torneo());
@@ -96,11 +126,24 @@ public class Organizador {
     public Torneo getTorneoActual(){
         return torneoActual;
     }
+    //sujeto a cambios (quiza)
+    public void asignarRecompesa(int idtorneo, Recompensa re){
+        torneoActual.crearRecompensa(re);
+    }
     
-    /** Faltan estos metodos segun el diagrama de clases (definir)
-     * + definirRecompensa(idTorneo : int, recompensa : str)
+    /** Faltan estos metodos segun el diagrama de clases (definir)         
         + mostrarReporteBatalla(idTorneo : int, idBatalla : int)   
-        + mostrarCreditos()
-     */
+    **/
+    
+    public String mostrarReporteBatalla(int idTorneo_p, int idBatalla_p){
+        for (Torneo t : torneos) {
+            if(t.getIdtorneo() == idTorneo_p){
+                return t.buscarBatalla(idBatalla_p).GenerarReporteBatalla();
+            }
+        }
+        
+        return "";
+    }
+     
 
 }

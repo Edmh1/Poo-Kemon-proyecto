@@ -11,6 +11,7 @@ public class Torneo{
     private ArrayList<Entrenador> jugadores = new ArrayList<>();
     private ArrayList<Pookemon> pookemones = new ArrayList<>();
     private ArrayList<Movimiento> movimientos = new ArrayList<>();
+    private ArrayList<Batalla> batallas = new ArrayList<>();
     private NodoTorneo ganador = new NodoTorneo(null);
     private NodoTorneo actual;
     private int idtorneo;
@@ -160,11 +161,12 @@ public class Torneo{
     //ajustar logica aunque los jugadores sean par no cumple con arbol binario
     public void crearTorneo(){
         actual = ganador;
-        if(jugadores.size() % 2 != 0){
-            System.out.println("El numero de jugadores debe ser par");
-        }else{
+        if(numeroDeJugadoresPermitido()){
             ganador = construirTorneo(0, jugadores.size()-1);
-        }
+        }else{
+            System.out.println("No se pudo crear el torneo (Numero de jugadores no permitidos)");
+        }    
+        
     }
 
     private NodoTorneo construirTorneo(int inicio, int fin) {
@@ -219,6 +221,34 @@ public class Torneo{
         } else {
             System.out.println("Error: no hay batalla activa");
         }
+    }
+    
+    public Batalla buscarBatalla(int idBatalla_p){
+        for (Batalla b : batallas) {
+            if(b.getId() == idBatalla_p){
+                return b;
+            }
+        }
+        return null;
+    }
+            
+    public void crearRecompensa(Recompensa pre){
+        premio =   pre;      
+    }
+    
+    public Recompensa  getPremio(){
+        return premio; 
+    }    
+
+
+    private boolean numeroDeJugadoresPermitido(){
+        int n = jugadores.size();
+        return n > 0 && (n & (n -1 )) == 0;
+    }
+    
+
+    public NodoTorneo getGanador() {
+        return ganador;
     }
 
 }

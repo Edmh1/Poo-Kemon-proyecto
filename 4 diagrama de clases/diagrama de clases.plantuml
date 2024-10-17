@@ -89,31 +89,28 @@ left to right direction
         - precision: int
         - cantidadPP : int
         - elemento : str
-        - efecto : Efecto 
+        - efecto : Efecto
+        - tablaEfectividad: Map<String, Map<String,double>> 
 
         # calcularDañoBase(atacante: Pookemon, defensor: Pookemon)
         - calcularGolpeCritico()
+        - calcularEfectividad(defensor: Pookemon)
+        - calcularAumentoPorAfinidadDeElemento(atacante: Pookemon)
         + calcularDañoTotal(atacante: Pookemon, defensor: Pookemon)
         + realizar(atacante: Pookemon, defensor: Pookemon)
+        - inicializarTablaEfectividad()
     }
 
     newpage
 
     class MovimientoFisico{
-        # calcularDañoBase(Pookemon atacante, Pookemon defensor)
+        # calcularDañoBase(atacante: Pookemon, defensor: Pookemon)
     }
 
     newpage 
 
     class MovimientoEspecial{
-        - tablaEfectividad: Map<String, Map<String,double>>
-
-        - inicializarTablaEfectividad()
         # calcularDañoBase(atacante: Pookemon, defensor: Pookemon)
-        - calcularEfectividad(defensor: Pookemon)
-        - calcularAumentoPorAfinidadDeElemento(atacante: Pookemon)
-        - calcularPotenciaTotalMovimiento(atacante: Pookemon)
-        + calcularDañoTotal(atacante: Pookemon, defensor: Pookemon)
     } 
 
     newpage
