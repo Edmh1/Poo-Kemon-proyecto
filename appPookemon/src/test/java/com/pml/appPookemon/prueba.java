@@ -3,7 +3,8 @@ package test.java.com.pml.appPookemon;
 
 import java.util.Scanner;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
-import main.java.com.pml.appPookemon.datos.registro.Organizador;
+import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoEspecial;
+import main.java.com.pml.appPookemon.datos.registro.model.Organizador;
 import main.java.com.pml.appPookemon.datos.torneo.Torneo;
 
 
@@ -48,10 +49,10 @@ public class prueba {
                 System.out.println("" + torneo.toStringPookemones() + "\n");
                 */
                 
-                torneo.addMovimiento(new Movimiento(1111, "First", "N", 20, 15, 10, "Agua", null));
+                torneo.addMovimiento(new MovimientoEspecial(1111, "First", "N", 20, 15, 10, "Agua", null));
                 
-                torneo.addMovimiento(new Movimiento(2222, "Second", "M", 10, 5, 10, "Aire", null));
-                torneo.addMovimiento(new Movimiento(3333, "Third", "O", 40, 2, 15, "Fuego", null));
+                torneo.addMovimiento(new MovimientoEspecial(2222, "Second", "M", 10, 5, 10, "Aire", null));
+                torneo.addMovimiento(new MovimientoEspecial(3333, "Third", "O", 40, 2, 15, "Fuego", null));
                 System.out.println("" + torneo.toStringMovimientos());
                 
                 torneo.eliminarMovimiento(2222);

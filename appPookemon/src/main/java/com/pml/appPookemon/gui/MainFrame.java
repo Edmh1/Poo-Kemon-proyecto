@@ -40,7 +40,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(WelcomeP, "welcomeP");
         getContentPane().add(adminP, "adminP");
         getContentPane().add(numPartP, "numPartP");
-
+        
         // Mostrar el primer panel por defecto
         cardLayout.show(getContentPane(), "welcomeP");
         panelHistory.push("welcomeP");
