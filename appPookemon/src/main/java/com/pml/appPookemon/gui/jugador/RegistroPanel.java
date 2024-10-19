@@ -4,6 +4,8 @@
  */
 package main.java.com.pml.appPookemon.gui.jugador;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 
@@ -40,8 +42,8 @@ public class RegistroPanel extends StandarPanel {
         btSiguiente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbMasculino = new javax.swing.JRadioButton();
+        rbFemenino = new javax.swing.JRadioButton();
         txtNombre = new javax.swing.JTextField();
 
         lbEntrenador.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
@@ -60,63 +62,96 @@ public class RegistroPanel extends StandarPanel {
         jLabel3.setFont(new java.awt.Font("sansserif", 3, 18)); // NOI18N
         jLabel3.setText("Sexo: ");
 
-        bgGenero.add(jRadioButton1);
-        jRadioButton1.setText("Masculino");
+        bgGenero.add(rbMasculino);
+        rbMasculino.setText("Masculino");
+        rbMasculino.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        rbMasculino.setBorderPainted(true);
+        rbMasculino.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rbMasculino.setFocusCycleRoot(true);
+        rbMasculino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/entrenador.png"))); // NOI18N
+        rbMasculino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbMasculinoActionPerformed(evt);
+            }
+        });
 
-        bgGenero.add(jRadioButton2);
-        jRadioButton2.setText("Femenino");
+        bgGenero.add(rbFemenino);
+        rbFemenino.setText("Femenino");
+        rbFemenino.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        rbFemenino.setBorderPainted(true);
+        rbFemenino.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rbFemenino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/entrenadora.png"))); // NOI18N
+        rbFemenino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbFemeninoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(lbEntrenador)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(lbEntrenador))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(201, 201, 201)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton2))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(251, 251, 251)
-                        .addComponent(btSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(243, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(btSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(254, 254, 254))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(31, 31, 31)
+                            .addComponent(rbMasculino, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(rbFemenino, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(124, 124, 124)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(lbEntrenador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(rbMasculino)
+                    .addComponent(rbFemenino))
+                .addGap(41, 41, 41)
                 .addComponent(btSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                .addGap(68, 68, 68))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSiguienteActionPerformed
         super.getMainFrame().switchToRegistroPanel(indice);
     }//GEN-LAST:event_btSiguienteActionPerformed
+
+    private void rbMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMasculinoActionPerformed
+        if (rbMasculino.isSelected()) { 
+            rbMasculino.setBackground(Color.BLUE);
+            rbFemenino.setBackground(Color.WHITE); 
+        }
+    }//GEN-LAST:event_rbMasculinoActionPerformed
+
+    private void rbFemeninoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFemeninoActionPerformed
+        if (rbFemenino.isSelected()) { 
+            rbFemenino.setBackground(Color.RED);
+            rbMasculino.setBackground(Color.WHITE); 
+        }
+    }//GEN-LAST:event_rbFemeninoActionPerformed
 
     public void setIndice(int indice) {
         this.indice = indice;
@@ -131,9 +166,9 @@ public class RegistroPanel extends StandarPanel {
     private javax.swing.JButton btSiguiente;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lbEntrenador;
+    private javax.swing.JRadioButton rbFemenino;
+    private javax.swing.JRadioButton rbMasculino;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

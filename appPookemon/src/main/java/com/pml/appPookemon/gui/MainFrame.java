@@ -4,6 +4,7 @@
  */
 package main.java.com.pml.appPookemon.gui;
 
+import main.java.com.pml.appPookemon.gui.jugador.ListoPanel;
 import main.java.com.pml.appPookemon.gui.admin.AdminPanel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class MainFrame extends javax.swing.JFrame {
         AdminPanel adminP = new AdminPanel(this);
         NumPartPanel numPartP = new NumPartPanel(this);
         registros = new ArrayList<>();
-        ListoPanel listoP = new ListoPanel();
+        ListoPanel listoP = new ListoPanel(this);
 
         // Agregamos los paneles al CardLayout
         getContentPane().add(WelcomeP, "welcomeP");
