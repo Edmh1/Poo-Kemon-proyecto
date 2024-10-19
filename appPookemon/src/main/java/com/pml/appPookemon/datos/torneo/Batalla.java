@@ -2,6 +2,8 @@ package main.java.com.pml.appPookemon.datos.torneo;
 
 import main.java.com.pml.appPookemon.datos.registro.Entrenador;
 import java.util.ArrayList;
+import java.util.Random;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 
 public class Batalla {
     private int id;
@@ -11,11 +13,13 @@ public class Batalla {
     private int numeroTurno;
     private Accion accionEntrenador1;
     private Accion accionEntrenador2;
+    private ArrayList<Pookemon> pookemones;
 
-    public Batalla(int id, Entrenador e, Entrenador e2){
+    public Batalla(int id, Entrenador e, Entrenador e2, ArrayList<Pookemon> pookemones){
         this.id = id;
         this.entrenador1 = e;
         this.entrenador2 = e2;
+        this.pookemones = pookemones;
         numeroTurno = 0;
     }
 
@@ -136,5 +140,38 @@ public class Batalla {
 
     public int getId() {
         return id;
+    }
+    
+    public boolean generarMazo(){
+        Random random = new Random();
+        
+        if (pookemones.size() < 6) {
+            System.out.println("No hay suficientes Pookemones para crear el mazo.");
+            return false;  // Asegurarse de que hay suficientes Pookemones
+        }
+        
+        for (int i = 0; i < 2; i++) {
+            ArrayList<Pookemon> mazo = new ArrayList<>();
+            boolean seguir = true;
+            while(seguir){
+                int azar = random.nextInt(pookemones.size()); //conseguir un número al azar
+                Pookemon iterable = pookemones.get(azar); //obtengo del array de pookemones un objeto al azar
+                if(!mazo.contains(iterable)){ //valido que el objeto no esté ya en mazo
+                    mazo.add(iterable);
+                    if(mazo.size() == 3){ //verifico si ya la lista está llena. En nuestro caso, cuando hayan 3 pookemones
+                        if(i == 0){
+                            entrenador1.setPookemones(mazo);
+                        }else{
+                            entrenador2.setPookemones(mazo);
+                        }
+                    
+                        seguir = false;
+                    }
+                }
+            }
+        }
+        
+        return true;
+                    
     }
 }
