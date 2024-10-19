@@ -4,6 +4,9 @@
  */
 package main.java.com.pml.appPookemon.gui.admin;
 
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 
@@ -32,22 +35,23 @@ public class NumPartPanel extends StandarPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txtNum = new javax.swing.JTextField();
         btSiguiente = new javax.swing.JButton();
+        cbxNumPart = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setText("Numero de Participantes");
-
-        txtNum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumActionPerformed(evt);
-            }
-        });
 
         btSiguiente.setText("Siguiente");
         btSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSiguienteActionPerformed(evt);
+            }
+        });
+
+        cbxNumPart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "4", "8", "16", "32" }));
+        cbxNumPart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxNumPartActionPerformed(evt);
             }
         });
 
@@ -58,42 +62,43 @@ public class NumPartPanel extends StandarPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(btSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(174, 174, 174)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(253, 253, 253)
-                        .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(271, 271, 271)
+                        .addComponent(cbxNumPart, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jLabel1)))
-                .addContainerGap(195, Short.MAX_VALUE))
+                        .addGap(233, 233, 233)
+                        .addComponent(btSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
+                .addGap(101, 101, 101)
                 .addComponent(jLabel1)
-                .addGap(46, 46, 46)
-                .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(btSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(cbxNumPart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addComponent(btSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumActionPerformed
-
     private void btSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSiguienteActionPerformed
-        int num = Integer.parseInt(txtNum.getText());
-        System.out.println("capure el numerito"+num);
+        int num = Integer.parseInt((String) cbxNumPart.getSelectedItem());
+        super.getMainFrame().createRegistroPanels(num);
+        super.getMainFrame().switchToRegistroPanel(0);
     }//GEN-LAST:event_btSiguienteActionPerformed
+
+    private void cbxNumPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNumPartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxNumPartActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSiguiente;
+    private javax.swing.JComboBox<String> cbxNumPart;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtNum;
     // End of variables declaration//GEN-END:variables
 }

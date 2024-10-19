@@ -6,8 +6,12 @@ package main.java.com.pml.appPookemon.gui;
 
 import main.java.com.pml.appPookemon.gui.admin.AdminPanel;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
+import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.gui.admin.NumPartPanel;
+import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
 
 /**
  *
@@ -16,7 +20,8 @@ import main.java.com.pml.appPookemon.gui.admin.NumPartPanel;
 public class MainFrame extends javax.swing.JFrame {
 
     private CardLayout cardLayout;
-    private Stack<String> panelHistory; 
+    private Stack<String> panelHistory;
+    private List<RegistroPanel> registros;
     /**
      * Creates new form Main
      */
@@ -35,21 +40,23 @@ public class MainFrame extends javax.swing.JFrame {
         WelcomePanel WelcomeP = new WelcomePanel(this);
         AdminPanel adminP = new AdminPanel(this);
         NumPartPanel numPartP = new NumPartPanel(this);
+        registros = new ArrayList<>();
+        ListoPanel listoP = new ListoPanel();
 
         // Agregamos los paneles al CardLayout
         getContentPane().add(WelcomeP, "welcomeP");
         getContentPane().add(adminP, "adminP");
         getContentPane().add(numPartP, "numPartP");
+        getContentPane().add(listoP, "listoP");
         
         // Mostrar el primer panel por defecto
-        cardLayout.show(getContentPane(), "welcomeP");
-        panelHistory.push("welcomeP");
+        switchToWelcomePanel();
     }
 
     // Método para cambiar entre paneles
     private void switchPanel(String panelName) {
         cardLayout.show(getContentPane(), panelName);
-        panelHistory.push(panelName); // Guardamos el panel actual en el historial
+        panelHistory.push(panelName);
     }
 
     public void switchToWelcomePanel() {
@@ -60,6 +67,24 @@ public class MainFrame extends javax.swing.JFrame {
     }
     public void switchToNumeroPartPanel() {
         switchPanel("numPartP");
+    }
+     public void switchToListoPanel() {
+        switchPanel("listoP");
+    }
+    public void switchToRegistroPanel(int indice) {
+        if (indice < registros.size()) {
+            switchPanel("regP" +indice);
+        } else {
+            switchToListoPanel();
+        }    
+    }
+    
+    public void createRegistroPanels(int num) {
+        for (int i = 0; i < num; i++) {
+            RegistroPanel regP = new RegistroPanel(this,i+1);
+            registros.add(regP);
+            getContentPane().add(regP, "regP" + i);
+        }
     }
 
     // Método para volver al último panel

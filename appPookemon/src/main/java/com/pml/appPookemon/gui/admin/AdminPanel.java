@@ -4,6 +4,8 @@
  */
 package main.java.com.pml.appPookemon.gui.admin;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 
@@ -41,6 +43,11 @@ public class AdminPanel extends StandarPanel {
         jLabel1.setText("Administrador");
 
         btIngresar.setText("Ingresar");
+        btIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btIngresarActionPerformed(evt);
+            }
+        });
 
         txtClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +88,11 @@ public class AdminPanel extends StandarPanel {
     private void txtClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClaveActionPerformed
+
+    private void btIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIngresarActionPerformed
+        String clave = txtClave.getText();
+        JOptionPane.showMessageDialog(this, clave);//si captura la clave
+    }//GEN-LAST:event_btIngresarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
