@@ -48,6 +48,81 @@ public class prueba {
                 
                 System.out.println("" + torneo.toStringPookemones() + "\n");
                 */
+
+                Pookemon Roserade = new Pookemon(407, "Roserade", "planta", null);
+                Roserade.inicializarEstadistica(60, 70, 65, 125, 105, 90);
+                
+                Pookemon Venusaur = new Pookemon(3, "Venusaur", "planta", null);
+                Venusaur.inicializarEstadistica(80, 82, 83, 100, 100, 80);
+                
+                Pookemon Typhlosion = new Pookemon(157, "Typhlosion", "fuego", null);
+                Typhlosion.inicializarEstadistica(78, 84, 78, 109, 85, 100);
+                
+                Pookemon Gyarados = new Pookemon(130, "Gyarados", "agua", null);
+                Gyarados.inicializarEstadistica(95, 125, 79, 60, 100, 81);
+                
+                Pookemon Milotic = new Pookemon(350, "Milotic", "agua", null);
+                Milotic.inicializarEstadistica(95, 60, 79, 100, 125, 81);
+                
+                Pookemon Greninja = new Pookemon(658, "Greninja", "agua", null);
+                Greninja.inicializarEstadistica(72, 95, 67, 103, 71, 122);
+                
+                Pookemon Raichu = new Pookemon(26, "Raichu", "electrico", null);
+                Raichu.inicializarEstadistica(60, 90, 55, 90, 80, 110);
+                
+                Pookemon Nidoking = new Pookemon(34, "Nidoking", "veneno", null);
+                Nidoking.inicializarEstadistica(81, 102, 77, 85, 75, 85);
+                
+                Pookemon Alakazam = new Pookemon(65, "Alakazam", "psiquico", null);
+                Alakazam.inicializarEstadistica(55, 50, 45, 135, 95, 120);
+                
+                Pookemon Hypno = new Pookemon(97, "Hypno", "psiquico", null);
+                Hypno.inicializarEstadistica(85, 73, 70, 73, 115, 67);
+                
+                Pookemon Lucario = new Pookemon(448, "Lucario", "lucha", null);              
+                Lucario.inicializarEstadistica(70, 110, 70, 115, 70, 90);
+                
+                Pookemon Tyranitar = new Pookemon(248, "Tyranitar", "roca", null);
+                Tyranitar.inicializarEstadistica(100, 134, 110, 95, 100, 61);
+                
+                Pookemon Gengar = new Pookemon(94, "Gengar", "fantasma", null);
+                Gengar.inicializarEstadistica(60, 65, 60,130, 75, 110);
+                
+                Pookemon Clefable = new Pookemon(36, "Clefable", "hada", null);
+                Clefable.inicializarEstadistica(95, 70, 73, 95, 90, 60);
+                
+                Pookemon Snorlax = new Pookemon(143, "Snorlax", "normal", null);
+                Snorlax.inicializarEstadistica(160, 110, 65, 65, 110, 30);
+                
+                Pookemon Blissey = new Pookemon(242, "Blissey", "normal", null);
+                Blissey.inicializarEstadistica(255, 10, 10, 75, 135, 55);
+                
+                Pookemon Dragonite = new Pookemon(149, "Dragonite", "dragon", null);
+                Dragonite.inicializarEstadistica(91, 134, 95, 100, 100, 80);
+                
+                Pookemon Heracross = new Pookemon(214, "Heracross", "bicho", null);
+                Heracross.inicializarEstadistica(80, 125, 75, 40, 95, 85);
+                
+                Pookemon Volcarona = new Pookemon(637, "Volcarona", "bicho", null);
+                Volcarona.inicializarEstadistica(85, 60, 65, 135, 105, 100);
+                
+                Pookemon Metagross = new Pookemon(376, "Metagross", "acero", null);
+                Metagross.inicializarEstadistica(80, 135, 130, 95, 90, 70);
+                
+                Pookemon Excadrill = new Pookemon(530, "Excadrill", "tierra", null);
+                Excadrill.inicializarEstadistica(110, 135, 60, 50, 65, 88);
+                
+                Pookemon Hydreigon = new Pookemon(635, "Hydreigon", "siniestro", null);
+                Hydreigon.inicializarEstadistica(92, 105, 90, 125, 90, 98);
+                
+                Pookemon Staraptor = new Pookemon(398, "Staraptor", "volador", null);
+                Staraptor.inicializarEstadistica(85, 120, 70, 50, 60, 100);
+                
+                Pookemon Lapras = new Pookemon(131, "Lapras", "hielo", null);
+                Lapras.inicializarEstadistica(130, 85, 80, 85, 95, 60);
+                
+                Pookemon Weavile = new Pookemon(461, "Weavile", "hielo", null);
+                Weavile.inicializarEstadistica(70, 120, 65, 45, 85, 125);
                 
                 torneo.addMovimiento(new MovimientoEspecial(1111, "First", "N", 20, 15, 10, "Agua", null));
                 
