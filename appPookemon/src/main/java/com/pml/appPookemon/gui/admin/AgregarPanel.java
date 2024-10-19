@@ -6,6 +6,8 @@ package main.java.com.pml.appPookemon.gui.admin;
 
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
+import org.jdesktop.swingx.prompt.PromptSupport;
+
 
 /**
  *
@@ -13,15 +15,60 @@ import main.java.com.pml.appPookemon.gui.config.StandarPanel;
  */
 public class AgregarPanel extends StandarPanel {
 
+    private String nombre;
     /**
      * Creates new form AgregarPanel
      */
     public AgregarPanel(MainFrame mainFrame) {
         super(mainFrame);
         initComponents();
+        
+        PromptSupport.setPrompt("NOMBRE", txtNombre);
+        PromptSupport.setPrompt("TIPO", txtTipo);
+    }
+    
+    public void configurarContenido(){
+        String lb = "Agregar: "+" "+nombre;
+        lbAgregar.setText(lb);
+        if(nombre.equalsIgnoreCase("pookemon")){
+            configurarParaPookemon();
+        }else{
+            configurarParaMovimiento();
+        }
     }
 
+    private void configurarParaPookemon() {
+        PromptSupport.setPrompt("ATQ. FISICO", txtCampo3);
+        PromptSupport.setPrompt("DEF. FISICA", txtCampo4);
+        PromptSupport.setPrompt("ATQ. ESPECIAL", txtCampo5);
+        PromptSupport.setPrompt("DEF. ESPECIAL", txtCampo6);
+        PromptSupport.setPrompt("VELOCIDAD", txtCampo7);
+    }
     
+    private void configurarParaMovimiento() {
+        PromptSupport.setPrompt("POTENCIA", txtCampo3);
+        PromptSupport.setPrompt("PRECISIÓN", txtCampo4);
+        PromptSupport.setPrompt("CANTIDAD PP'S", txtCampo5);
+        PromptSupport.setPrompt("ELEMENTO", txtCampo6);
+        PromptSupport.setPrompt("EFECTO", txtCampo7);
+    }
+    
+    public void clearFields(){
+        txtNombre.setText("");
+        txtTipo.setText("");
+        txtCampo3.setText("");
+        txtCampo4.setText("");
+        txtCampo5.setText("");
+        txtCampo6.setText("");
+        txtCampo7.setText("");
+    }
+    
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+    public String getNombre(){
+        return nombre;
+    }
  
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,19 +79,103 @@ public class AgregarPanel extends StandarPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbAgregar = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtTipo = new javax.swing.JTextField();
+        txtCampo3 = new javax.swing.JTextField();
+        txtCampo4 = new javax.swing.JTextField();
+        txtCampo5 = new javax.swing.JTextField();
+        txtCampo6 = new javax.swing.JTextField();
+        txtCampo7 = new javax.swing.JTextField();
+        btAgregar = new javax.swing.JButton();
+
+        lbAgregar.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        lbAgregar.setText("Agregar: ");
+
+        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        txtTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoActionPerformed(evt);
+            }
+        });
+
+        btAgregar.setText("Agregar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(219, 219, 219)
+                        .addComponent(lbAgregar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(101, 101, 101)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCampo4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCampo5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCampo6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCampo7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(lbAgregar)
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCampo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCampo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCampo6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(txtCampo7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAgregar;
+    private javax.swing.JLabel lbAgregar;
+    private javax.swing.JTextField txtCampo3;
+    private javax.swing.JTextField txtCampo4;
+    private javax.swing.JTextField txtCampo5;
+    private javax.swing.JTextField txtCampo6;
+    private javax.swing.JTextField txtCampo7;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }

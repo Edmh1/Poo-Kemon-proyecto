@@ -16,28 +16,28 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton2" min="-2" pref="170" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="170" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="btEdiPookemon" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="btAgrPookemon" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="btEliPookemon" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton5" min="-2" pref="170" max="-2" attributes="0"/>
-                          <Component id="jButton4" min="-2" pref="170" max="-2" attributes="0"/>
-                          <Component id="jButton6" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="btEdiMovimiento" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="btAgrMovimiento" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="btEliMovimiento" min="-2" pref="170" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="157" max="32767" attributes="0"/>
+              <EmptySpace pref="161" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,20 +48,20 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btAgrPookemon" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btAgrMovimiento" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="jButton5" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btEdiPookemon" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btEdiMovimiento" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton6" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btEliMovimiento" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btEliPookemon" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="122" max="32767" attributes="0"/>
+              <EmptySpace pref="123" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,35 +75,38 @@
         <Property name="text" type="java.lang.String" value="Gesti&#xf3;n del Torneo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btAgrPookemon">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar Pookemon"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAgrPookemonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btEdiPookemon">
       <Properties>
         <Property name="text" type="java.lang.String" value="Editar Pookemon"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="btEliPookemon">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar Pookemon"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="btAgrMovimiento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar Movimiento"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAgrMovimientoActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="btEdiMovimiento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Editar Movimiento"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="btEliMovimiento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar Movimiento"/>
       </Properties>

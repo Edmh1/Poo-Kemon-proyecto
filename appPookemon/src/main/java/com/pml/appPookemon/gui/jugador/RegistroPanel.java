@@ -23,6 +23,7 @@ public class RegistroPanel extends StandarPanel {
         super(mainFrame);
         this.indice = indice;
         initComponents();
+        
         String lb = lbEntrenador.getText()+" "+indice;
         lbEntrenador.setText(lb);
     }

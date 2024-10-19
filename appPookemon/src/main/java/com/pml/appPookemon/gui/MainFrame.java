@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 import javax.swing.JOptionPane;
+import main.java.com.pml.appPookemon.gui.admin.AgregarPanel;
 import main.java.com.pml.appPookemon.gui.admin.GestionPanel;
 import main.java.com.pml.appPookemon.gui.admin.NumPartPanel;
 import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
@@ -24,6 +25,8 @@ public class MainFrame extends javax.swing.JFrame {
     private CardLayout cardLayout;
     private Stack<String> panelHistory;
     private List<RegistroPanel> registros;
+    
+    private AgregarPanel agrP;
     /**
      * Creates new form Main
      */
@@ -48,6 +51,7 @@ public class MainFrame extends javax.swing.JFrame {
         ListoPanel listoP = new ListoPanel(this);
         //paneles despues del admin
         GestionPanel gestP = new GestionPanel(this);
+        agrP = new AgregarPanel(this);
 
         // Agregamos los paneles al CardLayout
         getContentPane().add(WelcomeP, "welcomeP");
@@ -55,6 +59,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(numPartP, "numPartP");
         getContentPane().add(listoP, "listoP");
         getContentPane().add(gestP, "gestP");
+        getContentPane().add(agrP, "agrP");
         
         //evitar error al refrescar
         getContentPane().revalidate();
@@ -84,6 +89,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
     public void switchToGestionPanel() {
         switchPanel("gestP");
+    }
+    public void switchToAgregarPanel(String nombre) {
+        agrP.setNombre(nombre);
+        agrP.configurarContenido();
+        switchPanel("agrP");
     }
     public void switchToRegistroPanel(int indice) {
         if (indice < registros.size()) {
