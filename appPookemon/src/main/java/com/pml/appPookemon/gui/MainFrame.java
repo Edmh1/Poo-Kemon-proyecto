@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 import javax.swing.JOptionPane;
+import main.java.com.pml.appPookemon.gui.admin.GestionPanel;
 import main.java.com.pml.appPookemon.gui.admin.NumPartPanel;
 import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
 
@@ -40,15 +41,24 @@ public class MainFrame extends javax.swing.JFrame {
         // Instanciar los paneles
         WelcomePanel WelcomeP = new WelcomePanel(this);
         AdminPanel adminP = new AdminPanel(this);
+        
+        //paneles despues del iniciar torneo
         NumPartPanel numPartP = new NumPartPanel(this);
         registros = new ArrayList<>();
         ListoPanel listoP = new ListoPanel(this);
+        //paneles despues del admin
+        GestionPanel gestP = new GestionPanel(this);
 
         // Agregamos los paneles al CardLayout
         getContentPane().add(WelcomeP, "welcomeP");
         getContentPane().add(adminP, "adminP");
         getContentPane().add(numPartP, "numPartP");
         getContentPane().add(listoP, "listoP");
+        getContentPane().add(gestP, "gestP");
+        
+        //evitar error al refrescar
+        getContentPane().revalidate();
+        getContentPane().repaint();
         
         // Mostrar el primer panel por defecto
         switchToWelcomePanel();
@@ -69,8 +79,11 @@ public class MainFrame extends javax.swing.JFrame {
     public void switchToNumeroPartPanel() {
         switchPanel("numPartP");
     }
-     public void switchToListoPanel() {
+    public void switchToListoPanel() {
         switchPanel("listoP");
+    }
+    public void switchToGestionPanel() {
+        switchPanel("gestP");
     }
     public void switchToRegistroPanel(int indice) {
         if (indice < registros.size()) {
@@ -81,11 +94,17 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     public void createRegistroPanels(int num) {
+        registros.clear();
+        getContentPane().removeAll();
+        setupPanels();
+        
         for (int i = 0; i < num; i++) {
             RegistroPanel regP = new RegistroPanel(this,i+1);
             registros.add(regP);
             getContentPane().add(regP, "regP" + i);
         }
+        getContentPane().revalidate();
+        getContentPane().repaint();
     }
 
     // Método para volver al último panel
@@ -109,17 +128,19 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         MnMenu = new javax.swing.JMenu();
         MniAtras = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        MnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/pokemon-go.png"))); // NOI18N
         MnMenu.setText("Menu");
+        MnMenu.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         MnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnMenuActionPerformed(evt);
             }
         });
 
+        MniAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/arrow black.png"))); // NOI18N
         MniAtras.setText("volver");
         MniAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,9 +150,6 @@ public class MainFrame extends javax.swing.JFrame {
         MnMenu.add(MniAtras);
 
         jMenuBar1.add(MnMenu);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -143,7 +161,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
+            .addGap(0, 461, Short.MAX_VALUE)
         );
 
         pack();
@@ -199,7 +217,6 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MnMenu;
     private javax.swing.JMenuItem MniAtras;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
