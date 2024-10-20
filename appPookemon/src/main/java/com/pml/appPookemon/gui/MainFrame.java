@@ -16,6 +16,7 @@ import main.java.com.pml.appPookemon.gui.admin.EditarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EliminarPanel;
 import main.java.com.pml.appPookemon.gui.admin.GestionPanel;
 import main.java.com.pml.appPookemon.gui.admin.NumPartPanel;
+import main.java.com.pml.appPookemon.gui.batalla.BatallaPanel;
 import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
 
 /**
@@ -31,6 +32,8 @@ public class MainFrame extends javax.swing.JFrame {
     private AgregarPanel agrP;
     private EditarPanel ediP;
     private EliminarPanel eliP;
+    
+    private BatallaPanel batPri;
     /**
      * Creates new form Main
      */
@@ -58,6 +61,10 @@ public class MainFrame extends javax.swing.JFrame {
         agrP = new AgregarPanel(this);
         ediP = new EditarPanel(this);
         eliP = new EliminarPanel(this);
+        
+        //paneles batalla
+        
+        batPri = new BatallaPanel(this);
 
         // Agregamos los paneles al CardLayout
         getContentPane().add(WelcomeP, "welcomeP");
@@ -67,7 +74,8 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(gestP, "gestP");
         getContentPane().add(agrP, "agrP");
         getContentPane().add(ediP, "ediP");
-         getContentPane().add(eliP, "eliP");
+        getContentPane().add(eliP, "eliP");
+        getContentPane().add(batPri, "batPri");
         
         //evitar error al refrescar
         getContentPane().revalidate();
@@ -119,6 +127,10 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             switchToListoPanel();
         }    
+    }
+    
+    public void switchToBatallaPnel(){
+        switchPanel("batPri");
     }
     
     public void createRegistroPanels(int num) {
