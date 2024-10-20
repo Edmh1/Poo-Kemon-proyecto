@@ -91,7 +91,7 @@ public class AdminPanel extends StandarPanel {
 
     private void btIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIngresarActionPerformed
         String clave = txtClave.getText();
-        JOptionPane.showMessageDialog(this, clave);//si captura la clave
+        // APLICAR LOGICA DE CONTRASEÑA
         super.getMainFrame().switchToGestionPanel();
     }//GEN-LAST:event_btIngresarActionPerformed
 

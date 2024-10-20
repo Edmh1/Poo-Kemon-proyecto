@@ -50,6 +50,11 @@ public class GestionPanel extends StandarPanel {
         });
 
         btEdiPookemon.setText("Editar Pookemon");
+        btEdiPookemon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEdiPookemonActionPerformed(evt);
+            }
+        });
 
         btEliPookemon.setText("Eliminar Pookemon");
 
@@ -61,6 +66,11 @@ public class GestionPanel extends StandarPanel {
         });
 
         btEdiMovimiento.setText("Editar Movimiento");
+        btEdiMovimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEdiMovimientoActionPerformed(evt);
+            }
+        });
 
         btEliMovimiento.setText("Eliminar Movimiento");
 
@@ -114,6 +124,14 @@ public class GestionPanel extends StandarPanel {
     private void btAgrMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgrMovimientoActionPerformed
         super.getMainFrame().switchToAgregarPanel("Movimiento");
     }//GEN-LAST:event_btAgrMovimientoActionPerformed
+
+    private void btEdiPookemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEdiPookemonActionPerformed
+        super.getMainFrame().switchToEditarPanel("POOKEMON");
+    }//GEN-LAST:event_btEdiPookemonActionPerformed
+
+    private void btEdiMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEdiMovimientoActionPerformed
+        super.getMainFrame().switchToEditarPanel("MOVIMIENTO");
+    }//GEN-LAST:event_btEdiMovimientoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

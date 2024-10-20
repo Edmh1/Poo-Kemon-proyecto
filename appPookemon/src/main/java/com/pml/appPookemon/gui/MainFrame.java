@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Stack;
 import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.gui.admin.AgregarPanel;
+import main.java.com.pml.appPookemon.gui.admin.EditarPanel;
 import main.java.com.pml.appPookemon.gui.admin.GestionPanel;
 import main.java.com.pml.appPookemon.gui.admin.NumPartPanel;
 import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
@@ -27,6 +28,7 @@ public class MainFrame extends javax.swing.JFrame {
     private List<RegistroPanel> registros;
     
     private AgregarPanel agrP;
+    private EditarPanel ediP;
     /**
      * Creates new form Main
      */
@@ -52,6 +54,7 @@ public class MainFrame extends javax.swing.JFrame {
         //paneles despues del admin
         GestionPanel gestP = new GestionPanel(this);
         agrP = new AgregarPanel(this);
+        ediP = new EditarPanel(this);
 
         // Agregamos los paneles al CardLayout
         getContentPane().add(WelcomeP, "welcomeP");
@@ -60,6 +63,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(listoP, "listoP");
         getContentPane().add(gestP, "gestP");
         getContentPane().add(agrP, "agrP");
+        getContentPane().add(ediP, "ediP");
         
         //evitar error al refrescar
         getContentPane().revalidate();
@@ -95,6 +99,11 @@ public class MainFrame extends javax.swing.JFrame {
         agrP.configurarContenido();
         switchPanel("agrP");
     }
+    public void switchToEditarPanel(String nombre) {
+        ediP.setNombre(nombre);
+        ediP.configurarContenido();
+        switchPanel("agrP");
+    }
     public void switchToRegistroPanel(int indice) {
         if (indice < registros.size()) {
             switchPanel("regP" +indice);
@@ -121,7 +130,7 @@ public class MainFrame extends javax.swing.JFrame {
     public void goBack() {
         if (panelHistory.size() > 1) { 
             panelHistory.pop();
-            String previousPanel = panelHistory.peek(); 
+            String previousPanel = panelHistory.peek();
             cardLayout.show(getContentPane(), previousPanel);
         }
     }
@@ -141,6 +150,7 @@ public class MainFrame extends javax.swing.JFrame {
         mniInicio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pookemon");
 
         MnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/pokemon-go.png"))); // NOI18N
         MnMenu.setText("Menu");
