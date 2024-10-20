@@ -1,9 +1,10 @@
 package main.java.com.pml.appPookemon.datos.torneo;
 
-import main.java.com.pml.appPookemon.datos.registro.Entrenador;
+
 import java.util.ArrayList;
 import java.util.Random;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
+import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 
 public class Batalla {
     private int id;

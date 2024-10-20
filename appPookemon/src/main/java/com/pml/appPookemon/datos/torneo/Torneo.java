@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
-import main.java.com.pml.appPookemon.datos.registro.Entrenador;
+import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
+
 
 public class Torneo{
 

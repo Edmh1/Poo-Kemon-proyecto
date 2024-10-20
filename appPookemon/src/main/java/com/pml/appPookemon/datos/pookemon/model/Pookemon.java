@@ -1,7 +1,5 @@
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
-import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
-import main.java.com.pml.appPookemon.datos.pookemon.model.Estadistica;
 import java.util.ArrayList;
 import java.util.List;
 import main.java.com.pml.appPookemon.datos.pookemon.Efecto;

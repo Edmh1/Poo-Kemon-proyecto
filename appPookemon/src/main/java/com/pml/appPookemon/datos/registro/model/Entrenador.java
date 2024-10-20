@@ -1,4 +1,4 @@
-package main.java.com.pml.appPookemon.datos.registro;
+package main.java.com.pml.appPookemon.datos.registro.model;
 
 import java.util.ArrayList;
 import java.util.List;

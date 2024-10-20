@@ -137,7 +137,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         MnMenu = new javax.swing.JMenu();
-        MniAtras = new javax.swing.JMenuItem();
+        mniAtras = new javax.swing.JMenuItem();
+        mniInicio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,14 +151,23 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        MniAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/arrow black.png"))); // NOI18N
-        MniAtras.setText("volver");
-        MniAtras.addActionListener(new java.awt.event.ActionListener() {
+        mniAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/arrow black.png"))); // NOI18N
+        mniAtras.setText("volver");
+        mniAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MniAtrasActionPerformed(evt);
+                mniAtrasActionPerformed(evt);
             }
         });
-        MnMenu.add(MniAtras);
+        MnMenu.add(mniAtras);
+
+        mniInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/home.png"))); // NOI18N
+        mniInicio.setText("Inicio");
+        mniInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniInicioActionPerformed(evt);
+            }
+        });
+        MnMenu.add(mniInicio);
 
         jMenuBar1.add(MnMenu);
 
@@ -182,9 +192,13 @@ public class MainFrame extends javax.swing.JFrame {
        
     }//GEN-LAST:event_MnMenuActionPerformed
 
-    private void MniAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MniAtrasActionPerformed
+    private void mniAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAtrasActionPerformed
         goBack();
-    }//GEN-LAST:event_MniAtrasActionPerformed
+    }//GEN-LAST:event_mniAtrasActionPerformed
+
+    private void mniInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniInicioActionPerformed
+        switchToWelcomePanel();
+    }//GEN-LAST:event_mniInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,7 +240,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MnMenu;
-    private javax.swing.JMenuItem MniAtras;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem mniAtras;
+    private javax.swing.JMenuItem mniInicio;
     // End of variables declaration//GEN-END:variables
 }

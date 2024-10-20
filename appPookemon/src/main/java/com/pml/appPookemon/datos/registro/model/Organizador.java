@@ -5,7 +5,7 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.torneo.Torneo;
 import java.util.ArrayList;
-import main.java.com.pml.appPookemon.datos.registro.Entrenador;
+
 import main.java.com.pml.appPookemon.datos.torneo.Recompensa;
 
 public class Organizador {
@@ -90,7 +90,7 @@ public class Organizador {
         System.out.println("***************************");
         System.out.println();
         System.out.println("💻 Desarrollo y Construccion por:");
-        System.out.println("🛠️ Eddie Manotas - El Líder Visionario");
+        System.out.println("🛠️ Eddie Manotas - El Conquistador de Bugs");
         System.out.println("🛠️ Arturo Velasquez - El Arquitecto del Código");
         System.out.println("🛠️ Sebastian Castro - El Guerrero del Backend");
         System.out.println("🛠️ Andres Escobar - El Maestro del Frontend");
