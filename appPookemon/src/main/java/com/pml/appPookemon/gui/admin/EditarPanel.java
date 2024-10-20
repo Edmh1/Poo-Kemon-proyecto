@@ -35,18 +35,43 @@ public class EditarPanel extends StandarPanel {
     }
     
     private void configurarParaPookemon() {
-        lbOldCampo1.setText("ATQ. FISICO:");
-        lbOldCampo2.setText("DEF. FISICA:");
-        lbOldCampo3.setText("ATQ. ESPECIAL:");
-        lbOldCampo4.setText("");
-        lbOldCampo5.setText("");
-        lbOldCampo6.setText("");
+        setVisField(true);
+        lbOldCampo1.setText("VIDA:");
+        lbOldCampo2.setText("ATQ. FISICO:");
+        lbOldCampo3.setText("DEF. FISICA:");
+        lbOldCampo4.setText("ATQ. ESPECIAL:");
+        lbOldCampo5.setText("DEF. ESPECIAL:");
+        lbOldCampo6.setText("VELOCIDAD:");
+        lbNewCampo1.setText("VIDA:");
+        lbNewCampo2.setText("ATQ. FISICO:");
+        lbNewCampo3.setText("DEF. FISICA:");
+        lbNewCampo4.setText("ATQ. ESPECIAL:");
+        lbNewCampo5.setText("DEF. ESPECIAL:");
+        lbNewCampo6.setText("VELOCIDAD:");
+    }
+    
+    private void configurarParaMovimiento() {
+        lbOldCampo1.setText("DETALLE:");
+        lbOldCampo2.setText("POTENCIA:");
+        lbOldCampo3.setText("PRECISIÓN:");
+        lbOldCampo4.setText("CANTIDAD PP'S:");
+        lbNewCampo1.setText("DETALLE:");
+        lbNewCampo2.setText("POTENCIA:");
+        lbNewCampo3.setText("PRECISIÓN:");
+        lbNewCampo4.setText("CANTIDAD PP'S:");
+        setVisField(false);
+    }
+    private void setVisField(boolean value){
+        lbOldCampo5.setVisible(value);
+        txtOldCampo5.setVisible(value);
+        lbOldCampo6.setVisible(value);
+        txtOldCampo6.setVisible(value);
+        lbNewCampo5.setVisible(value);
+        txtNewCampo5.setVisible(value);
+        lbNewCampo6.setVisible(value);
+        txtNewCampo6.setVisible(value);
     }
 
-    private void configurarParaMovimiento() {
-    
-    }
-    
     public void clearFields() {
         txtOldCampo1.setText("");
         txtOldCampo2.setText("");
@@ -150,10 +175,20 @@ public class EditarPanel extends StandarPanel {
         lbOldNombre.setText("Nombre id");
 
         txtOldCampo1.setEditable(false);
+        txtOldCampo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOldCampo1ActionPerformed(evt);
+            }
+        });
 
         txtOldCampo2.setEditable(false);
 
         txtOldCampo3.setEditable(false);
+        txtOldCampo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOldCampo3ActionPerformed(evt);
+            }
+        });
 
         txtOldCampo4.setEditable(false);
 
@@ -166,33 +201,29 @@ public class EditarPanel extends StandarPanel {
         jpOldLayout.setHorizontalGroup(
             jpOldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOldLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(jpOldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpOldLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jpOldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbOldCampo6)
-                            .addComponent(lbOldCampo5)
-                            .addComponent(lbOldCampo4)
-                            .addComponent(lbOldCampo3)
-                            .addComponent(lbOldCampo2)
-                            .addComponent(lbOldCampo1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jpOldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtOldCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOldCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOldCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOldCampo4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOldCampo5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOldCampo6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jpOldLayout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(lbOldNombre)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(lbOldCampo2)
+                    .addComponent(lbOldCampo1)
+                    .addComponent(lbOldCampo3)
+                    .addComponent(lbOldCampo4)
+                    .addComponent(lbOldCampo5)
+                    .addComponent(lbOldCampo6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpOldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbOldNombre)
+                    .addComponent(txtOldCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOldCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOldCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOldCampo4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOldCampo5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOldCampo6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jpOldLayout.setVerticalGroup(
             jpOldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpOldLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addComponent(lbOldNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpOldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -218,7 +249,7 @@ public class EditarPanel extends StandarPanel {
                 .addGroup(jpOldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbOldCampo6)
                     .addComponent(txtOldCampo6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addGap(20, 20, 20))
         );
 
         jpNew.setBackground(new java.awt.Color(204, 204, 204));
@@ -251,31 +282,31 @@ public class EditarPanel extends StandarPanel {
             .addGroup(jpNewLayout.createSequentialGroup()
                 .addGroup(jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpNewLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbNewCampo6)
-                            .addComponent(lbNewCampo5)
-                            .addComponent(lbNewCampo4)
-                            .addComponent(lbNewCampo3)
-                            .addComponent(lbNewCampo2)
-                            .addComponent(lbNewCampo1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(80, 80, 80)
+                        .addComponent(lbNombreNew))
+                    .addGroup(jpNewLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNewCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbNewCampo2)
+                            .addComponent(lbNewCampo1)
+                            .addComponent(lbNewCampo3)
+                            .addComponent(lbNewCampo4)
+                            .addComponent(lbNewCampo5)
+                            .addComponent(lbNewCampo6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNewCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNewCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNewCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNewCampo4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNewCampo5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNewCampo6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jpNewLayout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(lbNombreNew)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                            .addComponent(txtNewCampo6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jpNewLayout.setVerticalGroup(
             jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpNewLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
                 .addComponent(lbNombreNew)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -301,7 +332,7 @@ public class EditarPanel extends StandarPanel {
                 .addGroup(jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNewCampo6)
                     .addComponent(txtNewCampo6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btBuscar.setText("Buscar");
@@ -319,63 +350,66 @@ public class EditarPanel extends StandarPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addComponent(lbEditar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(115, 115, 115)
-                                        .addComponent(jLabel1))
-                                    .addComponent(jpOld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addComponent(jpNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(146, 146, 146)
-                                        .addComponent(jLabel2))))))
+                        .addGap(52, 52, 52)
+                        .addComponent(jpOld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(jpNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(242, 242, 242)
-                        .addComponent(btActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                        .addGap(180, 180, 180)
+                        .addComponent(jLabel1)
+                        .addGap(255, 255, 255)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(lbEditar)))
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                            .addComponent(btBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(lbEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpOld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jpNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(btActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                        .addGap(30, 30, 30)
+                        .addComponent(lbEditar)
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btActualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscar))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpOld, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btActualizarActionPerformed
+
+    private void txtOldCampo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOldCampo3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOldCampo3ActionPerformed
+
+    private void txtOldCampo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOldCampo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOldCampo1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

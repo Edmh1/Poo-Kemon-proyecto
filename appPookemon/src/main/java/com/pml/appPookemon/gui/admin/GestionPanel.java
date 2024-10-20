@@ -57,6 +57,11 @@ public class GestionPanel extends StandarPanel {
         });
 
         btEliPookemon.setText("Eliminar Pookemon");
+        btEliPookemon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliPookemonActionPerformed(evt);
+            }
+        });
 
         btAgrMovimiento.setText("Agregar Movimiento");
         btAgrMovimiento.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +78,11 @@ public class GestionPanel extends StandarPanel {
         });
 
         btEliMovimiento.setText("Eliminar Movimiento");
+        btEliMovimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliMovimientoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -118,11 +128,11 @@ public class GestionPanel extends StandarPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAgrPookemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgrPookemonActionPerformed
-        super.getMainFrame().switchToAgregarPanel("Pookemon");
+        super.getMainFrame().switchToAgregarPanel("POOKEMON");
     }//GEN-LAST:event_btAgrPookemonActionPerformed
 
     private void btAgrMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgrMovimientoActionPerformed
-        super.getMainFrame().switchToAgregarPanel("Movimiento");
+        super.getMainFrame().switchToAgregarPanel("MOVIMIENTO");
     }//GEN-LAST:event_btAgrMovimientoActionPerformed
 
     private void btEdiPookemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEdiPookemonActionPerformed
@@ -132,6 +142,14 @@ public class GestionPanel extends StandarPanel {
     private void btEdiMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEdiMovimientoActionPerformed
         super.getMainFrame().switchToEditarPanel("MOVIMIENTO");
     }//GEN-LAST:event_btEdiMovimientoActionPerformed
+
+    private void btEliPookemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliPookemonActionPerformed
+        super.getMainFrame().switchToEliminarPanel("POOKEMON");
+    }//GEN-LAST:event_btEliPookemonActionPerformed
+
+    private void btEliMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliMovimientoActionPerformed
+        super.getMainFrame().switchToEliminarPanel("MOVIMIENTO");
+    }//GEN-LAST:event_btEliMovimientoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

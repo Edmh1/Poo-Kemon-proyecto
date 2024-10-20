@@ -59,7 +59,6 @@ public class AgregarPanel extends StandarPanel {
         PromptSupport.setPrompt("CANTIDAD PP'S", txtCampo4);
         
         //configurarEfectos(); Agregar efectos de manera Dinamica
-        
         jpMovimiento.setVisible(true);
         jpPookemon.setVisible(false);
         
@@ -139,6 +138,11 @@ public class AgregarPanel extends StandarPanel {
         add(txtCampo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 306, 150, -1));
 
         btAgregar.setText("Agregar");
+        btAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAgregarActionPerformed(evt);
+            }
+        });
         add(btAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 390, 165, 38));
 
         btExaminar.setText("Examinar...");
@@ -219,6 +223,10 @@ public class AgregarPanel extends StandarPanel {
             lblFilePath.setText("No se seleccionó ningún archivo.");
         }
     }//GEN-LAST:event_btExaminarActionPerformed
+
+    private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

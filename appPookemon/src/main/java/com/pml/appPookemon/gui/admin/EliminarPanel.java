@@ -13,6 +13,7 @@ import main.java.com.pml.appPookemon.gui.config.StandarPanel;
  */
 public class EliminarPanel extends StandarPanel {
 
+    private String nombre;
     /**
      * Creates new form EliminarPanel
      */
@@ -42,6 +43,14 @@ public class EliminarPanel extends StandarPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void configurarContenido() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

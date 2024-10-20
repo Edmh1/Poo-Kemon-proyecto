@@ -95,6 +95,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar Pookemon"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEliPookemonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btAgrMovimiento">
       <Properties>
@@ -116,6 +119,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar Movimiento"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEliMovimientoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
