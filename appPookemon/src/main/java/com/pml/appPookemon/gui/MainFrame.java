@@ -109,8 +109,8 @@ public class MainFrame extends javax.swing.JFrame {
         switchPanel("ediP");
     }
     public void switchToEliminarPanel(String nombre) {
-        ediP.setNombre(nombre);
-        ediP.configurarContenido();
+        eliP.setNombre(nombre);
+        eliP.configurarContenido();
         switchPanel("eliP");
     }
     public void switchToRegistroPanel(int indice) {
