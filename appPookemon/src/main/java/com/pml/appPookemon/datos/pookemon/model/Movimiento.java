@@ -4,7 +4,6 @@ import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.ImageIcon;
 
 
 public abstract class Movimiento {
@@ -16,8 +15,7 @@ public abstract class Movimiento {
     private int cantidadPP;
     private String elemento;
     private Efecto efecto;
- 
-    
+   
     private final double muyEfectivo = 2.0;
     private final double pocoEfectivo = 0.5;
     private final double noEfectivo = 0.0;

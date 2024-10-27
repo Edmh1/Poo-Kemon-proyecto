@@ -1,6 +1,7 @@
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
 public class Estadistica {
+    private int vidaMaxima;
     private int vida;
     private int ataqueFisico;
     private int defensaFisica;
@@ -10,6 +11,7 @@ public class Estadistica {
 
     public Estadistica(int vida, int ataqueFisico, int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad) {
         this.vida = vida;
+        this.vidaMaxima = vida;
         this.ataqueFisico = ataqueFisico;
         this.defensaFisica = defensaFisica;
         this.ataqueEspecial = ataqueEspecial;
@@ -21,6 +23,12 @@ public class Estadistica {
     public String toString() {
         return "Estadistica{" + "vida=" + vida + ", ataqueFisico=" + ataqueFisico + ", defensaFisica=" + defensaFisica + ", ataqueEspecial=" + ataqueEspecial + ", defensaEspecial=" + defensaEspecial + ", velocidad=" + velocidad + '}';
     }
+    /**
+     * @return the vida
+     */
+    public int getVidaMaxima() {
+        return vidaMaxima;
+    }    
 
     /**
      * @return the vida
