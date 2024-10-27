@@ -4,17 +4,20 @@ import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.ImageIcon;
 
 
 public abstract class Movimiento {
     private int idMovimiento;
     private String nombreMovimiento;
     private String descripcionMovimiento;
+    private ImageIcon imagen;
     private int potencia;
     private int precision;
     private int cantidadPP;
     private String elemento;
     private Efecto efecto;
+    
     
     private final double muyEfectivo = 2.0;
     private final double pocoEfectivo = 0.5;
@@ -22,15 +25,15 @@ public abstract class Movimiento {
     
     private Map<String, Map<String, Double>> tablaEfectividad;
 
-    public Movimiento(int idMovimiento, String nombre, String descripcion, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto) {
+    public Movimiento(int idMovimiento, String nombre, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto, String rutaImagen, String tipoMovimiento) {
         this.idMovimiento = idMovimiento;
         this.nombreMovimiento = nombre;
-        this.descripcionMovimiento = descripcion;
         this.potencia = potencia;
         this.precision = precision;
         this.cantidadPP = cantidadPP;
         this.elemento = elemento;
         this.efecto = efecto;
+        this.imagen = new ImageIcon(nombre); //necesita recibir la ruta de la imagen;
         inicializarTablaEfectividad();
     }
 
@@ -404,6 +407,25 @@ public abstract class Movimiento {
         tablaEfectividad.put("acero", aceroEfectividad);
 
     }    
+
+    /**
+     * @return the imagen
+     */
+    public ImageIcon getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param rutaImagen
+     */
+    public void setImagen(String rutaImagen) {
+        this.imagen = new ImageIcon(rutaImagen);
+    }
+
+    /**
+     * @return the tipoMovimiento
+     */
+    public abstract String getTipoMovimiento();
     
       
 }
