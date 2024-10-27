@@ -4,13 +4,23 @@
  */
 package main.java.com.pml.appPookemon.gui;
 
+import java.awt.BorderLayout;
 import main.java.com.pml.appPookemon.gui.jugador.ListoPanel;
 import main.java.com.pml.appPookemon.gui.admin.AdminPanel;
 import java.awt.CardLayout;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import javax.swing.JOptionPane;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JSlider;
 import main.java.com.pml.appPookemon.controller.PookemonContoller;
 import main.java.com.pml.appPookemon.gui.admin.AgregarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EditarPanel;
@@ -36,6 +46,9 @@ public class MainFrame extends javax.swing.JFrame {
     private EliminarPanel eliP;
     
     private BatallaPanel batPri;
+    
+    private Clip clip;
+    
     /**
      * Creates new form Main
      */
@@ -43,6 +56,7 @@ public class MainFrame extends javax.swing.JFrame {
         panelHistory = new Stack<>();
         initComponents();
         setupPanels();
+        reproducirMusica(getClass().getResourceAsStream("/audio/song.wav"));
     }
     
     private void setupPanels() {
@@ -284,4 +298,27 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniAtras;
     private javax.swing.JMenuItem mniInicio;
     // End of variables declaration//GEN-END:variables
+
+    private void reproducirMusica(InputStream audioStream) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioStream);
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY); // Loop the music
+ 
+            setVolume(0.5f);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setVolume(float volume) {
+        if (clip != null) {
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float dB = (float) (20 * Math.log10(volume)); // Convert volume to decibels
+            gainControl.setValue(dB);
+        }
+    }
+
 }
