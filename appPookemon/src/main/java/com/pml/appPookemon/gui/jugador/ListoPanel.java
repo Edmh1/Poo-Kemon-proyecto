@@ -37,6 +37,11 @@ public class ListoPanel extends StandarPanel {
         jLabel1 = new javax.swing.JLabel();
 
         btListo.setText("LISTO!!!");
+        btListo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/listoPanel.gif"))); // NOI18N
 
@@ -73,6 +78,10 @@ public class ListoPanel extends StandarPanel {
                 .addGap(43, 43, 43))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListoActionPerformed
+        super.getMainFrame().switchToBatallaPnel();
+    }//GEN-LAST:event_btListoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

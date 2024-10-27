@@ -6,6 +6,7 @@ package main.java.com.pml.appPookemon.gui.jugador;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 
@@ -16,6 +17,8 @@ import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 public class RegistroPanel extends StandarPanel {
 
     private int indice;
+    private int nJugadores = 0;
+    private String generoSeleccionado = "";
     /**
      * Creates new form RegistroPanel
      */
@@ -28,6 +31,11 @@ public class RegistroPanel extends StandarPanel {
         lbEntrenador.setText(lb);
     }
     
+    private Entrenador crearJugador(){
+        Entrenador e = new Entrenador(nJugadores, txtNombre.getText(), generoSeleccionado);
+        nJugadores++;
+        return e;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -138,18 +146,22 @@ public class RegistroPanel extends StandarPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSiguienteActionPerformed
+        Entrenador e  = crearJugador();
+        super.getMainFrame().getController().agregarJugador(e);
         super.getMainFrame().switchToRegistroPanel(indice);
     }//GEN-LAST:event_btSiguienteActionPerformed
 
     private void rbMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMasculinoActionPerformed
-        if (rbMasculino.isSelected()) { 
+        if (rbMasculino.isSelected()) {
+            generoSeleccionado = "Masculino";
             rbMasculino.setBackground(Color.BLUE);
             rbFemenino.setBackground(Color.WHITE); 
         }
     }//GEN-LAST:event_rbMasculinoActionPerformed
 
     private void rbFemeninoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFemeninoActionPerformed
-        if (rbFemenino.isSelected()) { 
+        if (rbFemenino.isSelected()) {
+            generoSeleccionado = "Femenino";
             rbFemenino.setBackground(Color.RED);
             rbMasculino.setBackground(Color.WHITE); 
         }

@@ -174,4 +174,21 @@ public class Batalla {
         return true;
                     
     }
+
+    public Entrenador getEntrenador1() {
+        return entrenador1;
+    }
+
+    public Entrenador getEntrenador2() {
+        return entrenador2;
+    }
+
+    public void setAccionEntrenador1(Accion accionEntrenador1) {
+        this.accionEntrenador1 = accionEntrenador1;
+    }
+
+    public void setAccionEntrenador2(Accion accionEntrenador2) {
+        this.accionEntrenador2 = accionEntrenador2;
+    }
+    
 }
