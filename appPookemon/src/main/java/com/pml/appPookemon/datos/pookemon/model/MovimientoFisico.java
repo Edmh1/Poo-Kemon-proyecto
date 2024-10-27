@@ -13,8 +13,8 @@ import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
  */
 public class MovimientoFisico extends Movimiento{
 
-    public MovimientoFisico(int idMovimiento, String nombre, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto, String rutaImagen, String tipoMovimiento) {
-        super(idMovimiento, nombre, potencia, precision, cantidadPP, elemento, efecto, rutaImagen, tipoMovimiento);
+    public MovimientoFisico(int idMovimiento, String nombre, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto) {
+        super(idMovimiento, nombre, potencia, precision, cantidadPP, elemento, efecto);
     }
     
     
@@ -28,7 +28,7 @@ public class MovimientoFisico extends Movimiento{
 
     @Override
     public String getTipoMovimiento() {
-        return "Fisico";
+        return "movFisico";
     }
     
 }

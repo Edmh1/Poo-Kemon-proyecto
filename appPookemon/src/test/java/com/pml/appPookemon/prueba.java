@@ -51,6 +51,7 @@ public class prueba {
                 System.out.println("" + torneo.toStringPookemones() + "\n");
                 */
                 
+                /*
                 Pookemon Roserade = new Pookemon(407, "Roserade", "planta", null);
                 Roserade.inicializarEstadistica(60, 70, 65, 125, 105, 90);
                 
