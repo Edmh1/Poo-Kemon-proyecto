@@ -6,6 +6,11 @@ package main.java.com.pml.appPookemon.gui.admin;
 
 import java.io.File;
 import javax.swing.JFileChooser;
+import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
+import main.java.com.pml.appPookemon.datos.pookemon.controller.MovimientoControlador;
+import main.java.com.pml.appPookemon.datos.pookemon.controller.PookemonControlador;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 import org.jdesktop.swingx.prompt.PromptSupport;
@@ -205,7 +210,7 @@ public class AgregarPanel extends StandarPanel {
 
         add(jpPookemon, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 114, 160, 93));
 
-        jcbElemento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fuego", "Agua", "Dragon", "Piedra" }));
+        jcbElemento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acero", "Agua", "Bicho", "Dragon", "Electrico", "Fantasma", "Fuego", "Hada", "Hielo", "lucha", "Normal", "Planta", "Psiquico", "Roca", "Siniestro", "Tierra", "Veneno", "Volador", " " }));
         add(jcbElemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 150, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -231,6 +236,32 @@ public class AgregarPanel extends StandarPanel {
 
     private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
         // TODO add your handling code here:
+        if(nombre.equalsIgnoreCase("Pookemon")){
+            PookemonControlador controlador = new PookemonControlador();
+            String nombrePookemon = txtCampo1.getText();
+            int velocidad = Integer.parseInt(txtCampo2.getText());
+            int ataqueFisico = Integer.parseInt(txtCampo3.getText());
+            int defensaFisica = Integer.parseInt(txtCampo4.getText());
+            int ataqueEspecial = Integer.parseInt(txtCampo5.getText());
+            int defensaEspecial = Integer.parseInt(txtCampo6.getText());
+            String elemento = (String) jcbElemento.getSelectedItem();
+            Pookemon pookemon = controlador.agregarPookemon(nombrePookemon, velocidad, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, elemento);
+            super.getMainFrame().getController().agregarPookemon(pookemon);
+            
+        } else {
+            MovimientoControlador controlador = new MovimientoControlador();
+            String nombreMovimiento = txtCampo1.getText();
+            int potencia = Integer.parseInt(txtCampo2.getText());
+            int precision = Integer.parseInt(txtCampo3.getText());
+            int cantidadPP = Integer.parseInt(txtCampo4.getText());
+            Efecto efecto = (Efecto) jcbEfecto.getSelectedItem();
+            String elemento = (String) jcbElemento.getSelectedItem();
+            String tipo = (String) jcbTipo.getSelectedItem();
+            Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, efecto, elemento, tipo);
+            super.getMainFrame().getController().agregarMovimiento(movimiento);
+        }
+        
+
     }//GEN-LAST:event_btAgregarActionPerformed
 
 
