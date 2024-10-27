@@ -14,12 +14,11 @@ public class Pookemon {
     private Efecto efecto;
     private boolean defendiendo;
 
-    public Pookemon(int idPookemon, String nombre, String elemento, int ataqueFisico, int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad) {
+    public Pookemon(int idPookemon, String nombre, String elemento) {
         this.idPookemon = idPookemon;
         this.nombrePookemon = nombre;
         this.elementoPookemon = elemento;
         this.movimientos = new ArrayList<>();
-        this.estadisticaPookemon = new Estadistica(100, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, velocidad);
     }
 
     @Override
@@ -151,5 +150,6 @@ public class Pookemon {
     public void setEfecto(Efecto efecto) {
         this.efecto = efecto;
     }   
+    
     
 }
