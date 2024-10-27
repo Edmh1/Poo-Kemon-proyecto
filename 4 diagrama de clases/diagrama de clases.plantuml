@@ -29,6 +29,7 @@ left to right direction
         - nombreEntrenador : str
         - generoEntrenador : str
         - pokemonActual : int 
+        - premios : ArrayList<Recompensa>
 
         + defenderse()
         + atacar(idMovimiento : int, objetivo : Pookemon)
@@ -36,6 +37,7 @@ left to right direction
         + usarObjeto(idObjeto : int, idMovimiento : int)
         + cambiarPookemon(idPookemon : int)
         + obtenerPookemonPorID(idPookemon : int)
+        
     }
 
     newpage
