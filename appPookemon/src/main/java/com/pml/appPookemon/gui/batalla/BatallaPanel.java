@@ -437,7 +437,10 @@ public class BatallaPanel extends StandarPanel {
         Lapras.setMovimientos(new ArrayList<>(Arrays.asList(Ventisca, RayoHielo, Hidrobomba, Vozarron)));
         Weavile.setMovimientos(new ArrayList<>(Arrays.asList(GarraUmbria, Triturar, PunoHielo, Ventisca)));
 
-        return new ArrayList<>(Arrays.asList(Roserade));
+        return new ArrayList<>(Arrays.asList(Roserade,Venusaur, Typhlosion, Gyarados, Milotic, Greninja, Raichu,
+        Nidoking,Alakazam,Hypno,Lucario, Tyranitar,Gengar, Clefable, Snorlax, Blissey, Dragonite, Heracross,
+        Volcarona, Metagross, Excadrill, Hydreigon, Staraptor, Lapras, Weavile));
+        
 
     }
 
