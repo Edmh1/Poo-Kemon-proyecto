@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 import javax.swing.JOptionPane;
+import main.java.com.pml.appPookemon.controller.PookemonContoller;
 import main.java.com.pml.appPookemon.gui.admin.AgregarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EditarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EliminarPanel;
@@ -24,7 +25,8 @@ import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
  * @author eddie
  */
 public class MainFrame extends javax.swing.JFrame {
-
+    
+    private PookemonContoller controller = new PookemonContoller();
     private CardLayout cardLayout;
     private Stack<String> panelHistory;
     private List<RegistroPanel> registros;
@@ -130,6 +132,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     public void switchToBatallaPnel(){
+        controller.crearTorneo();
+        batPri.configurar();
         switchPanel("batPri");
     }
     
@@ -155,6 +159,10 @@ public class MainFrame extends javax.swing.JFrame {
             cardLayout.show(getContentPane(), previousPanel);
         }
     }
+    
+    public PookemonContoller getController(){
+        return controller;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -172,6 +180,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pookemon");
+        setResizable(false);
 
         MnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/pokemon-go.png"))); // NOI18N
         MnMenu.setText("Menu");

@@ -151,6 +151,8 @@ public class Pookemon {
         this.efecto = efecto;
     }
 
-    
+    public int getVida(){
+        return estadisticaPookemon.getVida();
+    }
     
 }

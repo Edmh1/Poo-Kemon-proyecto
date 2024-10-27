@@ -1,15 +1,29 @@
 package main.java.com.pml.appPookemon.gui.batalla;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
+import main.java.com.pml.appPookemon.controller.BatallaControlador;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
+import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoEspecial;
+import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoFisico;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
+import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
+import main.java.com.pml.appPookemon.datos.torneo.*;
 
 /**
  *
  * @author feder
  */
 public class BatallaPanel extends StandarPanel {
-
+    private Entrenador j1;
+    private Entrenador j2;
+    private Entrenador[] entrenadores;
+    private Batalla batalla;
+    private BatallaControlador controlador;
     /**
      * Creates new form BatallaPrincipal
      */
@@ -27,22 +41,42 @@ public class BatallaPanel extends StandarPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lb_nombrePookemon_1 = new javax.swing.JLabel();
         btAtacar = new javax.swing.JButton();
         btDefender = new javax.swing.JButton();
         btCambiar = new javax.swing.JButton();
         btObjeto = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtHealthTwo = new javax.swing.JTextField();
-        txtHealthOne = new javax.swing.JTextField();
+        lb_nombrePookemon_2 = new javax.swing.JLabel();
+        lbVidaPookemon1 = new javax.swing.JLabel();
+        lbVidaPookemon2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaLog = new javax.swing.JTextArea();
-        jLabelPersonajeOne = new javax.swing.JLabel();
+        imgPookemon1 = new javax.swing.JLabel();
+        pbVida1 = new javax.swing.JProgressBar();
+        pbVida2 = new javax.swing.JProgressBar();
+        imgPookemon2 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel1.setText("Nombre Pookemon");
+        lb_nombrePookemon_1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lb_nombrePookemon_1.setText("Nombre Pookemon");
+        lb_nombrePookemon_1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                lb_nombrePookemon_1ComponentAdded(evt);
+            }
+        });
+        lb_nombrePookemon_1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lb_nombrePookemon_1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        lb_nombrePookemon_1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                lb_nombrePookemon_1ComponentShown(evt);
+            }
+        });
 
         btAtacar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btAtacar.setText("ATACAR");
@@ -75,48 +109,30 @@ public class BatallaPanel extends StandarPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel3.setText("Nombre Pookemon");
+        lb_nombrePookemon_2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lb_nombrePookemon_2.setText("Nombre Pookemon");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel2.setText("HP");
+        lbVidaPookemon1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        lbVidaPookemon1.setText("HP");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel4.setText("HP");
-
-        txtHealthTwo.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        txtHealthTwo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        txtHealthOne.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        txtHealthOne.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        lbVidaPookemon2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        lbVidaPookemon2.setText("HP");
 
         txtAreaLog.setColumns(20);
         txtAreaLog.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtAreaLog.setRows(5);
         jScrollPane1.setViewportView(txtAreaLog);
 
-        jLabelPersonajeOne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/EleLucha.png"))); // NOI18N
+        imgPookemon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/EleLucha.png"))); // NOI18N
+
+        pbVida1.setValue(50);
+
+        imgPookemon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/EleAcero.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
-                        .addComponent(txtHealthOne))
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtHealthTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -130,26 +146,53 @@ public class BatallaPanel extends StandarPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lb_nombrePookemon_1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbVidaPookemon1)
+                        .addComponent(pbVida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(198, 198, 198)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbVidaPookemon2)
+                        .addGap(200, 200, 200))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pbVida2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_nombrePookemon_2))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(147, 147, 147)
-                .addComponent(jLabelPersonajeOne)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(imgPookemon1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imgPookemon2)
+                .addGap(151, 151, 151))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(txtHealthTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHealthOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addComponent(jLabelPersonajeOne)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                    .addComponent(lb_nombrePookemon_1)
+                    .addComponent(lb_nombrePookemon_2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(pbVida1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(imgPookemon1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbVidaPookemon2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbVidaPookemon1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pbVida2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imgPookemon2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -178,6 +221,18 @@ public class BatallaPanel extends StandarPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btObjetoActionPerformed
 
+    private void lb_nombrePookemon_1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_lb_nombrePookemon_1ComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lb_nombrePookemon_1ComponentShown
+
+    private void lb_nombrePookemon_1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lb_nombrePookemon_1AncestorAdded
+
+    }//GEN-LAST:event_lb_nombrePookemon_1AncestorAdded
+
+    private void lb_nombrePookemon_1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_lb_nombrePookemon_1ComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lb_nombrePookemon_1ComponentAdded
+
     
     // Método para cambiar la imagen del personaje 
     // FALTA TERMINAR 
@@ -185,8 +240,183 @@ public class BatallaPanel extends StandarPanel {
         // Cargar la imagen desde la ruta especificada
         ImageIcon icon = new ImageIcon(getClass().getResource(rutaImagen));
         // Asignar la imagen al JLabel
-        jLabelPersonajeOne.setIcon(icon);
-}
+        imgPookemon1.setIcon(icon);
+    }
+    
+    public void configurar(){
+       entrenadores = super.getMainFrame().getController().batallaActual();
+       j1 = entrenadores[0];
+       j2 = entrenadores[1];
+       batalla = new Batalla(0, j1, j2, pookemonesYVainasFalsasloljaja());
+       batalla.generarMazo();
+       controlador = new BatallaControlador(batalla);
+       configurarTextos();
+       configurarImagenes();
+    }
+    
+    public void configurarTextos(){
+        Pookemon j1Pookemon = controlador.getEntrenador1().getPookemonActual();
+        Pookemon j2Pookemon = controlador.getEntrenador2().getPookemonActual();
+        int vidaPookemon1 = j1Pookemon.getVida();
+        int vidaPookemon2 = j2Pookemon.getVida();
+        lb_nombrePookemon_1.setText(j1Pookemon.getNombrePookemon());
+        lb_nombrePookemon_2.setText(j2Pookemon.getNombrePookemon());
+        lbVidaPookemon1.setText("HP  " + j1Pookemon.getVida());
+        lbVidaPookemon2.setText("HP  " + j2Pookemon.getVida());
+        pbVida1.setMaximum(vidaPookemon1);
+        pbVida2.setMaximum(vidaPookemon2);
+        pbVida1.setValue(vidaPookemon1);
+        pbVida2.setValue(vidaPookemon2);
+    }
+    
+    public void configurarImagenes(){
+        String nombre1 = controlador.getEntrenador1().getPookemonActual().getNombrePookemon().toLowerCase();
+        String nombre2 = controlador.getEntrenador2().getPookemonActual().getNombrePookemon().toLowerCase();
+        URL imagen1 = getClass().getResource("/img/SpritesPookemon/"+nombre1+".gif");
+        URL imagen2 = getClass().getResource("/img/SpritesPookemon/"+nombre2+".gif");
+        ImageIcon img1 = new ImageIcon(imagen1);
+        ImageIcon img2 = new ImageIcon(imagen2);
+        imgPookemon1.setIcon(img1);
+        imgPookemon2.setIcon(img2);
+    }
+           /*
+       *******************************************************************
+       *     FUNCIÓN FALSA QUE AGREGA LOS POOKEMONES YA CREADOS          *
+       *     XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD          *
+       *******************************************************************
+       */
+    public ArrayList<Pookemon> pookemonesYVainasFalsasloljaja(){
+        Pookemon Roserade = new Pookemon(407, "Roserade", "planta", null);
+        Roserade.inicializarEstadistica(60, 70, 65, 125, 105, 90);
+
+        Pookemon Venusaur = new Pookemon(3, "Venusaur", "planta", null);
+        Venusaur.inicializarEstadistica(80, 82, 83, 100, 100, 80);
+
+        Pookemon Typhlosion = new Pookemon(157, "Typhlosion", "fuego", null);
+        Typhlosion.inicializarEstadistica(78, 84, 78, 109, 85, 100);
+
+        Pookemon Gyarados = new Pookemon(130, "Gyarados", "agua", null);
+        Gyarados.inicializarEstadistica(95, 125, 79, 60, 100, 81);
+
+        Pookemon Milotic = new Pookemon(350, "Milotic", "agua", null);
+        Milotic.inicializarEstadistica(95, 60, 79, 100, 125, 81);
+
+        Pookemon Greninja = new Pookemon(658, "Greninja", "agua", null);
+        Greninja.inicializarEstadistica(72, 95, 67, 103, 71, 122);
+
+        Pookemon Raichu = new Pookemon(26, "Raichu", "electrico", null);
+        Raichu.inicializarEstadistica(60, 90, 55, 90, 80, 110);
+
+        Pookemon Nidoking = new Pookemon(34, "Nidoking", "veneno", null);
+        Nidoking.inicializarEstadistica(81, 102, 77, 85, 75, 85);
+
+        Pookemon Alakazam = new Pookemon(65, "Alakazam", "psiquico", null);
+        Alakazam.inicializarEstadistica(55, 50, 45, 135, 95, 120);
+
+        Pookemon Hypno = new Pookemon(97, "Hypno", "psiquico", null);
+        Hypno.inicializarEstadistica(85, 73, 70, 73, 115, 67);
+
+        Pookemon Lucario = new Pookemon(448, "Lucario", "lucha", null);              
+        Lucario.inicializarEstadistica(70, 110, 70, 115, 70, 90);
+
+        Pookemon Tyranitar = new Pookemon(248, "Tyranitar", "roca", null);
+        Tyranitar.inicializarEstadistica(100, 134, 110, 95, 100, 61);
+
+        Pookemon Gengar = new Pookemon(94, "Gengar", "fantasma", null);
+        Gengar.inicializarEstadistica(60, 65, 60,130, 75, 110);
+
+        Pookemon Clefable = new Pookemon(36, "Clefable", "hada", null);
+        Clefable.inicializarEstadistica(95, 70, 73, 95, 90, 60);
+
+        Pookemon Snorlax = new Pookemon(143, "Snorlax", "normal", null);
+        Snorlax.inicializarEstadistica(160, 110, 65, 65, 110, 30);
+
+        Pookemon Blissey = new Pookemon(242, "Blissey", "normal", null);
+        Blissey.inicializarEstadistica(255, 10, 10, 75, 135, 55);
+
+        Pookemon Dragonite = new Pookemon(149, "Dragonite", "dragon", null);
+        Dragonite.inicializarEstadistica(91, 134, 95, 100, 100, 80);
+
+        Pookemon Heracross = new Pookemon(214, "Heracross", "bicho", null);
+        Heracross.inicializarEstadistica(80, 125, 75, 40, 95, 85);
+
+        Pookemon Volcarona = new Pookemon(637, "Volcarona", "bicho", null);
+        Volcarona.inicializarEstadistica(85, 60, 65, 135, 105, 100);
+
+        Pookemon Metagross = new Pookemon(376, "Metagross", "acero", null);
+        Metagross.inicializarEstadistica(80, 135, 130, 95, 90, 70);
+
+        Pookemon Excadrill = new Pookemon(530, "Excadrill", "tierra", null);
+        Excadrill.inicializarEstadistica(110, 135, 60, 50, 65, 88);
+
+        Pookemon Hydreigon = new Pookemon(635, "Hydreigon", "siniestro", null);
+        Hydreigon.inicializarEstadistica(92, 105, 90, 125, 90, 98);
+
+        Pookemon Staraptor = new Pookemon(398, "Staraptor", "volador", null);
+        Staraptor.inicializarEstadistica(85, 120, 70, 50, 60, 100);
+
+        Pookemon Lapras = new Pookemon(131, "Lapras", "hielo", null);
+        Lapras.inicializarEstadistica(130, 85, 80, 85, 95, 60);
+
+        Pookemon Weavile = new Pookemon(461, "Weavile", "hielo", null);
+        Weavile.inicializarEstadistica(70, 120, 65, 45, 85, 125);
+        
+        Movimiento Lanzallamas = new MovimientoEspecial(1, "Lanzallamas", " ", 90, 100, 10, "fuego", null);
+        Movimiento PunoFuego = new MovimientoFisico(2, "Puño Fuego", "", 75, 100, 15, "fuego", null);
+        Movimiento Llamarada = new MovimientoEspecial(3, "Llamarada", "", 110, 85, 5, "fuego", null);
+        Movimiento Hidroariete = new MovimientoFisico(4, "Hidroariete", "", 85, 100, 10, "agua", null);
+        Movimiento Escaldar = new MovimientoEspecial(5, "Escaldar", "", 80, 100, 10, "agua", null);
+        Movimiento Hidrobomba = new MovimientoEspecial(6, "Hidrobomba", "", 120, 80, 5, "agua", null);
+        Movimiento Energibola = new MovimientoEspecial(7, "Energibola", "", 90, 100, 10, "planta", null);
+        Movimiento BombaGermen = new MovimientoFisico(8, "Bomba Germen", "", 80, 100, 15, "planta", null);
+        Movimiento Latigazo = new MovimientoFisico(9, "Latigazo", "", 120, 85, 10, "planta", null);
+        Movimiento Rayo = new MovimientoEspecial(10, "Rayo", "", 90, 100, 10, "electrico", null);
+        Movimiento PunoTrueno = new MovimientoFisico(11, "Puño Trueno", "", 75, 100, 15, "electrico", null);
+        Movimiento Trueno = new MovimientoEspecial(12, "Trueno", "", 110, 70, 10, "electrico", null);
+        Movimiento Terremoto = new MovimientoFisico(13, "Terremoto", "", 100, 100, 10, "tierra", null);
+        Movimiento TierraViva = new MovimientoEspecial(14, "Tierra Viva", "", 90, 100, 10, "tierra", null);
+        Movimiento RocaAfilada = new MovimientoFisico(15, "Roca Afilada", "", 100, 80, 5, "roca", null);
+        Movimiento JoyaDeLuz = new MovimientoEspecial(16, "Joya de Luz", "", 80, 100, 20, "roca", null);
+        Movimiento Avalancha = new MovimientoFisico(17, "Avalancha", "", 75, 90, 10, "roca", null);
+        Movimiento TajoAereo = new MovimientoEspecial(18, "Tajo Aereo", "", 75, 95, 15, "volador", null);
+        Movimiento Vendaval = new MovimientoEspecial(19, "Vendaval", "", 110, 70, 10, "volador", null);
+        Movimiento PicoTaladro = new MovimientoFisico(20, "Pico Taladro", "", 80, 100, 20, "volador", null);
+        Movimiento BombaLodo = new MovimientoEspecial(21, "Bomba Lodo", "", 90, 100, 10, "veneno", null);
+        Movimiento PuyaNociva = new MovimientoFisico(22, "Puya Nociva", "", 80, 100, 20, "veneno", null);
+        Movimiento LanzaMugre = new MovimientoFisico(23, "Lanza Mugre", "", 120, 80, 5, "veneno", null);
+        Movimiento Psiquico = new MovimientoEspecial(24, "Psiquico", "", 90, 100, 10, "psiquico", null);
+        Movimiento CabezazoZen = new MovimientoFisico(25, "Cabezazo Zen", "", 80, 90, 15, "psiquico", null);
+        Movimiento Psicocorte = new MovimientoFisico(26, "Psicocorte", "", 70, 100, 20, "psiquico", null);
+        Movimiento OndaCertera = new MovimientoEspecial(27, "Onda Certera", "", 120, 70, 5, "lucha", null);
+        Movimiento ABocajarro = new MovimientoFisico(28, "ABocajarro", "", 120, 100, 5, "lucha", null);
+        Movimiento Triturar = new MovimientoFisico(29, "Triturar", "", 80, 100, 15, "siniestro", null);
+        Movimiento PulsoUmbrio = new MovimientoEspecial(30, "Pulso Umbrio", "", 80, 100, 15, "siniestro", null);
+        Movimiento BolaSombra = new MovimientoEspecial(31, "Bola Sombra", "", 80, 100, 15, "fantasma", null);
+        Movimiento GarraUmbria = new MovimientoFisico(32, "Garra Umbria", "", 70, 100, 15, "fantasma", null);
+        Movimiento FocoResplandor = new MovimientoEspecial(33, "Foco Resplandor", "", 80, 100, 10, "acero", null);
+        Movimiento CabezaDeHierro = new MovimientoFisico(34, "Cabeza de Hierro", "", 80, 100, 15, "acero", null);
+        Movimiento FuerzaLunar = new MovimientoEspecial(35, "Fuerza Lunar", "", 95, 100, 15, "hada", null);
+        Movimiento Carantona = new MovimientoFisico(36, "Carantoña", "", 90, 90, 10, "hada", null);
+        Movimiento GarraDragon = new MovimientoFisico(37, "Garra Dragon", "", 80, 100, 15, "dragon", null);
+        Movimiento PulsoDragon = new MovimientoEspecial(38, "Pulso Dragon", "", 85, 100, 10, "dragon", null);
+        Movimiento PunoHielo = new MovimientoFisico(39, "Puño Hielo", "", 75, 100, 15, "hielo", null);
+        Movimiento RayoHielo = new MovimientoEspecial(40, "Rayo Hielo", "", 90, 100, 10, "hielo", null);
+        Movimiento Ventisca = new MovimientoEspecial(41, "Ventisca", "", 110, 70, 5, "hielo", null);
+        Movimiento Megacuerno = new MovimientoFisico(42, "Megacuerno", "", 120, 85, 10, "bicho", null);
+        Movimiento Zumbido = new MovimientoEspecial(43, "Zumbido", "", 90, 100, 10, "bicho", null);
+        Movimiento TijeraX = new MovimientoFisico(44, "Tijera X", "", 80, 100, 15, "bicho", null);
+        Movimiento Vozarron = new MovimientoEspecial(45, "Vozarron", "", 90, 100, 10, "normal", null);
+        Movimiento GolpeCuerpo = new MovimientoFisico(46, "Golpe Cuerpo", "", 85, 100, 15, "normal", null);
+        
+        Roserade.setMovimientos(new ArrayList<>(Arrays.asList(Lanzallamas,LanzaMugre,Megacuerno,GolpeCuerpo)));
+        Hypno.setMovimientos(new ArrayList<>(Arrays.asList(Lanzallamas,LanzaMugre,Megacuerno,GolpeCuerpo)));
+        Alakazam.setMovimientos(new ArrayList<>(Arrays.asList(Lanzallamas,LanzaMugre,Megacuerno,GolpeCuerpo)));
+        Dragonite.setMovimientos(new ArrayList<>(Arrays.asList(Lanzallamas,LanzaMugre,Megacuerno,GolpeCuerpo)));
+        Excadrill.setMovimientos(new ArrayList<>(Arrays.asList(Lanzallamas,LanzaMugre,Megacuerno,GolpeCuerpo)));
+        Lapras.setMovimientos(new ArrayList<>(Arrays.asList(Lanzallamas,LanzaMugre,Megacuerno,GolpeCuerpo)));
+    
+        return new ArrayList<>(Arrays.asList(Roserade,Hypno,Alakazam,Dragonite,Excadrill,Lapras));
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -194,14 +424,15 @@ public class BatallaPanel extends StandarPanel {
     private javax.swing.JButton btCambiar;
     private javax.swing.JButton btDefender;
     private javax.swing.JButton btObjeto;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelPersonajeOne;
+    private javax.swing.JLabel imgPookemon1;
+    private javax.swing.JLabel imgPookemon2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbVidaPookemon1;
+    private javax.swing.JLabel lbVidaPookemon2;
+    private javax.swing.JLabel lb_nombrePookemon_1;
+    private javax.swing.JLabel lb_nombrePookemon_2;
+    private javax.swing.JProgressBar pbVida1;
+    private javax.swing.JProgressBar pbVida2;
     private javax.swing.JTextArea txtAreaLog;
-    private javax.swing.JTextField txtHealthOne;
-    private javax.swing.JTextField txtHealthTwo;
     // End of variables declaration//GEN-END:variables
 }
