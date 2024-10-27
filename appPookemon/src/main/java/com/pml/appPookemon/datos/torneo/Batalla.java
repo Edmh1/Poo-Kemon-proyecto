@@ -147,7 +147,6 @@ public class Batalla {
         Random random = new Random();
         
         if (pookemones.size() < 6) {
-            System.out.println("No hay suficientes Pookemones para crear el mazo.");
             return false;  // Asegurarse de que hay suficientes Pookemones
         }
         

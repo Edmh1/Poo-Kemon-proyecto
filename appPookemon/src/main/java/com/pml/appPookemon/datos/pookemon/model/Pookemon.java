@@ -2,6 +2,7 @@ package main.java.com.pml.appPookemon.datos.pookemon.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
 
 public class Pookemon {
@@ -12,13 +13,15 @@ public class Pookemon {
     private List<Movimiento> movimientos;
     private Efecto efecto;
     private boolean defendiendo;
+    private ImageIcon imagen;
 
-    public Pookemon(int idPookemon, String nombre, String elemento, Efecto efecto) {
+    public Pookemon(int idPookemon, String nombre, String elemento, int ataqueFisico, int defensaFisica, int ataqueEspecial, int defensaEspecial, int velocidad, String rutaImagen) {
         this.idPookemon = idPookemon;
         this.nombrePookemon = nombre;
         this.elementoPookemon = elemento;
         this.movimientos = new ArrayList<>();
-        this.efecto = efecto;
+        this.estadisticaPookemon = new Estadistica(100, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, velocidad);
+        this.imagen = new ImageIcon(rutaImagen);
     }
 
     @Override
@@ -149,6 +152,20 @@ public class Pookemon {
      */
     public void setEfecto(Efecto efecto) {
         this.efecto = efecto;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public ImageIcon getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param rutaImagen
+     */
+    public void setImagen(String rutaImagen) {
+        this.imagen = new ImageIcon(rutaImagen);
     }
 
     
