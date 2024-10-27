@@ -20,6 +20,7 @@ public class Recompensa {
     }
     
     public int getIdRecompensa() {
+        idRecompensa =getCodigo();
         return idRecompensa;
     }
     
