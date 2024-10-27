@@ -37,6 +37,7 @@ left to right direction
         + usarObjeto(idObjeto : int, idMovimiento : int)
         + cambiarPookemon(idPookemon : int)
         + obtenerPookemonPorID(idPookemon : int)
+        + mostrarPremios()
         
     }
 
