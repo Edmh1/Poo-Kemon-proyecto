@@ -46,6 +46,9 @@ public class AgregarPanel extends StandarPanel {
         PromptSupport.setPrompt("DEF. ESPECIAL", txtCampo6);
         
         jpPookemon.setVisible(true);
+        lblFilePath.setText("Seleccione la imagen del Pookemon.gif");
+        lblFilePath.setVisible(true);
+        btExaminar.setVisible(true);
         jpMovimiento.setVisible(false);
         
         this.revalidate();
@@ -61,6 +64,8 @@ public class AgregarPanel extends StandarPanel {
         //configurarEfectos(); Agregar efectos de manera Dinamica
         jpMovimiento.setVisible(true);
         jpPookemon.setVisible(false);
+        lblFilePath.setVisible(false);
+        btExaminar.setVisible(false);
         
         this.revalidate();
         this.repaint();
@@ -151,10 +156,10 @@ public class AgregarPanel extends StandarPanel {
                 btExaminarActionPerformed(evt);
             }
         });
-        add(btExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 150, -1));
+        add(btExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 150, -1));
 
-        lblFilePath.setText("Subir archivo:");
-        add(lblFilePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
+        lblFilePath.setText("Seleccione la imagen del Pookemon.gif");
+        add(lblFilePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, -1, -1));
 
         jcbEfecto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efe. Quemadura", "Efe. Dormilon", "Efe. Enamoramiento" }));
 

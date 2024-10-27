@@ -2,7 +2,6 @@ package main.java.com.pml.appPookemon.datos.pookemon.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ImageIcon;
 import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
 
 public class Pookemon {

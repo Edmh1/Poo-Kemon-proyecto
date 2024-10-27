@@ -73,17 +73,15 @@ public class EliminarPanel extends StandarPanel {
         jpResultadoLayout.setHorizontalGroup(
             jpResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpResultadoLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(lbNombre)
+                .addContainerGap(137, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpResultadoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jpResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpResultadoLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(lbNombre))
-                    .addGroup(jpResultadoLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(lbImg1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpResultadoLayout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(lbImg2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(lbImg2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbImg1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56))
         );
         jpResultadoLayout.setVerticalGroup(
             jpResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,26 +142,60 @@ public class EliminarPanel extends StandarPanel {
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        nombreBuscado = txtBuscar.getText();
-        URL resource = getClass().getResource("/img/SpritesPookemon/"+nombreBuscado+".gif");
-        if(resource == null){
-            nombreBuscado = "Desconocido";
-            resource = getClass().getResource("/img/null.jpg");
-        }
-        ((JLabel) jpResultado.getComponent(0)).setText(nombreBuscado);
-        ImageIcon imageIcon = new ImageIcon(resource);
-        lbImg1.setIcon(imageIcon);
-        
+        if(nombre.equalsIgnoreCase("Pookemon")){
+            buscarPookemon();
+        }else{
+            buscarMovimiento();
+        }   
         // hacer getElemento 
         this.revalidate();
         this.repaint();
     }//GEN-LAST:event_btBuscarActionPerformed
-
+    private void buscarPookemon(){
+        nombreBuscado = txtBuscar.getText();
+        //funcion que busca un pookemon
+        String tmp = nombreBuscado;
+        String tipo = "Acero";
+        
+        URL resource1 = getClass().getResource("/img/SpritesPookemon/"+tmp+".gif");
+        URL resource2 = getClass().getResource("/img/Ele"+tipo+".png");
+        if(resource1 == null){
+            tmp = "Desconocido";
+            resource1 = getClass().getResource("/img/null.jpg");
+            resource2 = getClass().getResource("/img/null.jpg");
+        }
+        ((JLabel) jpResultado.getComponent(0)).setText(tmp);
+        ImageIcon imageIcon1 = new ImageIcon(resource1);
+        ImageIcon imageIcon2 = new ImageIcon(resource2);
+        lbImg1.setIcon(imageIcon1);
+        lbImg2.setIcon(imageIcon2);
+    }
+    private void buscarMovimiento(){
+        nombreBuscado = txtBuscar.getText();
+        //funcion que busca un movimietno
+        String tmp = "Acero";
+        String tipo = "movEspecial";
+        
+        URL resource1 = getClass().getResource("/img/Ele"+tmp+".png");
+        URL resource2 = getClass().getResource("/img/"+tipo+".png");
+        if(resource1 == null){
+            nombreBuscado = "Desconocido";
+            resource1 = getClass().getResource("/img/null.jpg");
+            resource2 = getClass().getResource("/img/null.jpg");
+        }
+        ((JLabel) jpResultado.getComponent(0)).setText(nombreBuscado);
+        ImageIcon imageIcon1 = new ImageIcon(resource1);
+        ImageIcon imageIcon2 = new ImageIcon(resource2);
+        lbImg1.setIcon(imageIcon1);
+        lbImg2.setIcon(imageIcon2);
+    }
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     public void configurarContenido() {
+        cleanContent();
         String lb = "Eliminar: "+" "+nombre;
         lbEliminar.setText(lb);
         if(nombre.equalsIgnoreCase("pookemon")){
@@ -180,6 +212,15 @@ public class EliminarPanel extends StandarPanel {
     private void configurarParaMovimiento() {
         PromptSupport.setPrompt("Escriba el nombre del Movimiento", txtBuscar);
     }
+    
+    private void cleanContent() {
+        ((JLabel) jpResultado.getComponent(0)).setText("Nombre");
+        ImageIcon emptyIcon = new ImageIcon(getClass().getResource("/img/null.jpg"));
+        lbImg1.setIcon(emptyIcon);
+        lbImg2.setIcon(emptyIcon);
+        txtBuscar.setText("");
+    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -193,5 +234,6 @@ public class EliminarPanel extends StandarPanel {
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 
+    
     
 }
