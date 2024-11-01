@@ -21,7 +21,7 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JSlider;
-import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoContoller;
+import main.java.com.pml.appPookemon.controller.PookemonContoller;
 import main.java.com.pml.appPookemon.gui.admin.AgregarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EditarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EliminarPanel;
@@ -36,7 +36,7 @@ import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
  */
 public class MainFrame extends javax.swing.JFrame {
     
-    private TorneoContoller controller = new TorneoContoller();
+    private PookemonContoller controller = new PookemonContoller();
     private CardLayout cardLayout;
     private Stack<String> panelHistory;
     private List<RegistroPanel> registros;
@@ -56,7 +56,7 @@ public class MainFrame extends javax.swing.JFrame {
         panelHistory = new Stack<>();
         initComponents();
         setupPanels();
-        reproducirMusica(getClass().getResourceAsStream("/audio/song_modified.wav"));
+        reproducirMusica(getClass().getResourceAsStream("/audio/song.wav"));
     }
     
     private void setupPanels() {
@@ -174,7 +174,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
     
-    public TorneoContoller getController(){
+    public PookemonContoller getController(){
         return controller;
     }
 

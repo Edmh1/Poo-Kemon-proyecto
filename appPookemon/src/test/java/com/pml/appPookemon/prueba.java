@@ -7,7 +7,7 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoEspecial;
 import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoFisico;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Organizador;
-import main.java.com.pml.appPookemon.datos.torneo.model.Torneo;
+import main.java.com.pml.appPookemon.datos.torneo.Torneo;
 
 
 public class prueba {
