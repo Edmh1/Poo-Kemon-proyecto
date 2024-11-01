@@ -6,9 +6,9 @@ package main.java.com.pml.appPookemon.gui.admin;
 
 import java.io.File;
 import javax.swing.JFileChooser;
-import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
-import main.java.com.pml.appPookemon.datos.pookemon.controller.MovimientoControlador;
-import main.java.com.pml.appPookemon.datos.pookemon.controller.PookemonControlador;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Efecto;
+import main.java.com.pml.appPookemon.datos.pookemon.controller.MovimientoController;
+import main.java.com.pml.appPookemon.datos.pookemon.controller.PookemonController;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.gui.MainFrame;
@@ -237,7 +237,7 @@ public class AgregarPanel extends StandarPanel {
     private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
         // TODO add your handling code here:
         if(nombre.equalsIgnoreCase("Pookemon")){
-            PookemonControlador controlador = new PookemonControlador();
+            PookemonController controlador = new PookemonController();
             String nombrePookemon = txtCampo1.getText();
             int velocidad = Integer.parseInt(txtCampo2.getText());
             int ataqueFisico = Integer.parseInt(txtCampo3.getText());
@@ -249,7 +249,7 @@ public class AgregarPanel extends StandarPanel {
             super.getMainFrame().getController().agregarPookemon(pookemon);
             
         } else {
-            MovimientoControlador controlador = new MovimientoControlador();
+            MovimientoController controlador = new MovimientoController();
             String nombreMovimiento = txtCampo1.getText();
             int potencia = Integer.parseInt(txtCampo2.getText());
             int precision = Integer.parseInt(txtCampo3.getText());

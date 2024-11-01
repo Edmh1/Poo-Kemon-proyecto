@@ -5,7 +5,7 @@ import java.util.List;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Objeto;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
-import main.java.com.pml.appPookemon.datos.torneo.Recompensa;
+import main.java.com.pml.appPookemon.datos.torneo.model.Recompensa;
 
 
 public class Entrenador {

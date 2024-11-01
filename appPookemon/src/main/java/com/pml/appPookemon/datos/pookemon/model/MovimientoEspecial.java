@@ -5,9 +5,6 @@
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
 
-import main.java.com.pml.appPookemon.datos.pookemon.Efecto;
-
-
 /**
  *
  * @author eddie
