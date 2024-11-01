@@ -1,4 +1,4 @@
-package main.java.com.pml.appPookemon.datos.torneo;
+package main.java.com.pml.appPookemon.datos.torneo.model;
 
 
 import java.util.ArrayList;

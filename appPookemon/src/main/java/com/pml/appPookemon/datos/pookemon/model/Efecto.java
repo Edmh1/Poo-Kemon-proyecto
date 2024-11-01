@@ -1,4 +1,4 @@
-package main.java.com.pml.appPookemon.datos.pookemon;
+package main.java.com.pml.appPookemon.datos.pookemon.model;
 
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;

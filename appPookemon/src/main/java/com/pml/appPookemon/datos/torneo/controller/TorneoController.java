@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package main.java.com.pml.appPookemon.controller;
+package main.java.com.pml.appPookemon.datos.torneo.controller;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
-import main.java.com.pml.appPookemon.datos.torneo.Torneo;
+import main.java.com.pml.appPookemon.datos.torneo.model.Torneo;
 /**
  *
  * @author sebac
  */
-public class PookemonContoller {
+public class TorneoController {
     private Torneo torneo = new Torneo();
     
     public void crearTorneo(){
