@@ -56,7 +56,7 @@ public class MainFrame extends javax.swing.JFrame {
         panelHistory = new Stack<>();
         initComponents();
         setupPanels();
-        reproducirMusica(getClass().getResourceAsStream("/audio/song_modified.wav"));
+        reproducirMusica(getClass().getResourceAsStream("/audio/song_modified.WAV"));
     }
     
     private void setupPanels() {
