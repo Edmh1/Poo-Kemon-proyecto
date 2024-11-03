@@ -21,6 +21,8 @@ public class RegistroPanel extends StandarPanel {
     private String generoSeleccionado = "";
     /**
      * Creates new form RegistroPanel
+     * @param mainFrame
+     * @param indice
      */
     public RegistroPanel(MainFrame mainFrame, int indice) {
         super(mainFrame);

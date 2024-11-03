@@ -15,6 +15,7 @@ public class BatallaAtaque extends javax.swing.JFrame {
     private BatallaController controlador;
     /**
      * Creates new form BatallaAtaque
+     * @param controlador
      */
     public BatallaAtaque(BatallaController controlador) {
         this.controlador = controlador;
