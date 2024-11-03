@@ -13,6 +13,10 @@ public abstract class Accion {
         return tipoAccion;
     }
 
+    public void setTipoAccion(TipoAccion tipoAccion) {
+        this.tipoAccion = tipoAccion;
+    }
+
     public int getIdAccion() {
         return idAccion;
     }

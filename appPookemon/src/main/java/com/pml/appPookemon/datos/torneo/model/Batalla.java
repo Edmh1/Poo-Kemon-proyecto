@@ -136,7 +136,7 @@ public class Batalla {
     }
 
     private String logAtaque(String nombrePookemon, String nombreAtaque){
-        return nombrePookemon + " ha realizado el ataque " + nombreAtaque;
+        return nombrePookemon + " ha realizado el ataque " + nombreAtaque + "\n";
     }
 
     public int getId() {

@@ -73,11 +73,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Pookemon1"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPookemon1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btPookemon2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pookemon2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPookemon2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jVida1">
       <Properties>

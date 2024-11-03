@@ -4,6 +4,9 @@
  */
 package main.java.com.pml.appPookemon.gui.batalla;
 
+import java.util.ArrayList;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
+import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
 
 /**
@@ -11,8 +14,12 @@ import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
  * @author feder
  */
 public class BatallaCambio extends javax.swing.JFrame {
-
-    BatallaController controlador;
+    private BatallaPanel bp;
+    private int idPookemon;
+    private int turno;
+    private Pookemon pk1;
+    private Pookemon pk2;
+    private BatallaController controlador;
     /**
      * Creates new form BatallaDefensa
      */
@@ -40,8 +47,18 @@ public class BatallaCambio extends javax.swing.JFrame {
         setResizable(false);
 
         btPookemon1.setText("Pookemon1");
+        btPookemon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPookemon1ActionPerformed(evt);
+            }
+        });
 
         btPookemon2.setText("Pookemon2");
+        btPookemon2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPookemon2ActionPerformed(evt);
+            }
+        });
 
         jVida1.setText("jLabel1");
 
@@ -97,8 +114,28 @@ public class BatallaCambio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+        turno = bp.getTurnoJugador();
+        controlador.setAccionEntrenador(turno, "CAMBIO", idPookemon);
+        if(turno == 1){
+            bp.pasarJugador();
+        }else{
+            bp.pasarJugador();
+            bp.realizarTurno();
+            bp.configurarImagenes();
+            bp.configurarTextos();
+            bp.actualizarVidaVisual();
+        }
+        bp.configurarFlecha();
         dispose();
     }//GEN-LAST:event_btVolverActionPerformed
+
+    private void btPookemon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPookemon1ActionPerformed
+        idPookemon = pk1.getIdPookemon();
+    }//GEN-LAST:event_btPookemon1ActionPerformed
+
+    private void btPookemon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPookemon2ActionPerformed
+        idPookemon = pk2.getIdPookemon();
+    }//GEN-LAST:event_btPookemon2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,14 +173,28 @@ public class BatallaCambio extends javax.swing.JFrame {
         });
     }
     
-    public void configurar(){
+    public void configurar(int jugador){
+        
+        Entrenador e = null;
+        
+        if(jugador == 1){
+            e = controlador.getEntrenador1();
+        }else{
+            e = controlador.getEntrenador2();
+        }
+        pk1 = e.obtenerPookemonesDiferentesActual().get(0);
+        pk2 = e.obtenerPookemonesDiferentesActual().get(1);
         
         //cambiar entrenador1 por determinarTurno;
-        btPookemon1.setText(controlador.getEntrenador1().obtenerPookemonesDiferentesActual().get(0).getNombrePookemon());
-        btPookemon2.setText(controlador.getEntrenador1().obtenerPookemonesDiferentesActual().get(1).getNombrePookemon());
+        btPookemon1.setText(pk1.getNombrePookemon());
+        btPookemon2.setText(pk2.getNombrePookemon());
         
-        jVida1.setText("HP " + controlador.getEntrenador1().obtenerPookemonesDiferentesActual().get(0).getEstadisticaPookemon().getVida());
-        jVida2.setText("HP " + controlador.getEntrenador1().obtenerPookemonesDiferentesActual().get(1).getEstadisticaPookemon().getVida());
+        jVida1.setText("HP " + pk1.getEstadisticaPookemon().getVida());
+        jVida2.setText("HP " + pk2.getEstadisticaPookemon().getVida());
+    }
+    
+    public void setPanelBatalla(BatallaPanel bp){
+        this.bp = bp;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

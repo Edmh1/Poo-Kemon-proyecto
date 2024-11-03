@@ -4,6 +4,8 @@
  */
 package main.java.com.pml.appPookemon.gui.batalla;
 
+import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
+import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
 
 /**
@@ -11,8 +13,12 @@ import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
  * @author feder
  */
 public class BatallaAtaque extends javax.swing.JFrame {
-
+    private BatallaPanel bp;
     private BatallaController controlador;
+    private Movimiento ataque1;
+    private Movimiento ataque2;
+    private Movimiento ataque3;
+    private int idMovimiento;
     /**
      * Creates new form BatallaAtaque
      * @param controlador
@@ -132,18 +138,33 @@ public class BatallaAtaque extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAtaque2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtaque2ActionPerformed
-        // TODO add your handling code here:
+        idMovimiento = ataque2.getIdMovimiento();
+        System.out.println("Id del movimiento " + ataque2.getNombreMovimiento() +": " + idMovimiento);
     }//GEN-LAST:event_btAtaque2ActionPerformed
 
     private void btAtaque3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtaque3ActionPerformed
-        // TODO add your handling code here:
+        idMovimiento = ataque3.getIdMovimiento();
+        System.out.println("Id del movimiento " + ataque3.getNombreMovimiento() +": " + idMovimiento);
     }//GEN-LAST:event_btAtaque3ActionPerformed
 
     private void btAtaque1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtaque1ActionPerformed
-        // TODO add your handling code here:
+        idMovimiento = ataque1.getIdMovimiento();
+        System.out.println("Id del movimiento " + ataque1.getNombreMovimiento() +": " + idMovimiento);
     }//GEN-LAST:event_btAtaque1ActionPerformed
 
     private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+        int turno = bp.getTurnoJugador();
+        controlador.setAccionEntrenador(turno, "ATACAR", idMovimiento);
+        if(turno == 1){
+            bp.pasarJugador();
+        }else{
+            bp.pasarJugador();
+            bp.realizarTurno();
+            bp.configurarImagenes();
+            bp.configurarTextos();
+            bp.actualizarVidaVisual();
+        }
+        bp.configurarFlecha();
         dispose();
     }//GEN-LAST:event_btVolverActionPerformed
 
@@ -181,16 +202,31 @@ public class BatallaAtaque extends javax.swing.JFrame {
         });
     }
     
-    public void configurar(){
+    public void configurar(int jugador){
+        
+        Entrenador e = null;
+        if(jugador == 1){
+            e = controlador.getEntrenador1();
+        }else{
+            e = controlador.getEntrenador2();
+        }
         
         //cambiar entrenador1 por determinarTurno;
-        btAtaque1.setText(controlador.getEntrenador1().getPookemonActual().getMovimientos().get(0).getNombreMovimiento());
-        btAtaque2.setText(controlador.getEntrenador1().getPookemonActual().getMovimientos().get(1).getNombreMovimiento());
-        btAtaque3.setText(controlador.getEntrenador1().getPookemonActual().getMovimientos().get(2).getNombreMovimiento());
+        ataque1 = e.getPookemonActual().getMovimientos().get(0);
+        ataque2 = e.getPookemonActual().getMovimientos().get(1);
+        ataque3 = e.getPookemonActual().getMovimientos().get(2);
         
-        jPP1.setText("PP " + controlador.getEntrenador1().getPookemonActual().getMovimientos().get(0).getCantidadPP());
-        jPP2.setText("PP " + controlador.getEntrenador1().getPookemonActual().getMovimientos().get(1).getCantidadPP());
-        jPP3.setText("PP " + controlador.getEntrenador1().getPookemonActual().getMovimientos().get(2).getCantidadPP());
+        btAtaque1.setText(ataque1.getNombreMovimiento());
+        btAtaque2.setText(ataque2.getNombreMovimiento());
+        btAtaque3.setText(ataque3.getNombreMovimiento());
+        
+        jPP1.setText("PP " + ataque1.getCantidadPP());
+        jPP2.setText("PP " + ataque2.getCantidadPP());
+        jPP3.setText("PP " + ataque3.getCantidadPP());
+    }
+    
+    public void setPanelBatalla(BatallaPanel bp){
+        this.bp = bp;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

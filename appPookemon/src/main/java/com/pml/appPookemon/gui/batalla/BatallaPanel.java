@@ -25,6 +25,8 @@ public class BatallaPanel extends StandarPanel {
     private Entrenador[] entrenadores;
     private Batalla batalla;
     private BatallaController controlador;
+    private int turno;
+    private int turnoJugador;
 
     /**
      * Creates new form BatallaPrincipal
@@ -32,6 +34,8 @@ public class BatallaPanel extends StandarPanel {
     public BatallaPanel(MainFrame mainFrame) {
         super(mainFrame);
         initComponents();
+        turno = 1;
+        turnoJugador = 1;
     }
 
     /**
@@ -57,8 +61,13 @@ public class BatallaPanel extends StandarPanel {
         pbVida1 = new javax.swing.JProgressBar();
         pbVida2 = new javax.swing.JProgressBar();
         imgPookemon2 = new javax.swing.JLabel();
+        lbNombreEntrenador2 = new javax.swing.JLabel();
+        lbNombreEntrenador1 = new javax.swing.JLabel();
+        imgFlecha2 = new javax.swing.JLabel();
+        imgFlecha1 = new javax.swing.JLabel();
 
         lb_nombrePookemon_1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lb_nombrePookemon_1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lb_nombrePookemon_1.setText("Nombre Pookemon");
         lb_nombrePookemon_1.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
@@ -66,10 +75,10 @@ public class BatallaPanel extends StandarPanel {
             }
         });
         lb_nombrePookemon_1.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 lb_nombrePookemon_1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -117,6 +126,7 @@ public class BatallaPanel extends StandarPanel {
         });
 
         lb_nombrePookemon_2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lb_nombrePookemon_2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lb_nombrePookemon_2.setText("Nombre Pookemon");
 
         lbVidaPookemon1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -127,7 +137,8 @@ public class BatallaPanel extends StandarPanel {
 
         txtAreaLog.setEditable(false);
         txtAreaLog.setColumns(20);
-        txtAreaLog.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtAreaLog.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        txtAreaLog.setLineWrap(true);
         txtAreaLog.setRows(5);
         jScrollPane1.setViewportView(txtAreaLog);
 
@@ -136,6 +147,14 @@ public class BatallaPanel extends StandarPanel {
         pbVida1.setValue(50);
 
         imgPookemon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/EleAcero.png"))); // NOI18N
+
+        lbNombreEntrenador2.setText("Nombre entrenador");
+
+        lbNombreEntrenador1.setText("Nombre entrenador");
+
+        imgFlecha2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/flecha.gif"))); // NOI18N
+
+        imgFlecha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/flecha.gif"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -150,57 +169,71 @@ public class BatallaPanel extends StandarPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btDefender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lb_nombrePookemon_1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbVidaPookemon1)
-                        .addComponent(pbVida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(198, 198, 198)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 28, Short.MAX_VALUE)
-                        .addComponent(lbVidaPookemon2)
-                        .addGap(200, 200, 200))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pbVida2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lb_nombrePookemon_2))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(129, 129, 129)
                 .addComponent(imgPookemon1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(imgPookemon2)
-                .addGap(151, 151, 151))
+                .addGap(131, 131, 131))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_nombrePookemon_1)
+                            .addComponent(pbVida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbVidaPookemon1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbVidaPookemon2)
+                            .addComponent(pbVida2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_nombrePookemon_2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbNombreEntrenador1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbNombreEntrenador2)))
+                .addGap(60, 60, 60))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(imgFlecha1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imgFlecha2)
+                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_nombrePookemon_1)
-                    .addComponent(lb_nombrePookemon_2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(pbVida1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(imgPookemon1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbVidaPookemon2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbVidaPookemon1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(imgFlecha2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pbVida2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(imgPookemon2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                        .addComponent(lbNombreEntrenador2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb_nombrePookemon_2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbVidaPookemon2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pbVida2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(imgFlecha1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbNombreEntrenador1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb_nombrePookemon_1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbVidaPookemon1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pbVida1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imgPookemon1)
+                    .addComponent(imgPookemon2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -222,7 +255,8 @@ public class BatallaPanel extends StandarPanel {
 
     private void btCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambiarActionPerformed
         BatallaCambio cambio = new BatallaCambio(controlador);
-        cambio.configurar();
+        cambio.configurar(turnoJugador);
+        cambio.setPanelBatalla(this);
         cambio.setVisible(true);
     }//GEN-LAST:event_btCambiarActionPerformed
 
@@ -246,9 +280,9 @@ public class BatallaPanel extends StandarPanel {
 
     private void btAtacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtacarActionPerformed
         BatallaAtaque ataques = new BatallaAtaque(controlador);
-        ataques.configurar();
+        ataques.configurar(turnoJugador);
+        ataques.setPanelBatalla(this);
         ataques.setVisible(true);
-        
     }//GEN-LAST:event_btAtacarActionPerformed
 
     // Método para cambiar la imagen del personaje 
@@ -268,23 +302,24 @@ public class BatallaPanel extends StandarPanel {
         batalla.generarMazo();
         controlador = new BatallaController(batalla);
         configurarTextos();
+        actualizarVidaVisual();
         configurarImagenes();
+        configurarFlecha();
     }
 
     public void configurarTextos() {
+        System.out.println("Turno del jugador: " + turnoJugador);
         Pookemon j1Pookemon = controlador.getEntrenador1().getPookemonActual();
         Pookemon j2Pookemon = controlador.getEntrenador2().getPookemonActual();
-        int vidaPookemon1 = j1Pookemon.getEstadisticaPookemon().getVida();
-        int vidaPookemon2 = j2Pookemon.getEstadisticaPookemon().getVida();
-
+        int vidaPookemon1 = j1Pookemon.getEstadisticaPookemon().getVidaMaxima();
+        int vidaPookemon2 = j2Pookemon.getEstadisticaPookemon().getVidaMaxima();
+        
+        lbNombreEntrenador1.setText(j1.getNombreEntrenador());
+        lbNombreEntrenador2.setText(j2.getNombreEntrenador());
         lb_nombrePookemon_1.setText(j1Pookemon.getNombrePookemon());
         lb_nombrePookemon_2.setText(j2Pookemon.getNombrePookemon());
-        lbVidaPookemon1.setText("HP  " + vidaPookemon1);
-        lbVidaPookemon2.setText("HP  " + vidaPookemon2);
         pbVida1.setMaximum(vidaPookemon1);
         pbVida2.setMaximum(vidaPookemon2);
-        pbVida1.setValue(vidaPookemon1);
-        pbVida2.setValue(vidaPookemon2);
     }
 
     public void configurarImagenes() {
@@ -298,9 +333,45 @@ public class BatallaPanel extends StandarPanel {
         imgPookemon2.setIcon(img2);
     }
     
+    public void pasarJugador(){
+        if(turnoJugador == 1){
+            turnoJugador = 2;
+        }else{
+            turnoJugador = 1;
+        }
+    }
+
+    public int getTurnoJugador() {
+        return turnoJugador;
+    }
+
+    public void realizarTurno(){
+        txtAreaLog.setText(controlador.realizarTurno());
+    }
     
-
-
+    public void configurarFlecha(){
+        if(turnoJugador == 1){
+            imgFlecha1.setAlignmentX(pbVida1.getWidth() / 2);
+            imgFlecha1.setVisible(true);
+            imgFlecha2.setVisible(false);
+        }else{
+            imgFlecha2.setAlignmentX(pbVida2.getWidth() / 2);
+            imgFlecha1.setVisible(false);
+            imgFlecha2.setVisible(true);
+        }
+    }
+    
+    public void actualizarVidaVisual(){
+        Pookemon j1Pookemon = controlador.getEntrenador1().getPookemonActual();
+        Pookemon j2Pookemon = controlador.getEntrenador2().getPookemonActual();
+        int vidaPookemon1 = j1Pookemon.getEstadisticaPookemon().getVida();
+        int vidaPookemon2 = j2Pookemon.getEstadisticaPookemon().getVida();
+        
+        lbVidaPookemon1.setText("HP  " + vidaPookemon1);
+        lbVidaPookemon2.setText("HP  " + vidaPookemon2);
+        pbVida1.setValue(vidaPookemon1);
+        pbVida2.setValue(vidaPookemon2);
+    }
     /*
        *******************************************************************
        *     FUNCIÓN FALSA QUE AGREGA LOS POOKEMONES YA CREADOS          *
@@ -469,9 +540,13 @@ public class BatallaPanel extends StandarPanel {
     private javax.swing.JButton btCambiar;
     private javax.swing.JButton btDefender;
     private javax.swing.JButton btObjeto;
+    private javax.swing.JLabel imgFlecha1;
+    private javax.swing.JLabel imgFlecha2;
     private javax.swing.JLabel imgPookemon1;
     private javax.swing.JLabel imgPookemon2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbNombreEntrenador1;
+    private javax.swing.JLabel lbNombreEntrenador2;
     private javax.swing.JLabel lbVidaPookemon1;
     private javax.swing.JLabel lbVidaPookemon2;
     private javax.swing.JLabel lb_nombrePookemon_1;

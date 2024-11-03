@@ -5,6 +5,8 @@
 package main.java.com.pml.appPookemon.datos.torneo.controller;
 import main.java.com.pml.appPookemon.datos.torneo.model.Batalla;
 import main.java.com.pml.appPookemon.datos.registro.model.*;
+import main.java.com.pml.appPookemon.datos.torneo.model.Accion;
+import main.java.com.pml.appPookemon.datos.torneo.model.TipoAccion;
 /**
  *
  * @author sebac
@@ -22,5 +24,44 @@ public class BatallaController {
     
     public Entrenador getEntrenador2(){
         return batalla.getEntrenador2();
+    }
+    
+    public void setAccionEntrenador(int jugador, String tipo, int id){
+        Accion a = new Accion(TipoAccion.ATACAR, id) {
+            @Override
+            public Object getInfo() {
+                return idAccion;
+            }
+        };
+        switch (tipo) {
+            case "ATACAR":
+                if(jugador == 1){
+                    batalla.setAccionEntrenador1(a);
+                }else{
+                    batalla.setAccionEntrenador2(a);
+                }   break;
+            case "DEFENDER":
+                if(jugador == 1){
+                    a.setTipoAccion(TipoAccion.DEFENDER);
+                    batalla.setAccionEntrenador1(a);
+                }else{
+                    a.setTipoAccion(TipoAccion.DEFENDER);
+                    batalla.setAccionEntrenador2(a);
+                }   break;
+            case "CAMBIO":
+                if(jugador == 1){
+                    a.setTipoAccion(TipoAccion.CAMBIAR_POKEMON);
+                    batalla.setAccionEntrenador1(a);
+                }else{
+                    a.setTipoAccion(TipoAccion.CAMBIAR_POKEMON);
+                    batalla.setAccionEntrenador2(a);
+                }   break;
+            default:
+                break;
+        }
+    }
+    
+    public String realizarTurno(){
+        return batalla.realizarTurno();
     }
 }
