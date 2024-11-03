@@ -66,10 +66,10 @@ public class BatallaPanel extends StandarPanel {
             }
         });
         lb_nombrePookemon_1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 lb_nombrePookemon_1AncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -83,6 +83,11 @@ public class BatallaPanel extends StandarPanel {
         btAtacar.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btAtacar.setText("ATACAR");
         btAtacar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btAtacar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAtacarActionPerformed(evt);
+            }
+        });
 
         btDefender.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btDefender.setText("DEFENDER");
@@ -120,6 +125,7 @@ public class BatallaPanel extends StandarPanel {
         lbVidaPookemon2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         lbVidaPookemon2.setText("HP");
 
+        txtAreaLog.setEditable(false);
         txtAreaLog.setColumns(20);
         txtAreaLog.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtAreaLog.setRows(5);
@@ -144,7 +150,7 @@ public class BatallaPanel extends StandarPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btDefender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
@@ -157,7 +163,7 @@ public class BatallaPanel extends StandarPanel {
                 .addGap(198, 198, 198)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 28, Short.MAX_VALUE)
                         .addComponent(lbVidaPookemon2)
                         .addGap(200, 200, 200))
                     .addGroup(layout.createSequentialGroup()
@@ -204,10 +210,9 @@ public class BatallaPanel extends StandarPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btCambiar)
                             .addComponent(btObjeto))
-                        .addGap(67, 67, 67))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))))
+                        .addGap(63, 63, 63))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -216,11 +221,15 @@ public class BatallaPanel extends StandarPanel {
     }//GEN-LAST:event_btDefenderActionPerformed
 
     private void btCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambiarActionPerformed
-        // TODO add your handling code here:
+        BatallaCambio cambio = new BatallaCambio(controlador);
+        cambio.configurar();
+        cambio.setVisible(true);
     }//GEN-LAST:event_btCambiarActionPerformed
 
     private void btObjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btObjetoActionPerformed
-        // TODO add your handling code here:
+        BatallaObjeto objeto = new BatallaObjeto(controlador);
+        objeto.configurar();
+        objeto.setVisible(true);
     }//GEN-LAST:event_btObjetoActionPerformed
 
     private void lb_nombrePookemon_1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_lb_nombrePookemon_1ComponentShown
@@ -234,6 +243,13 @@ public class BatallaPanel extends StandarPanel {
     private void lb_nombrePookemon_1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_lb_nombrePookemon_1ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_lb_nombrePookemon_1ComponentAdded
+
+    private void btAtacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtacarActionPerformed
+        BatallaAtaque ataques = new BatallaAtaque(controlador);
+        ataques.configurar();
+        ataques.setVisible(true);
+        
+    }//GEN-LAST:event_btAtacarActionPerformed
 
     // Método para cambiar la imagen del personaje 
     // FALTA TERMINAR 
@@ -281,6 +297,9 @@ public class BatallaPanel extends StandarPanel {
         imgPookemon1.setIcon(img1);
         imgPookemon2.setIcon(img2);
     }
+    
+    
+
 
     /*
        *******************************************************************
@@ -461,4 +480,5 @@ public class BatallaPanel extends StandarPanel {
     private javax.swing.JProgressBar pbVida2;
     private javax.swing.JTextArea txtAreaLog;
     // End of variables declaration//GEN-END:variables
+
 }

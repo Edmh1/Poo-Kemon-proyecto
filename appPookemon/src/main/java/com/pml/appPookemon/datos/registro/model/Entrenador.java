@@ -88,6 +88,18 @@ public class Entrenador {
         return null;
     }
     
+    public ArrayList<Pookemon> obtenerPookemonesDiferentesActual(){
+        ArrayList<Pookemon> resultado = new ArrayList<>();
+        Pookemon index = pookemones.get(pookemonActual);
+        for (int i = 0; i < pookemones.size(); i++) {
+            if(pookemones.get(i) != index){
+                resultado.add(pookemones.get(i));
+            }
+        }
+        
+        return resultado;
+    }
+    
     /**
      * @param objetos the objetos to set
      */

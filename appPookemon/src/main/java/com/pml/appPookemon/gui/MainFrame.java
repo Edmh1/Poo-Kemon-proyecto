@@ -46,7 +46,7 @@ public class MainFrame extends javax.swing.JFrame {
     private EliminarPanel eliP;
     
     private BatallaPanel batPri;
-    
+     
     private Clip clip;
     
     /**
@@ -81,7 +81,7 @@ public class MainFrame extends javax.swing.JFrame {
         //paneles batalla
         
         batPri = new BatallaPanel(this);
-
+        
         // Agregamos los paneles al CardLayout
         getContentPane().add(WelcomeP, "welcomeP");
         getContentPane().add(adminP, "adminP");
@@ -92,7 +92,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(ediP, "ediP");
         getContentPane().add(eliP, "eliP");
         getContentPane().add(batPri, "batPri");
-        
+       
         //evitar error al refrescar
         getContentPane().revalidate();
         getContentPane().repaint();
@@ -150,7 +150,7 @@ public class MainFrame extends javax.swing.JFrame {
         batPri.configurar();
         switchPanel("batPri");
     }
-    
+       
     public void createRegistroPanels(int num) {
         registros.clear();
         getContentPane().removeAll();
@@ -320,5 +320,5 @@ public class MainFrame extends javax.swing.JFrame {
             gainControl.setValue(dB);
         }
     }
-
+    
 }
