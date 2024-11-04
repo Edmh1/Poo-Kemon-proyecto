@@ -82,6 +82,9 @@ public abstract class Movimiento {
 
         if (precision > Math.random() * 100) {
             int daño = calcularDañoTotal(atacante, defensor);
+            if(defensor.isDefendiendo()){
+                daño = (int) (daño - (daño*0.3f));
+            }
             defensor.afectarHp(daño);
             System.out.println(atacante.getNombrePookemon() + " ha realizado " + nombreMovimiento + " y ha causado " + daño + " puntos de daño a " + defensor.getNombrePookemon());
             

@@ -250,7 +250,15 @@ public class BatallaPanel extends StandarPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btDefenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDefenderActionPerformed
-        // TODO add your handling code here:
+        controlador.setAccionEntrenador(turnoJugador,"DEFENDER", 0);
+        if(turnoJugador == 2){
+            realizarTurno();
+        }
+        pasarJugador();
+        configurarImagenes();
+        configurarTextos();
+        actualizarVidaVisual();
+        configurarFlecha();
     }//GEN-LAST:event_btDefenderActionPerformed
 
     private void btCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambiarActionPerformed

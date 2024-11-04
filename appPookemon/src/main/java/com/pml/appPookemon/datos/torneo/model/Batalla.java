@@ -63,6 +63,7 @@ public class Batalla {
             entrenador2.getPookemonActual().activarDefensa();
             atacar(entrenador1, entrenador2, idAtaque);
             resultado += logAtacar(entrenador1, idAtaque);
+            entrenador2.getPookemonActual().desactivarDefensa();
             return resultado;
         }
         //El entrenador 2 ataca pero el entrenador 1 se defiende
@@ -71,6 +72,7 @@ public class Batalla {
             entrenador1.getPookemonActual().activarDefensa();
             atacar(entrenador2, entrenador1, idAtaque);
             resultado += logAtacar(entrenador2,idAtaque);
+            entrenador2.getPookemonActual().desactivarDefensa();
             return resultado;
         }
 
