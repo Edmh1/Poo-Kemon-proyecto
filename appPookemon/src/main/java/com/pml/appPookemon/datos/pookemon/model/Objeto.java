@@ -2,7 +2,7 @@ package main.java.com.pml.appPookemon.datos.pookemon.model;
 
 
 
-public class Objeto {
+public abstract class Objeto {
 
     private int idObjeto;
     private String nombreObjeto;
@@ -16,6 +16,9 @@ public class Objeto {
         this.puntosR = puntosR;
     }
     
+    public abstract void usarObjeto(Pookemon pookemon, int id);
+    
+    /*
     public void usarObjeto(Pookemon pookemon) {
         pookemon.getEstadisticaPookemon().setVida(pookemon.getEstadisticaPookemon().getVida()+puntosR);
         System.out.println(pookemon.getNombrePookemon() + " ha recuperado " + puntosR + " puntos de vida.");
@@ -27,7 +30,8 @@ public class Objeto {
                 mov.setCantidadPP(mov.getCantidadPP()+puntosR);
         }
         System.out.println(pookemon.getNombrePookemon() + " ha recuperado " + puntosR + " puntos de PP.");
-    }      
+    }
+    */
 
     @Override
     public String toString() {

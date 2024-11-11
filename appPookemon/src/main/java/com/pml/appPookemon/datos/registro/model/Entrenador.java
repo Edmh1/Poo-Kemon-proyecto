@@ -48,7 +48,7 @@ public class Entrenador {
     public void usarObjeto(int idObjeto) {
         for (Objeto objeto : objetos) {
             if (objeto.getIdObjeto() == idObjeto) {
-                objeto.usarObjeto(pookemones.get(pookemonActual));
+                objeto.usarObjeto(pookemones.get(pookemonActual),0);
                 System.out.println(nombreEntrenador + " usa " + objeto.getNombreObjeto() + " en " + pookemones.get(pookemonActual).getNombrePookemon());
                 return;
             }
@@ -60,7 +60,7 @@ public class Entrenador {
         for (Objeto objeto : objetos) {
             if (objeto.getIdObjeto() == idObjeto) {
                 objeto.usarObjeto(pookemones.get(pookemonActual), idMovimiento);
-                System.out.println(nombreEntrenador + " usa " + objeto.getNombreObjeto() + " en " + pookemones.get(pookemonActual).getMovimientos().get(idMovimiento).getNombreMovimiento());
+                //System.out.println(nombreEntrenador + " usa " + objeto.getNombreObjeto() + " en " + pookemones.get(pookemonActual).getMovimientos().get(idMovimiento).getNombreMovimiento());
                 return;
             }
         }

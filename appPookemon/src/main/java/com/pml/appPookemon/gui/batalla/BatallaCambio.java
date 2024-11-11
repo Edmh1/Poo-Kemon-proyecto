@@ -20,11 +20,12 @@ public class BatallaCambio extends javax.swing.JFrame {
     private Pookemon pk1;
     private Pookemon pk2;
     private BatallaController controlador;
-    /**
-     * Creates new form BatallaDefensa
-     */
+    private boolean cambioForzado;
+    private int jugador;
+
     public BatallaCambio(BatallaController controlador) {
         this.controlador = controlador;
+        cambioForzado = false;
         initComponents();
     }
 
@@ -42,6 +43,7 @@ public class BatallaCambio extends javax.swing.JFrame {
         jVida1 = new javax.swing.JLabel();
         jVida2 = new javax.swing.JLabel();
         btVolver = new javax.swing.JButton();
+        lbTexto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -71,6 +73,8 @@ public class BatallaCambio extends javax.swing.JFrame {
             }
         });
 
+        lbTexto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,19 +88,25 @@ public class BatallaCambio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(btPookemon1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)
-                        .addComponent(btPookemon2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btPookemon2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(72, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(29, 29, 29)
+                .addComponent(lbTexto)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btPookemon1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(btPookemon2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -104,7 +114,7 @@ public class BatallaCambio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVida1)
                     .addComponent(jVida2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
         );
@@ -116,16 +126,31 @@ public class BatallaCambio extends javax.swing.JFrame {
     private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
         turno = bp.getTurnoJugador();
         controlador.setAccionEntrenador(turno, "CAMBIO", idPookemon);
-        if(turno == 1){
-            bp.pasarJugador();
+        if(cambioForzado == false){
+            if(turno == 1){
+                bp.pasarJugador();
+            }else{
+                bp.pasarJugador();
+                bp.realizarTurno();
+                bp.configurarImagenes();
+                bp.configurarTextos();
+                bp.actualizarVidaVisual();
+            }
+            bp.configurarFlecha();
         }else{
-            bp.pasarJugador();
+            if(jugador == 1){
+                controlador.setAccionEntrenador(1, "CAMBIO", idPookemon);
+                controlador.setAccionEntrenador(2, "DEFENDER", idPookemon);
+            }else{
+                controlador.setAccionEntrenador(2, "CAMBIO", idPookemon);
+                controlador.setAccionEntrenador(1, "DEFENDER", idPookemon);
+            }
             bp.realizarTurno();
             bp.configurarImagenes();
             bp.configurarTextos();
             bp.actualizarVidaVisual();
+            bp.configurarFlecha();
         }
-        bp.configurarFlecha();
         dispose();
     }//GEN-LAST:event_btVolverActionPerformed
 
@@ -174,7 +199,7 @@ public class BatallaCambio extends javax.swing.JFrame {
     }
     
     public void configurar(int jugador){
-        
+        this.jugador = jugador;
         Entrenador e = null;
         
         if(jugador == 1){
@@ -191,17 +216,25 @@ public class BatallaCambio extends javax.swing.JFrame {
         
         jVida1.setText("HP " + pk1.getEstadisticaPookemon().getVida());
         jVida2.setText("HP " + pk2.getEstadisticaPookemon().getVida());
+        
+        if(cambioForzado){
+            lbTexto.setText("Entrenador " + e.getNombreEntrenador() + ", " + e.getPookemonActual().getNombrePookemon() + " ha quedado fuera de comabate, cambialo");
+        }
     }
     
     public void setPanelBatalla(BatallaPanel bp){
         this.bp = bp;
     }
 
+    public void setCambioForzado(boolean cambioForzado) {
+        this.cambioForzado = cambioForzado;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btPookemon1;
     private javax.swing.JButton btPookemon2;
     private javax.swing.JButton btVolver;
     private javax.swing.JLabel jVida1;
     private javax.swing.JLabel jVida2;
+    private javax.swing.JLabel lbTexto;
     // End of variables declaration//GEN-END:variables
 }

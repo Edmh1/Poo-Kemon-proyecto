@@ -2,14 +2,19 @@ package main.java.com.pml.appPookemon.gui.batalla;
 
 import main.java.com.pml.appPookemon.datos.torneo.model.Batalla;
 import java.net.URL;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import javax.swing.ImageIcon;
 import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoEspecial;
 import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoFisico;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Objeto;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pocion;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
+import main.java.com.pml.appPookemon.datos.pookemon.model.RecuperarPPS;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
@@ -27,7 +32,9 @@ public class BatallaPanel extends StandarPanel {
     private BatallaController controlador;
     private int turno;
     private int turnoJugador;
-
+    private boolean pookemonEliminado;
+    BatallaCambio cambio;
+    
     /**
      * Creates new form BatallaPrincipal
      */
@@ -262,15 +269,15 @@ public class BatallaPanel extends StandarPanel {
     }//GEN-LAST:event_btDefenderActionPerformed
 
     private void btCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambiarActionPerformed
-        BatallaCambio cambio = new BatallaCambio(controlador);
+        cambio = new BatallaCambio(controlador);
         cambio.configurar(turnoJugador);
         cambio.setPanelBatalla(this);
         cambio.setVisible(true);
     }//GEN-LAST:event_btCambiarActionPerformed
 
     private void btObjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btObjetoActionPerformed
-        BatallaObjeto objeto = new BatallaObjeto(controlador);
-        objeto.configurar();
+        BatallaObjeto objeto = new BatallaObjeto(controlador, this);
+        objeto.configurar(turnoJugador);
         objeto.setVisible(true);
     }//GEN-LAST:event_btObjetoActionPerformed
 
@@ -306,6 +313,7 @@ public class BatallaPanel extends StandarPanel {
         entrenadores = super.getMainFrame().getController().batallaActual();
         j1 = entrenadores[0];
         j2 = entrenadores[1];
+        asignarObjetos();
         batalla = new Batalla(0, j1, j2, pookemonesYVainasFalsasloljaja());
         batalla.generarMazo();
         controlador = new BatallaController(batalla);
@@ -355,6 +363,10 @@ public class BatallaPanel extends StandarPanel {
 
     public void realizarTurno(){
         txtAreaLog.setText(controlador.realizarTurno());
+        if(pookemonEliminado  == false){
+            chequearVidaPookemones();
+            pookemonEliminado = false;
+        }
     }
     
     public void configurarFlecha(){
@@ -379,6 +391,35 @@ public class BatallaPanel extends StandarPanel {
         lbVidaPookemon2.setText("HP  " + vidaPookemon2);
         pbVida1.setValue(vidaPookemon1);
         pbVida2.setValue(vidaPookemon2);
+    }
+    
+    public void chequearVidaPookemones(){
+        int vidaPookemon1 = controlador.getEntrenador1().getPookemonActual().getEstadisticaPookemon().getVida();
+        int vidaPookemon2 = controlador.getEntrenador2().getPookemonActual().getEstadisticaPookemon().getVida();
+        
+        if(vidaPookemon1 <= 0){
+            pookemonEliminado(1);
+        }else if(vidaPookemon2 <= 0){
+            pookemonEliminado(2);
+        }
+    }
+    
+    public void pookemonEliminado(int jugador){
+        cambio = new BatallaCambio(controlador);
+        cambio.setPanelBatalla(this);
+        cambio.setCambioForzado(true);
+        cambio.configurar(jugador);
+        cambio.setVisible(true);
+        pookemonEliminado = true;
+        
+        /**turnoJugador = 1;
+        realizarTurno();
+        configurarImagenes();
+        configurarTextos();
+        actualizarVidaVisual();
+        configurarFlecha();
+    
+    */ 
     }
     /*
        *******************************************************************
@@ -540,6 +581,16 @@ public class BatallaPanel extends StandarPanel {
         Volcarona, Metagross, Excadrill, Hydreigon, Staraptor, Lapras, Weavile));
         
 
+    }
+    
+    public void asignarObjetos(){
+        Pocion pocion = new Pocion(0);
+        RecuperarPPS pps =  new RecuperarPPS(1);
+        
+        List<Objeto> objetos = new ArrayList<>(List.of(pocion,pps));
+        
+        j1.setObjetos(objetos);
+        j2.setObjetos(objetos);
     }
 
 

@@ -220,9 +220,9 @@ public class BatallaAtaque extends javax.swing.JFrame {
         btAtaque2.setText(ataque2.getNombreMovimiento());
         btAtaque3.setText(ataque3.getNombreMovimiento());
         
-        jPP1.setText("PP " + ataque1.getCantidadPP());
-        jPP2.setText("PP " + ataque2.getCantidadPP());
-        jPP3.setText("PP " + ataque3.getCantidadPP());
+        jPP1.setText("PP " + ataque1.getCantidadPP() + "/" + ataque1.getCantidadMaximaPPs());
+        jPP2.setText("PP " + ataque2.getCantidadPP() + "/" + ataque2.getCantidadMaximaPPs());
+        jPP3.setText("PP " + ataque3.getCantidadPP() + "/" + ataque3.getCantidadMaximaPPs());
     }
     
     public void setPanelBatalla(BatallaPanel bp){

@@ -61,11 +61,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Objeto1"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btObjeto1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btObjeto2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Objeto2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btObjeto2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btVolver">
       <Properties>

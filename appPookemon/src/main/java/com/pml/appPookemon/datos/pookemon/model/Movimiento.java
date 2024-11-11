@@ -12,6 +12,7 @@ public abstract class Movimiento {
     private int potencia;
     private int precision;
     private int cantidadPP;
+    private int cantidadMaximaPP;
     private String elemento;
     private Efecto efecto;
    
@@ -29,6 +30,7 @@ public abstract class Movimiento {
         this.cantidadPP = cantidadPP;
         this.elemento = elemento;
         this.efecto = efecto;
+        this.cantidadMaximaPP = cantidadPP;
         inicializarTablaEfectividad();
     }
 
@@ -208,6 +210,10 @@ public abstract class Movimiento {
      */
     public void setNombreMovimiento(String nombreMovimiento) {
         this.nombreMovimiento = nombreMovimiento;
+    }
+    
+    public int getCantidadMaximaPPs(){
+        return cantidadMaximaPP;
     }
 
     private void inicializarTablaEfectividad() {

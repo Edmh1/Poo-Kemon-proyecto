@@ -25,9 +25,179 @@ public class Batalla {
     }
 
     public String realizarTurno(){
-        String resultado = "";
+        String resultado = "Turno" + (numeroTurno+1) + ": ";
         int idAccionEntrenador1 = accionEntrenador1.idAccion;
         int idAccionEntrenador2 = accionEntrenador2.idAccion;
+        
+        //El jugador 1 usa un obejto de vida
+        if(accionEntrenador1.getTipoAccion() == TipoAccion.OBJETO_VIDA){
+            resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha usado una pocion";
+            entrenador1.usarObjeto(0);
+            //El jugador 2 usa un objeto vida
+            if(accionEntrenador2.getTipoAccion() == TipoAccion.OBJETO_VIDA){
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha usado una pocion";
+                entrenador2.usarObjeto(0);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            //El jugador 2 usa un objeto PPs
+            if(accionEntrenador2.getTipoAccion() == TipoAccion.OBJETO_PPS){
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha usado un recupera pps";
+                entrenador2.usarObjeto(1, idAccionEntrenador2);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            //El jugador 2 ataca
+            if(accionEntrenador2.getTipoAccion() == TipoAccion.ATACAR){
+                atacar(entrenador2, entrenador1, idAccionEntrenador2);
+                resultado += logAtacar(entrenador2, idAccionEntrenador2);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            //El jugador 2 cambia de pookemon
+            if(accionEntrenador2.getTipoAccion() == TipoAccion.CAMBIAR_POKEMON){
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha decidido cambiar de pookemon";
+                entrenador2.cambiarPookemon((idAccionEntrenador2));
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            
+            //El jugador 2 se defiende
+            if(accionEntrenador2.getTipoAccion() == TipoAccion.DEFENDER){
+                entrenador2.getPookemonActual().desactivarDefensa();
+            }
+        }
+        
+        //El jugador 2 usa un obejto de vida
+        if(accionEntrenador2.getTipoAccion() == TipoAccion.OBJETO_VIDA){
+            resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha usado una pocion";
+            entrenador2.usarObjeto(0);
+            //El jugador 1 usa un objeto vida
+            if(accionEntrenador1.getTipoAccion() == TipoAccion.OBJETO_VIDA){
+                resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha usado una pocion";
+                entrenador1.usarObjeto(0);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            //El jugador 1 usa un objeto PPs
+            if(accionEntrenador1.getTipoAccion() == TipoAccion.OBJETO_PPS){
+                resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha usado un recupera pps";
+                entrenador1.usarObjeto(1, idAccionEntrenador1);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            //El jugador 1 ataca
+            if(accionEntrenador1.getTipoAccion() == TipoAccion.ATACAR){
+                atacar(entrenador1, entrenador2, idAccionEntrenador1);
+                resultado += logAtacar(entrenador1, idAccionEntrenador1);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            //El jugador 1 cambia de pookemon
+            if(accionEntrenador1.getTipoAccion() == TipoAccion.CAMBIAR_POKEMON){
+                resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha decidido cambiar de pookemon";
+                entrenador1.cambiarPookemon(idAccionEntrenador1);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            //El jugador 1 se defiende
+            if(accionEntrenador1.getTipoAccion() == TipoAccion.DEFENDER){
+                entrenador1.getPookemonActual().desactivarDefensa();
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+        }
+        
+        //El jugador 1 usa un obejto de PPs
+        if(accionEntrenador1.getTipoAccion() == TipoAccion.OBJETO_PPS){
+            resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha usado un recupera pps";
+            entrenador1.usarObjeto(1, idAccionEntrenador1);
+            //El jugador 2 usa un objeto vida
+            if(accionEntrenador2.getTipoAccion() == TipoAccion.OBJETO_VIDA){
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha usado una pocion";
+                entrenador2.usarObjeto(0);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            //El jugador 2 usa un objeto PPs
+            if(accionEntrenador2.getTipoAccion() == TipoAccion.OBJETO_PPS){
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha usado un recupera pps";
+                entrenador2.usarObjeto(1, idAccionEntrenador2);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            //El jugador 2 ataca
+            if(accionEntrenador2.getTipoAccion() == TipoAccion.ATACAR){
+                atacar(entrenador2, entrenador1, idAccionEntrenador2);
+                resultado += logAtacar(entrenador2, idAccionEntrenador2);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            //El jugador 2 cambia de pookemon
+            if(accionEntrenador2.getTipoAccion() == TipoAccion.CAMBIAR_POKEMON){
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha decidido cambiar de pookemon";
+                entrenador2.cambiarPookemon((idAccionEntrenador2));
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            
+            //El jugador 2 se defiende
+            if(accionEntrenador2.getTipoAccion() == TipoAccion.DEFENDER){
+                entrenador2.getPookemonActual().desactivarDefensa();
+            }
+        }
+        
+        //El jugador 2 usa un obejto de PPs
+        if(accionEntrenador2.getTipoAccion() == TipoAccion.OBJETO_PPS){
+            resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha usado un recupera pps";
+            entrenador2.usarObjeto(1, idAccionEntrenador2);
+            //El jugador 1 usa un objeto vida
+            if(accionEntrenador1.getTipoAccion() == TipoAccion.OBJETO_VIDA){
+                resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha usado una pocion";
+                entrenador1.usarObjeto(0);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            //El jugador 1 usa un objeto PPs
+            if(accionEntrenador1.getTipoAccion() == TipoAccion.OBJETO_PPS){
+                resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha usado un recupera pps";
+                entrenador1.usarObjeto(1, idAccionEntrenador1);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            //El jugador 1 ataca
+            if(accionEntrenador1.getTipoAccion() == TipoAccion.ATACAR){
+                atacar(entrenador1, entrenador2, idAccionEntrenador1);
+                resultado += logAtacar(entrenador1, idAccionEntrenador1);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            //El jugador 1 cambia de pookemon
+            if(accionEntrenador1.getTipoAccion() == TipoAccion.CAMBIAR_POKEMON){
+                resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha decidido cambiar de pookemon";
+                entrenador1.cambiarPookemon(idAccionEntrenador1);
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+            
+            //El jugador 1 se defiende
+            if(accionEntrenador1.getTipoAccion() == TipoAccion.DEFENDER){
+                entrenador1.getPookemonActual().desactivarDefensa();
+                actualizarTurno(resultado);
+                return resultado+ "\n";
+            }
+        }
         //El entrenador 1 cambió de pookemon
         if(accionEntrenador1.getTipoAccion() == TipoAccion.CAMBIAR_POKEMON){
             resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha decidido cambiar de pookemon";
@@ -40,7 +210,8 @@ public class Batalla {
                 atacar(entrenador2, entrenador1, idAccionEntrenador2);
                 resultado += logAtacar(entrenador2, idAccionEntrenador2);
             }
-            return resultado;
+            actualizarTurno(resultado);
+            return resultado+ "\n";
         }
         //El entreandor 2 cambió de pookemon
         if(accionEntrenador2.getTipoAccion() == TipoAccion.CAMBIAR_POKEMON){
@@ -54,26 +225,29 @@ public class Batalla {
                 atacar(entrenador1, entrenador2, idAccionEntrenador1);
                 resultado += logAtacar(entrenador1, idAccionEntrenador1);
             }
-            return resultado;
+            actualizarTurno(resultado);
+            return resultado+ "\n";
         }
 
         //El entrenador 1 ataca pero el entrenador 2 se defiende
         if(accionEntrenador1.getTipoAccion() == TipoAccion.ATACAR && accionEntrenador2.getTipoAccion() == TipoAccion.DEFENDER){ 
             int idAtaque = idAccionEntrenador1;
-            entrenador2.getPookemonActual().activarDefensa();
+            entrenador2.defenderse();
             atacar(entrenador1, entrenador2, idAtaque);
             resultado += logAtacar(entrenador1, idAtaque);
             entrenador2.getPookemonActual().desactivarDefensa();
-            return resultado;
+            actualizarTurno(resultado);
+            return resultado+ "\n";
         }
         //El entrenador 2 ataca pero el entrenador 1 se defiende
         if(accionEntrenador2.getTipoAccion() == TipoAccion.ATACAR && accionEntrenador1.getTipoAccion() == TipoAccion.DEFENDER){
             int idAtaque = idAccionEntrenador2;
-            entrenador1.getPookemonActual().activarDefensa();
+            entrenador1.defenderse();
             atacar(entrenador2, entrenador1, idAtaque);
             resultado += logAtacar(entrenador2,idAtaque);
             entrenador2.getPookemonActual().desactivarDefensa();
-            return resultado;
+            actualizarTurno(resultado);
+            return resultado+ "\n";
         }
 
         //Ambos deciden atacar
@@ -104,16 +278,9 @@ public class Batalla {
             resultado += logAtacar(entrenador1,idAccionEntrenador1);
             atacar(entrenador1, entrenador2, idAccionEntrenador1);
         }
-
-        if(resultado.equals("") == false){
-            turnos.add((numeroTurno+1) + resultado);
-            numeroTurno++;
-        }
-        return resultado;
-    }
-
-    public void ActualizarLog(){
-        //Aqui se actualiza el log del GUI
+        
+        
+        return resultado + "\n";
     }
 
     public String GenerarReporteBatalla(){
@@ -143,6 +310,13 @@ public class Batalla {
 
     public int getId() {
         return id;
+    }
+    
+    private void actualizarTurno(String resultado){
+        if(resultado.equals("") == false){
+            turnos.add((numeroTurno+1) + resultado);
+            numeroTurno++;
+        }
     }
     
     public boolean generarMazo(){

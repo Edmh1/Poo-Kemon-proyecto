@@ -4,6 +4,7 @@
  */
 package main.java.com.pml.appPookemon.gui.batalla;
 
+import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
 
 /**
@@ -11,13 +12,16 @@ import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
  * @author feder
  */
 public class BatallaObjeto extends javax.swing.JFrame {
-
+    
+    private BatallaPanel bp;
     private BatallaController controlador;
+    private int idObjeto;
     /**
      * Creates new form BatallaObjeto
      */
-    public BatallaObjeto(BatallaController controlador) {
+    public BatallaObjeto(BatallaController controlador, BatallaPanel bp) {
         this.controlador = controlador;
+        this.bp = bp;
         initComponents();
     }
 
@@ -38,8 +42,18 @@ public class BatallaObjeto extends javax.swing.JFrame {
         setResizable(false);
 
         btObjeto1.setText("Objeto1");
+        btObjeto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btObjeto1ActionPerformed(evt);
+            }
+        });
 
         btObjeto2.setText("Objeto2");
+        btObjeto2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btObjeto2ActionPerformed(evt);
+            }
+        });
 
         btVolver.setText("Volver");
         btVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -81,9 +95,31 @@ public class BatallaObjeto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+        int turno = bp.getTurnoJugador();
+        controlador.setAccionEntrenador(turno, "OBJETO_VIDA", idObjeto);
+        if(turno == 1){
+            bp.pasarJugador();
+        }else{
+            bp.pasarJugador();
+            bp.realizarTurno();
+            bp.configurarImagenes();
+            bp.configurarTextos();
+            bp.actualizarVidaVisual();
+        }
+        bp.configurarFlecha();
         dispose();
     }//GEN-LAST:event_btVolverActionPerformed
 
+    private void btObjeto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btObjeto1ActionPerformed
+        idObjeto = 0;
+    }//GEN-LAST:event_btObjeto1ActionPerformed
+
+    private void btObjeto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btObjeto2ActionPerformed
+        PPsFrame pp = new PPsFrame(controlador,bp,this);
+        pp.configurar(bp.getTurnoJugador());
+        pp.setVisible(true);
+    }//GEN-LAST:event_btObjeto2ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -119,11 +155,17 @@ public class BatallaObjeto extends javax.swing.JFrame {
         });
     }
     
-    public void configurar(){
+    public void configurar(int jugador){
         
-        //cambiar entrenador1 por el entrenador que tenga el turno
-        btObjeto1.setText(controlador.getEntrenador1().getObjetos().get(0).getNombreObjeto());
-        btObjeto2.setText(controlador.getEntrenador1().getObjetos().get(1).getNombreObjeto());
+        Entrenador e = null;
+        if(jugador == 1){
+            e = controlador.getEntrenador1();
+        }else{
+            e = controlador.getEntrenador2();
+        }
+                
+        btObjeto1.setText(e.getObjetos().get(0).getNombreObjeto());
+        btObjeto2.setText(e.getObjetos().get(1).getNombreObjeto());
         
     }
 

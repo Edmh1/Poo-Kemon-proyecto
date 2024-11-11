@@ -56,6 +56,23 @@ public class BatallaController {
                     a.setTipoAccion(TipoAccion.CAMBIAR_POKEMON);
                     batalla.setAccionEntrenador2(a);
                 }   break;
+                
+            case "OBJETO_VIDA":
+                if(jugador == 1){
+                    a.setTipoAccion(TipoAccion.OBJETO_VIDA);
+                    batalla.setAccionEntrenador1(a);
+                }else{
+                    a.setTipoAccion(TipoAccion.OBJETO_VIDA);
+                    batalla.setAccionEntrenador2(a);
+                }   break;   
+            case "OBJETO_PPS":
+                if(jugador == 1){
+                    a.setTipoAccion(TipoAccion.OBJETO_PPS);
+                    batalla.setAccionEntrenador1(a);
+                }else{
+                    a.setTipoAccion(TipoAccion.OBJETO_PPS);
+                    batalla.setAccionEntrenador2(a);
+                }   break;
             default:
                 break;
         }
