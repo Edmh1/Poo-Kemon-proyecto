@@ -11,7 +11,7 @@ package main.java.com.pml.appPookemon.datos.pookemon.model;
 public class RecuperarPPS extends Objeto{
     
     public RecuperarPPS(int idObjeto) {
-        super(idObjeto, "Recueperar PPs", "PPs", 5);
+        super(idObjeto, "Recuperar PPs", "PPs", 5);
     }
 
     @Override

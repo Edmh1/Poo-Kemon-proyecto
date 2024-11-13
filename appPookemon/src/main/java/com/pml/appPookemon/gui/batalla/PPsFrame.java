@@ -43,11 +43,11 @@ public class PPsFrame extends javax.swing.JFrame {
         lbPPsMov3 = new javax.swing.JLabel();
         lbPPsMov2 = new javax.swing.JLabel();
         lbPPsMov1 = new javax.swing.JLabel();
-        btVolver = new javax.swing.JButton();
+        btUsar = new javax.swing.JButton();
         btMov2 = new javax.swing.JButton();
         btMov3 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btMov1.setText("Mov1");
         btMov1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,10 +65,10 @@ public class PPsFrame extends javax.swing.JFrame {
 
         lbPPsMov1.setText("PPs mov1");
 
-        btVolver.setText("Volver");
-        btVolver.addActionListener(new java.awt.event.ActionListener() {
+        btUsar.setText("Usar");
+        btUsar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVolverActionPerformed(evt);
+                btUsarActionPerformed(evt);
             }
         });
 
@@ -112,7 +112,7 @@ public class PPsFrame extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(78, 78, 78)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btVolver)
+                                .addComponent(btUsar)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(6, 6, 6)
                                     .addComponent(lbPPsMov3))
@@ -140,7 +140,7 @@ public class PPsFrame extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(lbPPsMov3)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                    .addComponent(btVolver)
+                    .addComponent(btUsar)
                     .addGap(33, 33, 33)))
         );
 
@@ -159,7 +159,7 @@ public class PPsFrame extends javax.swing.JFrame {
         idMovimiento = mov3.getIdMovimiento();
     }//GEN-LAST:event_btMov2ActionPerformed
 
-    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+    private void btUsarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUsarActionPerformed
         int turno = bp.getTurnoJugador();
         controlador.setAccionEntrenador(turno, "OBJETO_PPS", idMovimiento);
         if(turno == 1){
@@ -174,7 +174,7 @@ public class PPsFrame extends javax.swing.JFrame {
         bp.configurarFlecha();
         bo.dispose();
         dispose();
-    }//GEN-LAST:event_btVolverActionPerformed
+    }//GEN-LAST:event_btUsarActionPerformed
     
     public void configurar(int turno){
         Entrenador e = null;
@@ -200,7 +200,7 @@ public class PPsFrame extends javax.swing.JFrame {
     private javax.swing.JButton btMov1;
     private javax.swing.JButton btMov2;
     private javax.swing.JButton btMov3;
-    private javax.swing.JButton btVolver;
+    private javax.swing.JButton btUsar;
     private javax.swing.JLabel lbNombrePookemon;
     private javax.swing.JLabel lbPPsMov1;
     private javax.swing.JLabel lbPPsMov2;

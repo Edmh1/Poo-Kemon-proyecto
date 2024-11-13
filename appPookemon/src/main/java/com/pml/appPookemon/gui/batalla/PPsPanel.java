@@ -37,7 +37,7 @@ public class PPsPanel extends javax.swing.JFrame {
         btMov1 = new javax.swing.JButton();
         btMov3 = new javax.swing.JButton();
         btMov2 = new javax.swing.JButton();
-        btVolver = new javax.swing.JButton();
+        btUsar = new javax.swing.JButton();
         lbPPsMov1 = new javax.swing.JLabel();
         lbPPsMov2 = new javax.swing.JLabel();
         lbPPsMov3 = new javax.swing.JLabel();
@@ -64,10 +64,10 @@ public class PPsPanel extends javax.swing.JFrame {
             }
         });
 
-        btVolver.setText("Volver");
-        btVolver.addActionListener(new java.awt.event.ActionListener() {
+        btUsar.setText("Usar");
+        btUsar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVolverActionPerformed(evt);
+                btUsarActionPerformed(evt);
             }
         });
 
@@ -104,7 +104,7 @@ public class PPsPanel extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btVolver)
+                            .addComponent(btUsar)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(lbPPsMov3))
@@ -130,7 +130,7 @@ public class PPsPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbPPsMov3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(btVolver)
+                .addComponent(btUsar)
                 .addGap(22, 22, 22))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -147,10 +147,10 @@ public class PPsPanel extends javax.swing.JFrame {
         idMovimiento = mov3.getIdMovimiento();
     }//GEN-LAST:event_btMov3ActionPerformed
 
-    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+    private void btUsarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUsarActionPerformed
         
         dispose();
-    }//GEN-LAST:event_btVolverActionPerformed
+    }//GEN-LAST:event_btUsarActionPerformed
 
     public void configurar(int turno){
         Entrenador e = null;
@@ -177,7 +177,7 @@ public class PPsPanel extends javax.swing.JFrame {
     private javax.swing.JButton btMov1;
     private javax.swing.JButton btMov2;
     private javax.swing.JButton btMov3;
-    private javax.swing.JButton btVolver;
+    private javax.swing.JButton btUsar;
     private javax.swing.JLabel lbNombrePookemon;
     private javax.swing.JLabel lbPPsMov1;
     private javax.swing.JLabel lbPPsMov2;

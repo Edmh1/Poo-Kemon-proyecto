@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -49,7 +49,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btVolver" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btUsar" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                   <Component id="lbPPsMov3" min="-2" max="-2" attributes="0"/>
@@ -86,7 +86,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbPPsMov3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="36" max="32767" attributes="0"/>
-                  <Component id="btVolver" min="-2" max="-2" attributes="0"/>
+                  <Component id="btUsar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -125,12 +125,12 @@
         <Property name="text" type="java.lang.String" value="PPs mov1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btVolver">
+    <Component class="javax.swing.JButton" name="btUsar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Volver"/>
+        <Property name="text" type="java.lang.String" value="Usar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVolverActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUsarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btMov2">

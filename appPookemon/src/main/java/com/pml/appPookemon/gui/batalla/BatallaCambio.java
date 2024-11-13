@@ -42,7 +42,7 @@ public class BatallaCambio extends javax.swing.JFrame {
         btPookemon2 = new javax.swing.JButton();
         jVida1 = new javax.swing.JLabel();
         jVida2 = new javax.swing.JLabel();
-        btVolver = new javax.swing.JButton();
+        btCambiar = new javax.swing.JButton();
         lbTexto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -66,10 +66,10 @@ public class BatallaCambio extends javax.swing.JFrame {
 
         jVida2.setText("jLabel1");
 
-        btVolver.setText("Volver");
-        btVolver.addActionListener(new java.awt.event.ActionListener() {
+        btCambiar.setText("Cambiar");
+        btCambiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVolverActionPerformed(evt);
+                btCambiarActionPerformed(evt);
             }
         });
 
@@ -89,7 +89,7 @@ public class BatallaCambio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btCambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(btPookemon1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -115,7 +115,7 @@ public class BatallaCambio extends javax.swing.JFrame {
                     .addComponent(jVida1)
                     .addComponent(jVida2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btCambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
         );
 
@@ -123,7 +123,7 @@ public class BatallaCambio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+    private void btCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambiarActionPerformed
         turno = bp.getTurnoJugador();
         controlador.setAccionEntrenador(turno, "CAMBIO", idPookemon);
         if(cambioForzado == false){
@@ -152,7 +152,7 @@ public class BatallaCambio extends javax.swing.JFrame {
             bp.configurarFlecha();
         }
         dispose();
-    }//GEN-LAST:event_btVolverActionPerformed
+    }//GEN-LAST:event_btCambiarActionPerformed
 
     private void btPookemon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPookemon1ActionPerformed
         idPookemon = pk1.getIdPookemon();
@@ -218,7 +218,7 @@ public class BatallaCambio extends javax.swing.JFrame {
         jVida2.setText("HP " + pk2.getEstadisticaPookemon().getVida());
         
         if(cambioForzado){
-            lbTexto.setText("Entrenador " + e.getNombreEntrenador() + ", " + e.getPookemonActual().getNombrePookemon() + " ha quedado fuera de comabate, cambialo");
+            lbTexto.setText("Entrenador " + e.getNombreEntrenador() + ", " + e.getPookemonActual().getNombrePookemon() + " ha quedado fuera de combate, cambialo");
         }
     }
     
@@ -230,9 +230,9 @@ public class BatallaCambio extends javax.swing.JFrame {
         this.cambioForzado = cambioForzado;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCambiar;
     private javax.swing.JButton btPookemon1;
     private javax.swing.JButton btPookemon2;
-    private javax.swing.JButton btVolver;
     private javax.swing.JLabel jVida1;
     private javax.swing.JLabel jVida2;
     private javax.swing.JLabel lbTexto;

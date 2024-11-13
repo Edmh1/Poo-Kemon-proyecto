@@ -307,7 +307,7 @@ public class MainFrame extends javax.swing.JFrame {
             clip.start();
             clip.loop(Clip.LOOP_CONTINUOUSLY); // Loop the music
  
-            setVolume(0.5f);
+            setVolume(0.1f);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }

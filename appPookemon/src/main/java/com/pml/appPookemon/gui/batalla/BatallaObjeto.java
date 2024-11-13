@@ -36,7 +36,7 @@ public class BatallaObjeto extends javax.swing.JFrame {
 
         btObjeto1 = new javax.swing.JButton();
         btObjeto2 = new javax.swing.JButton();
-        btVolver = new javax.swing.JButton();
+        btUsar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -55,10 +55,10 @@ public class BatallaObjeto extends javax.swing.JFrame {
             }
         });
 
-        btVolver.setText("Volver");
-        btVolver.addActionListener(new java.awt.event.ActionListener() {
+        btUsar.setText("Usar");
+        btUsar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVolverActionPerformed(evt);
+                btUsarActionPerformed(evt);
             }
         });
 
@@ -75,7 +75,7 @@ public class BatallaObjeto extends javax.swing.JFrame {
                         .addComponent(btObjeto2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(144, 144, 144)
-                        .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btUsar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,7 +86,7 @@ public class BatallaObjeto extends javax.swing.JFrame {
                     .addComponent(btObjeto1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btObjeto2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btUsar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
         );
 
@@ -94,7 +94,7 @@ public class BatallaObjeto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+    private void btUsarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUsarActionPerformed
         int turno = bp.getTurnoJugador();
         controlador.setAccionEntrenador(turno, "OBJETO_VIDA", idObjeto);
         if(turno == 1){
@@ -108,7 +108,7 @@ public class BatallaObjeto extends javax.swing.JFrame {
         }
         bp.configurarFlecha();
         dispose();
-    }//GEN-LAST:event_btVolverActionPerformed
+    }//GEN-LAST:event_btUsarActionPerformed
 
     private void btObjeto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btObjeto1ActionPerformed
         idObjeto = 0;
@@ -172,6 +172,6 @@ public class BatallaObjeto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btObjeto1;
     private javax.swing.JButton btObjeto2;
-    private javax.swing.JButton btVolver;
+    private javax.swing.JButton btUsar;
     // End of variables declaration//GEN-END:variables
 }

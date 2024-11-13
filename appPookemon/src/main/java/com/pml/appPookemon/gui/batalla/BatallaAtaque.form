@@ -56,7 +56,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="btVolver" min="-2" pref="116" max="-2" attributes="0"/>
+              <Component id="btRealizar" min="-2" pref="116" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -79,7 +79,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPP3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-              <Component id="btVolver" min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="btRealizar" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace pref="44" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -110,12 +110,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAtaque1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btVolver">
+    <Component class="javax.swing.JButton" name="btRealizar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Volver"/>
+        <Property name="text" type="java.lang.String" value="Realizar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVolverActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRealizarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jPP1">

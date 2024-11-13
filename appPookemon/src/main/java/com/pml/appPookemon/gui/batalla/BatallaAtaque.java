@@ -40,7 +40,7 @@ public class BatallaAtaque extends javax.swing.JFrame {
         btAtaque2 = new javax.swing.JButton();
         btAtaque3 = new javax.swing.JButton();
         btAtaque1 = new javax.swing.JButton();
-        btVolver = new javax.swing.JButton();
+        btRealizar = new javax.swing.JButton();
         jPP1 = new javax.swing.JLabel();
         jPP2 = new javax.swing.JLabel();
         jPP3 = new javax.swing.JLabel();
@@ -69,10 +69,10 @@ public class BatallaAtaque extends javax.swing.JFrame {
             }
         });
 
-        btVolver.setText("Volver");
-        btVolver.addActionListener(new java.awt.event.ActionListener() {
+        btRealizar.setText("Realizar");
+        btRealizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVolverActionPerformed(evt);
+                btRealizarActionPerformed(evt);
             }
         });
 
@@ -110,7 +110,7 @@ public class BatallaAtaque extends javax.swing.JFrame {
                 .addContainerGap(99, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btRealizar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(155, 155, 155))
         );
         layout.setVerticalGroup(
@@ -129,7 +129,7 @@ public class BatallaAtaque extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPP3)
                 .addGap(71, 71, 71)
-                .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btRealizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -152,7 +152,7 @@ public class BatallaAtaque extends javax.swing.JFrame {
         System.out.println("Id del movimiento " + ataque1.getNombreMovimiento() +": " + idMovimiento);
     }//GEN-LAST:event_btAtaque1ActionPerformed
 
-    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
+    private void btRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarActionPerformed
         int turno = bp.getTurnoJugador();
         controlador.setAccionEntrenador(turno, "ATACAR", idMovimiento);
         if(turno == 1){
@@ -166,7 +166,7 @@ public class BatallaAtaque extends javax.swing.JFrame {
         }
         bp.configurarFlecha();
         dispose();
-    }//GEN-LAST:event_btVolverActionPerformed
+    }//GEN-LAST:event_btRealizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,7 +233,7 @@ public class BatallaAtaque extends javax.swing.JFrame {
     private javax.swing.JButton btAtaque1;
     private javax.swing.JButton btAtaque2;
     private javax.swing.JButton btAtaque3;
-    private javax.swing.JButton btVolver;
+    private javax.swing.JButton btRealizar;
     private javax.swing.JLabel jPP1;
     private javax.swing.JLabel jPP2;
     private javax.swing.JLabel jPP3;
