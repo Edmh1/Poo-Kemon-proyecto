@@ -4,11 +4,13 @@
  */
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author eddie
  */
-public class EfectoQuemadura implements Efecto{
+public class EfectoQuemadura implements Efecto,Serializable{
     private int dañoRealizado = 0;
 
     @Override

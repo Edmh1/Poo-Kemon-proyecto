@@ -1,9 +1,10 @@
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pookemon {
+public class Pookemon implements Serializable{
     private int idPookemon;
     private String nombrePookemon;
     private String elementoPookemon;
@@ -12,7 +13,7 @@ public class Pookemon {
     private Efecto efecto;
     private boolean defendiendo;
 
-    public Pookemon(int idPookemon, String nombre, String elemento) {
+    public Pookemon(int idPookemon, String nombre, String elemento)  {
         this.idPookemon = idPookemon;
         this.nombrePookemon = nombre;
         this.elementoPookemon = elemento;

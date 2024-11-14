@@ -1,12 +1,13 @@
 package main.java.com.pml.appPookemon.datos.torneo.model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 
-public class Batalla {
+public class Batalla implements Serializable{
     private int id;
     private Entrenador entrenador1;
     private Entrenador entrenador2;

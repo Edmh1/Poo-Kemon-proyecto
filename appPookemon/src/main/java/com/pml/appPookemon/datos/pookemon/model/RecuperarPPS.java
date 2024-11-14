@@ -4,11 +4,13 @@
  */
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sebac
  */
-public class RecuperarPPS extends Objeto{
+public class RecuperarPPS extends Objeto implements Serializable{
     
     public RecuperarPPS(int idObjeto) {
         super(idObjeto, "Recuperar PPs", "PPs", 5);

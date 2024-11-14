@@ -4,11 +4,13 @@
  */
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sebac
  */
-public class Pocion extends Objeto{
+public class Pocion extends Objeto implements Serializable{
     
     public Pocion(int idObjeto) {
         super(idObjeto, "Pocion", "POCION", 20);

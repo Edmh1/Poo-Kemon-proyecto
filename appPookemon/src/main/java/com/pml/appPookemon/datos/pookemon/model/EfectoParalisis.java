@@ -4,11 +4,13 @@
  */
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author eddie
  */
-public class EfectoParalisis implements Efecto{
+public class EfectoParalisis implements Efecto,Serializable{
     private int velocidadQuitada = 0;
 
     @Override

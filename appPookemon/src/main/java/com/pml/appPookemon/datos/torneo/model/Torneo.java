@@ -1,5 +1,6 @@
 package main.java.com.pml.appPookemon.datos.torneo.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Efecto;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
@@ -7,7 +8,7 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 
 
-public class Torneo{
+public class Torneo implements Serializable{
 
     private ArrayList<Entrenador> jugadores = new ArrayList<>();
     private ArrayList<Pookemon> pookemones = new ArrayList<>();

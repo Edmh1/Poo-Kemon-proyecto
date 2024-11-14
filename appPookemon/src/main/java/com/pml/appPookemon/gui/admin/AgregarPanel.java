@@ -169,6 +169,11 @@ public class AgregarPanel extends StandarPanel {
         jcbEfecto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efe. Quemadura", "Efe. Dormilon", "Efe. Enamoramiento" }));
 
         jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mov. Fisico", "Mov. Especial" }));
+        jcbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbTipoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpMovimientoLayout = new javax.swing.GroupLayout(jpMovimiento);
         jpMovimiento.setLayout(jpMovimientoLayout);
@@ -263,6 +268,10 @@ public class AgregarPanel extends StandarPanel {
         
 
     }//GEN-LAST:event_btAgregarActionPerformed
+
+    private void jcbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbTipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

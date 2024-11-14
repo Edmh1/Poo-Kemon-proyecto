@@ -1,6 +1,8 @@
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
-public class Estadistica {
+import java.io.Serializable;
+
+public class Estadistica implements Serializable{
     private int vidaMaxima;
     private int vida;
     private int ataqueFisico;

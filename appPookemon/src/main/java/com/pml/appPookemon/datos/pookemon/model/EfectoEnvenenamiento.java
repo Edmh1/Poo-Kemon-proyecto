@@ -4,11 +4,13 @@
  */
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author eddie
  */
-public class EfectoEnvenenamiento implements Efecto{
+public class EfectoEnvenenamiento implements Efecto, Serializable{
     private int turnos = 0;
 
     @Override

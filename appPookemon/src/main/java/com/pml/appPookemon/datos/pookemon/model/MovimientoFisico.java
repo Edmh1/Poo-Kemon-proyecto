@@ -4,12 +4,14 @@
  */
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
+import java.io.Serializable;
+
 
 /**
  *
  * @author eddie
  */
-public class MovimientoFisico extends Movimiento{
+public class MovimientoFisico extends Movimiento implements Serializable{
 
     public MovimientoFisico(int idMovimiento, String nombre, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto) {
         super(idMovimiento, nombre, potencia, precision, cantidadPP, elemento, efecto);

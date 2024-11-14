@@ -1,8 +1,10 @@
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
+import java.io.Serializable;
 
 
-public abstract class Objeto {
+
+public abstract class Objeto implements Serializable{
 
     private int idObjeto;
     private String nombreObjeto;

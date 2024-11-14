@@ -1,8 +1,9 @@
 package main.java.com.pml.appPookemon.datos.torneo.model;
 
+import java.io.Serializable;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 
-public class NodoTorneo {
+public class NodoTorneo implements Serializable{
 
     private Entrenador entrenador;
     private NodoTorneo izquierda;

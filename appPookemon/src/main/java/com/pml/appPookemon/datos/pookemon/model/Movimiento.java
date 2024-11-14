@@ -1,11 +1,12 @@
 package main.java.com.pml.appPookemon.datos.pookemon.model;
 
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public abstract class Movimiento {
+public abstract class Movimiento implements Serializable {
     private int idMovimiento;
     private String nombreMovimiento;
     private String descripcionMovimiento;

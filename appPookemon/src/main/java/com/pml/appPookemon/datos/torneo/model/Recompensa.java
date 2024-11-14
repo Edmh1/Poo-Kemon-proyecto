@@ -1,6 +1,8 @@
 package main.java.com.pml.appPookemon.datos.torneo.model;
 
-public class Recompensa {
+import java.io.Serializable;
+
+public class Recompensa implements Serializable {
     private int idRecompensa;
     private String nombre;
     private String descripcion;
