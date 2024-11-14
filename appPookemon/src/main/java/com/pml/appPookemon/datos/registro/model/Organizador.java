@@ -93,7 +93,7 @@ public class Organizador {
         System.out.println("🛠️ Eddie Manotas - El Conquistador de Bugs");
         System.out.println("🛠️ Arturo Velasquez - El Arquitecto del Código");
         System.out.println("🛠️ Sebastian Castro - El Guerrero del Backend");
-        System.out.println("🛠️ Andres Escobar - El Maestro del Frontend");
+        System.out.println("🛠️ Andres Escobar - El Maestro de las Excepciones");
         System.out.println("🛠️ Vladimir Navarro - El Guardián del Sistema");
         System.out.println();
         System.out.println("✨ ¡Gracias por usar nuestro proyecto épico! ✨");

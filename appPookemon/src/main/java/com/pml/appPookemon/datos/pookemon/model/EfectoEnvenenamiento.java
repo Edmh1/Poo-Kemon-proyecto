@@ -8,30 +8,43 @@ package main.java.com.pml.appPookemon.datos.pookemon.model;
  *
  * @author eddie
  */
-public class EfectoEnvenenamiento implements Efecto{
+public class EfectoEnvenenamiento implements Efecto {
+    private static final double PORCENTAJE_DAÑO_ENVENENAMIENTO = 0.12;
+    private static final int DURACION_MAXIMA_TURNOS = 3;
+
     private int turnos = 0;
 
     @Override
     public boolean seActivaEfecto(Pookemon p) {
-        return p.getEstadisticaPookemon().getVida() > p.getEstadisticaPookemon().getVidaMaxima()*0.2
-                &&  p.getEstadisticaPookemon().getVida() < p.getEstadisticaPookemon().getVidaMaxima()*0.9;
+        return p.getEstadisticaPookemon().getVida() > p.getEstadisticaPookemon().getVidaMaxima() * 0.2
+                && p.getEstadisticaPookemon().getVida() < p.getEstadisticaPookemon().getVidaMaxima() * 0.9;
     }
 
     @Override
-    public void aplicarEfecto(Pookemon p) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public String aplicarEfecto(Pookemon p) {
+        int vidaActual = p.getEstadisticaPookemon().getVida();
+        int dañoPorEnvenenamiento = (int) (vidaActual * PORCENTAJE_DAÑO_ENVENENAMIENTO);
 
-    @Override
-    public void afectarEstadiscitas(Pookemon p) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        p.getEstadisticaPookemon().setVida(vidaActual - dañoPorEnvenenamiento);
+        turnos++;
 
-    @Override
-    public void eliminarEfecto(Pookemon p) {
-        if(turnos > 3){
-            p.setEfecto(null);
+        String info = "El Pookemon pierde " + dañoPorEnvenenamiento + " puntos de vida debido al envenenamiento";
+        
+        if (turnos >= DURACION_MAXIMA_TURNOS || !seActivaEfecto(p)) {
+            eliminarEfecto(p);
         }
+        return info;
+    }
+
+    @Override
+    public String eliminarEfecto(Pookemon p) {
+        p.setEfecto(null);
+        return "El envenenamiento ha terminado.";
+    }
+    
+    @Override
+    public String tipoEfecto() {
+        return "envenenamiento";
     }
     
 }

@@ -8,8 +8,13 @@ package main.java.com.pml.appPookemon.datos.pookemon.model;
  *
  * @author eddie
  */
-public class EfectoParalisis implements Efecto{
+public class EfectoParalisis implements Efecto {
+    private static final double PORCENTAJE_REDUCCION_VELOCIDAD = 0.10;
+    private static final int DURACION_MAXIMA_TURNOS = 3;
+
     private int velocidadQuitada = 0;
+    private int turnos = 0;
+    private boolean puedeAtacar = true;
 
     @Override
     public boolean seActivaEfecto(Pookemon p) {
@@ -17,20 +22,39 @@ public class EfectoParalisis implements Efecto{
     }
 
     @Override
-    public void aplicarEfecto(Pookemon p) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void afectarEstadiscitas(Pookemon p) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void eliminarEfecto(Pookemon p) {
-        if(velocidadQuitada > 50){
-            p.setEfecto(null);
+    public String aplicarEfecto(Pookemon p) {
+        String info ="";
+        if (turnos == 0 && seActivaEfecto(p)) {
+            int velocidadActual = p.getEstadisticaPookemon().getVelocidad();
+            velocidadQuitada = (int) (velocidadActual * PORCENTAJE_REDUCCION_VELOCIDAD);
+            p.getEstadisticaPookemon().setVelocidad(velocidadActual - velocidadQuitada);
+            info = "El Pookemon está paralizado, pierde velocidad y no puede atacar.";
         }
+
+        puedeAtacar = false;
+        turnos++;
+
+        if (turnos >= DURACION_MAXIMA_TURNOS) {
+            eliminarEfecto(p);
+        }
+        return info;
+    }
+
+    @Override
+    public String eliminarEfecto(Pookemon p) {
+        p.getEstadisticaPookemon().setVelocidad(p.getEstadisticaPookemon().getVelocidad() + velocidadQuitada);
+        p.setEfecto(null);
+        puedeAtacar = true;
+        return "El efecto de parálisis ha terminado.";
+    }
+
+    public boolean puedeAtacar() {
+        return puedeAtacar;
+    }
+
+    @Override
+    public String tipoEfecto() {
+        return "paralisis";
     }
     
 }
