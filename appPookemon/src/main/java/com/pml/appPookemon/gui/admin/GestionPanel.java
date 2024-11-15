@@ -129,6 +129,7 @@ public class GestionPanel extends StandarPanel {
 
     private void btAgrPookemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgrPookemonActionPerformed
         super.getMainFrame().switchToAgregarPanel("POOKEMON");
+        System.out.println(""+super.getMainFrame().getController().getPookemones().toString());
     }//GEN-LAST:event_btAgrPookemonActionPerformed
 
     private void btAgrMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgrMovimientoActionPerformed

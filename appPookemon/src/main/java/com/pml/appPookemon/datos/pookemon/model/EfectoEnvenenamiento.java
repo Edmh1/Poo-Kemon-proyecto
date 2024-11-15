@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author eddie
  */
-public class EfectoEnvenenamiento implements Efecto, Serializable{
+public class EfectoEnvenenamiento implements Efecto,Serializable{
 
     private static final double PORCENTAJE_DAÑO_ENVENENAMIENTO = 0.12;
     private static final int DURACION_MAXIMA_TURNOS = 3;

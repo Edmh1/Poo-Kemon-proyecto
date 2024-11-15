@@ -6,6 +6,7 @@ import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
@@ -16,6 +17,7 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.Pocion;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.pookemon.model.RecuperarPPS;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
+import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoController;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 
@@ -34,6 +36,7 @@ public class BatallaPanel extends StandarPanel {
     private int turnoJugador;
     private boolean pookemonEliminado;
     BatallaCambio cambio;
+    TorneoController Torneo = super.getMainFrame().getController();
     
     /**
      * Creates new form BatallaPrincipal
@@ -310,12 +313,14 @@ public class BatallaPanel extends StandarPanel {
     }
 
     public void configurar() {
-        entrenadores = super.getMainFrame().getController().batallaActual();
+        entrenadores = Torneo.batallaActual();
         j1 = entrenadores[0];
         j2 = entrenadores[1];
         asignarObjetos();
+        //batalla = new Batalla(0, j1, j2, Torneo.getPookemones());
         batalla = new Batalla(0, j1, j2, pookemonesYVainasFalsasloljaja());
         batalla.generarMazo();
+        //asignarMovimientos();
         controlador = new BatallaController(batalla);
         configurarTextos();
         actualizarVidaVisual();
@@ -591,6 +596,43 @@ public class BatallaPanel extends StandarPanel {
         
         j1.setObjetos(objetos);
         j2.setObjetos(objetos);
+    }
+    
+    public void asignarMovimientos(){
+        for (int i = 0; i < 2; i++) {
+            if(i==0){
+                for (Pookemon pookemon : j1.getPookemones()) {
+                    asignarMovimientoAleatorios(pookemon);
+                }
+            } else{
+                for (Pookemon pookemon : j2.getPookemones()) {
+                    asignarMovimientoAleatorios(pookemon);
+                }
+            }
+        }
+    }
+    
+    private void asignarMovimientoAleatorios(Pookemon pookemon){
+        ArrayList<Movimiento> movimientos = new ArrayList<>();
+        Random random = new Random();
+        int i=0;
+        boolean stab = false;
+        while(i<3){
+            int azar = random.nextInt(Torneo.getMovimientos().size());
+            Movimiento iterable = Torneo.getMovimientos().get(azar);
+            if(!movimientos.contains(iterable)){
+                if(pookemon.getElementoPookemon().equals(iterable.getElemento())){
+                    stab = true;
+                }
+                
+                if(i<2 || stab==true){
+                    movimientos.add(iterable);
+                    i++;
+                }
+                
+            }
+        }
+        pookemon.setMovimientos(movimientos);
     }
 
 

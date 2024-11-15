@@ -23,13 +23,17 @@ public class Torneo implements Serializable{
     public int getIdtorneo() {
         return idtorneo;
     }
-
+    
     public void addJugador(Entrenador e){
         jugadores.add(e);
     }
     
     public void addPookemon(Pookemon x){
         pookemones.add(x);
+    }
+
+    public ArrayList<Pookemon> getPookemones() {
+        return pookemones;
     }
     
     public void editarNombrePookemon(int idPookemon_p, String nuevoNombre){

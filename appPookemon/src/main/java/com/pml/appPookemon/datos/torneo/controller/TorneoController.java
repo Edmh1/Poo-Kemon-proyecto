@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package main.java.com.pml.appPookemon.datos.torneo.controller;
+import java.util.ArrayList;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
@@ -18,6 +19,10 @@ public class TorneoController {
         torneo.crearTorneo();
     }
     
+    public Torneo getTorneo(){
+        return torneo;
+    }
+    
     public void agregarJugador(Entrenador e){
         torneo.addJugador(e);
     }
@@ -26,8 +31,16 @@ public class TorneoController {
         torneo.addPookemon(e);
     }
     
+    public ArrayList<Pookemon> getPookemones(){
+        return torneo.getPookemones();
+    }
+    
     public void agregarMovimiento(Movimiento e){
         torneo.addMovimiento(e);
+    }
+    
+    public ArrayList<Movimiento> getMovimientos(){
+        return torneo.getMovimientos();
     }
     
     public Entrenador[] batallaActual(){

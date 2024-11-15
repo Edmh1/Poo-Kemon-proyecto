@@ -14,6 +14,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -21,6 +23,7 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JSlider;
+import main.java.com.pml.appPookemon.datos.registro.model.Organizador;
 import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoController;
 import main.java.com.pml.appPookemon.gui.admin.AgregarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EditarPanel;
@@ -29,6 +32,7 @@ import main.java.com.pml.appPookemon.gui.admin.GestionPanel;
 import main.java.com.pml.appPookemon.gui.admin.NumPartPanel;
 import main.java.com.pml.appPookemon.gui.batalla.BatallaPanel;
 import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
+import main.java.com.pml.appPookemon.persistencia.Serializable;
 
 /**
  *
@@ -59,6 +63,8 @@ public class MainFrame extends javax.swing.JFrame {
         reproducirMusica(getClass().getResourceAsStream("/audio/song_modified.WAV"));
     }
     
+    private Organizador organizador = new Organizador(111, "12345");
+    
     private void setupPanels() {
         // Creamos el CardLayout
         cardLayout = new CardLayout();
@@ -66,7 +72,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         // Instanciar los paneles
         WelcomePanel WelcomeP = new WelcomePanel(this);
-        AdminPanel adminP = new AdminPanel(this);
+        AdminPanel adminP = new AdminPanel(this, organizador);
         
         //paneles despues del iniciar torneo
         NumPartPanel numPartP = new NumPartPanel(this);
@@ -147,6 +153,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     public void switchToBatallaPnel(){
         controller.crearTorneo();
+        organizador.addTorneo(controller.getTorneo());
         batPri.configurar();
         switchPanel("batPri");
     }
@@ -195,6 +202,14 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pookemon");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         MnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/pokemon-go.png"))); // NOI18N
         MnMenu.setText("Menu");
@@ -253,6 +268,30 @@ public class MainFrame extends javax.swing.JFrame {
     private void mniInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniInicioActionPerformed
         switchToWelcomePanel();
     }//GEN-LAST:event_mniInicioActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        Serializable ser = new Serializable();
+        if(new File("Admin.obj").exists()){
+            try {
+                organizador=ser.recuperar("Admin.obj");
+            } catch (IOException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        try{
+        Serializable ser = new Serializable();
+        ser.guardar(organizador);
+        } catch(IOException ex) {
+            System.out.println("No guardo"+ex);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

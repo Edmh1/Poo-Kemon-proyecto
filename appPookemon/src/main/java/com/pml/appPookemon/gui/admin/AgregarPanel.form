@@ -141,8 +141,8 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
                 <StringItem index="0" value="Efe. Quemadura"/>
-                <StringItem index="1" value="Efe. Dormilon"/>
-                <StringItem index="2" value="Efe. Enamoramiento"/>
+                <StringItem index="1" value="Efe. Envenenamiento"/>
+                <StringItem index="2" value="Efe. Paralisis"/>
               </StringArray>
             </Property>
           </Properties>
@@ -207,7 +207,7 @@
     <Component class="javax.swing.JComboBox" name="jcbElemento">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="19">
+          <StringArray count="18">
             <StringItem index="0" value="Acero"/>
             <StringItem index="1" value="Agua"/>
             <StringItem index="2" value="Bicho"/>
@@ -226,7 +226,6 @@
             <StringItem index="15" value="Tierra"/>
             <StringItem index="16" value="Veneno"/>
             <StringItem index="17" value="Volador"/>
-            <StringItem index="18" value=" "/>
           </StringArray>
         </Property>
       </Properties>

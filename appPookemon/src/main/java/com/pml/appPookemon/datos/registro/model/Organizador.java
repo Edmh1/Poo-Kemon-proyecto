@@ -25,6 +25,10 @@ public class Organizador implements Serializable {
         return "Organizador [idOrganizador=" + idOrganizador + "]";
     }
     
+    public void addTorneo(Torneo x){
+        torneos.add(x);
+    }
+    
     public String mostrarTorneos(){
         String lis = "";
         for (Torneo torneo : torneos) {
@@ -101,16 +105,14 @@ public class Organizador implements Serializable {
         System.out.println("***************************");
     }
 
-
-
-    
+    public String getPassword() {
+        return password;
+    }
     
     public void editarMovimiento(int idMov, String nombreMovimiento, String descripcion,int daño, int precision, int velocidad, String nombreEfecto,Efecto efect ){
         torneoActual.editarMovimiento(idMov, nombreMovimiento, descripcion, daño, precision, velocidad,  nombreEfecto, efect);
 
-    }
-    
-    
+    } 
     
     public Torneo crearTorneo(){
         torneos.add(new Torneo());
