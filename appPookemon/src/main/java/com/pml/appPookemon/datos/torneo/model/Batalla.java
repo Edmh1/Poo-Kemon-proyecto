@@ -310,13 +310,7 @@ public class Batalla implements Serializable{
 
     private String logAtacar(Entrenador atacante, int id){
         String nombrePookemon =  atacante.getPookemonActual().getNombrePookemon();
-        String nombreAtaque = "";
-        
-        try{
-            nombreAtaque = atacante.getPookemonActual().obtenerMovimientoPorID(id).getNombreMovimiento();
-        }catch(NullPointerException ex){
-            JOptionPane.showMessageDialog(null, "Movimiento no detectado.");
-        }
+        String nombreAtaque = atacante.getPookemonActual().obtenerMovimientoPorID(id).getNombreMovimiento();
         return logAtaque(nombrePookemon, nombreAtaque);
     }
 

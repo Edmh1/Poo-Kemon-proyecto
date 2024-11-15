@@ -179,23 +179,24 @@ public class BatallaAtaque extends javax.swing.JFrame {
 
     private void btRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarActionPerformed
         
-        try{
-        int turno = bp.getTurnoJugador();
-        controlador.setAccionEntrenador(turno, "ATACAR", idMovimiento);
-        if(turno == 1){
-            bp.pasarJugador();
+        if(idMovimiento != 0){
+            int turno = bp.getTurnoJugador();
+            controlador.setAccionEntrenador(turno, "ATACAR", idMovimiento);
+            if(turno == 1){
+                bp.pasarJugador();
+            }else{
+                bp.pasarJugador();
+                bp.realizarTurno();
+                bp.configurarImagenes();
+                bp.configurarTextos();
+                bp.actualizarVidaVisual();
+            }
+            bp.configurarFlecha();
+            dispose();
         }else{
-            bp.pasarJugador();
-            bp.realizarTurno();
-            bp.configurarImagenes();
-            bp.configurarTextos();
-            bp.actualizarVidaVisual();
+            JOptionPane.showMessageDialog(rootPane, "No se seleccionó ningún movimiento. Por favor, escoja uno");
         }
-        bp.configurarFlecha();
-        } catch(NullPointerException ex){
-            JOptionPane.showMessageDialog(this, "No se seleccionó ningún movimiento");
-        }
-        dispose();
+        
     }//GEN-LAST:event_btRealizarActionPerformed
 
     private void btAtaque4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtaque4ActionPerformed
