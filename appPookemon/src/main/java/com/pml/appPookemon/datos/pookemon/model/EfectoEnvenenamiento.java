@@ -10,14 +10,10 @@ import java.io.Serializable;
  *
  * @author eddie
  */
-<<<<<<< HEAD
 public class EfectoEnvenenamiento implements Efecto, Serializable{
-=======
-public class EfectoEnvenenamiento implements Efecto {
+
     private static final double PORCENTAJE_DAÑO_ENVENENAMIENTO = 0.12;
     private static final int DURACION_MAXIMA_TURNOS = 3;
-
->>>>>>> d2e1db9cadc7d95a87ce57895982dbbc933240f1
     private int turnos = 0;
 
     @Override

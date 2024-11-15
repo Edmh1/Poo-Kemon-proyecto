@@ -587,7 +587,7 @@ public class BatallaPanel extends StandarPanel {
         Pocion pocion = new Pocion(0);
         RecuperarPPS pps =  new RecuperarPPS(1);
         
-        List<Objeto> objetos = new ArrayList<>(List.of(pocion,pps));
+        List<Objeto> objetos = new ArrayList<>(Arrays.asList(pocion,pps));
         
         j1.setObjetos(objetos);
         j2.setObjetos(objetos);

@@ -4,6 +4,7 @@ package main.java.com.pml.appPookemon.datos.torneo.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 
@@ -301,7 +302,13 @@ public class Batalla implements Serializable{
 
     private String logAtacar(Entrenador atacante, int id){
         String nombrePookemon =  atacante.getPookemonActual().getNombrePookemon();
-        String nombreAtaque = atacante.getPookemonActual().obtenerMovimientoPorID(id).getNombreMovimiento();
+        String nombreAtaque = "";
+        
+        try{
+            nombreAtaque = atacante.getPookemonActual().obtenerMovimientoPorID(id).getNombreMovimiento();
+        }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Movimiento no detectado.");
+        }
         return logAtaque(nombrePookemon, nombreAtaque);
     }
 

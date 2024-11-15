@@ -10,16 +10,13 @@ import java.io.Serializable;
  *
  * @author eddie
  */
-<<<<<<< HEAD
+
 public class EfectoQuemadura implements Efecto,Serializable{
     private int dañoRealizado = 0;
-=======
-public class EfectoQuemadura implements Efecto {
     private static final double PORCENTAJE_DAÑO_QUEMADURA = 0.06;
     private static final int UMBRAL_DAÑO_TOTAL = 30;
 
     private int dañoAcumulado = 0;
->>>>>>> d2e1db9cadc7d95a87ce57895982dbbc933240f1
 
     @Override
     public boolean seActivaEfecto(Pookemon p) {

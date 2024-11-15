@@ -4,6 +4,7 @@
  */
 package main.java.com.pml.appPookemon.gui.batalla;
 
+import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
@@ -153,6 +154,8 @@ public class BatallaAtaque extends javax.swing.JFrame {
     }//GEN-LAST:event_btAtaque1ActionPerformed
 
     private void btRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarActionPerformed
+        
+        try{
         int turno = bp.getTurnoJugador();
         controlador.setAccionEntrenador(turno, "ATACAR", idMovimiento);
         if(turno == 1){
@@ -165,6 +168,9 @@ public class BatallaAtaque extends javax.swing.JFrame {
             bp.actualizarVidaVisual();
         }
         bp.configurarFlecha();
+        } catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(this, "No se seleccionó ningún movimiento");
+        }
         dispose();
     }//GEN-LAST:event_btRealizarActionPerformed
 

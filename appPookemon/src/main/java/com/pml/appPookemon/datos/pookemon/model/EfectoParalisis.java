@@ -10,14 +10,11 @@ import java.io.Serializable;
  *
  * @author eddie
  */
-<<<<<<< HEAD
+
 public class EfectoParalisis implements Efecto,Serializable{
-=======
-public class EfectoParalisis implements Efecto {
+
     private static final double PORCENTAJE_REDUCCION_VELOCIDAD = 0.10;
     private static final int DURACION_MAXIMA_TURNOS = 3;
-
->>>>>>> d2e1db9cadc7d95a87ce57895982dbbc933240f1
     private int velocidadQuitada = 0;
     private int turnos = 0;
     private boolean puedeAtacar = true;
