@@ -688,7 +688,7 @@ public class BatallaPanel extends StandarPanel {
                     i++;
                 }
                 
-                if(i==2 && revisarElementosMovimientos(movimientos).contains(pookemon.getElementoPookemon())){
+                if(i==2 && !revisarElementosMovimientos(movimientos).contains(pookemon.getElementoPookemon())){
                     movimientos.add(iterable);
                     i++;
                 }
