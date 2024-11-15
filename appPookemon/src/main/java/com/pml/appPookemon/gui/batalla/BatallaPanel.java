@@ -8,6 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoEnvenenamiento;
+import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoParalisis;
+import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoQuemadura;
 import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoEspecial;
@@ -35,6 +38,8 @@ public class BatallaPanel extends StandarPanel {
     private int turno;
     private int turnoJugador;
     private boolean pookemonEliminado;
+    private boolean pk1Efecto;
+    private boolean pk2Efecto;
     BatallaCambio cambio;
     TorneoController Torneo = super.getMainFrame().getController();
     
@@ -75,6 +80,8 @@ public class BatallaPanel extends StandarPanel {
         lbNombreEntrenador1 = new javax.swing.JLabel();
         imgFlecha2 = new javax.swing.JLabel();
         imgFlecha1 = new javax.swing.JLabel();
+        imgEfectoPk1 = new javax.swing.JLabel();
+        imgEfectoPk2 = new javax.swing.JLabel();
 
         lb_nombrePookemon_1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lb_nombrePookemon_1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -183,14 +190,26 @@ public class BatallaPanel extends StandarPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(imgPookemon1)
+                .addGap(98, 98, 98)
+                .addComponent(imgFlecha1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imgPookemon2)
-                .addGap(131, 131, 131))
+                .addComponent(imgFlecha2)
+                .addGap(92, 92, 92))
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(imgEfectoPk1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(imgPookemon1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(imgPookemon2)
+                                .addGap(71, 71, 71))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(imgEfectoPk2))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lb_nombrePookemon_1)
@@ -206,12 +225,6 @@ public class BatallaPanel extends StandarPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbNombreEntrenador2)))
                 .addGap(60, 60, 60))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(imgFlecha1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imgFlecha2)
-                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,10 +252,17 @@ public class BatallaPanel extends StandarPanel {
                         .addComponent(lbVidaPookemon1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pbVida1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imgPookemon1)
-                    .addComponent(imgPookemon2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imgPookemon1)
+                            .addComponent(imgPookemon2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(imgEfectoPk2)
+                            .addComponent(imgEfectoPk1))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -352,6 +372,7 @@ public class BatallaPanel extends StandarPanel {
         ImageIcon img2 = new ImageIcon(imagen2);
         imgPookemon1.setIcon(img1);
         imgPookemon2.setIcon(img2);
+        configurarImagenesEfectos();
     }
     
     public void pasarJugador(){
@@ -367,11 +388,14 @@ public class BatallaPanel extends StandarPanel {
     }
 
     public void realizarTurno(){
+        pk1Efecto = controlador.getEntrenador1().getPookemonActual().tieneEfecto();
+        pk2Efecto = controlador.getEntrenador2().getPookemonActual().tieneEfecto();
         txtAreaLog.setText(controlador.realizarTurno());
         if(pookemonEliminado  == false){
             chequearVidaPookemones();
             pookemonEliminado = false;
         }
+        aplicarEfectos();
     }
     
     public void configurarFlecha(){
@@ -426,6 +450,36 @@ public class BatallaPanel extends StandarPanel {
     
     */ 
     }
+    
+    private void aplicarEfectos(){
+        if(pk1Efecto || pk2Efecto){
+            txtAreaLog.setText(txtAreaLog.getText() + controlador.aplicarEfectos());
+        }
+        pk1Efecto = controlador.getEntrenador1().getPookemonActual().tieneEfecto();
+        pk2Efecto = controlador.getEntrenador2().getPookemonActual().tieneEfecto();
+    }
+    
+    private void configurarImagenesEfectos(){
+        Pookemon pk1 = controlador.getEntrenador1().getPookemonActual();
+        Pookemon pk2 = controlador.getEntrenador2().getPookemonActual();
+        boolean pk1EfectoLocal = pk1.tieneEfecto();
+        boolean pk2EfectoLocal = pk2.tieneEfecto();
+        URL imagen1 = null;
+        URL imagen2 = null;
+        if(pk1EfectoLocal){
+            imagen1 = getClass().getResource("/img/" + pk1.getEfecto().tipoEfecto() + ".png");
+            imgEfectoPk1.setIcon(new ImageIcon(imagen1));
+        }else{
+            imgEfectoPk1.setIcon(null);
+        }
+        
+        if(pk2EfectoLocal){
+            imagen2 = getClass().getResource("/img/" + pk2.getEfecto().tipoEfecto() + ".png");
+            imgEfectoPk2.setIcon(new ImageIcon(imagen2));
+        }else{
+            imgEfectoPk2.setIcon(null);
+        }
+    }
     /*
        *******************************************************************
        *     FUNCIÓN FALSA QUE AGREGA LOS POOKEMONES YA CREADOS          *
@@ -433,6 +487,10 @@ public class BatallaPanel extends StandarPanel {
        *******************************************************************
      */
     public ArrayList<Pookemon> pookemonesYVainasFalsasloljaja() {
+        EfectoQuemadura quemadura = new EfectoQuemadura();
+        EfectoEnvenenamiento envenenamiento = new EfectoEnvenenamiento();
+        EfectoParalisis paralisis = new EfectoParalisis();
+        
         Pookemon Roserade = new Pookemon(407, "Roserade", "planta");
         Roserade.inicializarEstadistica(60, 70, 65, 125, 105, 90);
 
@@ -508,52 +566,52 @@ public class BatallaPanel extends StandarPanel {
         Pookemon Weavile = new Pookemon(461, "Weavile", "hielo");
         Weavile.inicializarEstadistica(70, 120, 65, 45, 85, 125);
 
-        Movimiento Lanzallamas = new MovimientoEspecial(1, "Lanzallamas", 90, 100, 10, "fuego", null);
-        Movimiento PunoFuego = new MovimientoFisico(2, "Puño Fuego", 75, 100, 15, "fuego", null);
-        Movimiento Llamarada = new MovimientoEspecial(3, "Llamarada", 110, 85, 5, "fuego", null);
-        Movimiento Hidroariete = new MovimientoFisico(4, "Hidroariete", 85, 100, 10, "agua", null);
-        Movimiento Escaldar = new MovimientoEspecial(5, "Escaldar", 80, 100, 10, "agua", null);
-        Movimiento Hidrobomba = new MovimientoEspecial(6, "Hidrobomba", 120, 80, 5, "agua", null);
-        Movimiento Energibola = new MovimientoEspecial(7, "Energibola", 90, 100, 10, "planta", null);
-        Movimiento BombaGermen = new MovimientoFisico(8, "Bomba Germen", 80, 100, 15, "planta", null);
-        Movimiento Latigazo = new MovimientoFisico(9, "Latigazo", 120, 85, 10, "planta", null);
-        Movimiento Rayo = new MovimientoEspecial(10, "Rayo", 90, 100, 10, "electrico", null);
-        Movimiento PunoTrueno = new MovimientoFisico(11, "Puño Trueno", 75, 100, 15, "electrico", null);
-        Movimiento Trueno = new MovimientoEspecial(12, "Trueno", 110, 70, 10, "electrico", null);
-        Movimiento Terremoto = new MovimientoFisico(13, "Terremoto", 100, 100, 10, "tierra", null);
-        Movimiento TierraViva = new MovimientoEspecial(14, "Tierra Viva", 90, 100, 10, "tierra", null);
-        Movimiento RocaAfilada = new MovimientoFisico(15, "Roca Afilada", 100, 80, 5, "roca", null);
-        Movimiento JoyaDeLuz = new MovimientoEspecial(16, "Joya de Luz", 80, 100, 20, "roca", null);
-        Movimiento Avalancha = new MovimientoFisico(17, "Avalancha", 75, 90, 10, "roca", null);
-        Movimiento TajoAereo = new MovimientoEspecial(18, "Tajo Aereo", 75, 95, 15, "volador", null);
-        Movimiento Vendaval = new MovimientoEspecial(19, "Vendaval", 110, 70, 10, "volador", null);
-        Movimiento PicoTaladro = new MovimientoFisico(20, "Pico Taladro", 80, 100, 20, "volador", null);
-        Movimiento BombaLodo = new MovimientoEspecial(21, "Bomba Lodo", 90, 100, 10, "veneno", null);
-        Movimiento PuyaNociva = new MovimientoFisico(22, "Puya Nociva", 80, 100, 20, "veneno", null);
-        Movimiento LanzaMugre = new MovimientoFisico(23, "Lanza Mugre", 120, 80, 5, "veneno", null);
-        Movimiento Psiquico = new MovimientoEspecial(24, "Psiquico", 90, 100, 10, "psiquico", null);
-        Movimiento CabezazoZen = new MovimientoFisico(25, "Cabezazo Zen", 80, 90, 15, "psiquico", null);
-        Movimiento Psicocorte = new MovimientoFisico(26, "Psicocorte", 70, 100, 20, "psiquico", null);
-        Movimiento OndaCertera = new MovimientoEspecial(27, "Onda Certera", 120, 70, 5, "lucha", null);
-        Movimiento ABocajarro = new MovimientoFisico(28, "ABocajarro", 120, 100, 5, "lucha", null);
-        Movimiento Triturar = new MovimientoFisico(29, "Triturar", 80, 100, 15, "siniestro", null);
-        Movimiento PulsoUmbrio = new MovimientoEspecial(30, "Pulso Umbrio", 80, 100, 15, "siniestro", null);
-        Movimiento BolaSombra = new MovimientoEspecial(31, "Bola Sombra", 80, 100, 15, "fantasma", null);
-        Movimiento GarraUmbria = new MovimientoFisico(32, "Garra Umbria", 70, 100, 15, "fantasma", null);
-        Movimiento FocoResplandor = new MovimientoEspecial(33, "Foco Resplandor", 80, 100, 10, "acero", null);
-        Movimiento CabezaDeHierro = new MovimientoFisico(34, "Cabeza de Hierro", 80, 100, 15, "acero", null);
-        Movimiento FuerzaLunar = new MovimientoEspecial(35, "Fuerza Lunar", 95, 100, 15, "hada", null);
-        Movimiento Carantona = new MovimientoFisico(36, "Carantoña", 90, 90, 10, "hada", null);
-        Movimiento GarraDragon = new MovimientoFisico(37, "Garra Dragon", 80, 100, 15, "dragon", null);
-        Movimiento PulsoDragon = new MovimientoEspecial(38, "Pulso Dragon", 85, 100, 10, "dragon", null);
-        Movimiento PunoHielo = new MovimientoFisico(39, "Puño Hielo", 75, 100, 15, "hielo", null);
-        Movimiento RayoHielo = new MovimientoEspecial(40, "Rayo Hielo", 90, 100, 10, "hielo", null);
-        Movimiento Ventisca = new MovimientoEspecial(41, "Ventisca", 110, 70, 5, "hielo", null);
-        Movimiento Megacuerno = new MovimientoFisico(42, "Megacuerno", 120, 85, 10, "bicho", null);
-        Movimiento Zumbido = new MovimientoEspecial(43, "Zumbido", 90, 100, 10, "bicho", null);
-        Movimiento TijeraX = new MovimientoFisico(44, "Tijera X", 80, 100, 15, "bicho", null);
-        Movimiento Vozarron = new MovimientoEspecial(45, "Vozarron", 90, 100, 10, "normal", null);
-        Movimiento GolpeCuerpo = new MovimientoFisico(46, "Golpe Cuerpo", 85, 100, 15, "normal", null);
+        Movimiento Lanzallamas = new MovimientoEspecial(1, "Lanzallamas", 90, 100, 10, "fuego", null, 0);
+        Movimiento PunoFuego = new MovimientoFisico(2, "Puño Fuego", 75, 100, 15, "fuego", quemadura, 90);
+        Movimiento Llamarada = new MovimientoEspecial(3, "Llamarada", 110, 85, 5, "fuego", null, 0);
+        Movimiento Hidroariete = new MovimientoFisico(4, "Hidroariete", 85, 100, 10, "agua", null, 0);
+        Movimiento Escaldar = new MovimientoEspecial(5, "Escaldar", 80, 100, 10, "agua", null, 0);
+        Movimiento Hidrobomba = new MovimientoEspecial(6, "Hidrobomba", 120, 80, 5, "agua", null, 0);
+        Movimiento Energibola = new MovimientoEspecial(7, "Energibola", 90, 100, 10, "planta", null, 0);
+        Movimiento BombaGermen = new MovimientoFisico(8, "Bomba Germen", 80, 100, 15, "planta", null, 0);
+        Movimiento Latigazo = new MovimientoFisico(9, "Latigazo", 120, 85, 10, "planta", null, 0);
+        Movimiento Rayo = new MovimientoEspecial(10, "Rayo", 90, 100, 10, "electrico", paralisis, 80);
+        Movimiento PunoTrueno = new MovimientoFisico(11, "Puño Trueno", 75, 100, 15, "electrico", null, 0);
+        Movimiento Trueno = new MovimientoEspecial(12, "Trueno", 110, 70, 10, "electrico", null, 0);
+        Movimiento Terremoto = new MovimientoFisico(13, "Terremoto", 100, 100, 10, "tierra", null, 0);
+        Movimiento TierraViva = new MovimientoEspecial(14, "Tierra Viva", 90, 100, 10, "tierra", null, 0);
+        Movimiento RocaAfilada = new MovimientoFisico(15, "Roca Afilada", 100, 80, 5, "roca", null, 0);
+        Movimiento JoyaDeLuz = new MovimientoEspecial(16, "Joya de Luz", 80, 100, 20, "roca", null, 0);
+        Movimiento Avalancha = new MovimientoFisico(17, "Avalancha", 75, 90, 10, "roca", null, 0);
+        Movimiento TajoAereo = new MovimientoEspecial(18, "Tajo Aereo", 75, 95, 15, "volador", null, 0);
+        Movimiento Vendaval = new MovimientoEspecial(19, "Vendaval", 110, 70, 10, "volador", null, 0);
+        Movimiento PicoTaladro = new MovimientoFisico(20, "Pico Taladro", 80, 100, 20, "volador", null, 0);
+        Movimiento BombaLodo = new MovimientoEspecial(21, "Bomba Lodo", 90, 100, 10, "veneno", null, 0);
+        Movimiento PuyaNociva = new MovimientoFisico(22, "Puya Nociva", 80, 100, 20, "veneno", envenenamiento, 80);
+        Movimiento LanzaMugre = new MovimientoFisico(23, "Lanza Mugre", 120, 80, 5, "veneno", null, 0);
+        Movimiento Psiquico = new MovimientoEspecial(24, "Psiquico", 90, 100, 10, "psiquico", null, 0);
+        Movimiento CabezazoZen = new MovimientoFisico(25, "Cabezazo Zen", 80, 90, 15, "psiquico", null, 0);
+        Movimiento Psicocorte = new MovimientoFisico(26, "Psicocorte", 70, 100, 20, "psiquico", null, 0);
+        Movimiento OndaCertera = new MovimientoEspecial(27, "Onda Certera", 120, 70, 5, "lucha", null, 0);
+        Movimiento ABocajarro = new MovimientoFisico(28, "ABocajarro", 120, 100, 5, "lucha", null, 0);
+        Movimiento Triturar = new MovimientoFisico(29, "Triturar", 80, 100, 15, "siniestro", null, 0);
+        Movimiento PulsoUmbrio = new MovimientoEspecial(30, "Pulso Umbrio", 80, 100, 15, "siniestro", null, 0);
+        Movimiento BolaSombra = new MovimientoEspecial(31, "Bola Sombra", 80, 100, 15, "fantasma", null, 0);
+        Movimiento GarraUmbria = new MovimientoFisico(32, "Garra Umbria", 70, 100, 15, "fantasma", null, 0);
+        Movimiento FocoResplandor = new MovimientoEspecial(33, "Foco Resplandor", 80, 100, 10, "acero", null, 0);
+        Movimiento CabezaDeHierro = new MovimientoFisico(34, "Cabeza de Hierro", 80, 100, 15, "acero", null, 0);
+        Movimiento FuerzaLunar = new MovimientoEspecial(35, "Fuerza Lunar", 95, 100, 15, "hada", null, 0);
+        Movimiento Carantona = new MovimientoFisico(36, "Carantoña", 90, 90, 10, "hada", null, 0);
+        Movimiento GarraDragon = new MovimientoFisico(37, "Garra Dragon", 80, 100, 15, "dragon", null, 0);
+        Movimiento PulsoDragon = new MovimientoEspecial(38, "Pulso Dragon", 85, 100, 10, "dragon", null, 0);
+        Movimiento PunoHielo = new MovimientoFisico(39, "Puño Hielo", 75, 100, 15, "hielo", null, 0);
+        Movimiento RayoHielo = new MovimientoEspecial(40, "Rayo Hielo", 90, 100, 10, "hielo", null, 0);
+        Movimiento Ventisca = new MovimientoEspecial(41, "Ventisca", 110, 70, 5, "hielo", null, 0);
+        Movimiento Megacuerno = new MovimientoFisico(42, "Megacuerno", 120, 85, 10, "bicho", null, 0);
+        Movimiento Zumbido = new MovimientoEspecial(43, "Zumbido", 90, 100, 10, "bicho", null, 0);
+        Movimiento TijeraX = new MovimientoFisico(44, "Tijera X", 80, 100, 15, "bicho", null, 0);
+        Movimiento Vozarron = new MovimientoEspecial(45, "Vozarron", 90, 100, 10, "normal", null, 0);
+        Movimiento GolpeCuerpo = new MovimientoFisico(46, "Golpe Cuerpo", 85, 100, 15, "normal", null, 0);
 
         Roserade.setMovimientos(new ArrayList<>(Arrays.asList(Energibola, BombaGermen, BombaLodo, PuyaNociva)));
         Venusaur.setMovimientos(new ArrayList<>(Arrays.asList(Latigazo, BombaGermen, Energibola, BombaLodo)));
@@ -641,6 +699,8 @@ public class BatallaPanel extends StandarPanel {
     private javax.swing.JButton btCambiar;
     private javax.swing.JButton btDefender;
     private javax.swing.JButton btObjeto;
+    private javax.swing.JLabel imgEfectoPk1;
+    private javax.swing.JLabel imgEfectoPk2;
     private javax.swing.JLabel imgFlecha1;
     private javax.swing.JLabel imgFlecha2;
     private javax.swing.JLabel imgPookemon1;

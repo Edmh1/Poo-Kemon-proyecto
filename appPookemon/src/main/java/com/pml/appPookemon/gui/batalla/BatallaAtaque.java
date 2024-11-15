@@ -19,6 +19,7 @@ public class BatallaAtaque extends javax.swing.JFrame {
     private Movimiento ataque1;
     private Movimiento ataque2;
     private Movimiento ataque3;
+    private Movimiento ataque4;
     private int idMovimiento;
     /**
      * Creates new form BatallaAtaque
@@ -45,6 +46,8 @@ public class BatallaAtaque extends javax.swing.JFrame {
         jPP1 = new javax.swing.JLabel();
         jPP2 = new javax.swing.JLabel();
         jPP3 = new javax.swing.JLabel();
+        btAtaque4 = new javax.swing.JButton();
+        jPP4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -83,6 +86,15 @@ public class BatallaAtaque extends javax.swing.JFrame {
 
         jPP3.setText("jLabel1");
 
+        btAtaque4.setText("Ataque1");
+        btAtaque4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAtaque4ActionPerformed(evt);
+            }
+        });
+
+        jPP4.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,22 +104,28 @@ public class BatallaAtaque extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btAtaque3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(btAtaque1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btAtaque2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btAtaque2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btAtaque3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(38, 38, 38)
+                                        .addComponent(jPP3)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btAtaque4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(38, 38, 38)
+                                        .addComponent(jPP4))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addComponent(jPP1)
                         .addGap(103, 103, 103)
-                        .addComponent(jPP2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jPP3)))
+                        .addComponent(jPP2)))
                 .addContainerGap(99, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -126,9 +144,15 @@ public class BatallaAtaque extends javax.swing.JFrame {
                     .addComponent(jPP1)
                     .addComponent(jPP2))
                 .addGap(22, 22, 22)
-                .addComponent(btAtaque3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPP3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btAtaque3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPP3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btAtaque4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPP4)))
                 .addGap(71, 71, 71)
                 .addComponent(btRealizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
@@ -173,6 +197,11 @@ public class BatallaAtaque extends javax.swing.JFrame {
         }
         dispose();
     }//GEN-LAST:event_btRealizarActionPerformed
+
+    private void btAtaque4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtaque4ActionPerformed
+        idMovimiento = ataque4.getIdMovimiento();
+        System.out.println("Id del movimiento " + ataque4.getNombreMovimiento() +": " + idMovimiento);
+    }//GEN-LAST:event_btAtaque4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,14 +250,17 @@ public class BatallaAtaque extends javax.swing.JFrame {
         ataque1 = e.getPookemonActual().getMovimientos().get(0);
         ataque2 = e.getPookemonActual().getMovimientos().get(1);
         ataque3 = e.getPookemonActual().getMovimientos().get(2);
+        ataque4 = e.getPookemonActual().getMovimientos().get(3);
         
         btAtaque1.setText(ataque1.getNombreMovimiento());
         btAtaque2.setText(ataque2.getNombreMovimiento());
         btAtaque3.setText(ataque3.getNombreMovimiento());
+        btAtaque4.setText(ataque4.getNombreMovimiento());
         
         jPP1.setText("PP " + ataque1.getCantidadPP() + "/" + ataque1.getCantidadMaximaPPs());
         jPP2.setText("PP " + ataque2.getCantidadPP() + "/" + ataque2.getCantidadMaximaPPs());
         jPP3.setText("PP " + ataque3.getCantidadPP() + "/" + ataque3.getCantidadMaximaPPs());
+        jPP4.setText("PP " + ataque4.getCantidadPP() + "/" + ataque4.getCantidadMaximaPPs());
     }
     
     public void setPanelBatalla(BatallaPanel bp){
@@ -239,9 +271,11 @@ public class BatallaAtaque extends javax.swing.JFrame {
     private javax.swing.JButton btAtaque1;
     private javax.swing.JButton btAtaque2;
     private javax.swing.JButton btAtaque3;
+    private javax.swing.JButton btAtaque4;
     private javax.swing.JButton btRealizar;
     private javax.swing.JLabel jPP1;
     private javax.swing.JLabel jPP2;
     private javax.swing.JLabel jPP3;
+    private javax.swing.JLabel jPP4;
     // End of variables declaration//GEN-END:variables
 }

@@ -160,7 +160,7 @@ public class Batalla implements Serializable{
         
         //El jugador 2 usa un obejto de PPs
         if(accionEntrenador2.getTipoAccion() == TipoAccion.OBJETO_PPS){
-            resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha usado un recupera pps";
+            resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha usado un recupera pps " + "\n";
             entrenador2.usarObjeto(1, idAccionEntrenador2);
             //El jugador 1 usa un objeto vida
             if(accionEntrenador1.getTipoAccion() == TipoAccion.OBJETO_VIDA){
@@ -202,10 +202,10 @@ public class Batalla implements Serializable{
         }
         //El entrenador 1 cambió de pookemon
         if(accionEntrenador1.getTipoAccion() == TipoAccion.CAMBIAR_POKEMON){
-            resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha decidido cambiar de pookemon";
+            resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha decidido cambiar de pookemon" + "\n";
             entrenador1.cambiarPookemon(idAccionEntrenador1);
             if(accionEntrenador2.getTipoAccion() == TipoAccion.CAMBIAR_POKEMON){
-                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha decidido cambiar de pookemon";
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha decidido cambiar de pookemon" + "\n";
                 entrenador2.cambiarPookemon((idAccionEntrenador2));
             }
             if(accionEntrenador2.getTipoAccion() == TipoAccion.ATACAR){
@@ -217,10 +217,10 @@ public class Batalla implements Serializable{
         }
         //El entreandor 2 cambió de pookemon
         if(accionEntrenador2.getTipoAccion() == TipoAccion.CAMBIAR_POKEMON){
-            resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha decidido cambiar de pookemon";
+            resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha decidido cambiar de pookemon" + "\n";
             entrenador2.cambiarPookemon(idAccionEntrenador2);
             if(accionEntrenador1.getTipoAccion() == TipoAccion.CAMBIAR_POKEMON){
-                resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha decidido cambiar de pookemon";
+                resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha decidido cambiar de pookemon" + "\n";
                 entrenador1.cambiarPookemon(idAccionEntrenador1);
             }
             if(accionEntrenador1.getTipoAccion() == TipoAccion.ATACAR){
@@ -250,6 +250,14 @@ public class Batalla implements Serializable{
             entrenador2.getPookemonActual().desactivarDefensa();
             actualizarTurno(resultado);
             return resultado+ "\n";
+        }
+        
+        //Ambos deciden defender
+        if(accionEntrenador2.getTipoAccion() == TipoAccion.DEFENDER && accionEntrenador1.getTipoAccion() == TipoAccion.DEFENDER){
+            resultado += "Ambos deciden defenderse";
+            entrenador2.getPookemonActual().desactivarDefensa();
+            entrenador1.getPookemonActual().desactivarDefensa();
+            return resultado + "\n";
         }
 
         //Ambos deciden atacar
@@ -314,6 +322,21 @@ public class Batalla implements Serializable{
 
     private String logAtaque(String nombrePookemon, String nombreAtaque){
         return nombrePookemon + " ha realizado el ataque " + nombreAtaque + "\n";
+    }
+    
+    public String aplicarEfectos(){
+        String logEfectos = "";
+        Pookemon pk1 = entrenador1.getPookemonActual();
+        Pookemon pk2 = entrenador2.getPookemonActual();
+        
+        if(pk1.tieneEfecto()){
+            logEfectos += pk1.aplicarEfecto() + "\n";
+        }
+        if(pk2.tieneEfecto()){
+            logEfectos += pk2.aplicarEfecto() + "\n";
+        }
+        
+        return logEfectos;
     }
 
     public int getId() {

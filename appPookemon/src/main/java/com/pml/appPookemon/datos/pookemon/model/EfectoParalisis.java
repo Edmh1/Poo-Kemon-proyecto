@@ -34,7 +34,7 @@ public class EfectoParalisis implements Efecto,Serializable{
             info = "El Pookemon está paralizado, pierde velocidad y no puede atacar.";
         }
 
-        puedeAtacar = false;
+        p.setPuedeAtacar(false);
         turnos++;
 
         if (turnos >= DURACION_MAXIMA_TURNOS) {
@@ -47,7 +47,8 @@ public class EfectoParalisis implements Efecto,Serializable{
     public String eliminarEfecto(Pookemon p) {
         p.getEstadisticaPookemon().setVelocidad(p.getEstadisticaPookemon().getVelocidad() + velocidadQuitada);
         p.setEfecto(null);
-        puedeAtacar = true;
+        p.setPuedeAtacar(true);
+        p.setTieneEfecto(false);
         return "El efecto de parálisis ha terminado.";
     }
 
@@ -58,6 +59,5 @@ public class EfectoParalisis implements Efecto,Serializable{
     @Override
     public String tipoEfecto() {
         return "paralisis";
-    }
-    
+    }    
 }

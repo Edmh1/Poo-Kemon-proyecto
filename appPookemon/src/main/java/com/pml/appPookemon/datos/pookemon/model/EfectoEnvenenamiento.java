@@ -25,15 +25,16 @@ public class EfectoEnvenenamiento implements Efecto,Serializable{
     @Override
     public String aplicarEfecto(Pookemon p) {
         int vidaActual = p.getEstadisticaPookemon().getVida();
-        int dañoPorEnvenenamiento = (int) (vidaActual * PORCENTAJE_DAÑO_ENVENENAMIENTO);
+        int dañoPorEnvenenamiento = (int) Math.round(vidaActual * PORCENTAJE_DAÑO_ENVENENAMIENTO);
 
-        p.getEstadisticaPookemon().setVida(vidaActual - dañoPorEnvenenamiento);
+        p.afectarHp(dañoPorEnvenenamiento);
         turnos++;
 
         String info = "El Pookemon pierde " + dañoPorEnvenenamiento + " puntos de vida debido al envenenamiento";
         
         if (turnos >= DURACION_MAXIMA_TURNOS || !seActivaEfecto(p)) {
             eliminarEfecto(p);
+            p.setTieneEfecto(false);
         }
         return info;
     }

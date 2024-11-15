@@ -81,4 +81,8 @@ public class BatallaController {
     public String realizarTurno(){
         return batalla.realizarTurno();
     }
+    
+    public String aplicarEfectos(){
+        return batalla.aplicarEfectos();
+    }
 }

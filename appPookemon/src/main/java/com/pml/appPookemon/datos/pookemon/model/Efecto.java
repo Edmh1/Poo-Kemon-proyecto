@@ -10,5 +10,4 @@ public interface Efecto {
     public String aplicarEfecto(Pookemon p);
     public String eliminarEfecto(Pookemon p);
     public String tipoEfecto();
-    
 }

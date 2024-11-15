@@ -13,8 +13,8 @@ import java.io.Serializable;
  */
 public class MovimientoEspecial extends Movimiento implements Serializable {
 
-    public MovimientoEspecial(int idMovimiento, String nombre, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto) {
-        super(idMovimiento, nombre, potencia, precision, cantidadPP, elemento, efecto);
+    public MovimientoEspecial(int idMovimiento, String nombre, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto, int probabilidadEfecto) {
+        super(idMovimiento, nombre, potencia, precision, cantidadPP, elemento, efecto,probabilidadEfecto);
     }
     
     

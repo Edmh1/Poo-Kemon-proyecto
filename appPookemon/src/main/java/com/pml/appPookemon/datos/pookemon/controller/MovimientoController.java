@@ -17,10 +17,10 @@ public class MovimientoController {
 
     public Movimiento agregarMovimiento(String nombreMovimiento, int potencia, int precision, int cantidadPP, Efecto efecto, String elemento, String tipo) {
         if(tipo.equalsIgnoreCase("Mov. Fisico")){
-            Movimiento movimiento = new MovimientoFisico(0, nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto);
+            Movimiento movimiento = new MovimientoFisico(0, nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto,0);
             return movimiento;
         } else {
-            Movimiento movimiento = new MovimientoEspecial(0, nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto);
+            Movimiento movimiento = new MovimientoEspecial(0, nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto,0);
             return movimiento;
         }
         

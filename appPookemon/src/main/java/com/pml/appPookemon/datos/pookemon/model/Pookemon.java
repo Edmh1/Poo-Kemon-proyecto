@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pookemon implements Serializable{
+    private boolean puedeAtacar;
     private int idPookemon;
     private String nombrePookemon;
     private String elementoPookemon;
@@ -12,12 +13,15 @@ public class Pookemon implements Serializable{
     private List<Movimiento> movimientos;
     private Efecto efecto;
     private boolean defendiendo;
+    private boolean tieneEfecto;
 
     public Pookemon(int idPookemon, String nombre, String elemento)  {
+        this.puedeAtacar = true;
         this.idPookemon = idPookemon;
         this.nombrePookemon = nombre;
         this.elementoPookemon = elemento;
         this.movimientos = new ArrayList<>();
+        this.tieneEfecto = false;
     }
 
     @Override
@@ -62,6 +66,13 @@ public class Pookemon implements Serializable{
                 return movimiento;
         }
         return null;
+    }
+    
+    public String aplicarEfecto(){
+        if(efecto != null){
+            return efecto.aplicarEfecto(this);
+        }
+        return "";
     }
     
 
@@ -148,7 +159,22 @@ public class Pookemon implements Serializable{
      */
     public void setEfecto(Efecto efecto) {
         this.efecto = efecto;
+        this.tieneEfecto = true;
     }   
+
+    public void setTieneEfecto(boolean tieneEfecto) {
+        this.tieneEfecto = tieneEfecto;
+    }
+
+    public boolean tieneEfecto() {
+        return tieneEfecto;
+    }
     
+    public boolean puedeAtacar(){
+        return puedeAtacar;
+    }
     
+    public void setPuedeAtacar(boolean x){
+        puedeAtacar  = x;
+    }
 }

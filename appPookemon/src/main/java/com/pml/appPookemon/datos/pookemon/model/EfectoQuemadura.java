@@ -27,10 +27,8 @@ public class EfectoQuemadura implements Efecto,Serializable{
     public String aplicarEfecto(Pookemon p) {
         if (seActivaEfecto(p)) {
             int vidaActual = p.getEstadisticaPookemon().getVida();
-            int dañoPorQuemadura = (int) (vidaActual * PORCENTAJE_DAÑO_QUEMADURA);
-
-            int nuevaVida = vidaActual - dañoPorQuemadura;
-            p.getEstadisticaPookemon().setVida(nuevaVida);
+            int dañoPorQuemadura = (int) Math.round(vidaActual * PORCENTAJE_DAÑO_QUEMADURA);
+            p.afectarHp(dañoPorQuemadura);
 
             dañoAcumulado += dañoPorQuemadura;
 
@@ -53,6 +51,7 @@ public class EfectoQuemadura implements Efecto,Serializable{
     public String eliminarEfecto(Pookemon p) {
         if (dañoAcumulado >= UMBRAL_DAÑO_TOTAL) {
             p.setEfecto(null);
+            p.setTieneEfecto(false);
             return "El efecto de quemadura ha desaparecido.";
         }else{ 
             return "El efecto quemadura persiste";
@@ -63,6 +62,4 @@ public class EfectoQuemadura implements Efecto,Serializable{
     public String tipoEfecto() {
         return "quemadura";
     }
-
-    
 }
