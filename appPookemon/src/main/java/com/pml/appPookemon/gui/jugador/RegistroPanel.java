@@ -172,7 +172,7 @@ public class RegistroPanel extends StandarPanel {
         try {
             e = crearJugador();
         } catch (NumeroEnTextoException ex) {
-            JOptionPane.showMessageDialog(null, "Texto mal digitado");
+            JOptionPane.showMessageDialog(null, "Texto mal digitado o en blanco");
             bandera = true;
         } catch (ElementoNoSeleccionadoException ex) {
             JOptionPane.showMessageDialog(null, "Género no seleccionado");
