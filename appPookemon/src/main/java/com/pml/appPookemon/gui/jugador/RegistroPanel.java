@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import main.java.com.pml.appPookemon.datos.conf_arena.controller.BatallaController;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
@@ -178,7 +179,8 @@ public class RegistroPanel extends StandarPanel {
         if(bandera || banderaG){
             
         }else{
-            super.getMainFrame().getController().agregarJugador(e);
+            BatallaController b = new BatallaController();
+            b.setEntrenador(indice, e);
             super.getMainFrame().switchToRegistroPanel(indice++);
         }
         

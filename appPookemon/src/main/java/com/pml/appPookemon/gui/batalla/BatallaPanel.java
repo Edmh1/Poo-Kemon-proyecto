@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoEnvenenamiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoParalisis;
 import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoQuemadura;
@@ -19,7 +20,6 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.Pocion;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.pookemon.model.RecuperarPPS;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
-import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 
@@ -28,19 +28,13 @@ import main.java.com.pml.appPookemon.gui.config.StandarPanel;
  * @author feder
  */
 public class BatallaPanel extends StandarPanel {
-    private Entrenador j1;
-    private Entrenador j2;
-    private Batalla batalla;
-    private BatallaController controlador;
     private int turno;
     private int turnoJugador;
     private boolean pookemonEliminado;
     private boolean pk1Efecto;
     private boolean pk2Efecto;
     
-    BatallaCambio cambio;
-    ArenaController torneo = super.getMainFrame().getController();
-    
+    private BatallaCambio cambio;
     /**
      * Creates new form BatallaPrincipal
      */
@@ -278,11 +272,14 @@ public class BatallaPanel extends StandarPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btDefenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDefenderActionPerformed
+        BatallaController controlador = new BatallaController();
+        
         controlador.setAccionEntrenador(turnoJugador,"DEFENDER", 0);
         if(turnoJugador == 2){
             realizarTurno();
         }
         pasarJugador();
+        
         configurarImagenes();
         configurarTextos();
         actualizarVidaVisual();
@@ -290,6 +287,7 @@ public class BatallaPanel extends StandarPanel {
     }//GEN-LAST:event_btDefenderActionPerformed
 
     private void btCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambiarActionPerformed
+        BatallaController controlador = new BatallaController();
         cambio = new BatallaCambio(controlador);
         cambio.configurar(turnoJugador);
         cambio.setPanelBatalla(this);
@@ -297,6 +295,7 @@ public class BatallaPanel extends StandarPanel {
     }//GEN-LAST:event_btCambiarActionPerformed
 
     private void btObjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btObjetoActionPerformed
+        BatallaController controlador = new BatallaController();
         BatallaObjeto objeto = new BatallaObjeto(controlador, this);
         objeto.configurar(turnoJugador);
         objeto.setVisible(true);
@@ -315,6 +314,7 @@ public class BatallaPanel extends StandarPanel {
     }//GEN-LAST:event_lb_nombrePookemon_1ComponentAdded
 
     private void btAtacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtacarActionPerformed
+        BatallaController controlador = new BatallaController();
         BatallaAtaque ataques = new BatallaAtaque(controlador);
         ataques.configurar(turnoJugador);
         ataques.setPanelBatalla(this);
@@ -331,14 +331,10 @@ public class BatallaPanel extends StandarPanel {
     }
 
     public void configurar() {
-        j1 = entrenadores[0];
-        j2 = entrenadores[1];
+        BatallaController b = new BatallaController();
         asignarObjetos();
-        //batalla = new Batalla(0, j1, j2, Torneo.getPookemones());
-        batalla = new Batalla(0, j1, j2, pookemonesYVainasFalsasloljaja());
-        batalla.generarMazo();
-        //asignarMovimientos();
-        controlador = new BatallaController(batalla);
+        b.getBatalla().generarMazo();
+
         configurarTextos();
         actualizarVidaVisual();
         configurarImagenes();
@@ -346,14 +342,15 @@ public class BatallaPanel extends StandarPanel {
     }
 
     public void configurarTextos() {
+        BatallaController controlador = new BatallaController();
         System.out.println("Turno del jugador: " + turnoJugador);
-        Pookemon j1Pookemon = controlador.getEntrenador1().getPookemonActual();
-        Pookemon j2Pookemon = controlador.getEntrenador2().getPookemonActual();
+        Pookemon j1Pookemon = controlador.getEntrenador(1).getPookemonActual();
+        Pookemon j2Pookemon = controlador.getEntrenador(2).getPookemonActual();
         int vidaPookemon1 = j1Pookemon.getEstadisticaPookemon().getVidaMaxima();
         int vidaPookemon2 = j2Pookemon.getEstadisticaPookemon().getVidaMaxima();
         
-        lbNombreEntrenador1.setText(j1.getNombreEntrenador());
-        lbNombreEntrenador2.setText(j2.getNombreEntrenador());
+        lbNombreEntrenador1.setText(controlador.getEntrenador(1).getNombreEntrenador());
+        lbNombreEntrenador2.setText(controlador.getEntrenador(1).getNombreEntrenador());
         lb_nombrePookemon_1.setText(j1Pookemon.getNombrePookemon());
         lb_nombrePookemon_2.setText(j2Pookemon.getNombrePookemon());
         pbVida1.setMaximum(vidaPookemon1);
@@ -361,8 +358,9 @@ public class BatallaPanel extends StandarPanel {
     }
 
     public void configurarImagenes() {
-        String nombre1 = controlador.getEntrenador1().getPookemonActual().getNombrePookemon().toLowerCase();
-        String nombre2 = controlador.getEntrenador2().getPookemonActual().getNombrePookemon().toLowerCase();
+        BatallaController controlador = new BatallaController();
+        String nombre1 = controlador.getEntrenador(1).getPookemonActual().getNombrePookemon().toLowerCase();
+        String nombre2 = controlador.getEntrenador(2).getPookemonActual().getNombrePookemon().toLowerCase();
         URL imagen1 = getClass().getResource("/img/SpritesPookemon/" + nombre1 + ".gif");
         URL imagen2 = getClass().getResource("/img/SpritesPookemon/" + nombre2 + ".gif");
         ImageIcon img1 = new ImageIcon(imagen1);
@@ -385,8 +383,9 @@ public class BatallaPanel extends StandarPanel {
     }
 
     public void realizarTurno(){
-        pk1Efecto = controlador.getEntrenador1().getPookemonActual().tieneEfecto();
-        pk2Efecto = controlador.getEntrenador2().getPookemonActual().tieneEfecto();
+        BatallaController controlador = new BatallaController();
+        pk1Efecto = controlador.getEntrenador(1).getPookemonActual().tieneEfecto();
+        pk2Efecto = controlador.getEntrenador(2).getPookemonActual().tieneEfecto();
         txtAreaLog.setText(controlador.realizarTurno());
         if(pookemonEliminado  == false){
             chequearVidaPookemones();
@@ -408,8 +407,9 @@ public class BatallaPanel extends StandarPanel {
     }
     
     public void actualizarVidaVisual(){
-        Pookemon j1Pookemon = controlador.getEntrenador1().getPookemonActual();
-        Pookemon j2Pookemon = controlador.getEntrenador2().getPookemonActual();
+        BatallaController controlador = new BatallaController();
+        Pookemon j1Pookemon = controlador.getEntrenador(1).getPookemonActual();
+        Pookemon j2Pookemon = controlador.getEntrenador(2).getPookemonActual();
         int vidaPookemon1 = j1Pookemon.getEstadisticaPookemon().getVida();
         int vidaPookemon2 = j2Pookemon.getEstadisticaPookemon().getVida();
         
@@ -420,8 +420,9 @@ public class BatallaPanel extends StandarPanel {
     }
     
     public void chequearVidaPookemones(){
-        int vidaPookemon1 = controlador.getEntrenador1().getPookemonActual().getEstadisticaPookemon().getVida();
-        int vidaPookemon2 = controlador.getEntrenador2().getPookemonActual().getEstadisticaPookemon().getVida();
+        BatallaController controlador = new BatallaController();
+        int vidaPookemon1 = controlador.getEntrenador(1).getPookemonActual().getEstadisticaPookemon().getVida();
+        int vidaPookemon2 = controlador.getEntrenador(2).getPookemonActual().getEstadisticaPookemon().getVida();
         
         if(vidaPookemon1 <= 0){
             pookemonEliminado(1);
@@ -431,6 +432,7 @@ public class BatallaPanel extends StandarPanel {
     }
     
     public void pookemonEliminado(int jugador){
+        BatallaController controlador = new BatallaController();
         cambio = new BatallaCambio(controlador);
         cambio.setPanelBatalla(this);
         cambio.setCambioForzado(true);
@@ -449,16 +451,18 @@ public class BatallaPanel extends StandarPanel {
     }
     
     private void aplicarEfectos(){
+        BatallaController controlador = new BatallaController();
         if(pk1Efecto || pk2Efecto){
             txtAreaLog.setText(txtAreaLog.getText() + controlador.aplicarEfectos());
         }
-        pk1Efecto = controlador.getEntrenador1().getPookemonActual().tieneEfecto();
-        pk2Efecto = controlador.getEntrenador2().getPookemonActual().tieneEfecto();
+        pk1Efecto = controlador.getEntrenador(1).getPookemonActual().tieneEfecto();
+        pk2Efecto = controlador.getEntrenador(2).getPookemonActual().tieneEfecto();
     }
     
     private void configurarImagenesEfectos(){
-        Pookemon pk1 = controlador.getEntrenador1().getPookemonActual();
-        Pookemon pk2 = controlador.getEntrenador2().getPookemonActual();
+        BatallaController controlador = new BatallaController();
+        Pookemon pk1 = controlador.getEntrenador(1).getPookemonActual();
+        Pookemon pk2 = controlador.getEntrenador(2).getPookemonActual();
         boolean pk1EfectoLocal = pk1.tieneEfecto();
         boolean pk2EfectoLocal = pk2.tieneEfecto();
         URL imagen1 = null;
@@ -644,16 +648,21 @@ public class BatallaPanel extends StandarPanel {
     }
     
     public void asignarObjetos(){
+        BatallaController controlador = new BatallaController();
         Pocion pocion = new Pocion(0);
         RecuperarPPS pps =  new RecuperarPPS(1);
         
         List<Objeto> objetos = new ArrayList<>(Arrays.asList(pocion,pps));
         
-        j1.setObjetos(objetos);
-        j2.setObjetos(objetos);
+        controlador.getEntrenador(1).setObjetos(objetos);
+        controlador.getEntrenador(1).setObjetos(objetos);
     }
     
     public void asignarMovimientos(){
+        BatallaController controlador = new BatallaController();
+        
+        Entrenador j1 = controlador.getEntrenador(1);
+        Entrenador j2 = controlador.getEntrenador(2);
         for (int i = 0; i < 2; i++) {
             if(i==0){
                 for (Pookemon pookemon : j1.getPookemones()) {
@@ -668,13 +677,15 @@ public class BatallaPanel extends StandarPanel {
     }
     
     private void asignarMovimientoAleatorios(Pookemon pookemon){
+        ArenaController arena = new ArenaController();
+        
         ArrayList<Movimiento> movimientos = new ArrayList<>();
         Random random = new Random();
         int i=0;
         boolean stab = false;
         while(i<3){
-            int azar = random.nextInt(Torneo.getMovimientos().size());
-            Movimiento iterable = Torneo.getMovimientos().get(azar);
+            int azar = random.nextInt(arena.getMovimientos().size());
+            Movimiento iterable = arena.getMovimientos().get(azar);
             if(!movimientos.contains(iterable)){
                 if(pookemon.getElementoPookemon().equals(iterable.getElemento())){
                     stab = true;

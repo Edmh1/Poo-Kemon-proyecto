@@ -22,7 +22,6 @@ public class EditarPanel extends StandarPanel {
     private String nombreBuscado;
     private Pookemon pookemonBuscado;
     private Movimiento movimientoBuscado;
-    ArenaController torneo = super.getMainFrame().getController();
     /**
      * Creates new form EditarPanel
      */
@@ -461,10 +460,11 @@ public class EditarPanel extends StandarPanel {
     }//GEN-LAST:event_txtOldCampo1ActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // TODO add your handling code here:
+        ArenaController arena = new ArenaController();
+        
         nombreBuscado = txtBuscar.getText();
         if(nombre.equalsIgnoreCase("pookemon")){
-            pookemonBuscado = torneo.buscarPokemonPorNombre(nombreBuscado);
+            pookemonBuscado = arena.buscarPokemonPorNombre(nombreBuscado);
             if(pookemonBuscado!=null){
                 lbOldNombre.setText(nombreBuscado);
                 lbNewNombre.setText(nombreBuscado);
@@ -478,7 +478,7 @@ public class EditarPanel extends StandarPanel {
                 JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
             }
         } else {
-            movimientoBuscado = torneo.buscarMovimientoPorNombre(nombreBuscado);
+            movimientoBuscado = arena.buscarMovimientoPorNombre(nombreBuscado);
             if(movimientoBuscado!=null){
                 lbOldNombre.setText(nombreBuscado);
                 lbNewNombre.setText(nombreBuscado);  

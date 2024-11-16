@@ -5,13 +5,9 @@
 package main.java.com.pml.appPookemon.gui.admin;
 
 import java.net.URL;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
-import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
@@ -27,7 +23,8 @@ public class EliminarPanel extends StandarPanel {
     private String nombreBuscado;
     private String elementoBuscado;
     private String tipoBuscado;
-    ArenaController torneo = super.getMainFrame().getController();
+
+    
     /**
      * Creates new form EliminarPanel
      */
@@ -166,13 +163,14 @@ public class EliminarPanel extends StandarPanel {
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
-        // TODO add your handling code here:
+        ArenaController arena = new ArenaController();
+        
         if(!nombreBuscado.equalsIgnoreCase(" ") && elementoBuscado!=null && nombre.equalsIgnoreCase("pookemon")){
-            torneo.eliminarPookemon(nombreBuscado);
+            arena.eliminarPookemon(nombreBuscado);
             cleanContent();
             JOptionPane.showMessageDialog(this, "El pookemon fue eliminado correctamente");
         } else if(!nombreBuscado.equalsIgnoreCase(" ") && elementoBuscado!=null && nombre.equalsIgnoreCase("movimiento")){
-            torneo.eliminarMovimiento(nombreBuscado);
+            arena.eliminarMovimiento(nombreBuscado);
             cleanContent();
             JOptionPane.showMessageDialog(this, "El movimiento fue eliminado correctamente");
         } else {
@@ -180,8 +178,10 @@ public class EliminarPanel extends StandarPanel {
         }
     }//GEN-LAST:event_btEliminarActionPerformed
     private void buscarPookemon(){
+        ArenaController arena = new ArenaController();
+        
         nombreBuscado = txtBuscar.getText();
-        elementoBuscado = torneo.buscarElementoPookemon(nombreBuscado);
+        elementoBuscado = arena.buscarElementoPookemon(nombreBuscado);
         //funcion que busca un pookemon
         String tmp = nombreBuscado;
         String tipo = elementoBuscado;
@@ -200,9 +200,11 @@ public class EliminarPanel extends StandarPanel {
         lbImg2.setIcon(imageIcon2);
     }
     private void buscarMovimiento(){
+        ArenaController arena = new ArenaController();
+        
         nombreBuscado = txtBuscar.getText();
-        elementoBuscado = torneo.buscarElementoMovimiento(nombreBuscado);
-        tipoBuscado = torneo.buscarTipoMovimiento(nombreBuscado);
+        elementoBuscado = arena.buscarElementoMovimiento(nombreBuscado);
+        tipoBuscado = arena.buscarTipoMovimiento(nombreBuscado);
         //funcion que busca un movimietno
         String tmp = elementoBuscado;
         String tipo = tipoBuscado;

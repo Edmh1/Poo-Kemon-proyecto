@@ -130,15 +130,17 @@ public class MainFrame extends javax.swing.JFrame {
         switchPanel("eliP");
     }
     public void switchToRegistroPanel(int indice) {
-        if (indice == 1){
-            switchPanel("regP1");
-        }else{
-            switchPanel("regP2");
-        }    
+        if(indice < 3){
+            if (indice == 1){
+                switchPanel("regP1");
+            }else{
+                switchPanel("regP2");
+            } 
+        }
+        switchToListoPanel();      
     }
     
     public void switchToBatallaPnel(){
-        
         batPri.configurar();
         switchPanel("batPri");
     }

@@ -157,12 +157,7 @@ public class BatallaObjeto extends javax.swing.JFrame {
     
     public void configurar(int jugador){
         
-        Entrenador e = null;
-        if(jugador == 1){
-            e = controlador.getEntrenador1();
-        }else{
-            e = controlador.getEntrenador2();
-        }
+        Entrenador e = controlador.getEntrenador(jugador);
                 
         btObjeto1.setText(e.getObjetos().get(0).getNombreObjeto());
         btObjeto2.setText(e.getObjetos().get(1).getNombreObjeto());

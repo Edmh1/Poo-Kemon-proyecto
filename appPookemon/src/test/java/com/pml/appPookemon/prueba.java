@@ -14,8 +14,8 @@ import main.java.com.pml.appPookemon.gui.MainFrame;
 public class prueba {
     public static void main(String[] args) {
         
-        MainFrame main = new MainFrame();
-        System.out.println("" + main.getController());
+        //MainFrame main = new MainFrame();
+       
         
 //        Organizador organizador = new Organizador(1, "12345");
 //        ArenaConf torneo = null;

@@ -1,6 +1,8 @@
 package main.java.com.pml.appPookemon.datos.conf_arena.model;
 
-public abstract class Accion {
+import java.io.Serializable;
+
+public abstract class Accion implements Serializable{
     private TipoAccion tipoAccion;
     protected int idAccion;
 

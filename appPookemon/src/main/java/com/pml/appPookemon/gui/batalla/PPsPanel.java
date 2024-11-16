@@ -153,12 +153,7 @@ public class PPsPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_btUsarActionPerformed
 
     public void configurar(int turno){
-        Entrenador e = null;
-        if(turno == 1){
-            e = controlador.getEntrenador1();
-        }else{
-            e = controlador.getEntrenador2();
-        }
+        Entrenador e = controlador.getEntrenador(turno);
         
         lbNombrePookemon.setText("Movimientos de " + e.getPookemonActual().getNombrePookemon());
         mov1 = e.getPookemonActual().getMovimientos().get(0);

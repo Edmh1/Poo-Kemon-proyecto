@@ -6,6 +6,7 @@ package main.java.com.pml.appPookemon.gui.admin;
 
 import java.io.File;
 import javax.swing.JFileChooser;
+import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Efecto;
 import main.java.com.pml.appPookemon.datos.pookemon.controller.MovimientoController;
 import main.java.com.pml.appPookemon.datos.pookemon.controller.PookemonController;
@@ -14,7 +15,6 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoParalisis;
 import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoQuemadura;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
-import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 import org.jdesktop.swingx.prompt.PromptSupport;
@@ -275,7 +275,8 @@ public class AgregarPanel extends StandarPanel {
     }//GEN-LAST:event_btExaminarActionPerformed
 
     private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
-        // TODO add your handling code here:
+        ArenaController arena = new ArenaController();
+        
         if(nombre.equalsIgnoreCase("Pookemon")){
             PookemonController controlador = new PookemonController();
             String nombrePookemon = txtCampo1.getText();
@@ -286,8 +287,8 @@ public class AgregarPanel extends StandarPanel {
             int defensaEspecial = Integer.parseInt(txtCampo6.getText());
             String elemento = (String) jcbElemento.getSelectedItem();
             Pookemon pookemon = controlador.agregarPookemon(nombrePookemon, velocidad, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, elemento);
-            torneo.agregarPookemon(pookemon);
-            System.out.println(""+torneo.getPookemones().toString());
+            arena.agregarPookemon(pookemon);
+            System.out.println(""+arena.getPookemones().toString());
             
         } else {
             MovimientoController controlador = new MovimientoController();
@@ -313,8 +314,8 @@ public class AgregarPanel extends StandarPanel {
             String tipo = (String) jcbTipo.getSelectedItem();
             int probabilidadEfecto = Integer.parseInt(txtProbabilidadEfecto.getText());
             Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, tipo, probabilidadEfecto);
-            torneo.agregarMovimiento(movimiento);
-            System.out.println(""+torneo.getMovimientos().toString());
+            arena.agregarMovimiento(movimiento);
+            System.out.println(""+arena.getMovimientos().toString());
         }
         
 

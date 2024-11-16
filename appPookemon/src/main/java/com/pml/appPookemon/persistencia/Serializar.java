@@ -18,15 +18,14 @@ import main.java.com.pml.appPookemon.datos.registro.model.Organizador;
  *
  * @author Vladimir
  */
-public class Serializable {
+public class Serializar {
     
     public void guardar(Organizador o) throws FileNotFoundException, IOException{
-        FileOutputStream file = new FileOutputStream("Admin.obj");
+        FileOutputStream file = new FileOutputStream("organizador.obj");
         ObjectOutputStream salida = new ObjectOutputStream(file);
         salida.writeObject(o);
         salida.close();
         file.close();
-        
         
     }
     

@@ -12,7 +12,7 @@ public class Organizador implements Serializable {
     private String nomUsario;
     private String password;
     private ArenaConf arenaConf;
-    private ArrayList<Batalla> batallas = new ArrayList<>();
+    private Batalla batalla;
     
     public Organizador(String nombre, String password) {
         this.nomUsario = nombre;
@@ -62,6 +62,22 @@ public class Organizador implements Serializable {
 
     public boolean verficiarCont(String pass){
         return this.password.equals(pass);
+    }
+    
+    public Batalla getBatalla(){
+        return batalla;
+    }
+
+    public void setBatalla(Batalla batalla) {
+        this.batalla = batalla;
+    }
+    
+    public ArenaConf getArenaConf(){
+        return arenaConf;
+    }
+
+    public void setArenaConf(ArenaConf arenaConf) {
+        this.arenaConf = arenaConf;
     }
     
 }

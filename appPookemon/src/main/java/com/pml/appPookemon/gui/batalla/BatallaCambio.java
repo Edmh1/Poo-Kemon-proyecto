@@ -202,11 +202,9 @@ public class BatallaCambio extends javax.swing.JFrame {
         this.jugador = jugador;
         Entrenador e = null;
         
-        if(jugador == 1){
-            e = controlador.getEntrenador1();
-        }else{
-            e = controlador.getEntrenador2();
-        }
+        
+        e = controlador.getEntrenador(this.jugador);
+       
         pk1 = e.obtenerPookemonesDiferentesActual().get(0);
         pk2 = e.obtenerPookemonesDiferentesActual().get(1);
         

@@ -4,12 +4,10 @@ package main.java.com.pml.appPookemon.datos.conf_arena.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 
 public class Batalla implements Serializable{
-    private int id;
     private Entrenador entrenador1;
     private Entrenador entrenador2;
     private ArrayList<String> turnos = new ArrayList<>();
@@ -18,8 +16,7 @@ public class Batalla implements Serializable{
     private Accion accionEntrenador2;
     private ArrayList<Pookemon> pookemones;
 
-    public Batalla(int id, Entrenador e, Entrenador e2, ArrayList<Pookemon> pookemones){
-        this.id = id;
+    public Batalla(Entrenador e, Entrenador e2, ArrayList<Pookemon> pookemones){
         this.entrenador1 = e;
         this.entrenador2 = e2;
         this.pookemones = pookemones;
@@ -332,10 +329,6 @@ public class Batalla implements Serializable{
         
         return logEfectos;
     }
-
-    public int getId() {
-        return id;
-    }
     
     private void actualizarTurno(String resultado){
         if(resultado.equals("") == false){
@@ -384,6 +377,14 @@ public class Batalla implements Serializable{
 
     public Entrenador getEntrenador2() {
         return entrenador2;
+    }
+    
+    public void setEntrenador1(Entrenador accionEntrenador1) {
+        this.entrenador1 = accionEntrenador1;
+    }
+    
+    public void setEntrenador2(Entrenador accionEntrenador2) {
+        this.entrenador2 = accionEntrenador2;
     }
 
     public void setAccionEntrenador1(Accion accionEntrenador1) {

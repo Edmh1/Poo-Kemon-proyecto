@@ -6,6 +6,7 @@ package main.java.com.pml.appPookemon.gui.admin;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import main.java.com.pml.appPookemon.datos.registro.controller.OrganizadorController;
 import main.java.com.pml.appPookemon.datos.registro.model.Organizador;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
@@ -91,9 +92,11 @@ public class AdminPanel extends StandarPanel {
     }//GEN-LAST:event_txtClaveActionPerformed
 
     private void btIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIngresarActionPerformed
+        OrganizadorController o = new OrganizadorController();
+        
         String clave = txtClave.getText();
         // APLICAR LOGICA DE CONTRASEÑA
-        if(organizador.getPassword().equalsIgnoreCase(clave)){
+        if(o.admitir(clave)){
             super.getMainFrame().switchToGestionPanel();
         } else {
             JOptionPane.showMessageDialog(this, "Contraseña Incorrecta");

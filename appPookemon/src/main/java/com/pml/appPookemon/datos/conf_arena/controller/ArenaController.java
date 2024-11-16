@@ -1,65 +1,70 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main.java.com.pml.appPookemon.datos.conf_arena.controller;
+
 import java.util.ArrayList;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.conf_arena.model.ArenaConf;
+import main.java.com.pml.appPookemon.datos.conf_arena.model.Batalla;
+import main.java.com.pml.appPookemon.datos.registro.controller.OrganizadorController;
 /**
  *
  * @author sebac
  */
 public class ArenaController {
-    private ArenaConf torneo;
+    private ArenaConf arena;
+    private OrganizadorController organizadorController;
     
-    public ArenaConf getTorneo(){
-        return torneo;
+    public ArenaController() {
+        this.organizadorController = new OrganizadorController();
+        this.arena = organizadorController.recuperar().getArenaConf(); 
+    }
+    
+    public ArenaConf getArena(){
+        return arena;
     }
     
     public void agregarPookemon(Pookemon e){
-        torneo.addPookemon(e);
+        arena.addPookemon(e);
     }
     
     public ArrayList<Pookemon> getPookemones(){
-        return torneo.getPookemones();
+        return arena.getPookemones();
     }
     
     public void agregarMovimiento(Movimiento e){
-        torneo.addMovimiento(e);
+        arena.addMovimiento(e);
     }
     
     public ArrayList<Movimiento> getMovimientos(){
-        return torneo.getMovimientos();
+        return arena.getMovimientos();
     }
     
     public String buscarElementoMovimiento(String nombreBuscado){
-        return torneo.buscarElementoMovimiento(nombreBuscado);
+        return arena.buscarElementoMovimiento(nombreBuscado);
     }
     
     public String buscarTipoMovimiento(String nombreBuscado){
-        return torneo.buscarTipoMovimiento(nombreBuscado);
+        return arena.buscarTipoMovimiento(nombreBuscado);
     }
     
     public String buscarElementoPookemon(String nombreBuscado){
-        return torneo.buscarElementoPookemon(nombreBuscado);
+        return arena.buscarElementoPookemon(nombreBuscado);
     }
         
     public Pookemon buscarPokemonPorNombre(String nombreBuscado){
-        return torneo.buscarPokemonPorNombre(nombreBuscado);
+        return arena.buscarPokemonPorNombre(nombreBuscado);
     }
     
     public Movimiento buscarMovimientoPorNombre(String nombreBuscado){
-        return torneo.buscarMovimientoPorNombre(nombreBuscado);
+        return arena.buscarMovimientoPorNombre(nombreBuscado);
     }
     
     public void eliminarPookemon(String pookemon){
-        torneo.eliminarPookemon(pookemon);
+        arena.eliminarPookemon(pookemon);
     }
     
     public void eliminarMovimiento(String movimiento){
-        torneo.eliminarMovimiento(movimiento);
+        arena.eliminarMovimiento(movimiento);
     }
             
     

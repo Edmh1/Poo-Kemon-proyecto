@@ -2,10 +2,9 @@ package main.java.com.pml.appPookemon.datos.conf_arena.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import main.java.com.pml.appPookemon.datos.pookemon.model.Efecto;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
-import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
+
 
 
 public class ArenaConf implements Serializable{

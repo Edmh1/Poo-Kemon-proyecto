@@ -83,7 +83,6 @@ public class WelcomePanel extends StandarPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciarActionPerformed
-        //Cambiando a registrar al primer jugador
         super.getMainFrame().switchToRegistroPanel(1);
     }//GEN-LAST:event_btIniciarActionPerformed
 
