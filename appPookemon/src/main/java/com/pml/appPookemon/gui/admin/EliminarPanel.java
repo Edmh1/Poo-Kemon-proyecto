@@ -182,6 +182,7 @@ public class EliminarPanel extends StandarPanel {
         
         nombreBuscado = txtBuscar.getText();
         elementoBuscado = arena.buscarElementoPookemon(nombreBuscado);
+        
         //funcion que busca un pookemon
         String tmp = nombreBuscado;
         String tipo = elementoBuscado;

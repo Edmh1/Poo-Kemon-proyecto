@@ -7,7 +7,6 @@ package main.java.com.pml.appPookemon.gui;
 import main.java.com.pml.appPookemon.gui.jugador.ListoPanel;
 import main.java.com.pml.appPookemon.gui.admin.AdminPanel;
 import java.awt.CardLayout;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Stack;
@@ -48,6 +47,10 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         setupPanels();
         reproducirMusica(getClass().getResourceAsStream("/audio/song_modified.WAV"));
+    }
+ 
+    public BatallaPanel getBatalla(){
+        return batPri;
     }
     
     private void setupPanels() {

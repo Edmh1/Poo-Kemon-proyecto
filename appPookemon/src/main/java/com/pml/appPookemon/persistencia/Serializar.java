@@ -4,8 +4,6 @@
  */
 package main.java.com.pml.appPookemon.persistencia;
 
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
-import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

@@ -4,22 +4,20 @@ import java.io.Serializable;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.conf_arena.model.ArenaConf;
-import java.util.ArrayList;
-import main.java.com.pml.appPookemon.datos.conf_arena.model.Batalla;
 
 
 public class Organizador implements Serializable {
     private String nomUsario;
     private String password;
     private ArenaConf arenaConf;
-    private Batalla batalla;
     
     public Organizador(String nombre, String password) {
         this.nomUsario = nombre;
         this.password = password;
+        arenaConf = new ArenaConf();
     }
     
-    public void agregarpookemon(Pookemon pookemon){
+    public void agregarPookemon(Pookemon pookemon){
         arenaConf.addPookemon(pookemon);
 
     }
@@ -64,20 +62,9 @@ public class Organizador implements Serializable {
         return this.password.equals(pass);
     }
     
-    public Batalla getBatalla(){
-        return batalla;
-    }
-
-    public void setBatalla(Batalla batalla) {
-        this.batalla = batalla;
-    }
-    
     public ArenaConf getArenaConf(){
         return arenaConf;
     }
 
-    public void setArenaConf(ArenaConf arenaConf) {
-        this.arenaConf = arenaConf;
-    }
     
 }

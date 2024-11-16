@@ -179,8 +179,7 @@ public class RegistroPanel extends StandarPanel {
         if(bandera || banderaG){
             
         }else{
-            BatallaController b = new BatallaController();
-            b.setEntrenador(indice, e);
+            super.getMainFrame().getBatalla().getController().setEntrenador(indice, e);
             super.getMainFrame().switchToRegistroPanel(indice++);
         }
         

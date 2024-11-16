@@ -1,10 +1,11 @@
 package main.java.com.pml.appPookemon.datos.conf_arena.controller;
 
+import java.util.List;
 import main.java.com.pml.appPookemon.datos.conf_arena.model.Batalla;
 import main.java.com.pml.appPookemon.datos.registro.model.*;
 import main.java.com.pml.appPookemon.datos.conf_arena.model.Accion;
 import main.java.com.pml.appPookemon.datos.conf_arena.model.TipoAccion;
-import main.java.com.pml.appPookemon.datos.registro.controller.OrganizadorController;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 /**
  *
  * @author sebac
@@ -12,30 +13,12 @@ import main.java.com.pml.appPookemon.datos.registro.controller.OrganizadorContro
 public class BatallaController {
     
     private Batalla batalla;
-    private OrganizadorController organizadorController;
     
-    public BatallaController() {
-        this.organizadorController = new OrganizadorController();
-        this.batalla = organizadorController.recuperar().getBatalla(); 
+    public BatallaController(Entrenador e1, Entrenador e2, List<Pookemon> pookemones) {
+        batalla = new Batalla(e1, e2, pookemones);
     }
-    
-    public void guarBatalla(Batalla batalla){
-        OrganizadorController o = new OrganizadorController();
-        Organizador organizador = o.recuperar();
-        organizador.setBatalla(batalla);  
-        o.guardar(organizador);  
-    }
-
-    // Obtener la batalla
-    public Batalla getBatalla() {
+    public Batalla getBatalla(){
         return batalla;
-    }
-
-    // Guardar la batalla
-    public void guardarBatalla() {
-        Organizador organizador = organizadorController.recuperar();
-        organizador.setBatalla(batalla);
-        organizadorController.guardar(organizador);
     }
     
     public Entrenador getEntrenador(int entrenador){
@@ -52,10 +35,8 @@ public class BatallaController {
         }else{
             batalla.setEntrenador2(e);
         }
-        getBatalla();
     }
 
-    // Establecer la acción del entrenador
     public void setAccionEntrenador(int jugador, String tipo, int id) {
         Accion a = new Accion(TipoAccion.ATACAR, id) {
             @Override
@@ -107,20 +88,17 @@ public class BatallaController {
             default:
                 break;
         }
-        guardarBatalla();
     }
     
     
     public String realizarTurno() {
-        String resultado = batalla.realizarTurno();  
-        guardarBatalla();  
+        String resultado = batalla.realizarTurno();    
         return resultado;
     }
 
    
     public String aplicarEfectos() {
-        String resultado = batalla.aplicarEfectos(); 
-        guardarBatalla();  
+        String resultado = batalla.aplicarEfectos();   
         return resultado;
     }
 }

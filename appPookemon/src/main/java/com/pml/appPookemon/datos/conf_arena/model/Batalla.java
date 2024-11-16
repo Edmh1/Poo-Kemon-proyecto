@@ -1,22 +1,22 @@
 package main.java.com.pml.appPookemon.datos.conf_arena.model;
 
-
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 
-public class Batalla implements Serializable{
+public class Batalla {
     private Entrenador entrenador1;
     private Entrenador entrenador2;
-    private ArrayList<String> turnos = new ArrayList<>();
+    private List<String> turnos = new ArrayList<>();
+    private List<Pookemon> pookemones;
     private int numeroTurno;
     private Accion accionEntrenador1;
     private Accion accionEntrenador2;
-    private ArrayList<Pookemon> pookemones;
+    
 
-    public Batalla(Entrenador e, Entrenador e2, ArrayList<Pookemon> pookemones){
+    public Batalla(Entrenador e, Entrenador e2, List<Pookemon> pookemones){
         this.entrenador1 = e;
         this.entrenador2 = e2;
         this.pookemones = pookemones;
@@ -339,7 +339,7 @@ public class Batalla implements Serializable{
     
     public boolean generarMazo(){
         Random random = new Random();
-        ArrayList<Pookemon> auxiliar = this.pookemones; 
+        List<Pookemon> auxiliar = this.pookemones; 
        
         if (auxiliar.size() < 6) {
             return false;  // Asegurarse de que hay suficientes Pookemones

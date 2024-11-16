@@ -95,7 +95,6 @@ public class AdminPanel extends StandarPanel {
         OrganizadorController o = new OrganizadorController();
         
         String clave = txtClave.getText();
-        // APLICAR LOGICA DE CONTRASEÑA
         if(o.admitir(clave)){
             super.getMainFrame().switchToGestionPanel();
         } else {

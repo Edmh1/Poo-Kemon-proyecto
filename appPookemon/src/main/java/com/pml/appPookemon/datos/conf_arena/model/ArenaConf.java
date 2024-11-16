@@ -13,6 +13,10 @@ public class ArenaConf implements Serializable{
     private ArrayList<Movimiento> movimientos = new ArrayList<>();
     private Recompensa premio;
     
+    public ArenaConf() {
+        premio = new Recompensa("Targeta Regalo", "Este es un sobre misterioso");
+    }
+    
 
     public ArrayList<Pookemon> getPookemones() {
         return pookemones;
@@ -21,8 +25,6 @@ public class ArenaConf implements Serializable{
     public ArrayList<Movimiento> getMovimientos() {
         return movimientos;
     }
-    
-    
     
     public void addPookemon(Pookemon x){
         pookemones.add(x);

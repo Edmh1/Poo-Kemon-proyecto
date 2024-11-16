@@ -5,23 +5,17 @@ import java.io.Serializable;
 public class Recompensa implements Serializable {
     private String nombre;
     private String descripcion;
-    private String fechaVencimiento;
 
 
-    public Recompensa(String nombre, String descripcion, String fechadevencimiento) {
+    public Recompensa(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.fechaVencimiento = fechadevencimiento;
     }
     
     public String getDescripcion() {
         return descripcion;
     }
     
-    public String getFechaVencimiento() {
-        return fechaVencimiento;
-    } 
-
     public String getNombre(){
         return nombre;
     }
