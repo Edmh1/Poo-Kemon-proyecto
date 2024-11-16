@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import main.java.com.pml.appPookemon.datos.conf_arena.model.ArenaConf;
 import main.java.com.pml.appPookemon.datos.registro.model.Organizador;
 import main.java.com.pml.appPookemon.persistencia.Serializar;
 
@@ -53,6 +54,11 @@ public class OrganizadorController {
         }
 
         return null;
+    }
+   
+    public void setArena(ArenaConf a){
+        o.setArenaConf(a);
+        guardar(o);
     }
    
    public boolean admitir(String pass){

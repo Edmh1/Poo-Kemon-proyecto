@@ -65,6 +65,10 @@ public class Organizador implements Serializable {
     public ArenaConf getArenaConf(){
         return arenaConf;
     }
+    
+    public void setArenaConf(ArenaConf a){
+        this.arenaConf = a;
+    }
 
     
 }

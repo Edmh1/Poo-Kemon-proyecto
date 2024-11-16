@@ -61,6 +61,7 @@ public class ArenaController {
     
     public void eliminarPookemon(String pookemon){
         arena.eliminarPookemon(pookemon);
+        organizadorController.setArena(arena);
     }
     
     public void eliminarMovimiento(String movimiento){

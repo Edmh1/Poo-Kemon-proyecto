@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 import org.jdesktop.swingx.prompt.PromptSupport;
@@ -21,8 +23,6 @@ public class EliminarPanel extends StandarPanel {
 
     private String nombre;
     private String nombreBuscado;
-    private String elementoBuscado;
-    private String tipoBuscado;
 
     
     /**
@@ -165,59 +165,56 @@ public class EliminarPanel extends StandarPanel {
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
         ArenaController arena = new ArenaController();
         
-        if(!nombreBuscado.equalsIgnoreCase(" ") && elementoBuscado!=null && nombre.equalsIgnoreCase("pookemon")){
+        if(!nombreBuscado.equalsIgnoreCase(" ") && nombre.equalsIgnoreCase("pookemon")){
             arena.eliminarPookemon(nombreBuscado);
             cleanContent();
             JOptionPane.showMessageDialog(this, "El pookemon fue eliminado correctamente");
-        } else if(!nombreBuscado.equalsIgnoreCase(" ") && elementoBuscado!=null && nombre.equalsIgnoreCase("movimiento")){
+        } else if(!nombreBuscado.equalsIgnoreCase(" ") && nombre.equalsIgnoreCase("movimiento")){
             arena.eliminarMovimiento(nombreBuscado);
             cleanContent();
             JOptionPane.showMessageDialog(this, "El movimiento fue eliminado correctamente");
         } else {
-            JOptionPane.showMessageDialog(this, "No se encontro el "+nombre.toLowerCase()+" buscado");
+            JOptionPane.showMessageDialog(this, "No se encontro el "+nombreBuscado.toLowerCase()+" buscado");
         }
     }//GEN-LAST:event_btEliminarActionPerformed
     private void buscarPookemon(){
         ArenaController arena = new ArenaController();
-        
+   
         nombreBuscado = txtBuscar.getText();
-        elementoBuscado = arena.buscarElementoPookemon(nombreBuscado);
+        Pookemon pookemon = arena.buscarPokemonPorNombre(nombreBuscado);
         
-        //funcion que busca un pookemon
-        String tmp = nombreBuscado;
-        String tipo = elementoBuscado;
-        
-        URL resource1 = getClass().getResource("/img/SpritesPookemon/"+tmp+".gif");
-        URL resource2 = getClass().getResource("/img/Ele"+tipo+".png");
-        if(resource1 == null || resource2 == null){
-            tmp = "Desconocido";
+        URL resource1;
+        URL resource2;
+        if(pookemon == null){
             resource1 = getClass().getResource("/img/null.jpg");
             resource2 = getClass().getResource("/img/null.jpg");
+        }else{
+            resource1 = getClass().getResource("/img/SpritesPookemon/"+pookemon.getNombrePookemon().toLowerCase()+".gif");
+            resource2 = getClass().getResource("/img/Ele_"+pookemon.getElementoPookemon()+".png");
         }
-        ((JLabel) jpResultado.getComponent(0)).setText(tmp);
+        ((JLabel) jpResultado.getComponent(0)).setText(pookemon.getNombrePookemon());
         ImageIcon imageIcon1 = new ImageIcon(resource1);
         ImageIcon imageIcon2 = new ImageIcon(resource2);
         lbImg1.setIcon(imageIcon1);
         lbImg2.setIcon(imageIcon2);
     }
+    
     private void buscarMovimiento(){
         ArenaController arena = new ArenaController();
         
         nombreBuscado = txtBuscar.getText();
-        elementoBuscado = arena.buscarElementoMovimiento(nombreBuscado);
-        tipoBuscado = arena.buscarTipoMovimiento(nombreBuscado);
-        //funcion que busca un movimietno
-        String tmp = elementoBuscado;
-        String tipo = tipoBuscado;
+        Movimiento mov = arena.buscarMovimientoPorNombre(nombreBuscado);
         
-        URL resource1 = getClass().getResource("/img/Ele"+tmp+".png");
-        URL resource2 = getClass().getResource("/img/"+tipo+".png");
-        if(resource1 == null){
-            nombreBuscado = "Desconocido";
+        URL resource1;
+        URL resource2;
+        if(mov == null){
             resource1 = getClass().getResource("/img/null.jpg");
             resource2 = getClass().getResource("/img/null.jpg");
+        }else{
+            resource1 = getClass().getResource("/img/Ele_"+mov.getElemento()+".png");
+            resource2 = getClass().getResource("/img/"+mov.getTipoMovimiento()+".png");
         }
-        ((JLabel) jpResultado.getComponent(0)).setText(nombreBuscado);
+        ((JLabel) jpResultado.getComponent(0)).setText(mov.getNombreMovimiento());
         ImageIcon imageIcon1 = new ImageIcon(resource1);
         ImageIcon imageIcon2 = new ImageIcon(resource2);
         lbImg1.setIcon(imageIcon1);

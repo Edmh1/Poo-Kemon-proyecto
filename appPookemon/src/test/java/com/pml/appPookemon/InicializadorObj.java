@@ -27,7 +27,7 @@ public class InicializadorObj {
 
     public static void main(String[] args) {
         
-        /*
+        
         //efectos
         EfectoQuemadura quemadura = new EfectoQuemadura();
         EfectoEnvenenamiento envenenamiento = new EfectoEnvenenamiento();
@@ -274,8 +274,8 @@ public class InicializadorObj {
         } catch (IOException ex) {
             Logger.getLogger(InicializadorObj.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
         
+        /*
         Serializar ser = new Serializar();
         try {
             Organizador o = ser.recuperar("organizador.obj");
@@ -286,6 +286,6 @@ public class InicializadorObj {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InicializadorObj.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        */
     }
 }
