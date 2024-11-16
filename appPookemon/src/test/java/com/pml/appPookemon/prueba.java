@@ -7,7 +7,7 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoEspecial;
 import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoFisico;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Organizador;
-import main.java.com.pml.appPookemon.datos.torneo.model.Torneo;
+import main.java.com.pml.appPookemon.datos.conf_arena.model.ArenaConf;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 
 
@@ -18,7 +18,7 @@ public class prueba {
         System.out.println("" + main.getController());
         
 //        Organizador organizador = new Organizador(1, "12345");
-//        Torneo torneo = null;
+//        ArenaConf torneo = null;
 //        Scanner scanner = new Scanner(System.in);
 //
 //        System.out.println("Ingrese la contraseña del organizador: ");

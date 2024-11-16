@@ -2,29 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package main.java.com.pml.appPookemon.datos.torneo.controller;
+package main.java.com.pml.appPookemon.datos.conf_arena.controller;
 import java.util.ArrayList;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
-import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
-import main.java.com.pml.appPookemon.datos.torneo.model.Torneo;
+import main.java.com.pml.appPookemon.datos.conf_arena.model.ArenaConf;
 /**
  *
  * @author sebac
  */
-public class TorneoController {
-    private Torneo torneo = new Torneo();
+public class ArenaController {
+    private ArenaConf torneo;
     
-    public void crearTorneo(){
-        torneo.crearTorneo();
-    }
-    
-    public Torneo getTorneo(){
+    public ArenaConf getTorneo(){
         return torneo;
-    }
-    
-    public void agregarJugador(Entrenador e){
-        torneo.addJugador(e);
     }
     
     public void agregarPookemon(Pookemon e){
@@ -41,10 +32,6 @@ public class TorneoController {
     
     public ArrayList<Movimiento> getMovimientos(){
         return torneo.getMovimientos();
-    }
-    
-    public Entrenador[] batallaActual(){
-        return torneo.siguienteBatalla();
     }
     
     public String buscarElementoMovimiento(String nombreBuscado){

@@ -5,7 +5,7 @@
 package main.java.com.pml.appPookemon.gui.batalla;
 
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
-import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
+import main.java.com.pml.appPookemon.datos.conf_arena.controller.BatallaController;
 
 /**
  *

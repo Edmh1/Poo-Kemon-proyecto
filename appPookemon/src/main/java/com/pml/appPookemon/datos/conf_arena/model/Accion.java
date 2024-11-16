@@ -1,4 +1,4 @@
-package main.java.com.pml.appPookemon.datos.torneo.model;
+package main.java.com.pml.appPookemon.datos.conf_arena.model;
 
 public abstract class Accion {
     private TipoAccion tipoAccion;

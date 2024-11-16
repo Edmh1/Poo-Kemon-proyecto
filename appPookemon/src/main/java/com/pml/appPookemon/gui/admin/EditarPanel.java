@@ -7,7 +7,7 @@ package main.java.com.pml.appPookemon.gui.admin;
 import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
-import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoController;
+import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 import org.jdesktop.swingx.prompt.PromptSupport;
@@ -22,7 +22,7 @@ public class EditarPanel extends StandarPanel {
     private String nombreBuscado;
     private Pookemon pookemonBuscado;
     private Movimiento movimientoBuscado;
-    TorneoController torneo = super.getMainFrame().getController();
+    ArenaController torneo = super.getMainFrame().getController();
     /**
      * Creates new form EditarPanel
      */

@@ -18,10 +18,6 @@ package "torneo" {
 
     }
 
-    class NodoTorneo {
-      
-    }
-
     class Torneo {
     
     }
@@ -75,10 +71,6 @@ Torneo "1" *-- "*" Movimiento
 Torneo "1" *-- "*" Pookemon
 Torneo "1" *---- "1" Recompensa
 Torneo "1" *-- "1" NodoTorneo
-
-
-NodoTorneo "1" *-- "2" NodoTorneo
-NodoTorneo "1" *-- "1" Batalla
 
 Batalla "1" o-- "2" Entrenador
 

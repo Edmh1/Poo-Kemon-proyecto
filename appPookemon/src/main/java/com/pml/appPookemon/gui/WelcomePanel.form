@@ -64,7 +64,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="sansserif" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Iniciar Torneo"/>
+        <Property name="text" type="java.lang.String" value="Iniciar Arena"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btIniciarActionPerformed"/>
@@ -75,7 +75,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="sansserif" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Admin"/>
+        <Property name="text" type="java.lang.String" value="Configurar Arena"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAdminActionPerformed"/>

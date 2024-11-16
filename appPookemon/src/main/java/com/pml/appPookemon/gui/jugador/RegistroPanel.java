@@ -19,7 +19,6 @@ import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 public class RegistroPanel extends StandarPanel {
 
     private int indice;
-    private int nJugadores = 0;
     private String generoSeleccionado = "";
     /**
      * Creates new form RegistroPanel
@@ -44,8 +43,7 @@ public class RegistroPanel extends StandarPanel {
          if(genero.trim().isEmpty()){
              throw new ElementoNoSeleccionado("No se seleccionó ningún género");
          }
-        Entrenador e = new Entrenador(nJugadores, nombre, genero);
-        nJugadores++;
+        Entrenador e = new Entrenador(nombre, genero);
         return e;
     }
 
@@ -181,7 +179,7 @@ public class RegistroPanel extends StandarPanel {
             
         }else{
             super.getMainFrame().getController().agregarJugador(e);
-            super.getMainFrame().switchToRegistroPanel(indice);
+            super.getMainFrame().switchToRegistroPanel(indice++);
         }
         
     }//GEN-LAST:event_btSiguienteActionPerformed

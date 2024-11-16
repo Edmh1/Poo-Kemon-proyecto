@@ -4,46 +4,33 @@
  */
 package main.java.com.pml.appPookemon.gui;
 
-import java.awt.BorderLayout;
 import main.java.com.pml.appPookemon.gui.jugador.ListoPanel;
 import main.java.com.pml.appPookemon.gui.admin.AdminPanel;
 import java.awt.CardLayout;
-import java.io.File;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JSlider;
-import main.java.com.pml.appPookemon.datos.registro.model.Organizador;
-import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoController;
 import main.java.com.pml.appPookemon.gui.admin.AgregarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EditarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EliminarPanel;
 import main.java.com.pml.appPookemon.gui.admin.GestionPanel;
-import main.java.com.pml.appPookemon.gui.admin.NumPartPanel;
 import main.java.com.pml.appPookemon.gui.batalla.BatallaPanel;
 import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
-import main.java.com.pml.appPookemon.persistencia.Serializable;
 
 /**
  *
  * @author eddie
  */
 public class MainFrame extends javax.swing.JFrame {
-    
-    private TorneoController controller = new TorneoController();
     private CardLayout cardLayout;
     private Stack<String> panelHistory;
-    private List<RegistroPanel> registros;
     
     private AgregarPanel agrP;
     private EditarPanel ediP;
@@ -63,8 +50,6 @@ public class MainFrame extends javax.swing.JFrame {
         reproducirMusica(getClass().getResourceAsStream("/audio/song_modified.WAV"));
     }
     
-    private Organizador organizador = new Organizador(111, "12345");
-    
     private void setupPanels() {
         // Creamos el CardLayout
         cardLayout = new CardLayout();
@@ -72,12 +57,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         // Instanciar los paneles
         WelcomePanel WelcomeP = new WelcomePanel(this);
-        AdminPanel adminP = new AdminPanel(this, organizador);
+        AdminPanel adminP = new AdminPanel(this);
         
-        //paneles despues del iniciar torneo
-        NumPartPanel numPartP = new NumPartPanel(this);
-        registros = new ArrayList<>();
+        //paneles registros
+        RegistroPanel regP1 = new RegistroPanel(this, 1);
+        RegistroPanel regP2 = new RegistroPanel(this, 2);
         ListoPanel listoP = new ListoPanel(this);
+        
         //paneles despues del admin
         GestionPanel gestP = new GestionPanel(this);
         agrP = new AgregarPanel(this);
@@ -85,13 +71,13 @@ public class MainFrame extends javax.swing.JFrame {
         eliP = new EliminarPanel(this);
         
         //paneles batalla
-        
         batPri = new BatallaPanel(this);
         
         // Agregamos los paneles al CardLayout
         getContentPane().add(WelcomeP, "welcomeP");
         getContentPane().add(adminP, "adminP");
-        getContentPane().add(numPartP, "numPartP");
+        getContentPane().add(regP1, "regP1");
+        getContentPane().add(regP2, "regP2");
         getContentPane().add(listoP, "listoP");
         getContentPane().add(gestP, "gestP");
         getContentPane().add(agrP, "agrP");
@@ -144,32 +130,17 @@ public class MainFrame extends javax.swing.JFrame {
         switchPanel("eliP");
     }
     public void switchToRegistroPanel(int indice) {
-        if (indice < registros.size()) {
-            switchPanel("regP" +indice);
-        } else {
-            switchToListoPanel();
+        if (indice == 1){
+            switchPanel("regP1");
+        }else{
+            switchPanel("regP2");
         }    
     }
     
     public void switchToBatallaPnel(){
-        controller.crearTorneo();
-        organizador.addTorneo(controller.getTorneo());
+        
         batPri.configurar();
         switchPanel("batPri");
-    }
-       
-    public void createRegistroPanels(int num) {
-        registros.clear();
-        getContentPane().removeAll();
-        setupPanels();
-        
-        for (int i = 0; i < num; i++) {
-            RegistroPanel regP = new RegistroPanel(this,i+1);
-            registros.add(regP);
-            getContentPane().add(regP, "regP" + i);
-        }
-        getContentPane().revalidate();
-        getContentPane().repaint();
     }
 
     // Método para volver al último panel
@@ -179,10 +150,6 @@ public class MainFrame extends javax.swing.JFrame {
             String previousPanel = panelHistory.peek();
             cardLayout.show(getContentPane(), previousPanel);
         }
-    }
-    
-    public TorneoController getController(){
-        return controller;
     }
 
     /**
@@ -202,14 +169,6 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pookemon");
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         MnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/pokemon-go.png"))); // NOI18N
         MnMenu.setText("Menu");
@@ -268,30 +227,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void mniInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniInicioActionPerformed
         switchToWelcomePanel();
     }//GEN-LAST:event_mniInicioActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        Serializable ser = new Serializable();
-        if(new File("Admin.obj").exists()){
-            try {
-                organizador=ser.recuperar("Admin.obj");
-            } catch (IOException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_formWindowOpened
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        try{
-        Serializable ser = new Serializable();
-        ser.guardar(organizador);
-        } catch(IOException ex) {
-            System.out.println("No guardo"+ex);
-        }
-    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

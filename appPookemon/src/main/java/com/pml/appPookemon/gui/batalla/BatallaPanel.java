@@ -1,8 +1,7 @@
 package main.java.com.pml.appPookemon.gui.batalla;
 
-import main.java.com.pml.appPookemon.datos.torneo.model.Batalla;
+import main.java.com.pml.appPookemon.datos.conf_arena.model.Batalla;
 import java.net.URL;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +10,7 @@ import javax.swing.ImageIcon;
 import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoEnvenenamiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoParalisis;
 import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoQuemadura;
-import main.java.com.pml.appPookemon.datos.torneo.controller.BatallaController;
+import main.java.com.pml.appPookemon.datos.conf_arena.controller.BatallaController;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoEspecial;
 import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoFisico;
@@ -20,7 +19,7 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.Pocion;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.pookemon.model.RecuperarPPS;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
-import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoController;
+import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 
@@ -29,10 +28,8 @@ import main.java.com.pml.appPookemon.gui.config.StandarPanel;
  * @author feder
  */
 public class BatallaPanel extends StandarPanel {
-
     private Entrenador j1;
     private Entrenador j2;
-    private Entrenador[] entrenadores;
     private Batalla batalla;
     private BatallaController controlador;
     private int turno;
@@ -40,8 +37,9 @@ public class BatallaPanel extends StandarPanel {
     private boolean pookemonEliminado;
     private boolean pk1Efecto;
     private boolean pk2Efecto;
+    
     BatallaCambio cambio;
-    TorneoController Torneo = super.getMainFrame().getController();
+    ArenaController torneo = super.getMainFrame().getController();
     
     /**
      * Creates new form BatallaPrincipal
@@ -333,7 +331,6 @@ public class BatallaPanel extends StandarPanel {
     }
 
     public void configurar() {
-        entrenadores = Torneo.batallaActual();
         j1 = entrenadores[0];
         j2 = entrenadores[1];
         asignarObjetos();

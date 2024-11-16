@@ -39,7 +39,7 @@ public class WelcomePanel extends StandarPanel {
         jLabel1.setText("Bienvenido a Pookemon Master League");
 
         btIniciar.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
-        btIniciar.setText("Iniciar Torneo");
+        btIniciar.setText("Iniciar Arena");
         btIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btIniciarActionPerformed(evt);
@@ -47,7 +47,7 @@ public class WelcomePanel extends StandarPanel {
         });
 
         btAdmin.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
-        btAdmin.setText("Admin");
+        btAdmin.setText("Configurar Arena");
         btAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAdminActionPerformed(evt);
@@ -83,7 +83,8 @@ public class WelcomePanel extends StandarPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciarActionPerformed
-        super.getMainFrame().switchToNumeroPartPanel();
+        //Cambiando a registrar al primer jugador
+        super.getMainFrame().switchToRegistroPanel(1);
     }//GEN-LAST:event_btIniciarActionPerformed
 
     private void btAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdminActionPerformed

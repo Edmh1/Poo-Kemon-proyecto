@@ -1,4 +1,4 @@
-package main.java.com.pml.appPookemon.datos.torneo.model;
+package main.java.com.pml.appPookemon.datos.conf_arena.model;
 
 
 import java.io.Serializable;

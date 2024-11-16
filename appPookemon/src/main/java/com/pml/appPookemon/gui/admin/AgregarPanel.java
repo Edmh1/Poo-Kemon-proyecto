@@ -14,7 +14,7 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoParalisis;
 import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoQuemadura;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
-import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoController;
+import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 import org.jdesktop.swingx.prompt.PromptSupport;
@@ -28,7 +28,7 @@ public class AgregarPanel extends StandarPanel {
 
     private String nombre;
     private Efecto efecto;
-    TorneoController torneo = super.getMainFrame().getController();
+    
     /**
      * Creates new form AgregarPanel
      */

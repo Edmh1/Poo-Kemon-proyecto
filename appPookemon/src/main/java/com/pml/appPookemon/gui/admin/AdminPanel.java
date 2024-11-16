@@ -20,11 +20,9 @@ public class AdminPanel extends StandarPanel {
      * Creates new form WelcomeScreen
      * @param mainFrame
      */
-    Organizador organizador;
-    public AdminPanel(MainFrame mainFrame, Organizador organizador) {
+    public AdminPanel(MainFrame mainFrame) {
         super(mainFrame);
         initComponents();
-        this.organizador = organizador;
     }
 
     /**

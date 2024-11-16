@@ -1,89 +1,44 @@
 package main.java.com.pml.appPookemon.datos.registro.model;
 
 import java.io.Serializable;
-import main.java.com.pml.appPookemon.datos.pookemon.model.Efecto;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
-import main.java.com.pml.appPookemon.datos.torneo.model.Torneo;
+import main.java.com.pml.appPookemon.datos.conf_arena.model.ArenaConf;
 import java.util.ArrayList;
+import main.java.com.pml.appPookemon.datos.conf_arena.model.Batalla;
 
-import main.java.com.pml.appPookemon.datos.torneo.model.Recompensa;
 
 public class Organizador implements Serializable {
-    private int idOrganizador;
-    private Torneo torneoActual;
-    private ArrayList<Torneo> torneos = new ArrayList<>();  
+    private String nomUsario;
     private String password;
-
-    public Organizador(int idOrganizador, String password) {
-        this.idOrganizador = idOrganizador;
+    private ArenaConf arenaConf;
+    private ArrayList<Batalla> batallas = new ArrayList<>();
+    
+    public Organizador(String nombre, String password) {
+        this.nomUsario = nombre;
         this.password = password;
     }
-
-    @Override
-    public String toString() {
-        return "Organizador [idOrganizador=" + idOrganizador + "]";
-    }
     
-    public void addTorneo(Torneo x){
-        torneos.add(x);
-    }
-    
-    public String mostrarTorneos(){
-        String lis = "";
-        for (Torneo torneo : torneos) {
-            lis += torneo.toString() + "\n";
-        } 
-        return lis;
-    }
-
-    public void inscribirJugadorTorneo(Entrenador jugador, int idTorneo ){
-        for (Torneo torneo : torneos) {
-            if (torneo.getIdtorneo()==idTorneo) {
-                torneo.addJugador(jugador);
-                break;
-            }         
-        }
-    }
-    
-    public Torneo torneoPorId(int id){
-       
-        for (Torneo torneo : torneos) {
-            if (torneo.getIdtorneo()==id) {
-                return torneo;
-            }        
-        }
-        return null; 
-        
-    }
-    
-    public void agregarpookemon(Pookemon  pookemon ){
-        torneoActual.addPookemon(pookemon);
+    public void agregarpookemon(Pookemon pookemon){
+        arenaConf.addPookemon(pookemon);
 
     }
     
-    public void editarPookemon(int idPookemon, String nombrePookemon, String nombreElemento,Efecto efect ){
-        torneoActual.editarNombrePookemon(idPookemon, nombrePookemon);
-        torneoActual.editarEfectoPookemon(idPookemon, efect);
-        torneoActual.editarElementoPookemon(idPookemon, nombreElemento);
-    
-        
-    }
+    //falta editar pokemon
     
     public void eliminarPookemon(String nombrePookemon ){
-        torneoActual.eliminarPookemon(nombrePookemon);
+        arenaConf.eliminarPookemon(nombrePookemon);
     }
 
+    
     public void agregarMovimiento(Movimiento mov){
-        torneoActual.addMovimiento(mov);
+        arenaConf.addMovimiento(mov);
     }
     
-    public void editarMovimiento(  int idmov, String nombreMovimiento, int daño, int precision, int velocidad ){
-        torneoActual.editarMovimiento(idmov, nombreMovimiento, nombreMovimiento, daño, precision, velocidad, nombreMovimiento, null);
-    }
-
+    //falta editar movimiento
+    
     public void eliminarMovimiento(String nombreMovimiento){
-        torneoActual.eliminarMovimiento(nombreMovimiento);
+        arenaConf.eliminarMovimiento(nombreMovimiento);
     }
 
     public void  mostrarCreditos(){
@@ -105,50 +60,8 @@ public class Organizador implements Serializable {
         System.out.println("***************************");
     }
 
-    public String getPassword() {
-        return password;
-    }
-    
-    public void editarMovimiento(int idMov, String nombreMovimiento, String descripcion,int daño, int precision, int velocidad, String nombreEfecto,Efecto efect ){
-        torneoActual.editarMovimiento(idMov, nombreMovimiento, descripcion, daño, precision, velocidad,  nombreEfecto, efect);
-
-    } 
-    
-    public Torneo crearTorneo(){
-        torneos.add(new Torneo());
-        torneoActual = torneos.get(torneos.size()-1);
-        return torneoActual;
-    }
-
-    public boolean hayTorneo(){
-        return torneos != null;
-    }
-
     public boolean verficiarCont(String pass){
         return this.password.equals(pass);
     }
-
-    public Torneo getTorneoActual(){
-        return torneoActual;
-    }
-    //sujeto a cambios (quiza)
-    public void asignarRecompesa(int idtorneo, Recompensa re){
-        torneoActual.crearRecompensa(re);
-    }
     
-    /** Faltan estos metodos segun el diagrama de clases (definir)         
-        + mostrarReporteBatalla(idTorneo : int, idBatalla : int)   
-    **/
-    
-    public String mostrarReporteBatalla(int idTorneo_p, int idBatalla_p){
-        for (Torneo t : torneos) {
-            if(t.getIdtorneo() == idTorneo_p){
-                return t.buscarBatalla(idBatalla_p).GenerarReporteBatalla();
-            }
-        }
-        
-        return "";
-    }
-     
-
 }
