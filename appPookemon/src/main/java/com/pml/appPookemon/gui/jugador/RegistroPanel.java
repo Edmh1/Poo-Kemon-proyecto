@@ -4,6 +4,8 @@
  */
 package main.java.com.pml.appPookemon.gui.jugador;
 
+import main.java.com.pml.appPookemon.datos.excepciones.NumeroEnTextoException;
+import main.java.com.pml.appPookemon.datos.excepciones.ElementoNoSeleccionadoException;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,14 +37,14 @@ public class RegistroPanel extends StandarPanel {
         lbEntrenador.setText(lb);
     }
     
-    private Entrenador crearJugador() throws NumeroEnTextoException, ElementoNoSeleccionado{
+    private Entrenador crearJugador() throws NumeroEnTextoException, ElementoNoSeleccionadoException{
         String nombre = txtNombre.getText();
         String genero = generoSeleccionado;
          if (!nombre.matches("[a-zA-Z\\s]+") || nombre.trim().isEmpty()) {
             throw new NumeroEnTextoException("El texto contiene números.");
             }
          if(genero.trim().isEmpty()){
-             throw new ElementoNoSeleccionado("No se seleccionó ningún género");
+             throw new ElementoNoSeleccionadoException("No se seleccionó ningún género");
          }
         Entrenador e = new Entrenador(nJugadores, nombre, genero);
         nJugadores++;
@@ -172,7 +174,7 @@ public class RegistroPanel extends StandarPanel {
         } catch (NumeroEnTextoException ex) {
             JOptionPane.showMessageDialog(null, "Texto mal digitado");
             bandera = true;
-        } catch (ElementoNoSeleccionado ex) {
+        } catch (ElementoNoSeleccionadoException ex) {
             JOptionPane.showMessageDialog(null, "Género no seleccionado");
             banderaG = true;
         }
