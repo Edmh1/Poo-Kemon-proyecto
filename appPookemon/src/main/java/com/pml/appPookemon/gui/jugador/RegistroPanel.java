@@ -5,6 +5,8 @@
 package main.java.com.pml.appPookemon.gui.jugador;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 import main.java.com.pml.appPookemon.gui.MainFrame;
@@ -33,8 +35,16 @@ public class RegistroPanel extends StandarPanel {
         lbEntrenador.setText(lb);
     }
     
-    private Entrenador crearJugador(){
-        Entrenador e = new Entrenador(nJugadores, txtNombre.getText(), generoSeleccionado);
+    private Entrenador crearJugador() throws NumeroEnTextoException, ElementoNoSeleccionado{
+        String nombre = txtNombre.getText();
+        String genero = generoSeleccionado;
+         if (!nombre.matches("[a-zA-Z\\s]+") || nombre.trim().isEmpty()) {
+            throw new NumeroEnTextoException("El texto contiene números.");
+            }
+         if(genero.trim().isEmpty()){
+             throw new ElementoNoSeleccionado("No se seleccionó ningún género");
+         }
+        Entrenador e = new Entrenador(nJugadores, nombre, genero);
         nJugadores++;
         return e;
     }
@@ -77,7 +87,7 @@ public class RegistroPanel extends StandarPanel {
         rbMasculino.setText("Masculino");
         rbMasculino.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         rbMasculino.setBorderPainted(true);
-        rbMasculino.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rbMasculino.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         rbMasculino.setFocusCycleRoot(true);
         rbMasculino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/entrenador.png"))); // NOI18N
         rbMasculino.addActionListener(new java.awt.event.ActionListener() {
@@ -90,11 +100,17 @@ public class RegistroPanel extends StandarPanel {
         rbFemenino.setText("Femenino");
         rbFemenino.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         rbFemenino.setBorderPainted(true);
-        rbFemenino.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rbFemenino.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         rbFemenino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/entrenadora.png"))); // NOI18N
         rbFemenino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbFemeninoActionPerformed(evt);
+            }
+        });
+
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
             }
         });
 
@@ -117,8 +133,7 @@ public class RegistroPanel extends StandarPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(31, 31, 31)
@@ -148,9 +163,27 @@ public class RegistroPanel extends StandarPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSiguienteActionPerformed
-        Entrenador e  = crearJugador();
-        super.getMainFrame().getController().agregarJugador(e);
-        super.getMainFrame().switchToRegistroPanel(indice);
+        Entrenador e = null;
+        boolean bandera = false;
+        boolean banderaG = false;
+        
+        try {
+            e = crearJugador();
+        } catch (NumeroEnTextoException ex) {
+            JOptionPane.showMessageDialog(null, "Texto mal digitado");
+            bandera = true;
+        } catch (ElementoNoSeleccionado ex) {
+            JOptionPane.showMessageDialog(null, "Género no seleccionado");
+            banderaG = true;
+        }
+        
+        if(bandera || banderaG){
+            
+        }else{
+            super.getMainFrame().getController().agregarJugador(e);
+            super.getMainFrame().switchToRegistroPanel(indice);
+        }
+        
     }//GEN-LAST:event_btSiguienteActionPerformed
 
     private void rbMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMasculinoActionPerformed
@@ -168,6 +201,10 @@ public class RegistroPanel extends StandarPanel {
             rbMasculino.setBackground(Color.WHITE); 
         }
     }//GEN-LAST:event_rbFemeninoActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     public void setIndice(int indice) {
         this.indice = indice;
