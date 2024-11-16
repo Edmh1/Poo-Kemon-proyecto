@@ -70,8 +70,8 @@ public class Organizador implements Serializable {
         
     }
     
-    public void eliminarPookemon(int idPookemon ){
-        torneoActual.eliminarPookemon(idPookemon);
+    public void eliminarPookemon(String nombrePookemon ){
+        torneoActual.eliminarPookemon(nombrePookemon);
     }
 
     public void agregarMovimiento(Movimiento mov){
@@ -82,8 +82,8 @@ public class Organizador implements Serializable {
         torneoActual.editarMovimiento(idmov, nombreMovimiento, nombreMovimiento, daño, precision, velocidad, nombreMovimiento, null);
     }
 
-    public void eliminarMovimiento(  int idmov ){
-        torneoActual.eliminarMovimiento(idmov);
+    public void eliminarMovimiento(String nombreMovimiento){
+        torneoActual.eliminarMovimiento(nombreMovimiento);
     }
 
     public void  mostrarCreditos(){

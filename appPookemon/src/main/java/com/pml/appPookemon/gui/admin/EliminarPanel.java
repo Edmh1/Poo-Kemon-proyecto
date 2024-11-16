@@ -5,9 +5,14 @@
 package main.java.com.pml.appPookemon.gui.admin;
 
 import java.net.URL;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
+import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoController;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 import org.jdesktop.swingx.prompt.PromptSupport;
@@ -20,6 +25,9 @@ public class EliminarPanel extends StandarPanel {
 
     private String nombre;
     private String nombreBuscado;
+    private String elementoBuscado;
+    private String tipoBuscado;
+    TorneoController torneo = super.getMainFrame().getController();
     /**
      * Creates new form EliminarPanel
      */
@@ -96,6 +104,11 @@ public class EliminarPanel extends StandarPanel {
         );
 
         btEliminar.setText("Eliminar");
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -151,15 +164,31 @@ public class EliminarPanel extends StandarPanel {
         this.revalidate();
         this.repaint();
     }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        // TODO add your handling code here:
+        if(!nombreBuscado.equalsIgnoreCase(" ") && elementoBuscado!=null && nombre.equalsIgnoreCase("pookemon")){
+            torneo.eliminarPookemon(nombreBuscado);
+            cleanContent();
+            JOptionPane.showMessageDialog(this, "El pookemon fue eliminado correctamente");
+        } else if(!nombreBuscado.equalsIgnoreCase(" ") && elementoBuscado!=null && nombre.equalsIgnoreCase("movimiento")){
+            torneo.eliminarMovimiento(nombreBuscado);
+            cleanContent();
+            JOptionPane.showMessageDialog(this, "El movimiento fue eliminado correctamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontro el "+nombre.toLowerCase()+" buscado");
+        }
+    }//GEN-LAST:event_btEliminarActionPerformed
     private void buscarPookemon(){
         nombreBuscado = txtBuscar.getText();
+        elementoBuscado = torneo.buscarElementoPookemon(nombreBuscado);
         //funcion que busca un pookemon
         String tmp = nombreBuscado;
-        String tipo = "Acero";
+        String tipo = elementoBuscado;
         
         URL resource1 = getClass().getResource("/img/SpritesPookemon/"+tmp+".gif");
         URL resource2 = getClass().getResource("/img/Ele"+tipo+".png");
-        if(resource1 == null){
+        if(resource1 == null || resource2 == null){
             tmp = "Desconocido";
             resource1 = getClass().getResource("/img/null.jpg");
             resource2 = getClass().getResource("/img/null.jpg");
@@ -172,9 +201,11 @@ public class EliminarPanel extends StandarPanel {
     }
     private void buscarMovimiento(){
         nombreBuscado = txtBuscar.getText();
+        elementoBuscado = torneo.buscarElementoMovimiento(nombreBuscado);
+        tipoBuscado = torneo.buscarTipoMovimiento(nombreBuscado);
         //funcion que busca un movimietno
-        String tmp = "Acero";
-        String tipo = "movEspecial";
+        String tmp = elementoBuscado;
+        String tipo = tipoBuscado;
         
         URL resource1 = getClass().getResource("/img/Ele"+tmp+".png");
         URL resource2 = getClass().getResource("/img/"+tipo+".png");
@@ -220,9 +251,7 @@ public class EliminarPanel extends StandarPanel {
         lbImg2.setIcon(emptyIcon);
         txtBuscar.setText("");
     }
-
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btEliminar;
@@ -235,5 +264,5 @@ public class EliminarPanel extends StandarPanel {
     // End of variables declaration//GEN-END:variables
 
     
-    
+
 }

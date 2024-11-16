@@ -24,7 +24,7 @@ import org.jdesktop.swingx.prompt.PromptSupport;
 public class AgregarPanel extends StandarPanel {
 
     private String nombre;
-    TorneoController Torneo = super.getMainFrame().getController();
+    TorneoController torneo = super.getMainFrame().getController();
     /**
      * Creates new form AgregarPanel
      */
@@ -253,8 +253,8 @@ public class AgregarPanel extends StandarPanel {
             int defensaEspecial = Integer.parseInt(txtCampo6.getText());
             String elemento = (String) jcbElemento.getSelectedItem();
             Pookemon pookemon = controlador.agregarPookemon(nombrePookemon, velocidad, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, elemento);
-            Torneo.agregarPookemon(pookemon);
-            System.out.println(""+Torneo.getPookemones().toString());
+            torneo.agregarPookemon(pookemon);
+            System.out.println(""+torneo.getPookemones().toString());
             
         } else {
             MovimientoController controlador = new MovimientoController();
@@ -266,7 +266,7 @@ public class AgregarPanel extends StandarPanel {
             String elemento = (String) jcbElemento.getSelectedItem();
             String tipo = (String) jcbTipo.getSelectedItem();
             Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, efecto, elemento, tipo);
-            Torneo.agregarMovimiento(movimiento);
+            torneo.agregarMovimiento(movimiento);
         }
         
 

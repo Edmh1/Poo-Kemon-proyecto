@@ -337,8 +337,8 @@ public class BatallaPanel extends StandarPanel {
         j1 = entrenadores[0];
         j2 = entrenadores[1];
         asignarObjetos();
-        //batalla = new Batalla(0, j1, j2, Torneo.getPookemones());
-        batalla = new Batalla(0, j1, j2, pookemonesYVainasFalsasloljaja());
+        batalla = new Batalla(0, j1, j2, Torneo.getPookemones());
+        //batalla = new Batalla(0, j1, j2, pookemonesYVainasFalsasloljaja());
         batalla.generarMazo();
         //asignarMovimientos();
         controlador = new BatallaController(batalla);
@@ -683,7 +683,7 @@ public class BatallaPanel extends StandarPanel {
                     stab = true;
                 }
                 
-                if(i<2 || stab==true){
+                if(i<2 || stab){
                     movimientos.add(iterable);
                     i++;
                 }
@@ -692,8 +692,6 @@ public class BatallaPanel extends StandarPanel {
                     movimientos.add(iterable);
                     i++;
                 }
-                //if(i==2 && pookemon.getElementoPookemon().contains(revisarElementosMovimientos(Torneo.getMovimientos())))
-                //Validar si es que no hay movimiento de stab
             }
         }
         pookemon.setMovimientos(movimientos);

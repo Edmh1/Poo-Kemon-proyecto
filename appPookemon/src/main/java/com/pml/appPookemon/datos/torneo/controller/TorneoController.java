@@ -47,4 +47,29 @@ public class TorneoController {
         return torneo.siguienteBatalla();
     }
     
+    public String buscarElementoMovimiento(String nombreBuscado){
+        return torneo.buscarElementoMovimiento(nombreBuscado);
+    }
+    
+    public String buscarTipoMovimiento(String nombreBuscado){
+        return torneo.buscarTipoMovimiento(nombreBuscado);
+    }
+    
+    public String buscarElementoPookemon(String nombreBuscado){
+        return torneo.buscarElementoPookemon(nombreBuscado);
+    }
+        
+    public Pookemon buscarPokemonPorNombre(String nombreBuscado){
+        return torneo.buscarPokemonPorNombre(nombreBuscado);
+    }
+    
+    public void eliminarPookemon(String pookemon){
+        torneo.eliminarPookemon(pookemon);
+    }
+    
+    public void eliminarMovimiento(String movimiento){
+        torneo.eliminarMovimiento(movimiento);
+    }
+            
+    
 }
