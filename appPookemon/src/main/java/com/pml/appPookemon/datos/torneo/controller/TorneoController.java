@@ -63,6 +63,10 @@ public class TorneoController {
         return torneo.buscarPokemonPorNombre(nombreBuscado);
     }
     
+    public Movimiento buscarMovimientoPorNombre(String nombreBuscado){
+        return torneo.buscarMovimientoPorNombre(nombreBuscado);
+    }
+    
     public void eliminarPookemon(String pookemon){
         torneo.eliminarPookemon(pookemon);
     }

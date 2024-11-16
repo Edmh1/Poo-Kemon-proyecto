@@ -5,6 +5,7 @@
 package main.java.com.pml.appPookemon.gui.admin;
 
 import javax.swing.JOptionPane;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoController;
 import main.java.com.pml.appPookemon.gui.MainFrame;
@@ -20,6 +21,7 @@ public class EditarPanel extends StandarPanel {
     private String nombre;
     private String nombreBuscado;
     private Pookemon pookemonBuscado;
+    private Movimiento movimientoBuscado;
     TorneoController torneo = super.getMainFrame().getController();
     /**
      * Creates new form EditarPanel
@@ -413,21 +415,40 @@ public class EditarPanel extends StandarPanel {
     private void btActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizarActionPerformed
         // TODO add your handling code here:
         
-        if(pookemonBuscado!=null){
-            try{
-            pookemonBuscado.getEstadisticaPookemon().setVida(Integer.parseInt(txtNewCampo1.getText()));
-            pookemonBuscado.getEstadisticaPookemon().setAtaqueFisico(Integer.parseInt(txtNewCampo2.getText()));
-            pookemonBuscado.getEstadisticaPookemon().setDefensaFisica(Integer.parseInt(txtNewCampo3.getText()));
-            pookemonBuscado.getEstadisticaPookemon().setAtaqueEspecial(Integer.parseInt(txtNewCampo4.getText()));
-            pookemonBuscado.getEstadisticaPookemon().setDefensaEspecial(Integer.parseInt(txtNewCampo5.getText()));
-            pookemonBuscado.getEstadisticaPookemon().setVelocidad(Integer.parseInt(txtNewCampo6.getText()));
-            JOptionPane.showMessageDialog(this, "Pookemon actualizado exitosamente");   
-            } catch(NumberFormatException ex){
+        if(nombre.equalsIgnoreCase("pookemon")){
+            if(pookemonBuscado!=null){
+                try{
+                pookemonBuscado.getEstadisticaPookemon().setVida(Integer.parseInt(txtNewCampo1.getText()));
+                pookemonBuscado.getEstadisticaPookemon().setAtaqueFisico(Integer.parseInt(txtNewCampo2.getText()));
+                pookemonBuscado.getEstadisticaPookemon().setDefensaFisica(Integer.parseInt(txtNewCampo3.getText()));
+                pookemonBuscado.getEstadisticaPookemon().setAtaqueEspecial(Integer.parseInt(txtNewCampo4.getText()));
+                pookemonBuscado.getEstadisticaPookemon().setDefensaEspecial(Integer.parseInt(txtNewCampo5.getText()));
+                pookemonBuscado.getEstadisticaPookemon().setVelocidad(Integer.parseInt(txtNewCampo6.getText()));
+                JOptionPane.showMessageDialog(this, "Pookemon actualizado exitosamente");   
+                } catch(NumberFormatException ex){
                 JOptionPane.showMessageDialog(this, "Datos mal digitados");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
+            if(movimientoBuscado!=null){
+                try{
+                    movimientoBuscado.setDescripcionMovimiento(txtNewCampo1.getText());
+                    movimientoBuscado.setPotencia(Integer.parseInt(txtNewCampo2.getText()));
+                    movimientoBuscado.setPrecision(Integer.parseInt(txtNewCampo3.getText()));
+                    movimientoBuscado.setCantidadPP(Integer.parseInt(txtNewCampo4.getText()));
+                    
+                    
+                    JOptionPane.showMessageDialog(this, "Movimiento actualizado exitosamente");  
+                } catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(this, "Datos mal digitados");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
+            }
         }
+
 
     }//GEN-LAST:event_btActualizarActionPerformed
 
@@ -442,19 +463,34 @@ public class EditarPanel extends StandarPanel {
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         // TODO add your handling code here:
         nombreBuscado = txtBuscar.getText();
-        pookemonBuscado = torneo.buscarPokemonPorNombre(nombreBuscado);
-        if(pookemonBuscado!=null){
-            lbOldNombre.setText(nombreBuscado);
-            lbNewNombre.setText(nombreBuscado);
-            txtOldCampo1.setText(""+pookemonBuscado.getEstadisticaPookemon().getVida());
-            txtOldCampo2.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueFisico());
-            txtOldCampo3.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaFisica());
-            txtOldCampo4.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueEspecial());
-            txtOldCampo5.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaEspecial());
-            txtOldCampo6.setText(""+pookemonBuscado.getEstadisticaPookemon().getVelocidad());
+        if(nombre.equalsIgnoreCase("pookemon")){
+            pookemonBuscado = torneo.buscarPokemonPorNombre(nombreBuscado);
+            if(pookemonBuscado!=null){
+                lbOldNombre.setText(nombreBuscado);
+                lbNewNombre.setText(nombreBuscado);
+                txtOldCampo1.setText(""+pookemonBuscado.getEstadisticaPookemon().getVida());
+                txtOldCampo2.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueFisico());
+                txtOldCampo3.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaFisica());
+                txtOldCampo4.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueEspecial());
+                txtOldCampo5.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaEspecial());
+                txtOldCampo6.setText(""+pookemonBuscado.getEstadisticaPookemon().getVelocidad());
+            } else {
+                JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
+            movimientoBuscado = torneo.buscarMovimientoPorNombre(nombreBuscado);
+            if(movimientoBuscado!=null){
+                lbOldNombre.setText(nombreBuscado);
+                lbNewNombre.setText(nombreBuscado);  
+                txtOldCampo1.setText(movimientoBuscado.getDescripcionMovimiento());
+                txtOldCampo2.setText(""+movimientoBuscado.getPotencia());
+                txtOldCampo3.setText(""+movimientoBuscado.getPrecision());
+                txtOldCampo4.setText(""+movimientoBuscado.getCantidadPP());
+            } else {
+                JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
+            }
         }
+        
         
     }//GEN-LAST:event_btBuscarActionPerformed
 

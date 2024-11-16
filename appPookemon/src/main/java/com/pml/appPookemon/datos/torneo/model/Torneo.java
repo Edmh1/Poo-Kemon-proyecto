@@ -291,5 +291,14 @@ public class Torneo implements Serializable{
         }
         return null;
     }
+    
+    public Movimiento buscarMovimientoPorNombre(String nombreBuscado){
+        for (Movimiento movimiento : movimientos) {
+            if(movimiento.getNombreMovimiento().equalsIgnoreCase(nombreBuscado)){
+                return movimiento;
+            }
+        }
+        return null;
+    }
 
 }

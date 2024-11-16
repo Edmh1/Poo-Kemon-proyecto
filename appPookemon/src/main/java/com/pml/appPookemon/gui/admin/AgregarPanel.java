@@ -9,6 +9,9 @@ import javax.swing.JFileChooser;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Efecto;
 import main.java.com.pml.appPookemon.datos.pookemon.controller.MovimientoController;
 import main.java.com.pml.appPookemon.datos.pookemon.controller.PookemonController;
+import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoEnvenenamiento;
+import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoParalisis;
+import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoQuemadura;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoController;
@@ -24,6 +27,7 @@ import org.jdesktop.swingx.prompt.PromptSupport;
 public class AgregarPanel extends StandarPanel {
 
     private String nombre;
+    private Efecto efecto;
     TorneoController torneo = super.getMainFrame().getController();
     /**
      * Creates new form AgregarPanel
@@ -57,6 +61,8 @@ public class AgregarPanel extends StandarPanel {
         lblFilePath.setVisible(true);
         btExaminar.setVisible(true);
         jpMovimiento.setVisible(false);
+        txtProbabilidadEfecto.setVisible(false);
+        lbPorcentaje.setVisible(false);
         
         this.revalidate();
         this.repaint();
@@ -73,6 +79,8 @@ public class AgregarPanel extends StandarPanel {
         jpPookemon.setVisible(false);
         lblFilePath.setVisible(false);
         btExaminar.setVisible(false);
+        txtProbabilidadEfecto.setVisible(true);
+        lbPorcentaje.setVisible(true);
         
         this.revalidate();
         this.repaint();
@@ -110,6 +118,8 @@ public class AgregarPanel extends StandarPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         lbAgregar = new javax.swing.JLabel();
         txtCampo1 = new javax.swing.JTextField();
         txtCampo2 = new javax.swing.JTextField();
@@ -125,6 +135,12 @@ public class AgregarPanel extends StandarPanel {
         txtCampo5 = new javax.swing.JTextField();
         txtCampo6 = new javax.swing.JTextField();
         jcbElemento = new javax.swing.JComboBox<>();
+        txtProbabilidadEfecto = new javax.swing.JTextField();
+        lbPorcentaje = new javax.swing.JLabel();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -168,7 +184,12 @@ public class AgregarPanel extends StandarPanel {
         lblFilePath.setText("Seleccione la imagen del Pookemon.gif");
         add(lblFilePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, -1, -1));
 
-        jcbEfecto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efe. Quemadura", "Efe. Envenenamiento", "Efe. Paralisis" }));
+        jcbEfecto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Quemadura", "Envenenamiento", "Paralisis" }));
+        jcbEfecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbEfectoActionPerformed(evt);
+            }
+        });
 
         jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mov. Fisico", "Mov. Especial" }));
         jcbTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -219,6 +240,18 @@ public class AgregarPanel extends StandarPanel {
 
         jcbElemento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acero", "Agua", "Bicho", "Dragon", "Electrico", "Fantasma", "Fuego", "Hada", "Hielo", "lucha", "Normal", "Planta", "Psiquico", "Roca", "Siniestro", "Tierra", "Veneno", "Volador" }));
         add(jcbElemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 150, -1));
+
+        txtProbabilidadEfecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProbabilidadEfectoActionPerformed(evt);
+            }
+        });
+        add(txtProbabilidadEfecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 30, -1));
+
+        lbPorcentaje.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPorcentaje.setText(" %");
+        lbPorcentaje.setPreferredSize(new java.awt.Dimension(19, 20));
+        add(lbPorcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 30, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCampo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo1ActionPerformed
@@ -262,11 +295,26 @@ public class AgregarPanel extends StandarPanel {
             int potencia = Integer.parseInt(txtCampo2.getText());
             int precision = Integer.parseInt(txtCampo3.getText());
             int cantidadPP = Integer.parseInt(txtCampo4.getText());
-            Efecto efecto = (Efecto) jcbEfecto.getSelectedItem();
+            String nombreEfecto = (String) jcbEfecto.getSelectedItem();
+            switch(nombreEfecto){
+                case "Paralisis":
+                    efecto = new EfectoParalisis();
+                    break;
+                case "Quemadura":
+                    efecto = new EfectoQuemadura();
+                    break;
+                case "Envenenamiento":
+                    efecto = new EfectoEnvenenamiento();
+                    break;
+                default:
+                    efecto = null;
+            }
             String elemento = (String) jcbElemento.getSelectedItem();
             String tipo = (String) jcbTipo.getSelectedItem();
-            Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, efecto, elemento, tipo);
+            int probabilidadEfecto = Integer.parseInt(txtProbabilidadEfecto.getText());
+            Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, tipo, probabilidadEfecto);
             torneo.agregarMovimiento(movimiento);
+            System.out.println(""+torneo.getMovimientos().toString());
         }
         
 
@@ -276,16 +324,28 @@ public class AgregarPanel extends StandarPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbTipoActionPerformed
 
+    private void txtProbabilidadEfectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProbabilidadEfectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProbabilidadEfectoActionPerformed
+
+    private void jcbEfectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEfectoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jcbEfectoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregar;
     private javax.swing.JButton btExaminar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JComboBox<String> jcbEfecto;
     private javax.swing.JComboBox<String> jcbElemento;
     private javax.swing.JComboBox<String> jcbTipo;
     private javax.swing.JPanel jpMovimiento;
     private javax.swing.JPanel jpPookemon;
     private javax.swing.JLabel lbAgregar;
+    private javax.swing.JLabel lbPorcentaje;
     private javax.swing.JLabel lblFilePath;
     private javax.swing.JTextField txtCampo1;
     private javax.swing.JTextField txtCampo2;
@@ -293,6 +353,7 @@ public class AgregarPanel extends StandarPanel {
     private javax.swing.JTextField txtCampo4;
     private javax.swing.JTextField txtCampo5;
     private javax.swing.JTextField txtCampo6;
+    private javax.swing.JTextField txtProbabilidadEfecto;
     // End of variables declaration//GEN-END:variables
   
 }

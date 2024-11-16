@@ -15,12 +15,12 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.MovimientoFisico;
  */
 public class MovimientoController {
 
-    public Movimiento agregarMovimiento(String nombreMovimiento, int potencia, int precision, int cantidadPP, Efecto efecto, String elemento, String tipo) {
+    public Movimiento agregarMovimiento(String nombreMovimiento, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto, String tipo, int probabilidadEfecto) {
         if(tipo.equalsIgnoreCase("Mov. Fisico")){
-            Movimiento movimiento = new MovimientoFisico(0, nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto,0);
+            Movimiento movimiento = new MovimientoFisico(0, nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, probabilidadEfecto);
             return movimiento;
         } else {
-            Movimiento movimiento = new MovimientoEspecial(0, nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto,0);
+            Movimiento movimiento = new MovimientoEspecial(0, nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, probabilidadEfecto);
             return movimiento;
         }
         
