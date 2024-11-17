@@ -158,14 +158,14 @@ public class EliminarPanel extends StandarPanel {
             try{
                 buscarPookemon();
             }catch(NumeroEnTextoException ex){
-                JOptionPane.showMessageDialog(null, "Por favor, ingrese correctamente el nombre. Asegúrese de no digitar números y no dejarlo en blanco");
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese correctamente el nombre. Asegúrese de no digitar números y no dejarlo en blanco", "Error", JOptionPane.ERROR_MESSAGE);
             }
             
         }else{
             try{
                 buscarMovimiento();
             }catch(NumeroEnTextoException ex){
-                JOptionPane.showMessageDialog(null, "Por favor, ingrese correctamente el nombre. Asegúrese de no digitar números y no dejarlo en blanco");
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese correctamente el nombre. Asegúrese de no digitar números y no dejarlo en blanco", "Error", JOptionPane.ERROR_MESSAGE);
             }
             
         }   
@@ -179,13 +179,23 @@ public class EliminarPanel extends StandarPanel {
         
         try{
             if(!nombreBuscado.equalsIgnoreCase(" ") && nombre.equalsIgnoreCase("pookemon")){
-            arena.eliminarPookemon(nombreBuscado);
-            cleanContent();
-            JOptionPane.showMessageDialog(this, "El pookemon fue eliminado correctamente");
+                if(!nombreBuscado.equalsIgnoreCase("notFound")){
+                    arena.eliminarPookemon(nombreBuscado);
+                    cleanContent();
+                    JOptionPane.showMessageDialog(this, "El pookemon fue eliminado correctamente");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Pookemon inexistente", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                
             } else if(!nombreBuscado.equalsIgnoreCase(" ") && nombre.equalsIgnoreCase("movimiento")){
-                arena.eliminarMovimiento(nombreBuscado);
-                cleanContent();
-                JOptionPane.showMessageDialog(this, "El movimiento fue eliminado correctamente");
+                if(!nombreBuscado.equalsIgnoreCase("notFound")){
+                    arena.eliminarMovimiento(nombreBuscado);
+                    cleanContent();
+                    JOptionPane.showMessageDialog(this, "El movimiento fue eliminado correctamente");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Movimiento inexistente", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                
             } else {
                 JOptionPane.showMessageDialog(this, "No se encontro el "+nombreBuscado.toLowerCase()+" buscado");
             }
@@ -209,6 +219,7 @@ public class EliminarPanel extends StandarPanel {
             resource1 = getClass().getResource("/img/null.jpg");
             resource2 = getClass().getResource("/img/null.jpg");
             ((JLabel) jpResultado.getComponent(0)).setText("No existe");
+            nombreBuscado = "notFound";
         }else{
             resource1 = getClass().getResource("/img/SpritesPookemon/"+pookemon.getNombrePookemon().toLowerCase()+".gif");
             resource2 = getClass().getResource("/img/Ele_"+pookemon.getElementoPookemon().toLowerCase()+".png");
@@ -235,6 +246,7 @@ public class EliminarPanel extends StandarPanel {
             resource1 = getClass().getResource("/img/null.jpg");
             resource2 = getClass().getResource("/img/null.jpg");
             ((JLabel) jpResultado.getComponent(0)).setText("No existe");
+            nombreBuscado = "notFound";
         }else{
             resource1 = getClass().getResource("/img/Ele_"+mov.getElemento()+".png");
             resource2 = getClass().getResource("/img/"+mov.getTipoMovimiento()+".png");

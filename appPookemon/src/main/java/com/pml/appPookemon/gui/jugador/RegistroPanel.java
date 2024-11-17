@@ -171,10 +171,10 @@ public class RegistroPanel extends StandarPanel {
         try {
             e = crearJugador();
         } catch (NumeroEnTextoException ex) {
-            JOptionPane.showMessageDialog(null, "El nombre no puede tener números o estar en blanco");
+            JOptionPane.showMessageDialog(null, "El nombre no puede tener números o estar en blanco", "Error", JOptionPane.ERROR_MESSAGE);
             bandera = true;
         } catch (ElementoNoSeleccionadoException ex) {
-            JOptionPane.showMessageDialog(null, "Género no seleccionado");
+            JOptionPane.showMessageDialog(null, "Género no seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
             banderaG = true;
         }
         

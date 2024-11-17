@@ -5,6 +5,7 @@
 package main.java.com.pml.appPookemon.gui.admin;
 
 import java.awt.Graphics2D;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -21,6 +22,7 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoParalisis;
 import main.java.com.pml.appPookemon.datos.pookemon.model.EfectoQuemadura;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
+import main.java.com.pml.appPookemon.excepciones.NumeroEnTextoException;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 import org.jdesktop.swingx.prompt.PromptSupport;
@@ -275,56 +277,128 @@ public class AgregarPanel extends StandarPanel {
 
     private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
         ArenaController arena = new ArenaController();
-
         String nombreElemento = txtCampo1.getText();
-        if (nombre.equalsIgnoreCase("Pookemon")) {
+        
+        if (!nombreElemento.matches("[a-zA-Z\\s]+") || nombreElemento.trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese bien el nombre. Asegúrese de no dejarlo en blanco o incluir números", "Error", JOptionPane.ERROR_MESSAGE);
+            txtCampo1.requestFocus();
+        }else{
+            
+            if (nombre.equalsIgnoreCase("Pookemon")) {
             agregarPookemon(arena, nombreElemento);
-        } else {
-            agregarMovimiento(arena, nombreElemento);
+            } else {
+                agregarMovimiento(arena, nombreElemento);
+            }
+            selectedGifFile = null;
         }
-        selectedGifFile = null;
+        
+        
     }//GEN-LAST:event_btAgregarActionPerformed
    
 
     private void agregarPookemon(ArenaController arena, String nombreElemento) {
+        
+        boolean banderaP = false;
+        Pookemon pookemon = null;
+        
         PookemonController controlador = new PookemonController();
-        int velocidad = Integer.parseInt(txtCampo2.getText());
-        int ataqueFisico = Integer.parseInt(txtCampo3.getText());
-        int defensaFisica = Integer.parseInt(txtCampo4.getText());
-        int ataqueEspecial = Integer.parseInt(txtCampo5.getText());
-        int defensaEspecial = Integer.parseInt(txtCampo6.getText());
-        String elemento = (String) jcbElemento.getSelectedItem();
+        int velocidad = 0;
+        int ataqueFisico = 0;
+        int ataqueEspecial = 0;
+        int defensaFisica = 0;
+        int defensaEspecial = 0;
+        
+        try{
+            velocidad = Integer.parseInt(txtCampo2.getText());
+            ataqueFisico = Integer.parseInt(txtCampo3.getText());
+            defensaFisica = Integer.parseInt(txtCampo4.getText());
+            ataqueEspecial = Integer.parseInt(txtCampo5.getText());
+            defensaEspecial = Integer.parseInt(txtCampo6.getText()); 
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Verifique que no haya digitado mal un campo o lo haya dejado en blanco", "Error en atributos", JOptionPane.ERROR_MESSAGE);
+            banderaP = true;
+        }
+        
+        if(banderaP){
+            
+        }else{
+            String elemento = (String) jcbElemento.getSelectedItem();
 
-        Pookemon pookemon = controlador.agregarPookemon(nombreElemento, velocidad, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, elemento);
+            pookemon = controlador.agregarPookemon(nombreElemento, velocidad, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, elemento);
+        }
+        
 
         // Solo guardar el GIF si se ha seleccionado uno
-        if (selectedGifFile != null) {
-            if (uploadGif(nombreElemento)) {
-                arena.agregarPookemon(pookemon);
-                JOptionPane.showMessageDialog(null, "Pookemon guardado correctamente :)");
-                lblFilePath.setText("Archivo guardado correctamente.");
+        try {
+            if (selectedGifFile != null) {
+                
+                if (!selectedGifFile.getName().toLowerCase().endsWith(".gif")) {
+                    lblFilePath.setText("El archivo seleccionado no es un GIF. Por favor, selecciona un archivo .gif.");
+                    return; 
+                }
+                
+                if (uploadGif(nombreElemento)) {
+                    arena.agregarPookemon(pookemon);
+                    JOptionPane.showMessageDialog(null, "Pookemon guardado correctamente :)");
+                    lblFilePath.setText("Archivo guardado correctamente.");
+                }
+            } else {
+                lblFilePath.setText("No se ha seleccionado ningún archivo GIF para guardar.");
             }
-        } else {
-            lblFilePath.setText("No se ha seleccionado ningún archivo GIF para guardar.");
+        }catch (NullPointerException e) {
+            
+            JOptionPane.showMessageDialog(null, "Error: Uno de los objetos es nulo. Verifica 'arena' o 'pookemon'.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+         catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, "Error: Argumento inválido al agregar el Pookemon. Verifica los datos de entrada.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error de interfaz gráfica. El entorno no es compatible con JOptionPane.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrió un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     private void agregarMovimiento(ArenaController arena, String nombreElemento) {
         MovimientoController controlador = new MovimientoController();
-        String nombreMovimiento = nombreElemento;
-        int potencia = Integer.parseInt(txtCampo2.getText());
-        int precision = Integer.parseInt(txtCampo3.getText());
-        int cantidadPP = Integer.parseInt(txtCampo4.getText());
-        String nombreEfecto = (String) jcbEfecto.getSelectedItem();
-        Efecto efecto = getEfecto(nombreEfecto);
-        String elemento = (String) jcbElemento.getSelectedItem();
-        String tipo = (String) jcbTipo.getSelectedItem();
-        int probabilidadEfecto = Integer.parseInt(txtProbabilidadEfecto.getText());
-
-        Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, tipo, probabilidadEfecto);
-        arena.agregarMovimiento(movimiento);
+        boolean bandera = false;
         
-        JOptionPane.showMessageDialog(null, "Movimiento guardado correctamente :)");
+        String nombreMovimiento = "";
+        int potencia = 0;
+        int precision = 0;
+        int cantidadPP = 0;
+        String nombreEfecto = "";
+        Efecto efecto = null;
+        String elemento = "";
+        String tipo = "";
+        int probabilidadEfecto = 0;
+        
+        try{
+            nombreMovimiento = nombreElemento;
+            potencia = Integer.parseInt(txtCampo2.getText());
+            precision = Integer.parseInt(txtCampo3.getText());
+            cantidadPP = Integer.parseInt(txtCampo4.getText());
+            nombreEfecto = (String) jcbEfecto.getSelectedItem();
+            efecto = getEfecto(nombreEfecto);
+            elemento = (String) jcbElemento.getSelectedItem();
+            tipo = (String) jcbTipo.getSelectedItem();
+            probabilidadEfecto = Integer.parseInt(txtProbabilidadEfecto.getText());
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Por favor, asegúrese de haber ingresado numeros enteros en los campos pertinentes", "Error", JOptionPane.ERROR_MESSAGE);
+            bandera = true;
+        }
+        
+        if(bandera){
+            
+        }else{
+            Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, tipo, probabilidadEfecto);
+            arena.agregarMovimiento(movimiento);
+            JOptionPane.showMessageDialog(null, "Movimiento guardado correctamente :)");
+        }
+
+        
+        
+        
     }
 
     private Efecto getEfecto(String nombreEfecto) {
