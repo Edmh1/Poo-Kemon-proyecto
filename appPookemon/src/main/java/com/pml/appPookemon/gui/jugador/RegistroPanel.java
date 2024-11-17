@@ -179,8 +179,8 @@ public class RegistroPanel extends StandarPanel {
         if(bandera || banderaG){
             
         }else{
-            super.getMainFrame().getBatalla().getController().setEntrenador(indice, e);
-            super.getMainFrame().switchToRegistroPanel(indice++);
+            super.getMainFrame().getBatallaPanel().agregarEntrenador(indice, e);
+            super.getMainFrame().switchToRegistroPanel(++indice);
         }
         
     }//GEN-LAST:event_btSiguienteActionPerformed

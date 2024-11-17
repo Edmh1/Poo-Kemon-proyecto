@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.conf_arena.model.ArenaConf;
-import main.java.com.pml.appPookemon.datos.conf_arena.model.Batalla;
 import main.java.com.pml.appPookemon.datos.registro.controller.OrganizadorController;
 /**
  *
@@ -66,6 +65,7 @@ public class ArenaController {
     
     public void eliminarMovimiento(String movimiento){
         arena.eliminarMovimiento(movimiento);
+        organizadorController.setArena(arena);
     }
             
     

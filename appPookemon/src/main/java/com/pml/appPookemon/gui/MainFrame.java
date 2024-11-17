@@ -49,7 +49,7 @@ public class MainFrame extends javax.swing.JFrame {
         reproducirMusica(getClass().getResourceAsStream("/audio/song_modified.WAV"));
     }
  
-    public BatallaPanel getBatalla(){
+    public BatallaPanel getBatallaPanel(){
         return batPri;
     }
     
@@ -139,8 +139,9 @@ public class MainFrame extends javax.swing.JFrame {
             }else{
                 switchPanel("regP2");
             } 
-        }
-        switchToListoPanel();      
+        }else{
+            switchToListoPanel();    
+        } 
     }
     
     public void switchToBatallaPnel(){

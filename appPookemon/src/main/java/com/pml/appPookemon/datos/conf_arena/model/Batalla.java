@@ -3,6 +3,7 @@ package main.java.com.pml.appPookemon.datos.conf_arena.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 
@@ -16,10 +17,7 @@ public class Batalla {
     private Accion accionEntrenador2;
     
 
-    public Batalla(Entrenador e, Entrenador e2, List<Pookemon> pookemones){
-        this.entrenador1 = e;
-        this.entrenador2 = e2;
-        this.pookemones = pookemones;
+    public Batalla(){
         numeroTurno = 0;
     }
 
@@ -299,8 +297,6 @@ public class Batalla {
         return reporteBatalla;
     }
 
-
-
     private void atacar(Entrenador atacante, Entrenador defensor, int id){
         atacante.atacar(id, defensor.getPookemonActual());
     }
@@ -339,7 +335,8 @@ public class Batalla {
     
     public boolean generarMazo(){
         Random random = new Random();
-        List<Pookemon> auxiliar = this.pookemones; 
+        ArenaController a = new ArenaController();
+        List<Pookemon> auxiliar = a.getPookemones(); 
        
         if (auxiliar.size() < 6) {
             return false;  // Asegurarse de que hay suficientes Pookemones

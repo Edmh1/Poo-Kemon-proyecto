@@ -43,10 +43,11 @@ public class BatallaPanel extends StandarPanel {
         initComponents();
         turno = 1;
         turnoJugador = 1;
+        controlador = new BatallaController();
     }
     
-    public BatallaController getController(){
-        return controlador;
+    public void agregarEntrenador(int indice, Entrenador e){
+        controlador.setEntrenador(indice, e);
     }
 
     /**

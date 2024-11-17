@@ -13,10 +13,11 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 public class BatallaController {
     
     private Batalla batalla;
-    
-    public BatallaController(Entrenador e1, Entrenador e2, List<Pookemon> pookemones) {
-        batalla = new Batalla(e1, e2, pookemones);
+
+    public BatallaController() {
+        this.batalla = new Batalla();
     }
+    
     public Batalla getBatalla(){
         return batalla;
     }
