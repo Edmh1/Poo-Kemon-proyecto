@@ -156,11 +156,11 @@ public class BatallaPanel extends StandarPanel {
         txtAreaLog.setRows(5);
         jScrollPane1.setViewportView(txtAreaLog);
 
-        imgPookemon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/EleLucha.png"))); // NOI18N
+        imgPookemon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/Ele_lucha.png"))); // NOI18N
 
         pbVida1.setValue(50);
 
-        imgPookemon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/EleAcero.png"))); // NOI18N
+        imgPookemon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/img/Ele_acero.png"))); // NOI18N
 
         lbNombreEntrenador2.setText("Nombre entrenador");
 
@@ -260,7 +260,7 @@ public class BatallaPanel extends StandarPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(imgEfectoPk2)
                             .addComponent(imgEfectoPk1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
