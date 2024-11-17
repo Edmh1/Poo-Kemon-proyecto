@@ -8,7 +8,7 @@
 - Entrenador: Representa al usuario que participa en las batallas. Sus atributos pueden incluir nombre, 
         género y equipo de Pookémon durante su batalla.
 - Pookémon: Cada Pookémon tiene atributos como estadísticas (vida, ataque físico, defensa física, etc.), 
-        tipo y movimientos. Además, métodos para atacar, defenderse o cambiar de estado.
+        elemento y movimientos. Además, métodos para atacar, defenderse o cambiar de estado.
 -  Movimiento: Define los diferentes ataques que un Pookémon puede realizar, incluyendo tipo, potencia y 
         puntos de poder (PP).
 - Batalla: Gestiona la lógica de combate entre dos entrenadores, determinando el orden de turnos, 
@@ -33,9 +33,6 @@
 - Tipos de Movimientos: Podrían existir clases específicas para diferentes tipos de movimientos 
         (físicos, especiales) que heredan de una clase base Movimiento.
 
--   Tipos de Pookémon: Si ciertos Pookémon comparten características comunes, se puede crear una 
-        jerarquía de clases que permita heredar comportamientos y atributos comunes.
-
 - Ventaja: Facilita la extensión del sistema, permitiendo agregar nuevas funcionalidades con un 
     esfuerzo mínimo y manteniendo una estructura coherente.
 
@@ -58,12 +55,4 @@
 
 - Ventaja: Reduce la complejidad del desarrollo y facilita la colaboración entre múltiples desarrolladores, 
     ya que cada uno puede trabajar en módulos independientes.
-
-## 6. Escalabilidad
-### Aplicación en Pookémon Battle:
-- Expansión de Funcionalidades: Se pueden agregar nuevas características como torneos en línea, 
-        rankings, o integración con redes sociales mediante la creación de nuevas clases o la extensión de las existentes.
-  
-- Ventaja: Garantiza que el sistema pueda evolucionar con las necesidades de la organización sin requerir 
-    una reestructuración completa.
 

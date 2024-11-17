@@ -21,12 +21,7 @@ Además de la manipulación de los mazos, hubo casos de jugadores que añadieron
 secreto antes de que comenzaran los partidos. Los controles manuales de los árbitros no fueron suficientes para 
 detectar todos estos casos, lo que generó una desconfianza generalizada y una insatisfacción entre los participantes.
 
-3. Barreras de accesibilidad:
-A medida que la liga se extiende a través de los continentes, la organización y coordinación de eventos se ha vuelto 
-aún más compleja. Las diferencias horarias, las barreras lingüísticas y la necesidad de personal adicional en varias 
-regiones han hecho que sea cada vez más difícil mantener la consistencia y la calidad de las competiciones.
-
-4. Problemas de seguridad:
+3. Problemas de seguridad:
 La naturaleza física de las cartas las hacía susceptibles al robo, especialmente en el caso de cartas valiosas y 
 raras que se robaban durante los torneos. Esto no solo causó pérdidas económicas, sino que también esta deteriorando 
 la confianza en la seguridad que brindaba la liga.
@@ -36,8 +31,8 @@ PML reconoció que estos problemas estaban afectando gravemente la integridad de
 competencias y la experiencia de sus jugadores. Como resultado, se acercaron a nuestra empresa de desarrollo de 
 software para crear una solución digital que pudiera abordar estos desafíos. Solicitaron un sistema que:
 
-1. Digitalizara las batallas de cartas: trasladara todo el proceso de batalla de cartas a una plataforma digital, 
-donde las barajas son realmente aleatorias y los jugadores no tienen forma de manipular sus cartas.
+1. Digitalizara las batallas de cartas: trasladara todo el proceso de batalla de cartas a una plataforma digital de forma local, 
+donde los jugadores no tienen forma de manipular sus cartas.
 
 2. Aplicar la aleatorización: implementar un sistema sólido que garantice que las barajas sean realmente 
 aleatorias para cada partida, preservando la naturaleza estratégica de la competencia.
@@ -46,5 +41,4 @@ aleatorias para cada partida, preservando la naturaleza estratégica de la compe
 automáticamente todas las reglas durante la partida.
 
 ## Resultado esperado
-El proyecto tiene como objetivo restaurar la integridad y la esencia estratégica 
-de la Pookémon Masters League. Al eliminar la posibilidad de manipulación de los mazos y garantizar que el éxito en la liga se base únicamente en la habilidad estratégica, la PML espera recuperar la confianza de sus jugadores y fanáticos. La plataforma digital también hará que la competencia sea más accesible para los nuevos jugadores, lo que garantizará que la liga continúe creciendo y prosperando en un entorno justo y competitivo.
+El objetivo principal del proyecto es restaurar la integridad y la esencia estratégica de la Pookémon Masters League (PML). Al eliminar cualquier posibilidad de manipulación en la construcción de mazos y garantizar que el éxito en la liga dependa exclusivamente de la habilidad estratégica de los participantes, la PML busca no solo fortalecer la competitividad justa, sino también recuperar la confianza y el entusiasmo de sus jugadores y fanáticos. Con estas medidas, se espera consolidar la liga como un referente de excelencia en el ámbito competitivo.

@@ -27,6 +27,7 @@ Cada Pookémon debe contar con 4 movimientos donde por lo menos 1 estara directa
 - Los movimientos son asignados automáticamente al momento de recibir el Pookémon en el juego.
 
 ---
+//DEBEN CAMBIAR
 ### 3. Título
 Como jugador, quiero poder consultar la descripción de los movimientos de mi Pookémon durante la batalla para tomar decisiones informadas.
 
@@ -76,6 +77,7 @@ El sistema debe permitir a los jugadores cambiar su Pookémon durante el combate
 ###
 #
 # ORGANIZADOR
+//DEBEN CAMBIAR Ya que ahora lo que se puede es gestionar la arena de combate
 ### 7. Título
 Como organizador, quiero poder crear el torneo y definir la recompensa para el ganador del torneo.
 
@@ -89,6 +91,7 @@ El sistema debe permitir crear el torneo al organizador y definir la recompensa 
 
 ---
 ### 8. Título
+//DEBEN CAMBIAR Ya que ahora son batallas 1v1 que resultan en 1 ganador
 Como organizador, quiero que al ganador del torneo se le asigne un código que le permita reclamar una recompensa en un punto físico.
 
 ### Descripción:
@@ -102,6 +105,8 @@ visible para el ganador, asegurando que se utilice dentro del periodo establecid
 
 ---
 ### 9. Título
+//DEBEN CAMBIAR Ya que ahora aunque hay registro este es mas coloquial para poder pelear de manera 
+//rapida
 Como organizador, quiero un sistema de registro que permita a los jugadores inscribirse en el torneo para garantizar la participación organizada.
 
 ### Descripción:
@@ -112,6 +117,7 @@ El sistema debe permitir a los jugadores registrarse al inicio del torneo, inclu
 - Se genera una lista de participantes que es accesible para el organizador.
 ---
 ### 10. Título
+//DEBEN CAMBIAR Ya que ahora no gestionamos multiples rondas de combates
 Como organizador, quiero un sistema que gestione múltiples rondas de combate para determinar el ganador del torneo.
 
 ### Descripción:
@@ -124,6 +130,7 @@ El sistema debe gestionar el progreso del torneo en un formato eliminatorio, per
 
 ---
 ### 11. Título
+//DEBEN Ajustarse para que sea el log de abajo a la derecha en batalla
 Como organizador, quiero que el sistema genere un reporte detallado de cada batalla para revisar el desempeño de los jugadores y asegurar la transparencia.
 
 ### Descripción:
@@ -136,8 +143,7 @@ El sistema debe generar un reporte detallado al finalizar cada batalla, incluyen
 
 ---
 ### 12. Título
-Como organizador, quiero que cada jugador reciba 3 Pookémones al azar al comienzo de cada batalla para 
-garantizar la equidad durante el torneo.
+Como organizador, quiero que cada jugador reciba 3 Pookémones al azar al comienzo de cada batalla 
 
 ### Descripción:
 El sistema debe asignar 3 Pookémones aleatorios a cada jugador al inicio de cada batalla. 
