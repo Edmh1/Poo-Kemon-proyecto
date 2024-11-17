@@ -86,13 +86,6 @@ public class AgregarPanel extends StandarPanel {
         this.repaint();
     }
     
-    private void configurarElemento() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-     private void configurarEfectos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
     public void clearFields(){
         txtCampo1.setText("");
         txtCampo2.setText("");
@@ -315,9 +308,7 @@ public class AgregarPanel extends StandarPanel {
             int probabilidadEfecto = Integer.parseInt(txtProbabilidadEfecto.getText());
             Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, tipo, probabilidadEfecto);
             arena.agregarMovimiento(movimiento);
-            System.out.println(""+arena.getMovimientos().toString());
         }
-        
 
     }//GEN-LAST:event_btAgregarActionPerformed
 

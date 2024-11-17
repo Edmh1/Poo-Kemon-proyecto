@@ -24,6 +24,7 @@ public class ArenaController {
     
     public void agregarPookemon(Pookemon e){
         arena.addPookemon(e);
+        organizadorController.setArena(arena);
     }
     
     public ArrayList<Pookemon> getPookemones(){
@@ -32,6 +33,7 @@ public class ArenaController {
     
     public void agregarMovimiento(Movimiento e){
         arena.addMovimiento(e);
+        organizadorController.setArena(arena);
     }
     
     public ArrayList<Movimiento> getMovimientos(){

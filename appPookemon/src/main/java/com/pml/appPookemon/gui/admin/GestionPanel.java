@@ -133,7 +133,6 @@ public class GestionPanel extends StandarPanel {
 
     private void btAgrMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgrMovimientoActionPerformed
         super.getMainFrame().switchToAgregarPanel("MOVIMIENTO");
-        
     }//GEN-LAST:event_btAgrMovimientoActionPerformed
 
     private void btEdiPookemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEdiPookemonActionPerformed
