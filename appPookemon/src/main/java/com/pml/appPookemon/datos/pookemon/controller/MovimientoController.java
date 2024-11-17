@@ -24,13 +24,24 @@ public class MovimientoController {
 
     public Movimiento agregarMovimiento(String nombreMovimiento, int potencia, int precision, int cantidadPP, String elemento, Efecto efecto, String tipo, int probabilidadEfecto) {
         if(tipo.equalsIgnoreCase("Mov. Fisico")){
-            Movimiento movimiento = new MovimientoFisico(a.getMovimientos().size(), nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, probabilidadEfecto);
+            Movimiento movimiento = new MovimientoFisico(asignarId(a.getMovimientos().size()), nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, probabilidadEfecto);
             return movimiento;
         } else {
-            Movimiento movimiento = new MovimientoEspecial(a.getMovimientos().size(), nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, probabilidadEfecto);
+            Movimiento movimiento = new MovimientoEspecial(asignarId(a.getMovimientos().size()), nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, probabilidadEfecto);
             return movimiento;
         }
         
+    }
+    
+    private int asignarId(int id){
+        for (Movimiento movimiento : a.getMovimientos()) {
+            if(id==movimiento.getIdMovimiento()){
+                id++;
+                asignarId(id);
+            }
+        }
+        
+        return id;
     }
     
 }

@@ -159,6 +159,7 @@ public class EliminarPanel extends StandarPanel {
                 buscarPookemon();
             }catch(NumeroEnTextoException ex){
                 JOptionPane.showMessageDialog(null, "Por favor, ingrese correctamente el nombre. Asegúrese de no digitar números y no dejarlo en blanco", "Error", JOptionPane.ERROR_MESSAGE);
+                nombreBuscado = " ";
             }
             
         }else{
@@ -166,6 +167,7 @@ public class EliminarPanel extends StandarPanel {
                 buscarMovimiento();
             }catch(NumeroEnTextoException ex){
                 JOptionPane.showMessageDialog(null, "Por favor, ingrese correctamente el nombre. Asegúrese de no digitar números y no dejarlo en blanco", "Error", JOptionPane.ERROR_MESSAGE);
+                nombreBuscado = " ";
             }
             
         }   
@@ -178,6 +180,7 @@ public class EliminarPanel extends StandarPanel {
         ArenaController arena = new ArenaController();
         
         try{
+            
             if(!nombreBuscado.equalsIgnoreCase(" ") && nombre.equalsIgnoreCase("pookemon")){
                 if(!nombreBuscado.equalsIgnoreCase("notFound")){
                     arena.eliminarPookemon(nombreBuscado);
@@ -197,7 +200,7 @@ public class EliminarPanel extends StandarPanel {
                 }
                 
             } else {
-                JOptionPane.showMessageDialog(this, "No se encontro el "+nombreBuscado.toLowerCase()+" buscado");
+                JOptionPane.showMessageDialog(this, "No se encontro el "+nombre.toLowerCase()+" buscado");
             }
         }catch(NullPointerException ex){
             JOptionPane.showMessageDialog(null, "El " + nombre.toLowerCase() + " digitado no fue encontrado");
@@ -287,6 +290,7 @@ public class EliminarPanel extends StandarPanel {
         lbImg1.setIcon(emptyIcon);
         lbImg2.setIcon(emptyIcon);
         txtBuscar.setText("");
+        nombreBuscado= " ";
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
