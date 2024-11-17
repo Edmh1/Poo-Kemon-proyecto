@@ -33,7 +33,6 @@ import org.jdesktop.swingx.prompt.PromptSupport;
 public class AgregarPanel extends StandarPanel {
 
     private String nombre;
-    private Efecto efecto;
     private static final String GIF_EXTENSION = ".gif";
     private File selectedGifFile = null;
     

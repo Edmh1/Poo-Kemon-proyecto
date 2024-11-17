@@ -112,6 +112,7 @@ public class InicializadorObj {
 
         
         //movimientos
+        Movimiento GolpeCuerpo = new MovimientoFisico(0, "Golpe Cuerpo", 85, 100, 15, "normal", paralisis, 30);
         Movimiento Lanzallamas = new MovimientoEspecial(1, "Lanzallamas", 90, 100, 10, "fuego", quemadura, 10);
         Movimiento PunoFuego = new MovimientoFisico(2, "Puño Fuego", 75, 100, 15, "fuego", quemadura, 10);
         Movimiento Llamarada = new MovimientoEspecial(3, "Llamarada", 110, 85, 5, "fuego", quemadura, 10);
@@ -157,9 +158,7 @@ public class InicializadorObj {
         Movimiento Zumbido = new MovimientoEspecial(43, "Zumbido", 90, 100, 10, "bicho", null, 0);
         Movimiento TijeraX = new MovimientoFisico(44, "Tijera X", 80, 100, 15, "bicho", null, 0);
         Movimiento Vozarron = new MovimientoEspecial(45, "Vozarron", 90, 100, 10, "normal", null, 0);
-        Movimiento GolpeCuerpo = new MovimientoFisico(46, "Golpe Cuerpo", 85, 100, 15, "normal", paralisis, 30);
-
-        
+       
         //pokemones con movimientos
         Roserade.setMovimientos(new ArrayList<>(Arrays.asList(Energibola, BombaGermen, BombaLodo, PuyaNociva)));
         Venusaur.setMovimientos(new ArrayList<>(Arrays.asList(Latigazo, BombaGermen, Energibola, BombaLodo)));
@@ -218,6 +217,7 @@ public class InicializadorObj {
         o.agregarPookemon(Lapras);
         o.agregarPookemon(Weavile);
 
+        o.agregarMovimiento(GolpeCuerpo);
         o.agregarMovimiento(Lanzallamas);
         o.agregarMovimiento(PunoFuego);
         o.agregarMovimiento(Llamarada);
@@ -263,7 +263,7 @@ public class InicializadorObj {
         o.agregarMovimiento(Zumbido);
         o.agregarMovimiento(TijeraX);
         o.agregarMovimiento(Vozarron);
-        o.agregarMovimiento(GolpeCuerpo);
+        
 
         
         

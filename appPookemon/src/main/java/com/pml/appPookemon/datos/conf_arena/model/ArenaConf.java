@@ -30,8 +30,6 @@ public class ArenaConf implements Serializable{
         pookemones.add(x);
     }
     
-    //falta el editar po
-    
     public void eliminarPookemon(String pookemon){
         for (int i = 0; i < pookemones.size(); i++) {
             if(pookemones.get(i).getNombrePookemon().equalsIgnoreCase(pookemon)){
@@ -40,11 +38,13 @@ public class ArenaConf implements Serializable{
         }
     }
     
+    public void editarPookemon(Pookemon p){
+        pookemones.set(p.getIdPookemon(), p);
+    }
+    
     public void addMovimiento(Movimiento x){
         movimientos.add(x);
     }
-    
-    //falta el editar mv
     
     public void eliminarMovimiento(String movimiento){
         for (int i = 0; i < movimientos.size(); i++) {
@@ -53,6 +53,10 @@ public class ArenaConf implements Serializable{
             }
             
         }
+    }
+    
+    public void editarMovimiento(Movimiento m){
+        movimientos.set(m.getIdMovimiento(), m);
     }
     
     public String toStringPookemones() {

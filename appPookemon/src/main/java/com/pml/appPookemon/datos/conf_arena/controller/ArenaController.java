@@ -22,13 +22,27 @@ public class ArenaController {
         return arena;
     }
     
+    public ArrayList<Pookemon> getPookemones(){
+        return arena.getPookemones();
+    }
+    
     public void agregarPookemon(Pookemon e){
         arena.addPookemon(e);
         organizadorController.setArena(arena);
     }
     
-    public ArrayList<Pookemon> getPookemones(){
-        return arena.getPookemones();
+    public void eliminarPookemon(String pookemon){
+        arena.eliminarPookemon(pookemon);
+        organizadorController.setArena(arena);
+    }
+    
+    public void editarPookemon(Pookemon p){
+        arena.editarPookemon(p);
+        organizadorController.setArena(arena);
+    }
+   
+    public ArrayList<Movimiento> getMovimientos(){
+        return arena.getMovimientos();
     }
     
     public void agregarMovimiento(Movimiento e){
@@ -36,8 +50,18 @@ public class ArenaController {
         organizadorController.setArena(arena);
     }
     
-    public ArrayList<Movimiento> getMovimientos(){
-        return arena.getMovimientos();
+    public void eliminarMovimiento(String movimiento){
+        arena.eliminarMovimiento(movimiento);
+        organizadorController.setArena(arena);
+    }
+    
+    public void editarMovimiento(Movimiento m){
+        arena.editarMovimiento(m);
+        organizadorController.setArena(arena);
+    }
+    
+    public Movimiento buscarMovimientoPorNombre(String nombreBuscado){
+        return arena.buscarMovimientoPorNombre(nombreBuscado);
     }
     
     public String buscarElementoMovimiento(String nombreBuscado){
@@ -55,20 +79,5 @@ public class ArenaController {
     public Pookemon buscarPokemonPorNombre(String nombreBuscado){
         return arena.buscarPokemonPorNombre(nombreBuscado);
     }
-    
-    public Movimiento buscarMovimientoPorNombre(String nombreBuscado){
-        return arena.buscarMovimientoPorNombre(nombreBuscado);
-    }
-    
-    public void eliminarPookemon(String pookemon){
-        arena.eliminarPookemon(pookemon);
-        organizadorController.setArena(arena);
-    }
-    
-    public void eliminarMovimiento(String movimiento){
-        arena.eliminarMovimiento(movimiento);
-        organizadorController.setArena(arena);
-    }
-            
     
 }

@@ -20,8 +20,7 @@ public class EditarPanel extends StandarPanel {
 
     private String nombre;
     private String nombreBuscado;
-    private Pookemon pookemonBuscado;
-    private Movimiento movimientoBuscado;
+
     /**
      * Creates new form EditarPanel
      */
@@ -39,6 +38,7 @@ public class EditarPanel extends StandarPanel {
         }else{
             configurarParaMovimiento();
         }
+        clearFields();
     }
     
     private void configurarParaPookemon() {
@@ -93,6 +93,9 @@ public class EditarPanel extends StandarPanel {
         txtNewCampo5.setText("");
         txtNewCampo6.setText("");
         txtBuscar.setText("");
+        
+        lbOldNombre.setText("Nombre id");
+        lbNewNombre.setText("Nombre id");
     }
 
     
@@ -412,45 +415,56 @@ public class EditarPanel extends StandarPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizarActionPerformed
-        // TODO add your handling code here:
-        
+        ArenaController arena = new ArenaController();
         if(nombre.equalsIgnoreCase("pookemon")){
-            if(pookemonBuscado!=null){
-                try{
+            actualizarPookemon(arena);
+        } else {
+            actualizarMovimiento(arena);
+        }
+    }//GEN-LAST:event_btActualizarActionPerformed
+
+    public void actualizarPookemon(ArenaController a){
+        Pookemon pookemonBuscado = a.buscarPokemonPorNombre(nombreBuscado);
+        if(pookemonBuscado!=null){
+            try{
                 pookemonBuscado.getEstadisticaPookemon().setVida(Integer.parseInt(txtNewCampo1.getText()));
                 pookemonBuscado.getEstadisticaPookemon().setAtaqueFisico(Integer.parseInt(txtNewCampo2.getText()));
                 pookemonBuscado.getEstadisticaPookemon().setDefensaFisica(Integer.parseInt(txtNewCampo3.getText()));
                 pookemonBuscado.getEstadisticaPookemon().setAtaqueEspecial(Integer.parseInt(txtNewCampo4.getText()));
                 pookemonBuscado.getEstadisticaPookemon().setDefensaEspecial(Integer.parseInt(txtNewCampo5.getText()));
                 pookemonBuscado.getEstadisticaPookemon().setVelocidad(Integer.parseInt(txtNewCampo6.getText()));
-                JOptionPane.showMessageDialog(this, "Pookemon actualizado exitosamente");   
-                } catch(NumberFormatException ex){
+                a.editarPookemon(pookemonBuscado);
+                JOptionPane.showMessageDialog(this, "Pookemon actualizado exitosamente");
+                clearFields();
+            } catch(NumberFormatException ex){
                 JOptionPane.showMessageDialog(this, "Datos mal digitados");
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
             }
         } else {
-            if(movimientoBuscado!=null){
-                try{
-                    movimientoBuscado.setDescripcionMovimiento(txtNewCampo1.getText());
-                    movimientoBuscado.setPotencia(Integer.parseInt(txtNewCampo2.getText()));
-                    movimientoBuscado.setPrecision(Integer.parseInt(txtNewCampo3.getText()));
-                    movimientoBuscado.setCantidadPP(Integer.parseInt(txtNewCampo4.getText()));
-                    
-                    
-                    JOptionPane.showMessageDialog(this, "Movimiento actualizado exitosamente");  
-                } catch(NumberFormatException ex){
-                    JOptionPane.showMessageDialog(this, "Datos mal digitados");
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
-            }
+            JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
         }
-
-
-    }//GEN-LAST:event_btActualizarActionPerformed
-
+    }
+    
+    public void actualizarMovimiento(ArenaController a){
+        Movimiento movimientoBuscado = a.buscarMovimientoPorNombre(nombreBuscado);
+        if(movimientoBuscado!=null){
+            try{
+                movimientoBuscado.setDescripcionMovimiento(txtNewCampo1.getText());
+                movimientoBuscado.setPotencia(Integer.parseInt(txtNewCampo2.getText()));
+                movimientoBuscado.setPrecision(Integer.parseInt(txtNewCampo3.getText()));
+                movimientoBuscado.setCantidadPP(Integer.parseInt(txtNewCampo4.getText()));
+                
+                JOptionPane.showMessageDialog(this, "Movimiento actualizado exitosamente");
+                clearFields();
+            } catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(this, "Datos mal digitados");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
+        }
+    }
+    
+    
+    
     private void txtOldCampo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOldCampo3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtOldCampo3ActionPerformed
@@ -461,39 +475,43 @@ public class EditarPanel extends StandarPanel {
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         ArenaController arena = new ArenaController();
-        
         nombreBuscado = txtBuscar.getText();
         if(nombre.equalsIgnoreCase("pookemon")){
-            pookemonBuscado = arena.buscarPokemonPorNombre(nombreBuscado);
-            if(pookemonBuscado!=null){
-                lbOldNombre.setText(nombreBuscado);
-                lbNewNombre.setText(nombreBuscado);
-                txtOldCampo1.setText(""+pookemonBuscado.getEstadisticaPookemon().getVida());
-                txtOldCampo2.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueFisico());
-                txtOldCampo3.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaFisica());
-                txtOldCampo4.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueEspecial());
-                txtOldCampo5.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaEspecial());
-                txtOldCampo6.setText(""+pookemonBuscado.getEstadisticaPookemon().getVelocidad());
-            } else {
-                JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
-            }
+            buscarPookemon(arena);
         } else {
-            movimientoBuscado = arena.buscarMovimientoPorNombre(nombreBuscado);
-            if(movimientoBuscado!=null){
-                lbOldNombre.setText(nombreBuscado);
-                lbNewNombre.setText(nombreBuscado);  
-                txtOldCampo1.setText(movimientoBuscado.getDescripcionMovimiento());
-                txtOldCampo2.setText(""+movimientoBuscado.getPotencia());
-                txtOldCampo3.setText(""+movimientoBuscado.getPrecision());
-                txtOldCampo4.setText(""+movimientoBuscado.getCantidadPP());
-            } else {
-                JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
-            }
-        }
-        
-        
+            buscarMovimiento(arena);
+        } 
     }//GEN-LAST:event_btBuscarActionPerformed
 
+    private void buscarPookemon(ArenaController a){
+        Pookemon pookemonBuscado = a.buscarPokemonPorNombre(nombreBuscado);
+        if(pookemonBuscado != null){
+            lbOldNombre.setText(nombreBuscado);
+            lbNewNombre.setText(nombreBuscado);
+            txtOldCampo1.setText(""+pookemonBuscado.getEstadisticaPookemon().getVida());
+            txtOldCampo2.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueFisico());
+            txtOldCampo3.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaFisica());
+            txtOldCampo4.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueEspecial());
+            txtOldCampo5.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaEspecial());
+            txtOldCampo6.setText(""+pookemonBuscado.getEstadisticaPookemon().getVelocidad());    
+        } else {
+            JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
+        }
+    }
+    
+    private void buscarMovimiento(ArenaController a){
+        Movimiento movimientoBuscado = a.buscarMovimientoPorNombre(nombreBuscado);
+        if(movimientoBuscado!=null){
+            lbOldNombre.setText(nombreBuscado);
+            lbNewNombre.setText(nombreBuscado);  
+            txtOldCampo1.setText(movimientoBuscado.getDescripcionMovimiento());
+            txtOldCampo2.setText(""+movimientoBuscado.getPotencia());
+            txtOldCampo3.setText(""+movimientoBuscado.getPrecision());
+            txtOldCampo4.setText(""+movimientoBuscado.getCantidadPP());
+        } else {
+            JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
+        }    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btActualizar;
