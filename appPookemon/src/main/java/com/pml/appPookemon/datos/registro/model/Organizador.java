@@ -39,24 +39,28 @@ public class Organizador implements Serializable {
         arenaConf.eliminarMovimiento(nombreMovimiento);
     }
 
-    public void  mostrarCreditos(){
-        System.out.println("***************************");
-        System.out.println("*     🌟🔴🔵 Pookemon 🌟🔴🔵     *");
-        System.out.println("***************************");
-        System.out.println("* 🎉 Créditos Especiales 🎉 *");
-        System.out.println("*      Los Maestros       *");
-        System.out.println("***************************");
-        System.out.println();
-        System.out.println("💻 Desarrollo y Construccion por:");
-        System.out.println("🛠️ Eddie Manotas - El Conquistador de Bugs");
-        System.out.println("🛠️ Arturo Velasquez - El Arquitecto del Código");
-        System.out.println("🛠️ Sebastian Castro - El Guerrero del Backend");
-        System.out.println("🛠️ Andres Escobar - El Maestro de las Excepciones");
-        System.out.println("🛠️ Vladimir Navarro - El Guardián del Sistema");
-        System.out.println();
-        System.out.println("✨ ¡Gracias por usar nuestro proyecto épico! ✨");
-        System.out.println("***************************");
-    }
+    public String mostrarCreditos() {
+        StringBuilder creditos = new StringBuilder();
+
+        creditos.append("***************************\n");
+        creditos.append("*     🌟🔴🔵 Pookemon 🌟🔴🔵     *\n");
+        creditos.append("***************************\n");
+        creditos.append("* 🎉 Créditos Especiales: 🎉 *\n");
+        creditos.append("*      Carlos Henriquez       *\n");
+        creditos.append("***************************\n");
+        creditos.append("💻 Desarrollo y Construccion por:\n");
+        creditos.append("\n");
+        creditos.append("🛠️ Eddie Manotas - El Conquistador de Bugs\n");
+        creditos.append("🛠️ Arturo Velasquez - El Mago del Código\n");
+        creditos.append("🛠️ Sebastian Castro - El Guerrero del Backend\n");
+        creditos.append("🛠️ Andres Escobar - El Maestro de las Excepciones\n");
+        creditos.append("🛠️ Vladimir Navarro - El Guardián del Sistema\n");
+        creditos.append("\n");
+        creditos.append("✨ ¡Gracias por usar nuestro épico proyecto! ✨\n");
+        creditos.append("***************************\n");
+
+        return creditos.toString();
+    }   
 
     public boolean verficiarCont(String pass){
         return this.password.equals(pass);

@@ -64,5 +64,9 @@ public class OrganizadorController {
    public boolean admitir(String pass){
        return o.verficiarCont(pass);
    }
+   
+   public String mostrarCreditos(){
+       return o.mostrarCreditos();
+   }
 
 }

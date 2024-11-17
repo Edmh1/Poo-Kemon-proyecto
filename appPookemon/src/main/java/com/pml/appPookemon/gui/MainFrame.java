@@ -16,6 +16,8 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JOptionPane;
+import main.java.com.pml.appPookemon.datos.registro.controller.OrganizadorController;
 import main.java.com.pml.appPookemon.gui.admin.AgregarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EditarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EliminarPanel;
@@ -171,6 +173,7 @@ public class MainFrame extends javax.swing.JFrame {
         MnMenu = new javax.swing.JMenu();
         mniAtras = new javax.swing.JMenuItem();
         mniInicio = new javax.swing.JMenuItem();
+        mnCreditos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pookemon");
@@ -203,6 +206,15 @@ public class MainFrame extends javax.swing.JFrame {
         });
         MnMenu.add(mniInicio);
 
+        mnCreditos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/creditos.png"))); // NOI18N
+        mnCreditos.setText("Creditos");
+        mnCreditos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCreditosActionPerformed(evt);
+            }
+        });
+        MnMenu.add(mnCreditos);
+
         jMenuBar1.add(MnMenu);
 
         setJMenuBar(jMenuBar1);
@@ -233,6 +245,11 @@ public class MainFrame extends javax.swing.JFrame {
     private void mniInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniInicioActionPerformed
         switchToWelcomePanel();
     }//GEN-LAST:event_mniInicioActionPerformed
+
+    private void mnCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCreditosActionPerformed
+        OrganizadorController o = new OrganizadorController();
+        JOptionPane.showMessageDialog(null, o.mostrarCreditos());
+    }//GEN-LAST:event_mnCreditosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,6 +292,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MnMenu;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem mnCreditos;
     private javax.swing.JMenuItem mniAtras;
     private javax.swing.JMenuItem mniInicio;
     // End of variables declaration//GEN-END:variables
