@@ -22,6 +22,7 @@ import main.java.com.pml.appPookemon.gui.admin.AgregarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EditarPanel;
 import main.java.com.pml.appPookemon.gui.admin.EliminarPanel;
 import main.java.com.pml.appPookemon.gui.admin.GestionPanel;
+import main.java.com.pml.appPookemon.gui.admin.ListarPanel;
 import main.java.com.pml.appPookemon.gui.batalla.BatallaPanel;
 import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
 
@@ -33,6 +34,7 @@ public class MainFrame extends javax.swing.JFrame {
     private CardLayout cardLayout;
     private Stack<String> panelHistory;
     
+    private ListarPanel listP; 
     private AgregarPanel agrP;
     private EditarPanel ediP;
     private EliminarPanel eliP;
@@ -71,6 +73,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         //paneles despues del admin
         GestionPanel gestP = new GestionPanel(this);
+        listP = new ListarPanel(this);
         agrP = new AgregarPanel(this);
         ediP = new EditarPanel(this);
         eliP = new EliminarPanel(this);
@@ -85,6 +88,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(regP2, "regP2");
         getContentPane().add(listoP, "listoP");
         getContentPane().add(gestP, "gestP");
+        getContentPane().add(listP, "listP");
         getContentPane().add(agrP, "agrP");
         getContentPane().add(ediP, "ediP");
         getContentPane().add(eliP, "eliP");
@@ -118,6 +122,10 @@ public class MainFrame extends javax.swing.JFrame {
     }
     public void switchToGestionPanel() {
         switchPanel("gestP");
+    }
+    public void switchToListarPanel(){
+        listP.showTables();
+        switchPanel("listP");
     }
     public void switchToAgregarPanel(String nombre) {
         agrP.setNombre(nombre);
@@ -223,7 +231,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 720, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

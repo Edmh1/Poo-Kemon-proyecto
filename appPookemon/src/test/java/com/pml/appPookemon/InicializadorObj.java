@@ -191,6 +191,7 @@ public class InicializadorObj {
         Organizador o = new Organizador("Admin", "12345");
         
        
+        o.agregarPookemon(Weavile);
         o.agregarPookemon(Roserade);
         o.agregarPookemon(Venusaur);
         o.agregarPookemon(Typhlosion);
@@ -214,8 +215,7 @@ public class InicializadorObj {
         o.agregarPookemon(Excadrill);
         o.agregarPookemon(Hydreigon);
         o.agregarPookemon(Staraptor);
-        o.agregarPookemon(Lapras);
-        o.agregarPookemon(Weavile);
+        o.agregarPookemon(Lapras);  
 
         o.agregarMovimiento(GolpeCuerpo);
         o.agregarMovimiento(Lanzallamas);
