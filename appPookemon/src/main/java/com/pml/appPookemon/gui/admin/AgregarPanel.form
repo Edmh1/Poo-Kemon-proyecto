@@ -229,24 +229,24 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="18">
-            <StringItem index="0" value="Acero"/>
-            <StringItem index="1" value="Agua"/>
-            <StringItem index="2" value="Bicho"/>
-            <StringItem index="3" value="Dragon"/>
-            <StringItem index="4" value="Electrico"/>
-            <StringItem index="5" value="Fantasma"/>
-            <StringItem index="6" value="Fuego"/>
-            <StringItem index="7" value="Hada"/>
-            <StringItem index="8" value="Hielo"/>
+            <StringItem index="0" value="acero"/>
+            <StringItem index="1" value="agua"/>
+            <StringItem index="2" value="aicho"/>
+            <StringItem index="3" value="dragon"/>
+            <StringItem index="4" value="electrico"/>
+            <StringItem index="5" value="fantasma"/>
+            <StringItem index="6" value="fuego"/>
+            <StringItem index="7" value="hada"/>
+            <StringItem index="8" value="hielo"/>
             <StringItem index="9" value="lucha"/>
-            <StringItem index="10" value="Normal"/>
-            <StringItem index="11" value="Planta"/>
-            <StringItem index="12" value="Psiquico"/>
-            <StringItem index="13" value="Roca"/>
-            <StringItem index="14" value="Siniestro"/>
-            <StringItem index="15" value="Tierra"/>
-            <StringItem index="16" value="Veneno"/>
-            <StringItem index="17" value="Volador"/>
+            <StringItem index="10" value="normal"/>
+            <StringItem index="11" value="planta"/>
+            <StringItem index="12" value="psiquico"/>
+            <StringItem index="13" value="roca"/>
+            <StringItem index="14" value="siniestro"/>
+            <StringItem index="15" value="tierra"/>
+            <StringItem index="16" value="veneno"/>
+            <StringItem index="17" value="volador"/>
           </StringArray>
         </Property>
       </Properties>

@@ -188,11 +188,12 @@ public class EliminarPanel extends StandarPanel {
         if(pookemon == null){
             resource1 = getClass().getResource("/img/null.jpg");
             resource2 = getClass().getResource("/img/null.jpg");
+            ((JLabel) jpResultado.getComponent(0)).setText("No existe");
         }else{
             resource1 = getClass().getResource("/img/SpritesPookemon/"+pookemon.getNombrePookemon().toLowerCase()+".gif");
-            resource2 = getClass().getResource("/img/Ele_"+pookemon.getElementoPookemon()+".png");
+            resource2 = getClass().getResource("/img/Ele_"+pookemon.getElementoPookemon().toLowerCase()+".png");
+            ((JLabel) jpResultado.getComponent(0)).setText(pookemon.getNombrePookemon());
         }
-        ((JLabel) jpResultado.getComponent(0)).setText(pookemon.getNombrePookemon());
         ImageIcon imageIcon1 = new ImageIcon(resource1);
         ImageIcon imageIcon2 = new ImageIcon(resource2);
         lbImg1.setIcon(imageIcon1);
@@ -210,11 +211,12 @@ public class EliminarPanel extends StandarPanel {
         if(mov == null){
             resource1 = getClass().getResource("/img/null.jpg");
             resource2 = getClass().getResource("/img/null.jpg");
+            ((JLabel) jpResultado.getComponent(0)).setText("No existe");
         }else{
             resource1 = getClass().getResource("/img/Ele_"+mov.getElemento()+".png");
             resource2 = getClass().getResource("/img/"+mov.getTipoMovimiento()+".png");
+            ((JLabel) jpResultado.getComponent(0)).setText(mov.getNombreMovimiento());
         }
-        ((JLabel) jpResultado.getComponent(0)).setText(mov.getNombreMovimiento());
         ImageIcon imageIcon1 = new ImageIcon(resource1);
         ImageIcon imageIcon2 = new ImageIcon(resource2);
         lbImg1.setIcon(imageIcon1);

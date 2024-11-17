@@ -4,8 +4,14 @@
  */
 package main.java.com.pml.appPookemon.gui.admin;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Efecto;
 import main.java.com.pml.appPookemon.datos.pookemon.controller.MovimientoController;
@@ -28,6 +34,8 @@ public class AgregarPanel extends StandarPanel {
 
     private String nombre;
     private Efecto efecto;
+    private static final String GIF_EXTENSION = ".gif";
+    private File selectedGifFile = null;
     
     /**
      * Creates new form AgregarPanel
@@ -45,7 +53,6 @@ public class AgregarPanel extends StandarPanel {
         }else{
             configurarParaMovimiento();
         }
-        //configurarElemento(); Agregar Elementos de manera Dinamica
     }
 
     private void configurarParaPookemon() {
@@ -74,7 +81,6 @@ public class AgregarPanel extends StandarPanel {
         PromptSupport.setPrompt("PRECISIÓN", txtCampo3);
         PromptSupport.setPrompt("CANTIDAD PP'S", txtCampo4);
         
-        //configurarEfectos(); Agregar efectos de manera Dinamica
         jpMovimiento.setVisible(true);
         jpPookemon.setVisible(false);
         lblFilePath.setVisible(false);
@@ -231,7 +237,7 @@ public class AgregarPanel extends StandarPanel {
 
         add(jpPookemon, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 114, 160, 93));
 
-        jcbElemento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acero", "Agua", "Bicho", "Dragon", "Electrico", "Fantasma", "Fuego", "Hada", "Hielo", "lucha", "Normal", "Planta", "Psiquico", "Roca", "Siniestro", "Tierra", "Veneno", "Volador" }));
+        jcbElemento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "acero", "agua", "aicho", "dragon", "electrico", "fantasma", "fuego", "hada", "hielo", "lucha", "normal", "planta", "psiquico", "roca", "siniestro", "tierra", "veneno", "volador" }));
         add(jcbElemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 150, -1));
 
         txtProbabilidadEfecto.addActionListener(new java.awt.event.ActionListener() {
@@ -257,11 +263,12 @@ public class AgregarPanel extends StandarPanel {
 
     private void btExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExaminarActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        int option = fileChooser.showOpenDialog(AgregarPanel.this);
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Archivos GIF", "gif"));
+        int option = fileChooser.showOpenDialog(this);
 
         if (option == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            lblFilePath.setText("Archivo selecionado correctamente");
+            selectedGifFile = fileChooser.getSelectedFile();
+            lblFilePath.setText("Archivo seleccionado: " + selectedGifFile.getName());
         } else {
             lblFilePath.setText("No se seleccionó ningún archivo.");
         }
@@ -269,49 +276,106 @@ public class AgregarPanel extends StandarPanel {
 
     private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
         ArenaController arena = new ArenaController();
-        
-        if(nombre.equalsIgnoreCase("Pookemon")){
-            PookemonController controlador = new PookemonController();
-            String nombrePookemon = txtCampo1.getText();
-            int velocidad = Integer.parseInt(txtCampo2.getText());
-            int ataqueFisico = Integer.parseInt(txtCampo3.getText());
-            int defensaFisica = Integer.parseInt(txtCampo4.getText());
-            int ataqueEspecial = Integer.parseInt(txtCampo5.getText());
-            int defensaEspecial = Integer.parseInt(txtCampo6.getText());
-            String elemento = (String) jcbElemento.getSelectedItem();
-            Pookemon pookemon = controlador.agregarPookemon(nombrePookemon, velocidad, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, elemento);
-            arena.agregarPookemon(pookemon);
-            System.out.println(""+arena.getPookemones().toString());
-            
+
+        String nombreElemento = txtCampo1.getText();
+        if (nombre.equalsIgnoreCase("Pookemon")) {
+            agregarPookemon(arena, nombreElemento);
         } else {
-            MovimientoController controlador = new MovimientoController();
-            String nombreMovimiento = txtCampo1.getText();
-            int potencia = Integer.parseInt(txtCampo2.getText());
-            int precision = Integer.parseInt(txtCampo3.getText());
-            int cantidadPP = Integer.parseInt(txtCampo4.getText());
-            String nombreEfecto = (String) jcbEfecto.getSelectedItem();
-            switch(nombreEfecto){
-                case "Paralisis":
-                    efecto = new EfectoParalisis();
-                    break;
-                case "Quemadura":
-                    efecto = new EfectoQuemadura();
-                    break;
-                case "Envenenamiento":
-                    efecto = new EfectoEnvenenamiento();
-                    break;
-                default:
-                    efecto = null;
+            agregarMovimiento(arena, nombreElemento);
+        }
+    }//GEN-LAST:event_btAgregarActionPerformed
+   
+
+    private void agregarPookemon(ArenaController arena, String nombreElemento) {
+        PookemonController controlador = new PookemonController();
+        int velocidad = Integer.parseInt(txtCampo2.getText());
+        int ataqueFisico = Integer.parseInt(txtCampo3.getText());
+        int defensaFisica = Integer.parseInt(txtCampo4.getText());
+        int ataqueEspecial = Integer.parseInt(txtCampo5.getText());
+        int defensaEspecial = Integer.parseInt(txtCampo6.getText());
+        String elemento = (String) jcbElemento.getSelectedItem();
+
+        Pookemon pookemon = controlador.agregarPookemon(nombreElemento, velocidad, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, elemento);
+        arena.agregarPookemon(pookemon);
+
+        // Solo guardar el GIF si se ha seleccionado uno
+        if (selectedGifFile != null) {
+            if (uploadGif(nombreElemento)) {
+                JOptionPane.showMessageDialog(null, "Pookemon guardado correctamente :)");
+                lblFilePath.setText("Archivo guardado correctamente.");
             }
-            String elemento = (String) jcbElemento.getSelectedItem();
-            String tipo = (String) jcbTipo.getSelectedItem();
-            int probabilidadEfecto = Integer.parseInt(txtProbabilidadEfecto.getText());
-            Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, tipo, probabilidadEfecto);
-            arena.agregarMovimiento(movimiento);
+        } else {
+            lblFilePath.setText("No se ha seleccionado ningún archivo GIF para guardar.");
+        }
+    }
+
+    private void agregarMovimiento(ArenaController arena, String nombreElemento) {
+        MovimientoController controlador = new MovimientoController();
+        String nombreMovimiento = nombreElemento;
+        int potencia = Integer.parseInt(txtCampo2.getText());
+        int precision = Integer.parseInt(txtCampo3.getText());
+        int cantidadPP = Integer.parseInt(txtCampo4.getText());
+        String nombreEfecto = (String) jcbEfecto.getSelectedItem();
+        Efecto efecto = getEfecto(nombreEfecto);
+        String elemento = (String) jcbElemento.getSelectedItem();
+        String tipo = (String) jcbTipo.getSelectedItem();
+        int probabilidadEfecto = Integer.parseInt(txtProbabilidadEfecto.getText());
+
+        Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, tipo, probabilidadEfecto);
+        arena.agregarMovimiento(movimiento);
+        
+        JOptionPane.showMessageDialog(null, "Movimiento guardado correctamente :)");
+    }
+
+    private Efecto getEfecto(String nombreEfecto) {
+        switch (nombreEfecto) {
+            case "Paralisis":
+                return new EfectoParalisis();
+            case "Quemadura":
+                return new EfectoQuemadura();
+            case "Envenenamiento":
+                return new EfectoEnvenenamiento();
+            default:
+                return null;
+        }
+    }
+
+    private boolean uploadGif(String nombreElemento) {
+        File sprites = new File("src/main/resources/img/SpritesPookemon");
+        File archivoDestino = new File(sprites, nombreElemento + GIF_EXTENSION);
+
+        // Redimensionar el GIF antes de guardarlo
+        BufferedImage resizedImage = resizeGif(selectedGifFile);
+        if (resizedImage == null) {
+            JOptionPane.showMessageDialog(null, "Error al redimensionar el GIF.");
+            return false;
         }
 
-    }//GEN-LAST:event_btAgregarActionPerformed
+        try {
+            // Guardar la imagen redimensionada
+            ImageIO.write(resizedImage, "gif", archivoDestino);
+            return true;
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar el archivo");
+            return false;
+        }
+    }
 
+    private BufferedImage resizeGif(File gifFile) {
+        try {
+            BufferedImage originalImage = ImageIO.read(gifFile);
+            BufferedImage resizedImage = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g = resizedImage.createGraphics();
+        
+            g.drawImage(originalImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH), 0, 0, null);
+            g.dispose();
+            return resizedImage;
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo GIF");
+            return null;
+        }
+    }
+    
     private void jcbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbTipoActionPerformed
