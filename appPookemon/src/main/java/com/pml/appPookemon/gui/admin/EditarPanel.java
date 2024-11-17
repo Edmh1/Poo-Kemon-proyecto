@@ -456,7 +456,7 @@ public class EditarPanel extends StandarPanel {
                 JOptionPane.showMessageDialog(this, "Movimiento actualizado exitosamente");
                 clearFields();
             } catch(NumberFormatException ex){
-                JOptionPane.showMessageDialog(this, "Datos mal digitados");
+                JOptionPane.showMessageDialog(this, "Datos mal digitados", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
@@ -486,16 +486,21 @@ public class EditarPanel extends StandarPanel {
     private void buscarPookemon(ArenaController a){
         Pookemon pookemonBuscado = a.buscarPokemonPorNombre(nombreBuscado);
         if(pookemonBuscado != null){
-            lbOldNombre.setText(nombreBuscado);
-            lbNewNombre.setText(nombreBuscado);
-            txtOldCampo1.setText(""+pookemonBuscado.getEstadisticaPookemon().getVida());
-            txtOldCampo2.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueFisico());
-            txtOldCampo3.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaFisica());
-            txtOldCampo4.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueEspecial());
-            txtOldCampo5.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaEspecial());
-            txtOldCampo6.setText(""+pookemonBuscado.getEstadisticaPookemon().getVelocidad());    
+          lbOldNombre.setText(nombreBuscado);
+          lbNewNombre.setText(nombreBuscado);
+          txtOldCampo1.setText(""+pookemonBuscado.getEstadisticaPookemon().getVida());
+          txtOldCampo2.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueFisico());
+          txtOldCampo3.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaFisica());
+          txtOldCampo4.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueEspecial());
+          txtOldCampo5.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaEspecial());
+          txtOldCampo6.setText(""+pookemonBuscado.getEstadisticaPookemon().getVelocidad());      
         } else {
-            JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
+            if (!nombreBuscado.matches("[a-zA-Z\\s]+") || nombreBuscado.trim().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error: Ingrese un nombre", "Error Nombre", JOptionPane.ERROR_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
+            }
+            
         }
     }
     
@@ -509,7 +514,11 @@ public class EditarPanel extends StandarPanel {
             txtOldCampo3.setText(""+movimientoBuscado.getPrecision());
             txtOldCampo4.setText(""+movimientoBuscado.getCantidadPP());
         } else {
-            JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
+            if (!nombreBuscado.matches("[a-zA-Z\\s]+") || nombreBuscado.trim().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error: Ingrese un nombre", "Error Nombre", JOptionPane.ERROR_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
+            }
         }    
     }
 
