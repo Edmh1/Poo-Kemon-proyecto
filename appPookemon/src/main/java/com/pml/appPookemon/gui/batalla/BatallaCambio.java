@@ -5,6 +5,7 @@
 package main.java.com.pml.appPookemon.gui.batalla;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 import main.java.com.pml.appPookemon.datos.conf_arena.controller.BatallaController;
@@ -126,7 +127,12 @@ public class BatallaCambio extends javax.swing.JFrame {
     private void btCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambiarActionPerformed
         turno = bp.getTurnoJugador();
         controlador.setAccionEntrenador(turno, "CAMBIO", idPookemon);
-        if(cambioForzado == false){
+        if(idPookemon == 0){
+            
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un pookemon");
+            
+        }else{
+            if(cambioForzado == false){
             if(turno == 1){
                 bp.pasarJugador();
             }else{
@@ -137,21 +143,23 @@ public class BatallaCambio extends javax.swing.JFrame {
                 bp.actualizarVidaVisual();
             }
             bp.configurarFlecha();
-        }else{
-            if(jugador == 1){
-                controlador.setAccionEntrenador(1, "CAMBIO", idPookemon);
-                controlador.setAccionEntrenador(2, "DEFENDER", idPookemon);
             }else{
-                controlador.setAccionEntrenador(2, "CAMBIO", idPookemon);
-                controlador.setAccionEntrenador(1, "DEFENDER", idPookemon);
+                if(jugador == 1){
+                    controlador.setAccionEntrenador(1, "CAMBIO", idPookemon);
+                    controlador.setAccionEntrenador(2, "DEFENDER", idPookemon);
+                }else{
+                    controlador.setAccionEntrenador(2, "CAMBIO", idPookemon);
+                    controlador.setAccionEntrenador(1, "DEFENDER", idPookemon);
+                }
+                bp.realizarTurno();
+                bp.configurarImagenes();
+                bp.configurarTextos();
+                bp.actualizarVidaVisual();
+                bp.configurarFlecha();
             }
-            bp.realizarTurno();
-            bp.configurarImagenes();
-            bp.configurarTextos();
-            bp.actualizarVidaVisual();
-            bp.configurarFlecha();
+            dispose();
         }
-        dispose();
+        
     }//GEN-LAST:event_btCambiarActionPerformed
 
     private void btPookemon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPookemon1ActionPerformed
