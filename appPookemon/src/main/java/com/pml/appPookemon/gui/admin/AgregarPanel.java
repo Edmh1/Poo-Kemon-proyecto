@@ -157,7 +157,7 @@ public class AgregarPanel extends StandarPanel {
         lbAgregar.setText("Agregar: ");
         add(lbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 36, -1, -1));
 
-        txtCampo1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtCampo1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtCampo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCampo1ActionPerformed(evt);
@@ -247,7 +247,7 @@ public class AgregarPanel extends StandarPanel {
 
         add(jpPookemon, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 114, 160, 93));
 
-        jcbElemento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "acero", "agua", "aicho", "dragon", "electrico", "fantasma", "fuego", "hada", "hielo", "lucha", "normal", "planta", "psiquico", "roca", "siniestro", "tierra", "veneno", "volador" }));
+        jcbElemento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "acero", "agua", "bicho", "dragon", "electrico", "fantasma", "fuego", "hada", "hielo", "lucha", "normal", "planta", "psiquico", "roca", "siniestro", "tierra", "veneno", "volador" }));
         add(jcbElemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 150, -1));
 
         txtProbabilidadEfecto.addActionListener(new java.awt.event.ActionListener() {

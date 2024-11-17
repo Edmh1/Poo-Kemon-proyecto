@@ -20,11 +20,20 @@ public class PookemonController {
     }
 
     public Pookemon agregarPookemon(String nombre, int velocidad, int ataqueFisico, int defensaFisica, int ataqueEspecial, int defensaEspecial, String elemento) {
-        Pookemon pookemon = new Pookemon(a.getPookemones().size(), nombre, elemento);
+        Pookemon pookemon = new Pookemon(asignarId(a.getPookemones().size()), nombre, elemento);
         pookemon.inicializarEstadistica(100, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, velocidad);
         return pookemon;
         
     }
     
-      
+    private int asignarId(int id){
+        for (Pookemon pookemon : a.getPookemones()) {
+            if(id==pookemon.getIdPookemon()){
+                id++;
+                asignarId(id);
+            }
+        }
+        
+        return id;
+    }
 }
