@@ -353,7 +353,7 @@ public class BatallaPanel extends StandarPanel {
         int vidaPookemon2 = j2Pookemon.getEstadisticaPookemon().getVidaMaxima();
         
         lbNombreEntrenador1.setText(controlador.getEntrenador(1).getNombreEntrenador());
-        lbNombreEntrenador2.setText(controlador.getEntrenador(1).getNombreEntrenador());
+        lbNombreEntrenador2.setText(controlador.getEntrenador(2).getNombreEntrenador());
         lb_nombrePookemon_1.setText(j1Pookemon.getNombrePookemon());
         lb_nombrePookemon_2.setText(j2Pookemon.getNombrePookemon());
         pbVida1.setMaximum(vidaPookemon1);

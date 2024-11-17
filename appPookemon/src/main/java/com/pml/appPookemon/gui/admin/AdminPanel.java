@@ -97,6 +97,7 @@ public class AdminPanel extends StandarPanel {
         String clave = txtClave.getText();
         if(o.admitir(clave)){
             super.getMainFrame().switchToGestionPanel();
+            txtClave.setText("");
         } else {
             JOptionPane.showMessageDialog(this, "Contraseña Incorrecta");
         }

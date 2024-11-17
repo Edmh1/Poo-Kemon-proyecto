@@ -74,6 +74,7 @@ public class AgregarPanel extends StandarPanel {
         
         this.revalidate();
         this.repaint();
+        clearFields();
     }
     
     private void configurarParaMovimiento() {
@@ -82,15 +83,18 @@ public class AgregarPanel extends StandarPanel {
         PromptSupport.setPrompt("PRECISIÓN", txtCampo3);
         PromptSupport.setPrompt("CANTIDAD PP'S", txtCampo4);
         
+        
         jpMovimiento.setVisible(true);
         jpPookemon.setVisible(false);
         lblFilePath.setVisible(false);
         btExaminar.setVisible(false);
         txtProbabilidadEfecto.setVisible(true);
+        txtProbabilidadEfecto.setText("0");
         lbPorcentaje.setVisible(true);
         
         this.revalidate();
         this.repaint();
+        clearFields();
     }
     
     public void clearFields(){
@@ -100,6 +104,11 @@ public class AgregarPanel extends StandarPanel {
         txtCampo4.setText("");
         txtCampo5.setText("");
         txtCampo6.setText("");
+        txtProbabilidadEfecto.setText("0");
+        
+        jcbEfecto.setSelectedIndex(0);
+        jcbElemento.setSelectedIndex(0);
+        jcbTipo.setSelectedIndex(0);
     }
     
     public void setNombre(String nombre){
@@ -341,6 +350,7 @@ public class AgregarPanel extends StandarPanel {
                     arena.agregarPookemon(pookemon);
                     JOptionPane.showMessageDialog(null, "Pookemon guardado correctamente :)");
                     lblFilePath.setText("Archivo guardado correctamente.");
+                    clearFields();
                 }
             } else {
                 lblFilePath.setText("No se ha seleccionado ningún archivo GIF para guardar.");
@@ -394,6 +404,7 @@ public class AgregarPanel extends StandarPanel {
             Movimiento movimiento = controlador.agregarMovimiento(nombreMovimiento, potencia, precision, cantidadPP, elemento, efecto, tipo, probabilidadEfecto);
             arena.agregarMovimiento(movimiento);
             JOptionPane.showMessageDialog(null, "Movimiento guardado correctamente :)");
+            clearFields();
         }
 
         
