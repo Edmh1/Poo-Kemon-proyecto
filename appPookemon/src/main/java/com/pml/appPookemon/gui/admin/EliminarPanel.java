@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.datos.conf_arena.controller.ArenaController;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
+import main.java.com.pml.appPookemon.excepciones.NumeroEnTextoException;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 import org.jdesktop.swingx.prompt.PromptSupport;
@@ -152,10 +153,21 @@ public class EliminarPanel extends StandarPanel {
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+
         if(nombre.equalsIgnoreCase("Pookemon")){
-            buscarPookemon();
+            try{
+                buscarPookemon();
+            }catch(NumeroEnTextoException ex){
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese correctamente el nombre. Asegúrese de no digitar números y no dejarlo en blanco");
+            }
+            
         }else{
-            buscarMovimiento();
+            try{
+                buscarMovimiento();
+            }catch(NumeroEnTextoException ex){
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese correctamente el nombre. Asegúrese de no digitar números y no dejarlo en blanco");
+            }
+            
         }   
         // hacer getElemento 
         this.revalidate();
@@ -165,22 +177,30 @@ public class EliminarPanel extends StandarPanel {
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
         ArenaController arena = new ArenaController();
         
-        if(!nombreBuscado.equalsIgnoreCase(" ") && nombre.equalsIgnoreCase("pookemon")){
+        try{
+            if(!nombreBuscado.equalsIgnoreCase(" ") && nombre.equalsIgnoreCase("pookemon")){
             arena.eliminarPookemon(nombreBuscado);
             cleanContent();
             JOptionPane.showMessageDialog(this, "El pookemon fue eliminado correctamente");
-        } else if(!nombreBuscado.equalsIgnoreCase(" ") && nombre.equalsIgnoreCase("movimiento")){
-            arena.eliminarMovimiento(nombreBuscado);
-            cleanContent();
-            JOptionPane.showMessageDialog(this, "El movimiento fue eliminado correctamente");
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontro el "+nombreBuscado.toLowerCase()+" buscado");
+            } else if(!nombreBuscado.equalsIgnoreCase(" ") && nombre.equalsIgnoreCase("movimiento")){
+                arena.eliminarMovimiento(nombreBuscado);
+                cleanContent();
+                JOptionPane.showMessageDialog(this, "El movimiento fue eliminado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontro el "+nombreBuscado.toLowerCase()+" buscado");
+            }
+        }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "El " + nombre.toLowerCase() + " digitado no fue encontrado");
         }
+        
     }//GEN-LAST:event_btEliminarActionPerformed
-    private void buscarPookemon(){
+    private void buscarPookemon() throws NumeroEnTextoException{
         ArenaController arena = new ArenaController();
    
         nombreBuscado = txtBuscar.getText();
+        if (!nombreBuscado.matches("[a-zA-Z\\s]+") || nombreBuscado.trim().isEmpty()){
+            throw new NumeroEnTextoException("");
+        }
         Pookemon pookemon = arena.buscarPokemonPorNombre(nombreBuscado);
         
         URL resource1;
@@ -200,10 +220,13 @@ public class EliminarPanel extends StandarPanel {
         lbImg2.setIcon(imageIcon2);
     }
     
-    private void buscarMovimiento(){
+    private void buscarMovimiento() throws NumeroEnTextoException{
         ArenaController arena = new ArenaController();
         
         nombreBuscado = txtBuscar.getText();
+        if (!nombreBuscado.matches("[a-zA-Z\\s]+") || nombreBuscado.trim().isEmpty()){
+            throw new NumeroEnTextoException("");
+        }
         Movimiento mov = arena.buscarMovimientoPorNombre(nombreBuscado);
         
         URL resource1;
