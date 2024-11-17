@@ -283,6 +283,7 @@ public class AgregarPanel extends StandarPanel {
         } else {
             agregarMovimiento(arena, nombreElemento);
         }
+        selectedGifFile = null;
     }//GEN-LAST:event_btAgregarActionPerformed
    
 
@@ -296,11 +297,11 @@ public class AgregarPanel extends StandarPanel {
         String elemento = (String) jcbElemento.getSelectedItem();
 
         Pookemon pookemon = controlador.agregarPookemon(nombreElemento, velocidad, ataqueFisico, defensaFisica, ataqueEspecial, defensaEspecial, elemento);
-        arena.agregarPookemon(pookemon);
 
         // Solo guardar el GIF si se ha seleccionado uno
         if (selectedGifFile != null) {
             if (uploadGif(nombreElemento)) {
+                arena.agregarPookemon(pookemon);
                 JOptionPane.showMessageDialog(null, "Pookemon guardado correctamente :)");
                 lblFilePath.setText("Archivo guardado correctamente.");
             }

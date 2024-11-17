@@ -35,80 +35,80 @@ public class InicializadorObj {
         
         
         //pookemones
-        Pookemon Roserade = new Pookemon(407, "Roserade", "planta");
+        Pookemon Weavile = new Pookemon(0, "Weavile", "hielo");
+        Weavile.inicializarEstadistica(70, 120, 65, 45, 85, 125);
+        
+        Pookemon Roserade = new Pookemon(1, "Roserade", "planta");
         Roserade.inicializarEstadistica(60, 70, 65, 125, 105, 90);
 
-        Pookemon Venusaur = new Pookemon(3, "Venusaur", "planta");
+        Pookemon Venusaur = new Pookemon(2, "Venusaur", "planta");
         Venusaur.inicializarEstadistica(80, 82, 83, 100, 100, 80);
 
-        Pookemon Typhlosion = new Pookemon(157, "Typhlosion", "fuego");
+        Pookemon Typhlosion = new Pookemon(3, "Typhlosion", "fuego");
         Typhlosion.inicializarEstadistica(78, 84, 78, 109, 85, 100);
 
-        Pookemon Gyarados = new Pookemon(130, "Gyarados", "agua");
+        Pookemon Gyarados = new Pookemon(4, "Gyarados", "agua");
         Gyarados.inicializarEstadistica(95, 125, 79, 60, 100, 81);
 
-        Pookemon Milotic = new Pookemon(350, "Milotic", "agua");
+        Pookemon Milotic = new Pookemon(5, "Milotic", "agua");
         Milotic.inicializarEstadistica(95, 60, 79, 100, 125, 81);
 
-        Pookemon Greninja = new Pookemon(658, "Greninja", "agua");
+        Pookemon Greninja = new Pookemon(6, "Greninja", "agua");
         Greninja.inicializarEstadistica(72, 95, 67, 103, 71, 122);
 
-        Pookemon Raichu = new Pookemon(26, "Raichu", "electrico");
+        Pookemon Raichu = new Pookemon(7, "Raichu", "electrico");
         Raichu.inicializarEstadistica(60, 90, 55, 90, 80, 110);
 
-        Pookemon Nidoking = new Pookemon(34, "Nidoking", "veneno");
+        Pookemon Nidoking = new Pookemon(8, "Nidoking", "veneno");
         Nidoking.inicializarEstadistica(81, 102, 77, 85, 75, 85);
 
-        Pookemon Alakazam = new Pookemon(65, "Alakazam", "psiquico");
+        Pookemon Alakazam = new Pookemon(9, "Alakazam", "psiquico");
         Alakazam.inicializarEstadistica(55, 50, 45, 135, 95, 120);
 
-        Pookemon Hypno = new Pookemon(97, "Hypno", "psiquico");
+        Pookemon Hypno = new Pookemon(10, "Hypno", "psiquico");
         Hypno.inicializarEstadistica(85, 73, 70, 73, 115, 67);
 
-        Pookemon Lucario = new Pookemon(448, "Lucario", "lucha");
+        Pookemon Lucario = new Pookemon(11, "Lucario", "lucha");
         Lucario.inicializarEstadistica(70, 110, 70, 115, 70, 90);
 
-        Pookemon Tyranitar = new Pookemon(248, "Tyranitar", "roca");
+        Pookemon Tyranitar = new Pookemon(12, "Tyranitar", "roca");
         Tyranitar.inicializarEstadistica(100, 134, 110, 95, 100, 61);
 
-        Pookemon Gengar = new Pookemon(94, "Gengar", "fantasma");
+        Pookemon Gengar = new Pookemon(13, "Gengar", "fantasma");
         Gengar.inicializarEstadistica(60, 65, 60, 130, 75, 110);
 
-        Pookemon Clefable = new Pookemon(36, "Clefable", "hada");
+        Pookemon Clefable = new Pookemon(14, "Clefable", "hada");
         Clefable.inicializarEstadistica(95, 70, 73, 95, 90, 60);
 
-        Pookemon Snorlax = new Pookemon(143, "Snorlax", "normal");
+        Pookemon Snorlax = new Pookemon(15, "Snorlax", "normal");
         Snorlax.inicializarEstadistica(160, 110, 65, 65, 110, 30);
 
-        Pookemon Blissey = new Pookemon(242, "Blissey", "normal");
+        Pookemon Blissey = new Pookemon(16, "Blissey", "normal");
         Blissey.inicializarEstadistica(255, 10, 10, 75, 135, 55);
 
-        Pookemon Dragonite = new Pookemon(149, "Dragonite", "dragon");
+        Pookemon Dragonite = new Pookemon(17, "Dragonite", "dragon");
         Dragonite.inicializarEstadistica(91, 134, 95, 100, 100, 80);
 
-        Pookemon Heracross = new Pookemon(214, "Heracross", "bicho");
+        Pookemon Heracross = new Pookemon(18, "Heracross", "bicho");
         Heracross.inicializarEstadistica(80, 125, 75, 40, 95, 85);
 
-        Pookemon Volcarona = new Pookemon(637, "Volcarona", "bicho");
+        Pookemon Volcarona = new Pookemon(19, "Volcarona", "bicho");
         Volcarona.inicializarEstadistica(85, 60, 65, 135, 105, 100);
 
-        Pookemon Metagross = new Pookemon(376, "Metagross", "acero");
+        Pookemon Metagross = new Pookemon(20, "Metagross", "acero");
         Metagross.inicializarEstadistica(80, 135, 130, 95, 90, 70);
 
-        Pookemon Excadrill = new Pookemon(530, "Excadrill", "tierra");
+        Pookemon Excadrill = new Pookemon(21, "Excadrill", "tierra");
         Excadrill.inicializarEstadistica(110, 135, 60, 50, 65, 88);
 
-        Pookemon Hydreigon = new Pookemon(635, "Hydreigon", "siniestro");
+        Pookemon Hydreigon = new Pookemon(22, "Hydreigon", "siniestro");
         Hydreigon.inicializarEstadistica(92, 105, 90, 125, 90, 98);
 
-        Pookemon Staraptor = new Pookemon(398, "Staraptor", "volador");
+        Pookemon Staraptor = new Pookemon(23, "Staraptor", "volador");
         Staraptor.inicializarEstadistica(85, 120, 70, 50, 60, 100);
 
-        Pookemon Lapras = new Pookemon(131, "Lapras", "hielo");
+        Pookemon Lapras = new Pookemon(24, "Lapras", "hielo");
         Lapras.inicializarEstadistica(130, 85, 80, 85, 95, 60);
-
-        Pookemon Weavile = new Pookemon(461, "Weavile", "hielo");
-        Weavile.inicializarEstadistica(70, 120, 65, 45, 85, 125);
 
         
         //movimientos
@@ -189,7 +189,7 @@ public class InicializadorObj {
         
        
         
-        Organizador o = new Organizador("Admin", "123456");
+        Organizador o = new Organizador("Admin", "12345");
         
        
         o.agregarPookemon(Roserade);
