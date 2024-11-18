@@ -20,6 +20,7 @@ public class PPsFrame extends javax.swing.JFrame {
     private Movimiento mov1;
     private Movimiento mov2;
     private Movimiento mov3;
+    private Movimiento mov4;
     private int idMovimiento;
     
     public PPsFrame(BatallaController bc, BatallaPanel bp, BatallaObjeto bo) {
@@ -46,6 +47,8 @@ public class PPsFrame extends javax.swing.JFrame {
         btUsar = new javax.swing.JButton();
         btMov2 = new javax.swing.JButton();
         btMov3 = new javax.swing.JButton();
+        lbPPsMov4 = new javax.swing.JLabel();
+        btMov4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -86,11 +89,33 @@ public class PPsFrame extends javax.swing.JFrame {
             }
         });
 
+        lbPPsMov4.setText("PPs mov4");
+
+        btMov4.setText("Mov4");
+        btMov4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMov4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lbPPsMov3))
+                    .addComponent(btMov3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lbPPsMov4))
+                    .addComponent(btMov4))
+                .addGap(84, 84, 84))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(84, 84, 84)
@@ -111,18 +136,24 @@ public class PPsFrame extends javax.swing.JFrame {
                                 .addComponent(btMov2)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(78, 78, 78)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btUsar)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(lbPPsMov3))
-                                .addComponent(btMov3))
+                            .addComponent(btUsar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(84, 84, 84)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(165, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btMov4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbPPsMov4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btMov3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbPPsMov3)))
+                .addGap(90, 90, 90))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(32, 32, 32)
@@ -135,11 +166,7 @@ public class PPsFrame extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbPPsMov1)
                         .addComponent(lbPPsMov2))
-                    .addGap(18, 18, 18)
-                    .addComponent(btMov3)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(lbPPsMov3)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                     .addComponent(btUsar)
                     .addGap(33, 33, 33)))
         );
@@ -175,6 +202,10 @@ public class PPsFrame extends javax.swing.JFrame {
         bo.dispose();
         dispose();
     }//GEN-LAST:event_btUsarActionPerformed
+
+    private void btMov4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMov4ActionPerformed
+        idMovimiento = mov4.getIdMovimiento();
+    }//GEN-LAST:event_btMov4ActionPerformed
     
     public void configurar(int turno){
         Entrenador e = controlador.getEntrenador(turno);
@@ -183,22 +214,27 @@ public class PPsFrame extends javax.swing.JFrame {
         mov1 = e.getPookemonActual().getMovimientos().get(0);
         mov2 = e.getPookemonActual().getMovimientos().get(1);
         mov3 = e.getPookemonActual().getMovimientos().get(2);
+        mov4 = e.getPookemonActual().getMovimientos().get(3);
         btMov1.setText(mov1.getNombreMovimiento());
         btMov2.setText(mov2.getNombreMovimiento());
         btMov3.setText(mov3.getNombreMovimiento());
+        btMov4.setText(mov4.getNombreMovimiento());
         lbPPsMov1.setText("PPs " + mov1.getCantidadPP() + "/" + mov1.getCantidadMaximaPPs());
         lbPPsMov2.setText("PPs " + mov2.getCantidadPP() + "/" + mov2.getCantidadMaximaPPs());
         lbPPsMov3.setText("PPs " + mov3.getCantidadPP() + "/" + mov3.getCantidadMaximaPPs());
+        lbPPsMov4.setText("PPs " + mov4.getCantidadPP() + "/" + mov4.getCantidadMaximaPPs());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btMov1;
     private javax.swing.JButton btMov2;
     private javax.swing.JButton btMov3;
+    private javax.swing.JButton btMov4;
     private javax.swing.JButton btUsar;
     private javax.swing.JLabel lbNombrePookemon;
     private javax.swing.JLabel lbPPsMov1;
     private javax.swing.JLabel lbPPsMov2;
     private javax.swing.JLabel lbPPsMov3;
+    private javax.swing.JLabel lbPPsMov4;
     // End of variables declaration//GEN-END:variables
 }

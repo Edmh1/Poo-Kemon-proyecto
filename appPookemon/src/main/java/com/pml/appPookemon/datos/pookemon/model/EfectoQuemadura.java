@@ -44,6 +44,8 @@ public class EfectoQuemadura implements Efecto,Serializable{
             eliminarEfecto(p);
             return info;
         }
+        dañoAcumulado = 30;
+        eliminarEfecto(p);
         return "El efecto no fue Activado";
     }
 

@@ -26,6 +26,7 @@ public class BatallaAtaque extends javax.swing.JFrame {
      * @param controlador
      */
     public BatallaAtaque(BatallaController controlador) {
+        idMovimiento = -1;
         this.controlador = controlador;
         initComponents();
     }
@@ -179,7 +180,7 @@ public class BatallaAtaque extends javax.swing.JFrame {
 
     private void btRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarActionPerformed
         
-        if(idMovimiento != 0){
+        if(idMovimiento != -1){
             int turno = bp.getTurnoJugador();
             controlador.setAccionEntrenador(turno, "ATACAR", idMovimiento);
             if(turno == 1){

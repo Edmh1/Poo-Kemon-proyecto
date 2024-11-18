@@ -64,7 +64,9 @@ public class Batalla {
             
             //El jugador 2 se defiende
             if(accionEntrenador2.getTipoAccion() == TipoAccion.DEFENDER){
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " se ha defendido";
                 entrenador2.getPookemonActual().desactivarDefensa();
+                return resultado+ "\n";
             }
         }
         
@@ -105,6 +107,7 @@ public class Batalla {
             
             //El jugador 1 se defiende
             if(accionEntrenador1.getTipoAccion() == TipoAccion.DEFENDER){
+                resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " se ha defendido";
                 entrenador1.getPookemonActual().desactivarDefensa();
                 actualizarTurno(resultado);
                 return resultado+ "\n";
@@ -149,7 +152,9 @@ public class Batalla {
             
             //El jugador 2 se defiende
             if(accionEntrenador2.getTipoAccion() == TipoAccion.DEFENDER){
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " se ha defendido";
                 entrenador2.getPookemonActual().desactivarDefensa();
+                return resultado+ "\n";
             }
         }
         
@@ -190,6 +195,7 @@ public class Batalla {
             
             //El jugador 1 se defiende
             if(accionEntrenador1.getTipoAccion() == TipoAccion.DEFENDER){
+                resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " se ha defendido";
                 entrenador1.getPookemonActual().desactivarDefensa();
                 actualizarTurno(resultado);
                 return resultado+ "\n";
@@ -366,6 +372,59 @@ public class Batalla {
         
         return true;
                     
+    }
+    
+    public int chequearVidaPookemones(){
+        int vidaPk1 = entrenador1.getPookemonActual().getEstadisticaPookemon().getVida();
+        int vidaPk2 = entrenador2.getPookemonActual().getEstadisticaPookemon().getVida();
+        
+        //Se murió el pookemon del entrenador 1
+        if(vidaPk2 > 0 && vidaPk1 <= 0){
+            return 1;
+        //Se murió el pookemon del entrenador 2
+        }else if(vidaPk1 > 0 && vidaPk2 <= 0){
+            return 2;
+        }
+        
+        return -1;
+    }
+    
+    public int chequearGanador(){
+        int pkEliminadosEntrenador1 = contarPookemonesEliminados(1);
+        int pkEliminadosEntrenador2 = contarPookemonesEliminados(2);
+        
+        //Gano el entrenador 2
+        if(pkEliminadosEntrenador1 == 3){
+            return 2;
+        }
+        
+        //Gano el entrenador 1
+        if(pkEliminadosEntrenador2 == 3){
+            return 1;
+        }
+        
+        //No ha ganado nadie
+        return -1;
+    }
+    
+        private int contarPookemonesEliminados(int i) {
+        List<Pookemon> lista = null;
+        int nPookemones = 0;
+        if(i == 1){
+            lista = entrenador1.getPookemones();
+        }else if(i == 2){
+            lista = entrenador2.getPookemones();
+        }
+        
+        if(lista != null){
+            for (Pookemon pookemon : lista) {
+                if(pookemon.getEstadisticaPookemon().getVida() == 0){
+                    nPookemones++;
+                }
+            }
+        }
+        
+        return nPookemones;
     }
 
     public Entrenador getEntrenador1() {

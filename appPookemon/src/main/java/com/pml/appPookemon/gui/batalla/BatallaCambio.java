@@ -25,6 +25,7 @@ public class BatallaCambio extends javax.swing.JFrame {
     private int jugador;
 
     public BatallaCambio(BatallaController controlador) {
+        idPookemon = -1;
         this.controlador = controlador;
         cambioForzado = false;
         initComponents();
@@ -127,10 +128,8 @@ public class BatallaCambio extends javax.swing.JFrame {
     private void btCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambiarActionPerformed
         turno = bp.getTurnoJugador();
         controlador.setAccionEntrenador(turno, "CAMBIO", idPookemon);
-        if(idPookemon == 0){
-            
+        if(idPookemon == -1){
             JOptionPane.showMessageDialog(this, "Por favor, seleccione un pookemon");
-            
         }else{
             if(cambioForzado == false){
             if(turno == 1){

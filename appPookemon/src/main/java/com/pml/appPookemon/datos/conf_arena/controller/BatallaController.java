@@ -102,4 +102,12 @@ public class BatallaController {
         String resultado = batalla.aplicarEfectos();   
         return resultado;
     }
+    
+    public int chequearVidaPookemones(){
+        return batalla.chequearVidaPookemones();
+    }
+    
+    public int chequearGanador(){
+        return batalla.chequearGanador();
+    }
 }

@@ -393,6 +393,7 @@ public class BatallaPanel extends StandarPanel {
             pookemonEliminado = false;
         }
         aplicarEfectos();
+        chequearGanador();
     }
     
     public void configurarFlecha(){
@@ -420,6 +421,7 @@ public class BatallaPanel extends StandarPanel {
     }
     
     public void chequearVidaPookemones(){
+        /**
         int vidaPookemon1 = controlador.getEntrenador(1).getPookemonActual().getEstadisticaPookemon().getVida();
         int vidaPookemon2 = controlador.getEntrenador(2).getPookemonActual().getEstadisticaPookemon().getVida();
         
@@ -427,6 +429,34 @@ public class BatallaPanel extends StandarPanel {
             pookemonEliminado(1);
         }else if(vidaPookemon2 <= 0){
             pookemonEliminado(2);
+        }
+        * */
+                int resultado = controlador.chequearVidaPookemones();
+        
+        if(resultado != -1){
+            switch (resultado) {
+                case 1:
+                    pookemonEliminado(1);
+                    break;
+                case 2:
+                    pookemonEliminado(2);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
+    public void chequearGanador(){
+        int resultado = controlador.chequearGanador();
+        
+        if(resultado != -1){
+            cambio.dispose();
+            if(resultado == 2){
+                super.getMainFrame().switchToGanadorPanel(controlador.getEntrenador(2).getNombreEntrenador());
+            }else if(resultado == 1){
+                super.getMainFrame().switchToGanadorPanel(controlador.getEntrenador(1).getNombreEntrenador());
+            }
         }
     }
     
@@ -650,7 +680,7 @@ public class BatallaPanel extends StandarPanel {
         List<Objeto> objetos = new ArrayList<>(Arrays.asList(pocion,pps));
         
         controlador.getEntrenador(1).setObjetos(objetos);
-        controlador.getEntrenador(1).setObjetos(objetos);
+        controlador.getEntrenador(2).setObjetos(objetos);
     }
     
     public void asignarMovimientos(){

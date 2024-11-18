@@ -24,6 +24,7 @@ import main.java.com.pml.appPookemon.gui.admin.EliminarPanel;
 import main.java.com.pml.appPookemon.gui.admin.GestionPanel;
 import main.java.com.pml.appPookemon.gui.admin.ListarPanel;
 import main.java.com.pml.appPookemon.gui.batalla.BatallaPanel;
+import main.java.com.pml.appPookemon.gui.batalla.GanadorPanel;
 import main.java.com.pml.appPookemon.gui.jugador.RegistroPanel;
 
 /**
@@ -40,6 +41,8 @@ public class MainFrame extends javax.swing.JFrame {
     private EliminarPanel eliP;
     
     private BatallaPanel batPri;
+    
+    private GanadorPanel ganP;
      
     private Clip clip;
     
@@ -81,6 +84,9 @@ public class MainFrame extends javax.swing.JFrame {
         //paneles batalla
         batPri = new BatallaPanel(this);
         
+        //panel ganador
+        ganP = new GanadorPanel(this);
+        
         // Agregamos los paneles al CardLayout
         getContentPane().add(WelcomeP, "welcomeP");
         getContentPane().add(adminP, "adminP");
@@ -93,6 +99,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(ediP, "ediP");
         getContentPane().add(eliP, "eliP");
         getContentPane().add(batPri, "batPri");
+        getContentPane().add(ganP, "ganP");
        
         //evitar error al refrescar
         getContentPane().revalidate();
@@ -157,6 +164,11 @@ public class MainFrame extends javax.swing.JFrame {
     public void switchToBatallaPnel(){
         batPri.configurar();
         switchPanel("batPri");
+    }
+    
+    public void switchToGanadorPanel(String nombre){
+        ganP.configurar(nombre);
+        switchPanel("ganP");
     }
 
     // Método para volver al último panel
