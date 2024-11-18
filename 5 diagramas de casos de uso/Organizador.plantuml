@@ -7,14 +7,14 @@ actor Organizador
 package gestionar_pookemones{
     usecase "Agregar pookemon" as agrPoo
     usecase "Asignar estadisticas" as asiEst
-    usecase "Asignar movimientos" as asiMov
+    usecase "Asignar imagen" as asiImag 
     usecase "Eliminar pookemon" as eliPoo
     usecase "Editar pookemon" as ediPoo
 }
 
 Organizador -- agrPoo
 agrPoo ..> asiEst: <<include>>
-agrPoo ..> asiMov: <<include>>
+agrPoo ..> asiImag: <<include>>
 Organizador -- ediPoo
 Organizador -- eliPoo
 
@@ -28,35 +28,13 @@ Organizador -- agrMov
 Organizador -- creMov
 Organizador -- ediMov
 
-package gestionar_objetos{
-    usecase "Agregar objeto" as agrObj
-    usecase "Crear objeto" as creObj
-    usecase "Editar objeto" as edtObj
 
-}
-
-Organizador -- agrObj
-Organizador -- creObj
-Organizador -- edtObj
-
-package gestionar_premios{
-    usecase "Crear premios" as crePre
-    usecase "Asignar premio al torneo" as asiPreTor
-}
-
-Organizador -- crePre
-Organizador -- asiPreTor
-
-package gestionar_torneo{
-    usecase "Inscribir jugadores" as insJug
-    usecase "Listar jugadores" as lisJug
+package gestionar_batalla{
+    usecase "Listar movimientos" as lisMov
     usecase "Listar Pookemones" as lisPoo
-    usecase "Consultar reportes de batalla" as verHisBat
 }
 
-Organizador -- insJug
-Organizador -- lisJug
+Organizador -- lisMov
 Organizador -- lisPoo
-Organizador -- verHisBat
 
 @enduml
