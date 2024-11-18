@@ -40,19 +40,7 @@ Durante la batalla, los jugadores deben tener la opción de consultar una la can
 
 ---
 ### 4. Título
-Como jugador, quiero poder ver de forma compacta la información de los movimientos de mis Pookémon usando símbolos y palabras clave para entender rápidamente sus efectos.
-
-### Descripción:
-El sistema debe presentar la información de los movimientos de los Pookémon de manera compacta y visualmente accesible, utilizando símbolos y palabras clave para representar detalles como tipo, potencia, precisión, puntos de poder (PP) y efectos especiales. Esto permitirá a los jugadores comprender rápidamente la funcionalidad de cada movimiento sin necesidad de leer descripciones largas, facilitando la planificación estratégica.
-
-### Criterios de aceptación
-- La información de cada movimiento se muestra de manera compacta con símbolos para tipo, potencia, precisión, PP, y efectos.
-- Informacion sobre el tipo de efecto que genera.
-- Los símbolos y palabras clave deben ser intuitivos y fáciles de comprender sin necesidad de explicaciones adicionales.
-
----
-### 5. Título
-Como jugador, quiero poder elegir entre atacar, defenderme o hacer uso de posiciones durante el combate para ajustar mi estrategia según la situación.
+Como jugador, quiero poder elegir entre atacar, defenderme o hacer uso de pociones durante el combate para ajustar mi estrategia según la situación.
 
 ### Descripción:
 El sistema debe permitir al jugador optar por defenderse durante el combate, reduciendo el daño recibido en ese turno. Además, el jugador podrá usar ciertas pociones para restablecer HP o PP, ofreciendo opciones estratégicas adicionales durante la batalla.
@@ -63,7 +51,7 @@ El sistema debe permitir al jugador optar por defenderse durante el combate, red
 - El jugador puede hacer uso de una poción para restablecer HP al Pookémon y otra para restablecer PP a un movimiento del Pookémon selecionado.
 
 ---
-### 6. Título
+### 5. Título
 Como jugador, quiero poder cambiar mi Pookémon durante el combate para aprovechar mejor las ventajas de tipo y estadísticas.
 
 ### Descripción:
@@ -76,6 +64,18 @@ El sistema debe permitir a los jugadores cambiar su Pookémon durante el combate
 ###
 #
 # ORGANIZADOR
+
+### 6. Título
+Como organizador quiero agregar música en el juego para mejorar la experiencia de los usuarios durante el uso del programa.
+
+### Descripción:
+El sistema debe incluir música de fondo para enriquecer la experiencia de los usuarios mientras interactúan con el programa.
+La música debe ser constante durante el uso del programa y no debe afectar el rendimiento ni la usabilidad de las funciones principales.
+
+### Criterios de aceptación
+- La música no debe interferir con los efectos de sonido del programa ni afectar la claridad de mensajes importantes.
+
+---
 
 ### 7. Título
 Como organizador, quiero poder crear una arena de combate con el fin de poder llevar a cabo los enfrentamientos entre los jugadores.
@@ -90,17 +90,14 @@ El sistema debe permitir crear la arena de combate y asignarle sus dos jugadores
 
 ---
 ### 8. Título
-//DEBEN CAMBIAR Ya que ahora son batallas 1v1 que resultan en 1 ganador
-Como organizador, quiero que al ganador del torneo se le asigne un código que le permita reclamar una recompensa en un punto físico.
+Como organizador quiero evitar el abuso de un movimiento durante una batalla para evitar el desbalance entre los movimientos.
 
-### Descripción:
-El sistema debe asignar un código al jugador ganador de cada batalla, el cual podrá ser utilizado 
-para reclamar una recompensa en un punto físico designado. El código debe tener una fecha de expiración 
-visible para el ganador, asegurando que se utilice dentro del periodo establecido.
+### Descripción
+Durante las batallas, algunos movimientos pueden ser usados repetidamente de manera que afecten negativamente en la experiencia y el balance del juego, creando una ventaja injusta para ciertos jugadores. Este sistema debe limitar el abuso de movimientos repetitivos, asegurando que las estrategias de batalla sean diversas y equitativas para todos los participantes.
 
 ### Criterios de aceptación
-- El jugador que resulte victorioso en el torneo obtendrá un código.
-- El código de premio tiene una fecha de expiración que se muestra al ganador.
+
+- Durante una batalla el número de PP's para un movimiento va a ser global para los dos pookemones.
 
 ---
 ### 9. Título
@@ -238,7 +235,7 @@ El sistema debe permitir que los Pookémon puedan sufrir problemas de estado dur
 
 ---
 ### 20. Título
-Como organizador, quiero ver los creditos del juego para saber quienes fueron sus creadores y demas informacion sobre el mismo. 
+Como organizador, quiero ver los creditos del juego para saber quienes fueron sus creadores y demás información sobre el mismo. 
 
 ### Descripción:
 El usuario tendra una opcion de ver los creditos del juego más la informacion de quienes estuvieron encargados de la creacion del mismo, la fecha de creacion y contenido adicional sobre la creacion del juego.
