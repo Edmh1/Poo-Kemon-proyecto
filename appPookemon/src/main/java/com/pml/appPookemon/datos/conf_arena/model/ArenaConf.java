@@ -11,10 +11,9 @@ public class ArenaConf implements Serializable{
 
     private ArrayList<Pookemon> pookemones = new ArrayList<>();
     private ArrayList<Movimiento> movimientos = new ArrayList<>();
-    private Recompensa premio;
-    
+
     public ArenaConf() {
-        premio = new Recompensa("Targeta Regalo", "Este es un sobre misterioso");
+ 
     }
     
 
