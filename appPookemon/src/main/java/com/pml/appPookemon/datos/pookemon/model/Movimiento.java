@@ -108,7 +108,7 @@ public abstract class Movimiento implements Serializable {
 
     @Override
     public String toString() {
-        return "Movimiento{" + "idMovimiento=" + idMovimiento + ", nombre=" + nombreMovimiento + ", descripcion=" + descripcionMovimiento + ", potencia=" + potencia + ", precision=" + precision + "% " + ", cantidadPP=" + cantidadPP + ", elemento=" + elemento + ", efecto=" + efecto + '}';
+        return "Movimiento{" + "idMovimiento=" + idMovimiento + ", nombre=" + nombreMovimiento + ", descripcion=" + descripcionMovimiento + ", potencia=" + potencia + ", precision=" + precision + "% " + ", cantidadPP=" + cantidadPP + ", elemento=" + elemento + ", efecto=" + efecto.tipoEfecto() + ", probabilidadEfecto=" + probabilidadEfecto + "% " + '}';
     }
 
     /**

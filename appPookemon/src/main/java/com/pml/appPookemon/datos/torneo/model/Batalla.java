@@ -310,13 +310,7 @@ public class Batalla implements Serializable{
 
     private String logAtacar(Entrenador atacante, int id){
         String nombrePookemon =  atacante.getPookemonActual().getNombrePookemon();
-        String nombreAtaque = "";
-        
-        try{
-            nombreAtaque = atacante.getPookemonActual().obtenerMovimientoPorID(id).getNombreMovimiento();
-        }catch(NullPointerException ex){
-            JOptionPane.showMessageDialog(null, "Movimiento no detectado.");
-        }
+        String nombreAtaque = atacante.getPookemonActual().obtenerMovimientoPorID(id).getNombreMovimiento();
         return logAtaque(nombrePookemon, nombreAtaque);
     }
 
@@ -352,8 +346,9 @@ public class Batalla implements Serializable{
     
     public boolean generarMazo(){
         Random random = new Random();
-        
-        if (pookemones.size() < 6) {
+        ArrayList<Pookemon> auxiliar = this.pookemones; 
+       
+        if (auxiliar.size() < 6) {
             return false;  // Asegurarse de que hay suficientes Pookemones
         }
         
@@ -361,10 +356,11 @@ public class Batalla implements Serializable{
             ArrayList<Pookemon> mazo = new ArrayList<>();
             boolean seguir = true;
             while(seguir){
-                int azar = random.nextInt(pookemones.size()); //conseguir un número al azar
-                Pookemon iterable = pookemones.get(azar); //obtengo del array de pookemones un objeto al azar
+                int azar = random.nextInt(auxiliar.size()); //conseguir un número al azar
+                Pookemon iterable = auxiliar.get(azar); //obtengo del array de pookemones un objeto al azar
                 if(!mazo.contains(iterable)){ //valido que el objeto no esté ya en mazo
                     mazo.add(iterable);
+                    auxiliar.remove(iterable);
                     if(mazo.size() == 3){ //verifico si ya la lista está llena. En nuestro caso, cuando hayan 3 pookemones
                         if(i == 0){
                             entrenador1.setPookemones(mazo);

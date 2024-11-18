@@ -566,18 +566,18 @@ public class BatallaPanel extends StandarPanel {
         Pookemon Weavile = new Pookemon(461, "Weavile", "hielo");
         Weavile.inicializarEstadistica(70, 120, 65, 45, 85, 125);
 
-        Movimiento Lanzallamas = new MovimientoEspecial(1, "Lanzallamas", 90, 100, 10, "fuego", null, 0);
-        Movimiento PunoFuego = new MovimientoFisico(2, "Puño Fuego", 75, 100, 15, "fuego", quemadura, 90);
-        Movimiento Llamarada = new MovimientoEspecial(3, "Llamarada", 110, 85, 5, "fuego", null, 0);
+        Movimiento Lanzallamas = new MovimientoEspecial(1, "Lanzallamas", 90, 100, 10, "fuego", quemadura, 10);
+        Movimiento PunoFuego = new MovimientoFisico(2, "Puño Fuego", 75, 100, 15, "fuego", quemadura, 10);
+        Movimiento Llamarada = new MovimientoEspecial(3, "Llamarada", 110, 85, 5, "fuego", quemadura, 10);
         Movimiento Hidroariete = new MovimientoFisico(4, "Hidroariete", 85, 100, 10, "agua", null, 0);
-        Movimiento Escaldar = new MovimientoEspecial(5, "Escaldar", 80, 100, 10, "agua", null, 0);
+        Movimiento Escaldar = new MovimientoEspecial(5, "Escaldar", 80, 100, 10, "agua", quemadura, 30);
         Movimiento Hidrobomba = new MovimientoEspecial(6, "Hidrobomba", 120, 80, 5, "agua", null, 0);
         Movimiento Energibola = new MovimientoEspecial(7, "Energibola", 90, 100, 10, "planta", null, 0);
         Movimiento BombaGermen = new MovimientoFisico(8, "Bomba Germen", 80, 100, 15, "planta", null, 0);
         Movimiento Latigazo = new MovimientoFisico(9, "Latigazo", 120, 85, 10, "planta", null, 0);
-        Movimiento Rayo = new MovimientoEspecial(10, "Rayo", 90, 100, 10, "electrico", paralisis, 80);
-        Movimiento PunoTrueno = new MovimientoFisico(11, "Puño Trueno", 75, 100, 15, "electrico", null, 0);
-        Movimiento Trueno = new MovimientoEspecial(12, "Trueno", 110, 70, 10, "electrico", null, 0);
+        Movimiento Rayo = new MovimientoEspecial(10, "Rayo", 90, 100, 10, "electrico", paralisis, 10);
+        Movimiento PunoTrueno = new MovimientoFisico(11, "Puño Trueno", 75, 100, 15, "electrico", paralisis, 10);
+        Movimiento Trueno = new MovimientoEspecial(12, "Trueno", 110, 70, 10, "electrico", paralisis, 30);
         Movimiento Terremoto = new MovimientoFisico(13, "Terremoto", 100, 100, 10, "tierra", null, 0);
         Movimiento TierraViva = new MovimientoEspecial(14, "Tierra Viva", 90, 100, 10, "tierra", null, 0);
         Movimiento RocaAfilada = new MovimientoFisico(15, "Roca Afilada", 100, 80, 5, "roca", null, 0);
@@ -586,9 +586,9 @@ public class BatallaPanel extends StandarPanel {
         Movimiento TajoAereo = new MovimientoEspecial(18, "Tajo Aereo", 75, 95, 15, "volador", null, 0);
         Movimiento Vendaval = new MovimientoEspecial(19, "Vendaval", 110, 70, 10, "volador", null, 0);
         Movimiento PicoTaladro = new MovimientoFisico(20, "Pico Taladro", 80, 100, 20, "volador", null, 0);
-        Movimiento BombaLodo = new MovimientoEspecial(21, "Bomba Lodo", 90, 100, 10, "veneno", null, 0);
-        Movimiento PuyaNociva = new MovimientoFisico(22, "Puya Nociva", 80, 100, 20, "veneno", envenenamiento, 80);
-        Movimiento LanzaMugre = new MovimientoFisico(23, "Lanza Mugre", 120, 80, 5, "veneno", null, 0);
+        Movimiento BombaLodo = new MovimientoEspecial(21, "Bomba Lodo", 90, 100, 10, "veneno", envenenamiento, 30);
+        Movimiento PuyaNociva = new MovimientoFisico(22, "Puya Nociva", 80, 100, 20, "veneno", envenenamiento, 30);
+        Movimiento LanzaMugre = new MovimientoFisico(23, "Lanza Mugre", 120, 80, 5, "veneno", envenenamiento, 30);
         Movimiento Psiquico = new MovimientoEspecial(24, "Psiquico", 90, 100, 10, "psiquico", null, 0);
         Movimiento CabezazoZen = new MovimientoFisico(25, "Cabezazo Zen", 80, 90, 15, "psiquico", null, 0);
         Movimiento Psicocorte = new MovimientoFisico(26, "Psicocorte", 70, 100, 20, "psiquico", null, 0);
@@ -611,7 +611,7 @@ public class BatallaPanel extends StandarPanel {
         Movimiento Zumbido = new MovimientoEspecial(43, "Zumbido", 90, 100, 10, "bicho", null, 0);
         Movimiento TijeraX = new MovimientoFisico(44, "Tijera X", 80, 100, 15, "bicho", null, 0);
         Movimiento Vozarron = new MovimientoEspecial(45, "Vozarron", 90, 100, 10, "normal", null, 0);
-        Movimiento GolpeCuerpo = new MovimientoFisico(46, "Golpe Cuerpo", 85, 100, 15, "normal", null, 0);
+        Movimiento GolpeCuerpo = new MovimientoFisico(46, "Golpe Cuerpo", 85, 100, 15, "normal", paralisis, 30);
 
         Roserade.setMovimientos(new ArrayList<>(Arrays.asList(Energibola, BombaGermen, BombaLodo, PuyaNociva)));
         Venusaur.setMovimientos(new ArrayList<>(Arrays.asList(Latigazo, BombaGermen, Energibola, BombaLodo)));
@@ -683,16 +683,29 @@ public class BatallaPanel extends StandarPanel {
                     stab = true;
                 }
                 
-                if(i<2 || stab==true){
+                if(i<2 || stab){
                     movimientos.add(iterable);
                     i++;
                 }
                 
+                if(i==2 && !revisarElementosMovimientos(movimientos).contains(pookemon.getElementoPookemon())){
+                    movimientos.add(iterable);
+                    i++;
+                }
             }
         }
         pookemon.setMovimientos(movimientos);
     }
-
+    
+    private ArrayList<String> revisarElementosMovimientos(ArrayList<Movimiento> movimientos) {
+        ArrayList<String> elementos = new ArrayList<>();
+        for (Movimiento movimiento : movimientos) {
+            if(!elementos.contains(movimiento.getElemento())){
+                elementos.add(movimiento.getElemento());
+            }
+        }
+        return elementos;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAtacar;

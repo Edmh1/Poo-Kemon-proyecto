@@ -284,7 +284,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="lbNombreNew" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbNewNombre" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -315,7 +315,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="lbNombreNew" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbNewNombre" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbNewCampo1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -400,7 +400,7 @@
             <Property name="text" type="java.lang.String" value="campo6:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbNombreNew">
+        <Component class="javax.swing.JLabel" name="lbNewNombre">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="sansserif" size="15" style="3"/>
@@ -426,6 +426,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuscarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBuscar">
     </Component>

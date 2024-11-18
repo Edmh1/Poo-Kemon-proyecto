@@ -60,12 +60,11 @@ public class Torneo implements Serializable{
         }
     }
     
-    public void eliminarPookemon(int id_pookemon_p){
+    public void eliminarPookemon(String pookemon){
         for (int i = 0; i < pookemones.size(); i++) {
-            if(pookemones.get(i).getIdPookemon() == id_pookemon_p){
+            if(pookemones.get(i).getNombrePookemon().equalsIgnoreCase(pookemon)){
                 pookemones.remove(i);
-            }
-            
+            }          
         }
     }
     
@@ -75,9 +74,9 @@ public class Torneo implements Serializable{
     
     
     
-    public void eliminarMovimiento(int id_movimiento_p){
+    public void eliminarMovimiento(String movimiento){
         for (int i = 0; i < movimientos.size(); i++) {
-            if(movimientos.get(i).getIdMovimiento() == id_movimiento_p){
+            if(movimientos.get(i).getNombreMovimiento().equalsIgnoreCase(movimiento)){
                 movimientos.remove(i);
             }
             
@@ -255,6 +254,51 @@ public class Torneo implements Serializable{
 
     public NodoTorneo getGanador() {
         return ganador;
+    }
+    
+    public String buscarElementoPookemon(String nombreBuscado) {
+        for (Pookemon pookemon : pookemones) {
+            if(pookemon.getNombrePookemon().equalsIgnoreCase(nombreBuscado)){
+                return pookemon.getElementoPookemon();
+            }
+        }
+        return null;
+    }
+
+    public String buscarElementoMovimiento(String nombreBuscado) {
+        for (Movimiento movimiento : movimientos) {
+            if(movimiento.getNombreMovimiento().equalsIgnoreCase(nombreBuscado)){
+                return movimiento.getElemento();
+            }
+        }
+        return null;
+    }
+
+    public String buscarTipoMovimiento(String nombreBuscado) {
+        for (Movimiento movimiento : movimientos) {
+            if(movimiento.getNombreMovimiento().equalsIgnoreCase(nombreBuscado)){
+                return movimiento.getTipoMovimiento();
+            }
+        }
+        return null;
+    }
+    
+    public Pookemon buscarPokemonPorNombre(String nombreBuscado){
+        for (Pookemon pookemon : pookemones) {
+            if(pookemon.getNombrePookemon().equalsIgnoreCase(nombreBuscado)){
+                return pookemon;
+            }
+        }
+        return null;
+    }
+    
+    public Movimiento buscarMovimientoPorNombre(String nombreBuscado){
+        for (Movimiento movimiento : movimientos) {
+            if(movimiento.getNombreMovimiento().equalsIgnoreCase(nombreBuscado)){
+                return movimiento;
+            }
+        }
+        return null;
     }
 
 }

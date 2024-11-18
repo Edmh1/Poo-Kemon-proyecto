@@ -4,6 +4,10 @@
  */
 package main.java.com.pml.appPookemon.gui.admin;
 
+import javax.swing.JOptionPane;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
+import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
+import main.java.com.pml.appPookemon.datos.torneo.controller.TorneoController;
 import main.java.com.pml.appPookemon.gui.MainFrame;
 import main.java.com.pml.appPookemon.gui.config.StandarPanel;
 import org.jdesktop.swingx.prompt.PromptSupport;
@@ -15,6 +19,10 @@ import org.jdesktop.swingx.prompt.PromptSupport;
 public class EditarPanel extends StandarPanel {
 
     private String nombre;
+    private String nombreBuscado;
+    private Pookemon pookemonBuscado;
+    private Movimiento movimientoBuscado;
+    TorneoController torneo = super.getMainFrame().getController();
     /**
      * Creates new form EditarPanel
      */
@@ -129,7 +137,7 @@ public class EditarPanel extends StandarPanel {
         lbNewCampo4 = new javax.swing.JLabel();
         lbNewCampo5 = new javax.swing.JLabel();
         lbNewCampo6 = new javax.swing.JLabel();
-        lbNombreNew = new javax.swing.JLabel();
+        lbNewNombre = new javax.swing.JLabel();
         txtNewCampo1 = new javax.swing.JTextField();
         txtNewCampo2 = new javax.swing.JTextField();
         txtNewCampo3 = new javax.swing.JTextField();
@@ -272,8 +280,8 @@ public class EditarPanel extends StandarPanel {
         lbNewCampo6.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
         lbNewCampo6.setText("campo6:");
 
-        lbNombreNew.setFont(new java.awt.Font("sansserif", 3, 15)); // NOI18N
-        lbNombreNew.setText("Nombre id");
+        lbNewNombre.setFont(new java.awt.Font("sansserif", 3, 15)); // NOI18N
+        lbNewNombre.setText("Nombre id");
 
         javax.swing.GroupLayout jpNewLayout = new javax.swing.GroupLayout(jpNew);
         jpNew.setLayout(jpNewLayout);
@@ -283,7 +291,7 @@ public class EditarPanel extends StandarPanel {
                 .addGroup(jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpNewLayout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(lbNombreNew))
+                        .addComponent(lbNewNombre))
                     .addGroup(jpNewLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +315,7 @@ public class EditarPanel extends StandarPanel {
             jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpNewLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(lbNombreNew)
+                .addComponent(lbNewNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpNewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNewCampo1)
@@ -336,6 +344,11 @@ public class EditarPanel extends StandarPanel {
         );
 
         btBuscar.setText("Buscar");
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("sansserif", 3, 13)); // NOI18N
         jLabel1.setText("OLD");
@@ -401,6 +414,42 @@ public class EditarPanel extends StandarPanel {
 
     private void btActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizarActionPerformed
         // TODO add your handling code here:
+        
+        if(nombre.equalsIgnoreCase("pookemon")){
+            if(pookemonBuscado!=null){
+                try{
+                pookemonBuscado.getEstadisticaPookemon().setVida(Integer.parseInt(txtNewCampo1.getText()));
+                pookemonBuscado.getEstadisticaPookemon().setAtaqueFisico(Integer.parseInt(txtNewCampo2.getText()));
+                pookemonBuscado.getEstadisticaPookemon().setDefensaFisica(Integer.parseInt(txtNewCampo3.getText()));
+                pookemonBuscado.getEstadisticaPookemon().setAtaqueEspecial(Integer.parseInt(txtNewCampo4.getText()));
+                pookemonBuscado.getEstadisticaPookemon().setDefensaEspecial(Integer.parseInt(txtNewCampo5.getText()));
+                pookemonBuscado.getEstadisticaPookemon().setVelocidad(Integer.parseInt(txtNewCampo6.getText()));
+                JOptionPane.showMessageDialog(this, "Pookemon actualizado exitosamente");   
+                } catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(this, "Datos mal digitados");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
+            }
+        } else {
+            if(movimientoBuscado!=null){
+                try{
+                    movimientoBuscado.setDescripcionMovimiento(txtNewCampo1.getText());
+                    movimientoBuscado.setPotencia(Integer.parseInt(txtNewCampo2.getText()));
+                    movimientoBuscado.setPrecision(Integer.parseInt(txtNewCampo3.getText()));
+                    movimientoBuscado.setCantidadPP(Integer.parseInt(txtNewCampo4.getText()));
+                    
+                    
+                    JOptionPane.showMessageDialog(this, "Movimiento actualizado exitosamente");  
+                } catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(this, "Datos mal digitados");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
+            }
+        }
+
+
     }//GEN-LAST:event_btActualizarActionPerformed
 
     private void txtOldCampo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOldCampo3ActionPerformed
@@ -410,6 +459,40 @@ public class EditarPanel extends StandarPanel {
     private void txtOldCampo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOldCampo1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtOldCampo1ActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        // TODO add your handling code here:
+        nombreBuscado = txtBuscar.getText();
+        if(nombre.equalsIgnoreCase("pookemon")){
+            pookemonBuscado = torneo.buscarPokemonPorNombre(nombreBuscado);
+            if(pookemonBuscado!=null){
+                lbOldNombre.setText(nombreBuscado);
+                lbNewNombre.setText(nombreBuscado);
+                txtOldCampo1.setText(""+pookemonBuscado.getEstadisticaPookemon().getVida());
+                txtOldCampo2.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueFisico());
+                txtOldCampo3.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaFisica());
+                txtOldCampo4.setText(""+pookemonBuscado.getEstadisticaPookemon().getAtaqueEspecial());
+                txtOldCampo5.setText(""+pookemonBuscado.getEstadisticaPookemon().getDefensaEspecial());
+                txtOldCampo6.setText(""+pookemonBuscado.getEstadisticaPookemon().getVelocidad());
+            } else {
+                JOptionPane.showMessageDialog(this, "Pookemon no encontrado");
+            }
+        } else {
+            movimientoBuscado = torneo.buscarMovimientoPorNombre(nombreBuscado);
+            if(movimientoBuscado!=null){
+                lbOldNombre.setText(nombreBuscado);
+                lbNewNombre.setText(nombreBuscado);  
+                txtOldCampo1.setText(movimientoBuscado.getDescripcionMovimiento());
+                txtOldCampo2.setText(""+movimientoBuscado.getPotencia());
+                txtOldCampo3.setText(""+movimientoBuscado.getPrecision());
+                txtOldCampo4.setText(""+movimientoBuscado.getCantidadPP());
+            } else {
+                JOptionPane.showMessageDialog(this, "Movimiento no encontrado");
+            }
+        }
+        
+        
+    }//GEN-LAST:event_btBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -426,7 +509,7 @@ public class EditarPanel extends StandarPanel {
     private javax.swing.JLabel lbNewCampo4;
     private javax.swing.JLabel lbNewCampo5;
     private javax.swing.JLabel lbNewCampo6;
-    private javax.swing.JLabel lbNombreNew;
+    private javax.swing.JLabel lbNewNombre;
     private javax.swing.JLabel lbOldCampo1;
     private javax.swing.JLabel lbOldCampo2;
     private javax.swing.JLabel lbOldCampo3;
