@@ -85,4 +85,12 @@ public class BatallaController {
     public String aplicarEfectos(){
         return batalla.aplicarEfectos();
     }
+    
+    public int chequearVidaPookemones(){
+        return batalla.chequearVidaPookemones();
+    }
+    
+    public int chequearGanador(){
+        return batalla.chequearGanador();
+    }
 }

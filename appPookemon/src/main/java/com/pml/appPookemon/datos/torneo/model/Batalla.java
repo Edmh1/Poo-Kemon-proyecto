@@ -3,8 +3,8 @@ package main.java.com.pml.appPookemon.datos.torneo.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import javax.swing.JOptionPane;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.registro.model.Entrenador;
 
@@ -69,7 +69,9 @@ public class Batalla implements Serializable{
             
             //El jugador 2 se defiende
             if(accionEntrenador2.getTipoAccion() == TipoAccion.DEFENDER){
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " se ha defendido";
                 entrenador2.getPookemonActual().desactivarDefensa();
+                return resultado+ "\n";
             }
         }
         
@@ -154,7 +156,9 @@ public class Batalla implements Serializable{
             
             //El jugador 2 se defiende
             if(accionEntrenador2.getTipoAccion() == TipoAccion.DEFENDER){
+                resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha decidido defenderse";
                 entrenador2.getPookemonActual().desactivarDefensa();
+                return resultado + "\n";
             }
         }
         
@@ -377,6 +381,39 @@ public class Batalla implements Serializable{
         return true;
                     
     }
+    
+    public int chequearVidaPookemones(){
+        int vidaPk1 = entrenador1.getPookemonActual().getEstadisticaPookemon().getVida();
+        int vidaPk2 = entrenador2.getPookemonActual().getEstadisticaPookemon().getVida();
+        
+        //Se murió el pookemon del entrenador 1
+        if(vidaPk2 > 0 && vidaPk1 <= 0){
+            return 1;
+        //Se murió el pookemon del entrenador 2
+        }else if(vidaPk1 > 0 && vidaPk2 <= 0){
+            return 2;
+        }
+        
+        return -1;
+    }
+    
+    public int chequearGanador(){
+        int pkEliminadosEntrenador1 = contarPookemonesEliminados(1);
+        int pkEliminadosEntrenador2 = contarPookemonesEliminados(2);
+        
+        //Gano el entrenador 2
+        if(pkEliminadosEntrenador1 == 3){
+            return 2;
+        }
+        
+        //Gano el entrenador 1
+        if(pkEliminadosEntrenador2 == 3){
+            return 1;
+        }
+        
+        //No ha ganado nadie
+        return -1;
+    }
 
     public Entrenador getEntrenador1() {
         return entrenador1;
@@ -392,6 +429,26 @@ public class Batalla implements Serializable{
 
     public void setAccionEntrenador2(Accion accionEntrenador2) {
         this.accionEntrenador2 = accionEntrenador2;
+    }
+
+    private int contarPookemonesEliminados(int i) {
+        List<Pookemon> lista = null;
+        int nPookemones = 0;
+        if(i == 1){
+            lista = entrenador1.getPookemones();
+        }else if(i == 2){
+            lista = entrenador2.getPookemones();
+        }
+        
+        if(lista != null){
+            for (Pookemon pookemon : lista) {
+                if(pookemon.getEstadisticaPookemon().getVida() == 0){
+                    nPookemones++;
+                }
+            }
+        }
+        
+        return nPookemones;
     }
     
 }
