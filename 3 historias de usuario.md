@@ -1,12 +1,12 @@
 #
 # JUGADOR
 ### 1.Título
-Como jugador, quiero crear un entrenador con un nombre y un género para personalizar mi identidad en el torneo.
+Como jugador, quiero crear un entrenador con un nombre y un género para personalizar mi identidad en la batalla.
 
 ### Descripción:
 El sistema debe permitir al jugador crear un entrenador, donde pueda seleccionar un nombre y 
 un género para su personaje. Esta funcionalidad es necesaria para que el jugador pueda personalizar 
-su identidad dentro del torneo y diferenciar su experiencia de juego.
+su identidad dentro de la batalla y diferenciar su experiencia de juego.
 
 ### Criterios de aceptación
 - El jugador puede elegir un nombre y un género al crear un entrenador.
@@ -27,16 +27,15 @@ Cada Pookémon debe contar con 4 movimientos donde por lo menos 1 estara directa
 - Los movimientos son asignados automáticamente al momento de recibir el Pookémon en el juego.
 
 ---
-//DEBEN CAMBIAR
+
 ### 3. Título
-Como jugador, quiero poder consultar la descripción de los movimientos de mi Pookémon durante la batalla para tomar decisiones informadas.
+Como jugador, quiero poder consultar la cantidad de PP de los movimientos de mi Pookémon durante la batalla para tomar decisiones informadas.
 
 ### Descripción:
-Durante la batalla, los jugadores deben tener la opción de consultar una descripción detallada de cada uno de los movimientos de su Pookémon, incluyendo su tipo, efectos, y poder, para que puedan tomar decisiones estratégicas basadas en esa información.
+Durante la batalla, los jugadores deben tener la opción de consultar una la cantidad de PP de cada uno de los movimientos de su Pookémon para que puedan tomar decisiones estratégicas basadas en esa información.
 
 ### Criterios de aceptación
-- El jugador puede consultar una descripción de cada movimiento disponible durante la batalla.
-- La descripción incluye el tipo del movimiento, el daño (si aplica), los efectos especiales (si tiene), y cualquier otra información relevante.
+- El jugador puede consultar la cantidad de PP cada movimiento disponible durante la batalla.
 - El jugador puede acceder a esta información de forma intuitiva y rápida para no afectar el flujo de la batalla.
 
 ---
@@ -77,17 +76,17 @@ El sistema debe permitir a los jugadores cambiar su Pookémon durante el combate
 ###
 #
 # ORGANIZADOR
-//DEBEN CAMBIAR Ya que ahora lo que se puede es gestionar la arena de combate
+
 ### 7. Título
-Como organizador, quiero poder crear el torneo y definir la recompensa para el ganador del torneo.
+Como organizador, quiero poder crear una arena de combate con el fin de poder llevar a cabo los enfrentamientos entre los jugadores.
 
 ### Descripción:
-El sistema debe permitir crear el torneo al organizador y definir la recompensa del ganador.
+El sistema debe permitir crear la arena de combate y asignarle sus dos jugadores
 
 ### Criterios de aceptación
-- El sistema permite crear el torneo al organizador
-- El sistema debe permitir definir la recompensa del ganador
-- El sistema envía mensaje al ganador sobre cómo reclamar su premio.
+- El sistema permite crear la arena de combate
+- El sistema debe permitir asignar los participantes del combate
+- El sistema determina el ganador.
 
 ---
 ### 8. Título
@@ -105,41 +104,37 @@ visible para el ganador, asegurando que se utilice dentro del periodo establecid
 
 ---
 ### 9. Título
-//DEBEN CAMBIAR Ya que ahora aunque hay registro este es mas coloquial para poder pelear de manera 
-//rapida
-Como organizador, quiero un sistema de registro que permita a los jugadores inscribirse en el torneo para garantizar la participación organizada.
+Como organizador, quiero un sistema de registro que permita a los jugadores inscribirse al combate para garantizar la participación organizada.
 
 ### Descripción:
-El sistema debe permitir a los jugadores registrarse al inicio del torneo, incluyendo la definición de el nombre que usarán durante el torneo.
+El sistema debe permitir a los jugadores registrarse al inicio del combate, incluyendo la definición de el nombre que usarán durante el enfrentamiento.
 
 ### Criterios de aceptación
-- Los jugadores pueden registrarse al inicio del torneo.
-- Se genera una lista de participantes que es accesible para el organizador.
+- Los jugadores pueden registrarse al inicio del combate.
+
 ---
 ### 10. Título
-//DEBEN CAMBIAR Ya que ahora no gestionamos multiples rondas de combates
-Como organizador, quiero un sistema que gestione múltiples rondas de combate para determinar el ganador del torneo.
+Como organizador, quiero un sistema que permita listar todos los movimientos y Pookemones disponibles para los combates.
 
 ### Descripción:
-El sistema debe gestionar el progreso del torneo en un formato eliminatorio, permitiendo a los jugadores avanzar a la siguiente fase tras ganar un combate. Debe incluir una visualización clara de las posiciones en el torneo.
+El sistema debe proporcionar al organizador la opción de ver la lista completa de todos los movimientos y Pookemones disponibles para los combates. Esto facilitará la gestión de los enfrentamientos, ya que permitirá al organizador modificar los Pookemones disponibles para cada combate y agregar dinamismo a la experiencia.
 
 ### Criterios de aceptación
-- El torneo sigue un formato eliminatorio.
-- Los jugadores avanzan a la siguiente ronda tras ganar un combate.
-- El sistema debe permitir la visualizar los jugadores restantes
+- Los listados deben contener por el nombre y el elemento.
+- La lista de movimientos debe mostrar el tipo de movimiento.
+- La lista de movimientos y Pookemones es accesible y visible en una interfaz clara y fácil de navegar.
 
 ---
 ### 11. Título
-//DEBEN Ajustarse para que sea el log de abajo a la derecha en batalla
-Como organizador, quiero que el sistema genere un reporte detallado de cada batalla para revisar el desempeño de los jugadores y asegurar la transparencia.
+Como organizador, quiero que el sistema genere un reporte detallado durante cada batalla para revisar el desempeño de los jugadores y asegurar la transparencia.
 
 ### Descripción:
-El sistema debe generar un reporte detallado al finalizar cada batalla, incluyendo los movimientos, daños y resultados. Este reporte estará disponible para revisión del organizador.
+El sistema debe generar un reporte detallado durante cada batalla, incluyendo los movimientos, daños y resultados. Este reporte podrá ser visible a medida que transcurren los enfrentamientos.
 
 ### Criterios de aceptación
-- Al finalizar la batalla, se genera un reporte con los movimientos, daños y resultados.
-- El reporte está disponible para revisión del organizador.
-- Los jugadores pueden visualizar el reporte de su propia batalla.
+- El reporte es visible para los jugadores durante el enfrentamiento.
+- Indicará el numero de turno y la acción que hayan tomado ambos jugadores.
+
 
 ---
 ### 12. Título
