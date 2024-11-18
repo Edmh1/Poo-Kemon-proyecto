@@ -33,6 +33,7 @@ public class GanadorPanel extends StandarPanel {
         lbGanador = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
 
+        lbGanador.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         lbGanador.setText("¡FELICIDADES ENTRENADOR HAS GANADO!");
 
         btnVolver.setText("Volver al inicio");
@@ -47,23 +48,23 @@ public class GanadorPanel extends StandarPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lbGanador)
-                        .addGap(82, 82, 82))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnVolver)
-                        .addGap(150, 150, 150))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(lbGanador))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(lbGanador)
-                .addGap(50, 50, 50)
-                .addComponent(btnVolver)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGap(185, 185, 185)
+                .addComponent(lbGanador, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(205, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -77,6 +78,7 @@ public class GanadorPanel extends StandarPanel {
         lbGanador.setText("FELICITACIONES ENTRENADOR " + nombre.toUpperCase() + " HAS GANADO!!!");
         lbGanador.setAlignmentX(posX);
         btnVolver.setAlignmentX(posX);
+        super.getMainFrame().reproducirMusica(getClass().getResourceAsStream("/audio/ganador.wav"));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

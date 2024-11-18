@@ -53,7 +53,6 @@ public class MainFrame extends javax.swing.JFrame {
         panelHistory = new Stack<>();
         initComponents();
         setupPanels();
-        reproducirMusica(getClass().getResourceAsStream("/audio/song_modified.WAV"));
     }
  
     public BatallaPanel getBatallaPanel(){
@@ -116,6 +115,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public void switchToWelcomePanel() {
+        reproducirMusica(getClass().getResourceAsStream("/audio/song_modified.WAV"));
         switchPanel("welcomeP");
     }
     public void switchToAdminPanel() {
@@ -243,7 +243,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGap(0, 710, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,15 +317,21 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniInicio;
     // End of variables declaration//GEN-END:variables
 
-    private void reproducirMusica(InputStream audioStream) {
+    public void reproducirMusica(InputStream audioStream) {
         try {
+            
+            if (clip != null) {
+                clip.stop();
+                clip.close(); 
+            }
+
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioStream);
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
-            clip.loop(Clip.LOOP_CONTINUOUSLY); // Loop the music
- 
-            setVolume(0.1f);
+            clip.loop(Clip.LOOP_CONTINUOUSLY); 
+
+            setVolume(0.6f);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
@@ -334,7 +340,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void setVolume(float volume) {
         if (clip != null) {
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            float dB = (float) (20 * Math.log10(volume)); // Convert volume to decibels
+            float dB = (float) (20 * Math.log10(volume)); 
             gainControl.setValue(dB);
         }
     }

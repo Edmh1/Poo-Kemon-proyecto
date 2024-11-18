@@ -52,7 +52,7 @@ public class Organizador implements Serializable {
         creditos.append("\n");
         creditos.append("🛠️ Eddie Manotas - El Conquistador de Bugs\n");
         creditos.append("🛠️ Arturo Velasquez - El Mago del Código\n");
-        creditos.append("🛠️ Sebastian Castro - El Guerrero del Backend\n");
+        creditos.append("🛠️ Sebastian Castro - El Guerrero de las Mil Batallas\n");
         creditos.append("🛠️ Andres Escobar - El Maestro de las Excepciones\n");
         creditos.append("🛠️ Vladimir Navarro - El Guardián del Sistema\n");
         creditos.append("\n");
