@@ -46,6 +46,9 @@ public class MainFrame extends javax.swing.JFrame {
      
     private Clip clip;
     
+    RegistroPanel regP1;
+    RegistroPanel regP2; 
+    
     /**
      * Creates new form Main
      */
@@ -70,8 +73,8 @@ public class MainFrame extends javax.swing.JFrame {
         AdminPanel adminP = new AdminPanel(this);
         
         //paneles registros
-        RegistroPanel regP1 = new RegistroPanel(this, 1);
-        RegistroPanel regP2 = new RegistroPanel(this, 2);
+        regP1 = new RegistroPanel(this, 1);
+        regP2 = new RegistroPanel(this, 2);
         ListoPanel listoP = new ListoPanel(this);
         
         //paneles despues del admin
@@ -158,6 +161,7 @@ public class MainFrame extends javax.swing.JFrame {
             } 
         }else{
             switchToListoPanel();    
+            regP1.setIndice(0);
         } 
     }
     

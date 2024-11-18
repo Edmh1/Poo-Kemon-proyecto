@@ -343,6 +343,7 @@ public class BatallaPanel extends StandarPanel {
         actualizarVidaVisual();
         configurarImagenes();
         configurarFlecha();
+        txtAreaLog.setText("");
     }
 
     public void configurarTextos() {

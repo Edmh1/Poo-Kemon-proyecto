@@ -379,10 +379,11 @@ public class Batalla {
         int vidaPk2 = entrenador2.getPookemonActual().getEstadisticaPookemon().getVida();
         
         //Se murió el pookemon del entrenador 1
-        if(vidaPk2 > 0 && vidaPk1 <= 0){
+        if(vidaPk1 <= 0){
             return 1;
+        }
         //Se murió el pookemon del entrenador 2
-        }else if(vidaPk1 > 0 && vidaPk2 <= 0){
+        if(vidaPk2 <= 0){
             return 2;
         }
         

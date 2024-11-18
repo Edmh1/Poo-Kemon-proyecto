@@ -17,6 +17,7 @@ import main.java.com.pml.appPookemon.datos.conf_arena.controller.BatallaControll
 public class BatallaCambio extends javax.swing.JFrame {
     private BatallaPanel bp;
     private int idPookemon;
+    private int vidaPookemon;
     private int turno;
     private Pookemon pk1;
     private Pookemon pk2;
@@ -26,6 +27,7 @@ public class BatallaCambio extends javax.swing.JFrame {
 
     public BatallaCambio(BatallaController controlador) {
         idPookemon = -1;
+        vidaPookemon = -1;
         this.controlador = controlador;
         cambioForzado = false;
         initComponents();
@@ -128,8 +130,14 @@ public class BatallaCambio extends javax.swing.JFrame {
     private void btCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCambiarActionPerformed
         turno = bp.getTurnoJugador();
         controlador.setAccionEntrenador(turno, "CAMBIO", idPookemon);
-        if(idPookemon == -1){
-            JOptionPane.showMessageDialog(this, "Por favor, seleccione un pookemon");
+        if(idPookemon == -1 || vidaPookemon == 0){
+            String mensaje = "";
+            if(idPookemon == -1){
+                mensaje = "No se ha seleccionado un pookemon";
+            }else if(vidaPookemon == 0){
+                mensaje = "El pookemon está fuera de combate, elige otro";
+            }
+            JOptionPane.showMessageDialog(this, mensaje);
         }else{
             if(cambioForzado == false){
             if(turno == 1){
@@ -163,10 +171,12 @@ public class BatallaCambio extends javax.swing.JFrame {
 
     private void btPookemon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPookemon1ActionPerformed
         idPookemon = pk1.getIdPookemon();
+        vidaPookemon = pk1.getEstadisticaPookemon().getVida();
     }//GEN-LAST:event_btPookemon1ActionPerformed
 
     private void btPookemon2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPookemon2ActionPerformed
         idPookemon = pk2.getIdPookemon();
+        vidaPookemon = pk2.getEstadisticaPookemon().getVida();
     }//GEN-LAST:event_btPookemon2ActionPerformed
 
     /**
