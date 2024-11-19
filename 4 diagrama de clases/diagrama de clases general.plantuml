@@ -1,80 +1,114 @@
 @startuml diagrama de clases
 
 left to right direction
+package "conf_arena"{
+    package "controller"{
+        class ArenaController {
 
-class ArenaController {
+        }
+
+        class BatallaController {
+
+        }
+
+    }
+    package "model"{
+        class Accion {
+        }
+
+        class ArenaConf {
+        }
+
+        class Batalla {
+        }
+
+        enum TipoAccion{
+        }
+
+    }
 }
 
-class BatallaController {
+package "persistencia"{
+    class Serializar {
+ }
 }
 
-class Accion {
+package "pookemon"{
+    package "controller"{
+        class MovimientoController {
+        }
+
+        class PookemonController {
+        }
+
+    }
+    package "model"{
+        interface Efecto{
+        }
+
+        class EfectoEnvenenamiento {
+        }
+
+        class EfectoParalisis {
+        }
+
+        class EfectoQuemadura {
+        }
+
+        class Estadistica {
+        }
+
+        abstract class Movimiento {
+        }
+
+        class MovimientoEspecial {
+        }
+
+        class MovimientoFisico {
+        }
+
+        class Objeto {
+        }
+
+        class Pocion {
+        }
+
+        class Pookemon {
+        }
+
+        class RecuperarPPS {
+        }
+
+    }
 }
 
-class ArenaConf {
+package "registro"{
+    package "controller"{
+        class OrganizadorController {
+        }
+    }
+    package "model"{
+        class Entrenador {
+        }
+
+        class Organizador {
+        }
+    }
 }
 
-class Batalla {
-}
 
-class MovimientoController {
-}
 
-class PookemonController {
-}
 
-class EfectoEnvenenamiento {
-}
 
-class EfectoParalisis {
-}
 
-class EfectoQuemadura {
-}
 
-class Estadistica {
-}
 
-abstract class Movimiento {
-}
 
-class MovimientoEspecial {
-}
 
-class MovimientoFisico {
-}
 
-class Objeto {
-}
 
-class Pocion {
-}
 
-class Pookemon {
-}
 
-class RecuperarPPS {
-}
-
-class OrganizadorController {
-}
-
-class Entrenador {
-}
-
-class Organizador {
-}
-
-class Serializar {
-}
-
-interface Efecto{
-
-}
-
-enum TipoAccion{
-
-}
 
 'Relaciones arena controller
 ArenaController "1..1"<.."1..1" Movimiento
