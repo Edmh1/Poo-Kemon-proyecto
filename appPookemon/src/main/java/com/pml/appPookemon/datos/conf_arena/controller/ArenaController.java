@@ -1,6 +1,7 @@
 package main.java.com.pml.appPookemon.datos.conf_arena.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 import main.java.com.pml.appPookemon.datos.conf_arena.model.ArenaConf;
@@ -22,7 +23,7 @@ public class ArenaController {
         return arena;
     }
     
-    public ArrayList<Pookemon> getPookemones(){
+    public List<Pookemon> getPookemones(){
         return arena.getPookemones();
     }
     
@@ -41,7 +42,7 @@ public class ArenaController {
         organizadorController.setArena(arena);
     }
    
-    public ArrayList<Movimiento> getMovimientos(){
+    public List<Movimiento> getMovimientos(){
         return arena.getMovimientos();
     }
     

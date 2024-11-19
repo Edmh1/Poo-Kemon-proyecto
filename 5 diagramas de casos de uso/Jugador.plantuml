@@ -16,11 +16,11 @@ package participar_en_batalla{
 }
 
 Jugador -- obj
-obj <.. eleObj: <<extends>>
+obj ..> eleObj: <<include>>
 Jugador -- cam
-cam <.. elePoo : <<extends>>
+cam ..> elePoo : <<include>>
 Jugador -- luc
-luc <.. eleMov : <<extends>>
+luc ..> eleMov : <<include>>
 Jugador -- def
 Jugador -- back
 

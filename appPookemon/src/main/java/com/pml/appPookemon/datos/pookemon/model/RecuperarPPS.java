@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author sebac
  */
-public class RecuperarPPS extends Objeto implements Serializable{
+public class RecuperarPPS extends Objeto{
     
     public RecuperarPPS(int idObjeto) {
         super(idObjeto, "Recuperar PPs", "PPs", 5);

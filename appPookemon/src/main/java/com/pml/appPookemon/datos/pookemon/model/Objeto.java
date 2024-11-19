@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 
 
-public abstract class Objeto implements Serializable{
+public abstract class Objeto{
 
     private int idObjeto;
     private String nombreObjeto;

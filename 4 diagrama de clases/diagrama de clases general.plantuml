@@ -1,213 +1,98 @@
 @startuml diagrama de clases
 
 left to right direction
-package "conf_arena"{
-    package "controller"{
-        class ArenaController {
+package "datos"{
+
+    package "pookemon"{
+
+
+        Class Pookemon{
 
         }
 
-        class BatallaController {
+        Class Estadisticas{
 
         }
 
-    }
-    package "model"{
-        class Accion {
+        Class Poccion{
+
         }
 
-        class ArenaConf {
+        Class RecuperarPPS{
+
         }
 
-        class Batalla {
+        abstract Class Objecto{
+
         }
 
-        enum TipoAccion{
+        class MovimientoEspecial{
+
         }
 
-    }
-}
+        Class MovimientoFisico{
 
-package "persistencia"{
-    class Serializar {
- }
-}
-
-package "pookemon"{
-    package "controller"{
-        class MovimientoController {
         }
 
-        class PookemonController {
+        abstract Class Movimiento{
+
         }
 
-    }
-    package "model"{
+        Class EfectoEnvenenamiento{
+
+        }
+        Class EfectoParalisis{
+            
+        }
+        Class EfectoQuemadura{
+            
+        }
+
         interface Efecto{
-        }
 
-        class EfectoEnvenenamiento {
         }
-
-        class EfectoParalisis {
-        }
-
-        class EfectoQuemadura {
-        }
-
-        class Estadistica {
-        }
-
-        abstract class Movimiento {
-        }
-
-        class MovimientoEspecial {
-        }
-
-        class MovimientoFisico {
-        }
-
-        class Objeto {
-        }
-
-        class Pocion {
-        }
-
-        class Pookemon {
-        }
-
-        class RecuperarPPS {
-        }
-
     }
+    
+    package "registro"{
+
+        Class Entrenador{
+
+        }
+
+        Class Organizador{
+
+        }
+    }
+
+    package "conf_arena"{
+
+        Class ArenaConf{
+
+        }
+    }
+    
 }
 
-package "registro"{
-    package "controller"{
-        class OrganizadorController {
-        }
-    }
-    package "model"{
-        class Entrenador {
-        }
+ArenaConf "1" *-- "*" Pookemon
+ArenaConf "1" *-- "*" Movimiento
 
-        class Organizador {
-        }
-    }
-}
+Organizador "1" *-- "1" ArenaConf
 
+Entrenador "1" o-- "3" Pookemon
+Entrenador "1" o-- "*" Objecto 
 
+Pookemon "1" o-- "4" Movimiento
+Pookemon "1" *-- "1" Estadisticas
+Pookemon "1" o-- "0..1" Efecto
 
+Objecto <|-- Poccion
+Objecto <|-- RecuperarPPS
 
+Movimiento <|-- MovimientoEspecial
+Movimiento <|-- MovimientoFisico
 
-
-
-
-
-
-
-
-
-
-
-'Relaciones arena controller
-ArenaController "1..1"<.."1..1" Movimiento
-ArenaController  o--"1..1" OrganizadorController
-ArenaController "1..1"<.."1..1" Pookemon
-ArenaController "1..1" o-- "1..1" ArenaConf
-ArenaController "1..1"<.."1..1" ArenaConf
-ArenaController "1..1" --o MovimientoController
-
-'Relaciones batalla controller
-BatallaController "1..1"<.."1..1" Entrenador
-BatallaController "1..1"<.."1..1" Batalla
-BatallaController o-- "1..1" Batalla:batalla
-
-'Relaciones con Pookemon controller
-PookemonController "1..1"<.."1..1" Pookemon
-
-'Relaciones con Efecto Envenanmiento
-EfectoEnvenenamiento ..|> Efecto:<<implements>>
-EfectoEnvenenamiento "1..1"..>"1..1" Pookemon
-
-'Relaciones con Efecto Paralisis
-EfectoParalisis ..|> Efecto:<<implements>>
-EfectoParalisis "1..1"..>"1..1" Pookemon
- 
-
-'Relaciones con Efecto Quemadura
-EfectoQuemadura ..|> Efecto:<<implements>>
-EfectoQuemadura "1..1"..>"1..1" Pookemon
-
-'Relaciones con Estadistica
-Estadistica "1..1"..>"1..1" Pookemon
-Estadistica "1..1"--o Pookemon:estadisticaPookemon
-
-'Relaciones con movimiento
-Movimiento "1..1"<.."1..1" Efecto
-Movimiento  o-- "1..1" Efecto:efecto
-Movimiento  <|-- MovimientoEspecial:is
-Movimiento "1..1"..>"1..1" MovimientoController
-Movimiento <|-- MovimientoFisico:is
-Movimiento "1..1"..>"1..1" Organizador
-Movimiento "1..1"..>"1..1" ArenaConf
-Movimiento "0..*"--o ArenaConf:movimientos
-Movimiento "1..1"..>"1..1" Pookemon
-Movimiento "1..1"<.."1..1" Pookemon
-Movimiento "0..*"--o Pookemon:movimientos
-
-'Relaciones con Movimiento Especial
-MovimientoEspecial "1..1"<.."1..1"Pookemon
-
-'Relaciones con Movimiento Fisico
-MovimientoFisico "1..1"<.."1..1"Pookemon
-
-'Relaciones con Objeto
-Objeto <|-- Pocion:is
-Objeto <|-- RecuperarPPS:is
-Objeto "1..1"..> "1..1" Pookemon
-Objeto "1..1" <.. "1..1" Entrenador
-Objeto "0..*" --o Entrenador:objetos
-
-'Relaciones con Pocion
-Pocion "1..1" ..>"1..1" Pookemon
-
-'Relaciones con Pookemon
-Pookemon o--"1..1" Efecto
-Pookemon "1..1"..>"1..1" Efecto
-Pookemon "1..1"<.."1..1" Efecto
-Pookemon "0..*"--o Batalla:pookemones 
-Pookemon "1..1"<.."1..1" Entrenador
-Pookemon "0..*"--o Entrenador:pookemones
-Pookemon "1..1"<.."1..1" Organizador
-Pookemon "1..1"<.."1..1" ArenaConf
-Pookemon "0..*"--o ArenaConf:pookemones
-
-'Relaciones con Recuperar PPS
-RecuperarPPS "1..1" ..>"1..1" Pookemon
-
-'Relaciones con Organizador Controller
-OrganizadorController "1..1"..>"1..1" ArenaConf
-OrganizadorController "1..1"..>"1..1" Organizador
-OrganizadorController o-- "1..1" Organizador
-
-'Relaciones con Entrenador
-Entrenador "1..1"<.."1..1" Batalla
-Entrenador "1..1"--o Batalla:entrenador1
-Entrenador "1..1"--o Batalla:entrenador2
-
-'Relaciones con Organizador
-Organizador "1..1" <.. "1..1" Serializar
-Organizador o--"1..1" ArenaConf:arenaConf
-Organizador "1..1"..>"1..1" ArenaConf
-
-'Relaciones con Batalla
-Batalla "1..1"..>"1..1" Accion
-Batalla o--"1..1" Accion:accionEntrenador1
-Batalla o--"1..1" Accion:accionEntrenador2 
-
-'Relaciones con Accion
-Accion "1..1"..>"1..1" TipoAccion 
-Accion o--"1..1" TipoAccion:tipoAccion
+Efecto <|.. EfectoEnvenenamiento
+Efecto <|.. EfectoParalisis
+Efecto <|.. EfectoQuemadura
 
 @enduml

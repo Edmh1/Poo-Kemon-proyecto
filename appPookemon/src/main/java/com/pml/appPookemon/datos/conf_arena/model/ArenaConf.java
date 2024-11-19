@@ -2,6 +2,7 @@ package main.java.com.pml.appPookemon.datos.conf_arena.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Movimiento;
 import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 
@@ -9,19 +10,20 @@ import main.java.com.pml.appPookemon.datos.pookemon.model.Pookemon;
 
 public class ArenaConf implements Serializable{
 
-    private ArrayList<Pookemon> pookemones = new ArrayList<>();
-    private ArrayList<Movimiento> movimientos = new ArrayList<>();
+    private List<Pookemon> pookemones;
+    private List<Movimiento> movimientos;
 
     public ArenaConf() {
+        pookemones = new ArrayList<>();
+        movimientos = new ArrayList<>();
  
     }
     
-
-    public ArrayList<Pookemon> getPookemones() {
+    public List<Pookemon> getPookemones() {
         return pookemones;
     }
     
-    public ArrayList<Movimiento> getMovimientos() {
+    public List<Movimiento> getMovimientos() {
         return movimientos;
     }
     
