@@ -22,13 +22,13 @@ public class Batalla {
     }
 
     public String realizarTurno(){
-        String resultado = "Turno" + (numeroTurno+1) + ": ";
+        String resultado = "Turno" + (numeroTurno++) + ": ";
         int idAccionEntrenador1 = accionEntrenador1.idAccion;
         int idAccionEntrenador2 = accionEntrenador2.idAccion;
         
         //El jugador 1 usa un obejto de vida
         if(accionEntrenador1.getTipoAccion() == TipoAccion.OBJETO_VIDA){
-            resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha usado una pocion";
+            resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha usado una pocion \n";
             entrenador1.usarObjeto(0);
             //El jugador 2 usa un objeto vida
             if(accionEntrenador2.getTipoAccion() == TipoAccion.OBJETO_VIDA){
@@ -72,7 +72,7 @@ public class Batalla {
         
         //El jugador 2 usa un obejto de vida
         if(accionEntrenador2.getTipoAccion() == TipoAccion.OBJETO_VIDA){
-            resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha usado una pocion";
+            resultado += "El entrenador " + entrenador2.getNombreEntrenador() + " ha usado una pocion \n";
             entrenador2.usarObjeto(0);
             //El jugador 1 usa un objeto vida
             if(accionEntrenador1.getTipoAccion() == TipoAccion.OBJETO_VIDA){
@@ -116,7 +116,7 @@ public class Batalla {
         
         //El jugador 1 usa un obejto de PPs
         if(accionEntrenador1.getTipoAccion() == TipoAccion.OBJETO_PPS){
-            resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha usado un recupera pps";
+            resultado += "El entrenador " + entrenador1.getNombreEntrenador() + " ha usado un recupera pps \n";
             entrenador1.usarObjeto(1, idAccionEntrenador1);
             //El jugador 2 usa un objeto vida
             if(accionEntrenador2.getTipoAccion() == TipoAccion.OBJETO_VIDA){
