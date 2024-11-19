@@ -104,9 +104,6 @@ public class InicializadorObj {
         Pookemon Hydreigon = new Pookemon(22, "Hydreigon", "siniestro");
         Hydreigon.inicializarEstadistica(92, 105, 90, 125, 90, 98);
 
-        Pookemon Staraptor = new Pookemon(23, "Staraptor", "volador");
-        Staraptor.inicializarEstadistica(85, 120, 70, 50, 60, 100);
-
         Pookemon Lapras = new Pookemon(24, "Lapras", "hielo");
         Lapras.inicializarEstadistica(130, 85, 80, 85, 95, 60);
 
@@ -182,7 +179,6 @@ public class InicializadorObj {
         Metagross.setMovimientos(new ArrayList<>(Arrays.asList(CabezaDeHierro, PuyaNociva, CabezazoZen, Terremoto)));
         Excadrill.setMovimientos(new ArrayList<>(Arrays.asList(Terremoto, RocaAfilada, GarraUmbria, PuyaNociva)));
         Hydreigon.setMovimientos(new ArrayList<>(Arrays.asList(PulsoUmbrio, FocoResplandor, GarraDragon, Terremoto)));
-        Staraptor.setMovimientos(new ArrayList<>(Arrays.asList(PicoTaladro, GolpeCuerpo, CabezazoZen, Terremoto)));
         Lapras.setMovimientos(new ArrayList<>(Arrays.asList(Ventisca, RayoHielo, Hidrobomba, Vozarron)));
         Weavile.setMovimientos(new ArrayList<>(Arrays.asList(GarraUmbria, Triturar, PunoHielo, Ventisca)));
         
@@ -214,7 +210,6 @@ public class InicializadorObj {
         o.agregarPookemon(Metagross);
         o.agregarPookemon(Excadrill);
         o.agregarPookemon(Hydreigon);
-        o.agregarPookemon(Staraptor);
         o.agregarPookemon(Lapras);  
 
         o.agregarMovimiento(GolpeCuerpo);
@@ -270,7 +265,7 @@ public class InicializadorObj {
         Serializar ser = new Serializar();
         try {
             ser.guardar(o);
-            System.out.println("epa");
+            System.out.println("epa persistencia ok");
         } catch (IOException ex) {
             Logger.getLogger(InicializadorObj.class.getName()).log(Level.SEVERE, null, ex);
         }
